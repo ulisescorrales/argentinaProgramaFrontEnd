@@ -1,0 +1,9 @@
+#general{
+    position:relative;
+}
+#login2{
+    position:absolute;
+    bottom:45%;  
+    border-color:black;
+    border-radius:3px;    
+}

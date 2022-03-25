@@ -1,0 +1,61 @@
+{
+    "name": "Corrales Ulises Andres",
+    "dateBirth": "1995-01-15T00:00:00.000Z",
+    "country": "Argentina",
+    "province": "Río Negro",
+    "city": "Allen",
+    "email": "ulisescorralesallen@gmail.com",
+    "cellPhone": "2984213115",
+    "facebook": "https://www.facebook.com/ulisescorralesallen/",
+    "gitHub": "https://github.com/ulisescorrales",
+    "studies": [
+      {
+        "institution": "Universidad del Comahue",
+        "title": "Lic. en Ciencias de la Computación",
+        "state": "Segundo año",
+        "start": "2021",
+        "finish": ""
+      },
+      {
+        "institution": "Ministerio de Desarrollo Productivo",
+        "title": "Programador Web Full Stack Jr.",
+        "state": "Finalizado",
+        "start": "2021",
+        "finish": "2022"
+      }
+    ],
+    "habilities": [
+      {
+        "knowledge": "HTML",
+        "level": "5"
+      },
+      {
+        "knowledge": "CSS",
+        "level": "5"
+      },
+      {
+        "knowledge": "JavaScript/TypeScript",
+        "level": "5"
+      },
+      {
+        "knowledge": "BootStrap",
+        "level": "5"
+      },
+      {
+        "knowledge": "Angular",
+        "level": "5"
+      },
+      {
+        "knowledge": "Git/GitHUB",
+        "level": "5"
+      },
+      {
+        "knowledge": "SCRUM",
+        "level": "2"
+      },
+      {
+        "knowledge": "JAVA",
+        "level": "5"
+      }
+    ]
+  }

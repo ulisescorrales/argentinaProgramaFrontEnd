@@ -1,0 +1,8 @@
+#relativo{
+    position:relative;
+}
+#absoluto{
+    position:absolute;
+    top:-200%;
+    left:1%;
+}

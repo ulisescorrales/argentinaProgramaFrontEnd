@@ -1,0 +1,28 @@
+body {
+    font-family: sans-serif;
+    font-size: 1.1em;
+  }
+#borde{
+  border: 2px black;
+  border-radius: 5px;
+}
+#fb{
+  margin-left: 50%;
+}
+#login{
+  margin-left: 5%;
+}
+#curso{
+  padding-top:1%;
+}
+#relativo{
+  position:relative;
+}
+#absoluto{
+  position: absolute;
+  top: 75%;
+  left: 5%;  
+}
+#absoluto2{
+  left:25%;
+}
