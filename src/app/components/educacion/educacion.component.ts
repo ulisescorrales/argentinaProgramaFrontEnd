@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
+
+
+
 @Component({
   selector: 'app-educacion',
   templateUrl: './educacion.component.html',
@@ -13,6 +16,8 @@ export class EducacionComponent implements OnInit {
   filasArray:any;
   columnas=3;
   columnasArray:any
+
+  Math = Math;//Para usar Math.floor() en el HTML
 
   estudiosList:any; //sera el nombre de la etiqueta con la que vas a buscar en el JSON
   knowledgeList:any
