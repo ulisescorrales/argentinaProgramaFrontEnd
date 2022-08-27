@@ -12,6 +12,7 @@ import { HabilidadesComponent } from './components/habilidades/habilidades.compo
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoginButtonComponent } from './components/login-button/login-button.component';
+import { FormularioComponent } from './components/formulario/formulario.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { LoginButtonComponent } from './components/login-button/login-button.com
     ProyectosComponent,
     LoginComponent,
     LoginButtonComponent,
+    FormularioComponent,
     
   ],
   imports: [
