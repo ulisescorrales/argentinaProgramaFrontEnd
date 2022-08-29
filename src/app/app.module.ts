@@ -13,6 +13,7 @@ import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoginButtonComponent } from './components/login-button/login-button.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { FormularioComponent } from './components/formulario/formulario.componen
     LoginComponent,
     LoginButtonComponent,
     FormularioComponent,
+    FooterComponent,
     
   ],
   imports: [

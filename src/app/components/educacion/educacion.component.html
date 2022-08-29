@@ -4,21 +4,20 @@
             <div class="col-2">
 
             </div>
-            <div class="col">
-                <ul>
-                    <li>Título: {{education.title}} </li>
-                    <li>Institución: {{education.institution}} </li>
-                    <li>Estado: {{education.state}}</li>
-                    <li>Comienzo: {{education.start}}</li>
-                    <li>Finalización: {{education.finish}}</li>
-                    <div class="progress" style="width:50%">
-                        <div class="progress-bar progress-bar-striped" role="progressbar"
-                            [style.width.%]="(education.materiasApr/education.totalMaterias)*100" aria-valuenow="10"
-                            aria-valuemin="0" aria-valuemax="100"></div>
-                        <!-- redondear el resultado usando Math.floor()-->
-                        <p>{{Math.floor((education.materiasApr/education.totalMaterias)*100)}}%</p>
-                    </div>
-                </ul>
+            <div class="col text-center">
+                <h2> {{education.title}} </h2>
+                <p>Institución: {{education.institution}} </p>
+                <p>Estado: {{education.state}}</p>
+                <p>Comienzo: {{education.start}}</p>
+                <!--Finalización solo se muestra si se aprobaron todas las materias-->
+                <p *ngIf="education.materiasApr==education.totalMaterias">Finalización: {{education.finish}}</p>
+                <div class="progress" style="width:100%">
+                    <div class="progress-bar progress-bar-striped" role="progressbar"
+                        [style.width.%]="(education.materiasApr/education.totalMaterias)*100" aria-valuenow="10"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    <!-- redondear el resultado usando Math.floor()-->
+                    <p>{{Math.floor((education.materiasApr/education.totalMaterias)*100)}}%</p>
+                </div>
             </div>
         </div>
     </div>
