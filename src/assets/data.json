@@ -11,6 +11,7 @@
     "studies": [
       {
         "institution": "Universidad del Comahue",
+        "logo":"https://www.uncoma.edu.ar/wp-content/uploads/2018/04/LOGOUNC-e1522858761795.png",
         "title": "Lic. en Ciencias de la Computación",
         "state": "Segundo año",
         "start": 2021,
@@ -20,6 +21,7 @@
       },
       {
         "institution": "Universidad del Comahue",
+        "logo":"https://www.uncoma.edu.ar/wp-content/uploads/2018/04/LOGOUNC-e1522858761795.png",
         "title": "Analista Programador Universitario (Título intermedio)",
         "state": "Segundo año",
         "start": 2021,
@@ -29,6 +31,7 @@
       },
       {
         "institution": "Ministerio de Desarrollo Productivo",
+        "logo":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Mindesarrolloprodarg.png/220px-Mindesarrolloprodarg.png",
         "title": "Programador Web Full Stack Jr.",
         "state": "Finalizado",
         "start": 2022,
