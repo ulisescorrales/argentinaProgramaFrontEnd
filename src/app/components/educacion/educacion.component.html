@@ -5,6 +5,7 @@
 
             </div>
             <div class="col text-center">
+                <img [src]="education.logo" class="img-fluid" alt="Responsive image" id="logo"/>
                 <h2> {{education.title}} </h2>
                 <p>Institución: {{education.institution}} </p>
                 <p>Estado: {{education.state}}</p>
@@ -22,9 +23,14 @@
         </div>
     </div>
 </div>
-<div section="conocimientos">
+<div section="conocimientos">    
     <div class="container">
-        <div class="row" style="margin-bottom: 5%" *ngFor="let filas of filasArray;index as i">
+        <div class="row">
+            <div class="col text-center">
+                <h2>Conocimientos</h2>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 5%" *ngFor="let filas of filasArray;index as i">            
             <div class="col text-center" *ngFor="let columnas of columnasArray;index as j">
                 <img *ngIf="3*i+j<tamanioKnowledge" [src]="knowledgeList[3*i+j].image" style="width:45%;height:75%;">
             </div>
