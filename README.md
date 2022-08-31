@@ -1,3 +1,6 @@
+#Proyecto
+FrontEnd del Portfolio personal para presentar el trabajo final del curso Argentina Programa #YoProgramo
+
 # AngProyect
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
