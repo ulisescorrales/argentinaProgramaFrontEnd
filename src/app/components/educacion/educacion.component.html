@@ -1,11 +1,11 @@
-<div section="educacion">    
+<div section="educacion">
 
     <div class="container border-bottom">
         <div class="row" *ngFor="let education of estudiosList" data-aos="fade-right">
             <span class="border-top"></span>
             <!--Logo de la institución-->
             <div class="col-2">
-                
+
                 <img [src]="education.logo" class="img-fluid" alt="Responsive image" id="logo" />
 
             </div>
@@ -32,10 +32,10 @@
                 <!-- redondear el resultado usando Math.floor()-->
                 <div class="row text-center" id="porcentaje">
                     <p>{{Math.floor((education.materiasApr/education.totalMaterias)*100)}}%</p>
-                </div>                
+                </div>
             </div>
-            
-        </div>        
+
+        </div>
     </div>
 </div>
 <div section="conocimientos">
@@ -45,9 +45,15 @@
                 <h2>Conocimientos</h2>
             </div>
         </div>
-        <div class="row" style="margin-bottom: 5%" *ngFor="let filas of filasArray;index as i" >
-            <div class="col text-center" *ngFor="let columnas of columnasArray;index as j" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="250">
-                <img *ngIf="3*i+j<tamanioKnowledge" [src]="knowledgeList[3*i+j].image" style="width:45%;height:75%;">
+        <div class="row" style="margin-bottom: 5%" *ngFor="let filas of filasArray;index as i">
+            <div class="col text-center" *ngFor="let columnas of columnasArray; index as j" [ngSwitch]="j">
+                <!--Cargar logo según su posición en la grilla-->
+                <img *ngSwitchCase="0" [src]="knowledgeList[3*i+j].image" style="width:45%;height:75%;"
+                    data-aos="fade-right" data-aos-duration="1000" data-aos-delay="250">
+                <img *ngSwitchCase="1" [src]="knowledgeList[3*i+j].image" style="width:45%;height:75%;"
+                    data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="250">
+                <img *ngSwitchCase="2" [src]="knowledgeList[3*i+j].image" style="width:45%;height:75%;"
+                    data-aos="fade-left" data-aos-duration="1000" data-aos-delay="250">
             </div>
         </div>
     </div>
