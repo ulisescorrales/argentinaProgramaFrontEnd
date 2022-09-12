@@ -3,7 +3,6 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
 
 
-
 @Component({
   selector: 'app-educacion',
   templateUrl: './educacion.component.html',
@@ -20,12 +19,12 @@ export class EducacionComponent implements OnInit {
   Math = Math;//Para usar Math.floor() en el HTML
 
   estudiosList:any; //sera el nombre de la etiqueta con la que vas a buscar en el JSON
-  knowledgeList:any
+  knowledgeList:any;
   constructor(private datosPortfolio: PortfolioService) { }
 
   ngOnInit(): void {    
     this.datosPortfolio.obtenerDatos().subscribe(data => {      
-      this.estudiosList=data.studies;
+      this.estudiosList=data.studies;     
       this.knowledgeList=data.knowledge;//
       this.tamanioKnowledge=this.knowledgeList.length;//Conseguir la longitud de la lista
 
