@@ -14,6 +14,7 @@ import { LoginComponent } from './components/login/login.component';
 import { LoginButtonComponent } from './components/login-button/login-button.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { FooterComponent } from './footer/footer.component';
+import { ConocimientoFormComponent } from './conocimiento-form/conocimiento-form.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { FooterComponent } from './footer/footer.component';
     LoginButtonComponent,
     FormularioComponent,
     FooterComponent,
+    ConocimientoFormComponent,
     
   ],
   imports: [

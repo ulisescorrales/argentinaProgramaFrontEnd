@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 declare let AOS: any;
+var editar:boolean=false;//modo editar o solo lectura
+var language:String="es";//idioma
 
 @Component({
   selector: 'app-root',
@@ -9,6 +11,6 @@ declare let AOS: any;
 export class AppComponent implements OnInit{
   title = 'angProyect';
   ngOnInit() {
-    AOS.init();
+    AOS.init();    
   }
 }

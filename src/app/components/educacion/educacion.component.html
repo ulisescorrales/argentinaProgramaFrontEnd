@@ -11,10 +11,10 @@
             </div>
             <div class="col text-left">
                 <!--Descripción-->
-                <h2> {{education.title}} </h2>
-                <p>Institución: {{education.institution}} </p>
-                <p>Estado: {{education.state}}</p>
-                <p>Comienzo: {{education.start}}</p>
+                <h2> {{education.title}} <i class="fa-solid fa-pen"></i></h2>
+                <p>Institución: {{education.institution}} <i class="fa-solid fa-pen"></i></p>
+                <p>Estado: {{education.state}}<i class="fa-solid fa-pen"></i></p>
+                <p>Comienzo: {{education.start}}<i class="fa-solid fa-pen"></i></p>
                 <!--Finalización solo se muestra si se aprobaron todas las materias-->
                 <p *ngIf="education.materiasApr==education.totalMaterias">Finalización: {{education.finish}}</p>
                 <!--Barra de progreso-->
@@ -36,6 +36,11 @@
             </div>
 
         </div>
+        <div class="row">
+            <div class="col text-center">
+                <h1><i class="fa-solid fa-plus"></i></h1>
+            </div>
+        </div>
     </div>
 </div>
 <div section="conocimientos">
@@ -48,12 +53,21 @@
         <div class="row" style="margin-bottom: 5%" *ngFor="let filas of filasArray;index as i">
             <div class="col text-center" *ngFor="let columnas of columnasArray; index as j" [ngSwitch]="j">
                 <!--Cargar logo según su posición en la grilla-->
-                <img *ngSwitchCase="0" [src]="knowledgeList[3*i+j].image" style="width:45%;height:75%;"
-                    data-aos="fade-right" data-aos-duration="1000" data-aos-delay="250">
-                <img *ngSwitchCase="1" [src]="knowledgeList[3*i+j].image" style="width:45%;height:75%;"
-                    data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="250">
-                <img *ngSwitchCase="2" [src]="knowledgeList[3*i+j].image" style="width:45%;height:75%;"
-                    data-aos="fade-left" data-aos-duration="1000" data-aos-delay="250">
+                <ng-template [ngIf]="3*i+(j)<tamanioKnowledge">
+                    <img *ngSwitchCase="0" [src]="knowledgeList[3*i+j].image" style="width:45%;height:75%;"
+                        data-aos="fade-right" data-aos-duration="1000" data-aos-delay="250">
+                    <img *ngSwitchCase="1" [src]="knowledgeList[3*i+j].image" style="width:45%;height:75%;"
+                        data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="250">
+                    <img *ngSwitchCase="2" [src]="knowledgeList[3*i+j].image" style="width:45%;height:75%;"
+                        data-aos="fade-left" data-aos-duration="1000" data-aos-delay="250">
+                </ng-template>
+                <ng-template #elseBlock></ng-template>
+                <!--Cargar icono de editar, mejorar para cuando esté la grilla lena(se debe agregar una fila mas)-->
+                <ng-template onmouseover="viewDelete(this)" [ngIf]="3*i+(j)==tamanioKnowledge">
+                    <h1><i *ngSwitchCase="0" class="fa-solid fa-circle-plus" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="250"></i></h1>
+                    <h1><i *ngSwitchCase="1" class="fa-solid fa-circle-plus" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="250"></i></h1>
+                    <h1><i *ngSwitchCase="2" class="fa-solid fa-circle-plus" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="250"></i></h1>
+                </ng-template>                
             </div>
         </div>
     </div>

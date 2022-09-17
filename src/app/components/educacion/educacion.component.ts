@@ -8,8 +8,7 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
   templateUrl: './educacion.component.html',
   styleUrls: ['./educacion.component.css']  
 })
-export class EducacionComponent implements OnInit {    
-
+export class EducacionComponent implements OnInit {      
   tamanioKnowledge:any;
   filas:any;
   filasArray:any;
@@ -33,6 +32,9 @@ export class EducacionComponent implements OnInit {
       this.filasArray=Array(this.filas).fill(this.filas);//Es necesario el fill?
       this.columnasArray=Array(this.columnas).fill(this.columnas);
     });
+  }
+  viewDelete(x:HTMLElement):void{
+    
   }
 
 }
