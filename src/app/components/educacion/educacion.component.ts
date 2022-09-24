@@ -15,6 +15,8 @@ export class EducacionComponent implements OnInit {
   columnas=3;
   columnasArray:any
 
+  mostrarBorrar: boolean=false;
+
   Math = Math;//Para usar Math.floor() en el HTML
 
   estudiosList:any; //sera el nombre de la etiqueta con la que vas a buscar en el JSON
@@ -33,8 +35,20 @@ export class EducacionComponent implements OnInit {
       this.columnasArray=Array(this.columnas).fill(this.columnas);
     });
   }
-  viewDelete(x:HTMLElement):void{
+   mostrarEditar(item:MouseEvent): void{
+    const elemento=(item.target as HTMLElement).parentNode;
+    const i=document.createElement("i");
+    i.classList.add("fa-sharp");
+    i.classList.add("fa-solid");
+    i.classList.add("fa-trash");
+    i.setAttribute("id","botonBorrar");
+
+    elemento?.appendChild(i);
+    console.log("Activado");
+    //<i class="fa-sharp fa-solid fa-trash"></i>
+  }
+  borrarEditar(item:MouseEvent){
+    document.getElementById("botonBorrar")?.remove();    
     
   }
-
 }

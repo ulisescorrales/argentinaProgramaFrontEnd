@@ -11,12 +11,12 @@
             </div>
             <div class="col text-left">
                 <!--Descripción-->
-                <h2> {{education.title}} <i class="fa-solid fa-pen"></i></h2>
-                <p>Institución: {{education.institution}} <i class="fa-solid fa-pen"></i></p>
-                <p>Estado: {{education.state}}<i class="fa-solid fa-pen"></i></p>
-                <p>Comienzo: {{education.start}}<i class="fa-solid fa-pen"></i></p>
+                <h2> {{education.title}} <i class="fa-solid fa-pen editar"></i></h2>
+                <p>Institución: {{education.institution}} <i class="fa-solid fa-pen editar"></i></p>
+                <p>Estado: {{education.state}} <i class="fa-solid fa-pen editar"></i></p>
+                <p>Comienzo: {{education.start}} <i class="fa-solid fa-pen editar"></i></p>
                 <!--Finalización solo se muestra si se aprobaron todas las materias-->
-                <p *ngIf="education.materiasApr==education.totalMaterias">Finalización: {{education.finish}}</p>
+                <p *ngIf="education.materiasApr==education.totalMaterias">Finalización: {{education.finish}} <i class="fa-solid fa-pen editar"></i></p>
                 <!--Barra de progreso-->
                 <div class="row" id="progressBar">
                     <div class="col text-center"></div>
@@ -38,7 +38,7 @@
         </div>
         <div class="row">
             <div class="col text-center">
-                <h1><i class="fa-solid fa-plus"></i></h1>
+                <h1><i class="fa-solid fa-circle-plus" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="250"></i></h1>
             </div>
         </div>
     </div>
@@ -51,24 +51,24 @@
             </div>
         </div>
         <div class="row" style="margin-bottom: 5%" *ngFor="let filas of filasArray;index as i">
-            <div class="col text-center" *ngFor="let columnas of columnasArray; index as j" [ngSwitch]="j">
+            <div  class="col text-center" *ngFor="let columnas of columnasArray; index as j" [ngSwitch]="j" >
                 <!--Cargar logo según su posición en la grilla-->
                 <ng-template [ngIf]="3*i+(j)<tamanioKnowledge">
                     <img *ngSwitchCase="0" [src]="knowledgeList[3*i+j].image" style="width:45%;height:75%;"
-                        data-aos="fade-right" data-aos-duration="1000" data-aos-delay="250">
+                        data-aos="fade-right" data-aos-duration="1000" data-aos-delay="250" (mouseover)="mostrarEditar($event)"  (mouseout)="borrarEditar($event)">
                     <img *ngSwitchCase="1" [src]="knowledgeList[3*i+j].image" style="width:45%;height:75%;"
-                        data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="250">
+                        data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="250" (mouseover)="mostrarEditar($event)" (mouseout)="borrarEditar($event)">
                     <img *ngSwitchCase="2" [src]="knowledgeList[3*i+j].image" style="width:45%;height:75%;"
-                        data-aos="fade-left" data-aos-duration="1000" data-aos-delay="250">
+                        data-aos="fade-left" data-aos-duration="1000" data-aos-delay="250" (mouseover)="mostrarEditar($event)"  (mouseout)="borrarEditar($event)">
                 </ng-template>
                 <ng-template #elseBlock></ng-template>
                 <!--Cargar icono de editar, mejorar para cuando esté la grilla lena(se debe agregar una fila mas)-->
-                <ng-template onmouseover="viewDelete(this)" [ngIf]="3*i+(j)==tamanioKnowledge">
-                    <h1><i *ngSwitchCase="0" class="fa-solid fa-circle-plus" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="250"></i></h1>
-                    <h1><i *ngSwitchCase="1" class="fa-solid fa-circle-plus" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="250"></i></h1>
-                    <h1><i *ngSwitchCase="2" class="fa-solid fa-circle-plus" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="250"></i></h1>
+                <ng-template [ngIf]="3*i+(j)==tamanioKnowledge">
+                    <h1><i *ngSwitchCase="0" class="fa-solid fa-circle-plus editar" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="250"></i></h1>
+                    <h1><i *ngSwitchCase="1" class="fa-solid fa-circle-plus editar" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="250"></i></h1>
+                    <h1><i *ngSwitchCase="2" class="fa-solid fa-circle-plus editar" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="250"></i></h1>
                 </ng-template>                
             </div>
         </div>
-    </div>
+    </div>    
 </div>
