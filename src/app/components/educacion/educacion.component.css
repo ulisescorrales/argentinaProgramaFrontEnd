@@ -1,16 +1,44 @@
-#logo{
-    width:100px;    
-}
 
-#porcentaje{
+
+#porcentaje {
     font-size: 15px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.container{
-    
+#grilla {
+    position: relative;
 }
 
-.editar{
-    
+.programa {
+    top: 50%;
+    left: 50%;
+    transition: .1s ease;
+}
+
+.middle {
+    position: absolute;
+    transition: 1s ease;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    font-size: 25px;
+    opacity: 0;
+}
+
+#grilla:hover .programa {
+    opacity: 0.3;
+
+}
+
+#grilla:hover .middle {
+    opacity: 1;
+}
+
+.editar:hover .editar {
+    color: #6495ED;
+}
+
+.primerRenglon {
+    margin-top: 10px;
 }

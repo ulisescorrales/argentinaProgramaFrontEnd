@@ -1,9 +1,16 @@
-#general{
-    position:relative;
+
+
+@media (max-width:520px) {
+    :host ::ng-deep .texto {
+        font-size: 3vw;        
+    }
+    :host ::ng-deep .titulo{
+        font-size: 5vw;
+    }
 }
-#login2{
-    position:absolute;
-    bottom:45%;  
-    border-color:black;
-    border-radius:3px;    
+@media (max-width:780px) {
+    :host ::ng-deep .logo {
+        max-width: 100%;
+        min-width: 40px;
+    }
 }

@@ -45,7 +45,7 @@ export class EducacionComponent implements OnInit {
 
     elemento?.appendChild(i);
     console.log("Activado");
-    //<i class="fa-sharp fa-solid fa-trash"></i>
+    //<i class="fa-sharp fa-solid fa-trash" id="botonBorrar"></i>
   }
   borrarEditar(item:MouseEvent){
     document.getElementById("botonBorrar")?.remove();    
