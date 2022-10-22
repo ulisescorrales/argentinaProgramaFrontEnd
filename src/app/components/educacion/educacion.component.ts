@@ -13,9 +13,8 @@ export class EducacionComponent implements OnInit {
   filas:any;
   filasArray:any;
   columnas=3;
-  columnasArray:any
-
-  mostrarBorrar: boolean=false;
+  columnasArray:any;
+  editar: boolean=false;
 
   Math = Math;//Para usar Math.floor() en el HTML
 
@@ -29,12 +28,22 @@ export class EducacionComponent implements OnInit {
       this.knowledgeList=data.knowledge;//
       this.tamanioKnowledge=this.knowledgeList.length;//Conseguir la longitud de la lista
 
-      this.filas=Math.ceil(this.tamanioKnowledge/3);
+      this.filas=Math.ceil(this.tamanioKnowledge/this.columnas);
 
       this.filasArray=Array(this.filas).fill(this.filas);//Es necesario el fill?
       this.columnasArray=Array(this.columnas).fill(this.columnas);
+
+      this.editar=data.edit;
     });
   }
+  cambiarTamanio():void{    
+    if(window.innerWidth<800){
+      this.columnas=2;
+    }else{
+      this.columnas=3;
+    }
+  }
+
    mostrarEditar(item:MouseEvent): void{
     const elemento=(item.target as HTMLElement).parentNode;
     const i=document.createElement("i");

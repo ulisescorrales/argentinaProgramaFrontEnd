@@ -1,25 +1,25 @@
-<div section="educacion">
-    <div class="container border-bottom">
-        <div class="row" *ngFor="let education of estudiosList" data-aos="fade-right">
+<div section="educacion" (window:resize)="cambiarTamanio()">
+    <div class="container">
+        <div class="row" *ngFor="let education of estudiosList" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="250">
             <span class="border-top"></span>
             <!--Logo de la institución-->
             <div class="col-2 primerRenglon">
 
-                <img [src]="education.logo" class="img-fluid logo" alt="Responsive image"/>
+                <img [src]="education.logo" class="img-fluid logo" alt="Responsive image" />
 
             </div>
             <div class="col text-left primerRenglon">
                 <!--Descripción-->
                 <div class="row">
-                    <div class="col col-md-auto text-left">
+                    <div class="col-10 text-left contenido">
                         <h2 class="titulo"> {{education.title}}</h2>
                     </div>
-                    <div class="col col-md-auto text-left my-auto editar">
-                        <i class="fa-solid fa-pen editar"></i>
-                    </div>
-                    <div class="col col-md-auto text-left my-auto editar">
-                        <i class="fa-sharp fa-solid fa-trash editar"></i>
-                    </div>
+                    <ng-template [ngIf]="editar==true">
+                        <div class="col-1  my-auto">
+                            <i class="fa-solid fa-pen editar"></i>
+                            <i class="fa-sharp fa-solid fa-trash editar"></i>
+                        </div>
+                    </ng-template>
                 </div>
                 <p class="texto">Institución: {{education.institution}}</p>
                 <p class="texto">Estado: {{education.state}}</p>
@@ -45,7 +45,7 @@
             </div>
 
         </div>
-        <div class="row">
+        <div class="row" *ngIf="editar">
             <div class="col text-center">
                 <div class="editar">
                     <h1><i class="fa-solid fa-circle-plus editar" data-aos="zoom-in" data-aos-duration="1000"
@@ -57,32 +57,36 @@
 </div>
 <div section="conocimientos">
     <div class="container">
-        <div class="row">
+        <div class="row border-bottom">
             <div class="col text-center">
                 <h2>Conocimientos</h2>
             </div>
         </div>
-        <div class="row" style="margin-bottom: 5%" *ngFor="let filas of filasArray;index as i">
+        <div class="row" style="margin-top: 20px" *ngFor="let filas of filasArray;index as i">
             <div class="col text-center" *ngFor="let columnas of columnasArray; index as j" [ngSwitch]="j" id="grilla">
                 <!--Cargar logo según su posición en la grilla-->
-                <ng-template [ngIf]="3*i+(j)<tamanioKnowledge" id="template">
-                    <img class="programa" *ngSwitchCase="0" [src]="knowledgeList[3*i+j].image"
+                <ng-template [ngIf]="columnas*i+j<tamanioKnowledge" id="template">
+                    <img class="programa" *ngSwitchCase="0" [src]="knowledgeList[columnas*i+j].image"
                         style="width:45%;height:75%;" data-aos="fade-right" data-aos-duration="1000"
                         data-aos-delay="250">
 
-                    <img class="programa" *ngSwitchCase="1" [src]="knowledgeList[3*i+j].image"
+                    <img class="programa" *ngSwitchCase="1" [src]="knowledgeList[columnas*i+j].image"
                         style="width:45%;height:75%;" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="250">
-                    <img class="programa" *ngSwitchCase="2" [src]="knowledgeList[3*i+j].image"
+                    <img class="programa" *ngSwitchCase="2" [src]="knowledgeList[columnas*i+j].image"
                         style="width:45%;height:75%;" data-aos="fade-left" data-aos-duration="1000"
                         data-aos-delay="250">
-                    <div class="middle editar"><i class="fa-sharp fa-solid fa-trash editar" id="botonBorrar" data-aos="zoom-in"
-                            data-aos-duration="1000" data-aos-delay="250"></i></div>
+                    <div class="middle">
+                        <ng-template [ngIf]="editar==true">
+                            <i class="fa-sharp fa-solid fa-trash borrar" id="botonBorrar" data-aos="zoom-in"
+                                data-aos-duration="1000" data-aos-delay="250"></i>
+                        </ng-template>
+                    </div>
 
                 </ng-template>
                 <ng-template #elseBlock></ng-template>
                 <!--Cargar icono de editar, mejorar para cuando esté la grilla lena(se debe agregar una fila mas)-->
                 <ng-template [ngIf]="3*i+(j)==tamanioKnowledge">
-                    <div class="editar">
+                    <div class="editar" [ngIf]="editar==true">
                         <h1><i *ngSwitchCase="0" class="fa-solid fa-circle-plus editar" data-aos="fade-right"
                                 data-aos-duration="1000" data-aos-delay="250"></i></h1>
                         <h1><i *ngSwitchCase="1" class="fa-solid fa-circle-plus editar" data-aos="zoom-in"

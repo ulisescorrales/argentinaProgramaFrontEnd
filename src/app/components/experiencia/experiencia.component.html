@@ -1,1 +1,28 @@
-<p>experiencia works!</p>
+<div section="experiencia">
+    <div class="row border-bottom">
+        <div class="col text-center">
+            <h2 >Experiencia</h2>
+        </div>
+    </div>    
+    <div class="row  primerRenglon" *ngFor="let experiencia of experienciaList" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="250">        
+        <!--Logo de la institución-->
+        <div class="col-2">
+
+            <img [src]="experiencia.logo" class="img-fluid logo" alt="Responsive image" />
+
+        </div>
+        <div class="col text-left">
+            <p>{{experiencia.description}}</p>
+            <ul>
+                <li *ngFor="let task of experiencia.task">{{task}}</li>                
+            </ul>
+            <p>{{experiencia.repository}}</p>
+        </div>
+        <ng-template [ngIf]="editar==true">
+            <div class="col-1  my-auto">
+                <i class="fa-solid fa-pen editar"></i>
+                <i class="fa-sharp fa-solid fa-trash editar"></i>
+            </div>
+        </ng-template>
+    </div>
+</div>

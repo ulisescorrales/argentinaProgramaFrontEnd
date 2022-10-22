@@ -8,13 +8,14 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
 })
 export class ExperienciaComponent implements OnInit {
 
-  miPortfolio:any; //sera el nombre de la etiqueta con la que vas a buscar en el JSON
+  editar:any;
+  experienciaList:any; //sera el nombre de la etiqueta con la que vas a buscar en el JSON
   constructor(private datosPortfolio: PortfolioService) { }
 
   ngOnInit(): void {    
-    this.datosPortfolio.obtenerDatos().subscribe(data => {
-      console.log(data);
-      this.miPortfolio=data;
+    this.datosPortfolio.obtenerDatos().subscribe(data => {      
+      this.experienciaList=data.experience;
+      this.editar=data.edit;
     });
   }
 

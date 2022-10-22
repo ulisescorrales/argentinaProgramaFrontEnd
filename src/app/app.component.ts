@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 declare let AOS: any;
-var editar:boolean=false;//modo editar o solo lectura
+//import { PortfolioService } from 'src/app/servicios/portfolio.service';
+
+var editar:boolean;//modo editar o solo lectura
 var language:String="es";//idioma
 
 @Component({
@@ -9,8 +11,16 @@ var language:String="es";//idioma
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'angProyect';
+  title = 'angProyect';  
+  
+  //constructor(private global: PortfolioService) { }
+
   ngOnInit() {
-    AOS.init();    
+    AOS.init(); 
+    
+    //this.global.obtenerDatos().subscribe(data => {
+    //  console.log(data);      
+    //  this.editar=data.edi;
+   // });
   }
 }

@@ -3,25 +3,23 @@
         <div class="col" style="background-color:black;">
             <img src=".\assets\img\banner.jpg" width="100%" alt="banner" />
         </div>
-        <div class="col-2" id="absoluto"  >            
-            <img src=".\assets\img\fotoPerfil.jpg" class="rounded-circle rounded mx-auto d-block" alt="banner" id="foto" />
-            <h6 class="text-center">{{nombre}}</h6>
-        </div>
     </div>
     <div class="row">
-        <div class="row">
-            <div class="col-2">
-            </div>
-            <div class="col">
-                <p class="font-weight-normal texto">Desarrollador Web Full Stack Developer Jr. y estudiante de la Lic. en
-                    Cs. de la computación en la Univ. del Comahue</p>
-            </div>
-            <div class="col col-md-auto text-left my-auto editar">
+        <div class="col-2" id="absoluto">            
+                <img src=".\assets\img\fotoPerfil.jpg" class="rounded-circle rounded mx-auto d-block" alt="banner"
+                id="foto" />                        
+                <h6 class="text-center" id="nombre">{{nombre}}</h6>              
+        </div>
+        <div class="col-9 my-auto">
+            <p class="font-weight-normal texto">Desarrollador Web Full Stack Developer Jr. y estudiante de la Lic.
+                en
+                Cs. de la computación en la Univ. del Comahue</p>
+        </div>
+        <ng-template [ngIf]="editar==true">
+            <div class="col-1  my-auto">
                 <i class="fa-solid fa-pen editar"></i>
-            </div>
-            <div class="col col-md-auto text-left my-auto editar">
                 <i class="fa-sharp fa-solid fa-trash editar"></i>
             </div>
-        </div>
+        </ng-template>
     </div>
 </div>

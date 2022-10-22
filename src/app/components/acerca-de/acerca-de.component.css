@@ -1,8 +1,6 @@
-@media (max-width:1000px){
-    
-}
+
 #foto{
-    min-width: 75px;
+    min-width: 40px;
     max-width: 100%;
 }
 #relativo{
@@ -10,19 +8,22 @@
     border-color:black;
 }
 #absoluto{
-    position:absolute;
-    top: 75%;    
+    
+       
 }
 
 p{
     margin-top:1%;
     
 }
-.editar:hover .editar {
+.editar:hover  {
     color:#6495ED;
 }
 #foto{
     
     
+}
+.editar{
+    margin-left: 10px;
 }
 
