@@ -13,8 +13,11 @@ import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoginButtonComponent } from './components/login-button/login-button.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
-import { FooterComponent } from './footer/footer.component';
 import { ConocimientoFormComponent } from './conocimiento-form/conocimiento-form.component';
+import { EditarComponent } from './components/editar/editar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ConocimientoEditComponent } from './components/editar/conocimiento-edit/conocimiento-edit.component';
+import { EducacionEditComponent } from './components/editar/educacion-edit/educacion-edit.component';
 
 
 @NgModule({
@@ -31,7 +34,9 @@ import { ConocimientoFormComponent } from './conocimiento-form/conocimiento-form
     FormularioComponent,
     FooterComponent,
     ConocimientoFormComponent,
-    
+    EditarComponent,
+    ConocimientoEditComponent,
+    EducacionEditComponent    
   ],
   imports: [
     HttpClientModule,

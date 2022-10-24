@@ -1,5 +1,8 @@
-<div section="educacion" (window:resize)="cambiarTamanio()">
+<div section="educacion">
     <div class="container">
+        <div class="col text-center">
+            <h2 data-aos="fade-right" data-aos-duration="1000" data-aos-delay="250">Educación</h2>
+        </div>        
         <div class="row" *ngFor="let education of estudiosList" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="250">
             <span class="border-top"></span>
             <!--Logo de la institución-->
@@ -15,8 +18,8 @@
                         <h2 class="titulo"> {{education.title}}</h2>
                     </div>
                     <ng-template [ngIf]="editar==true">
-                        <div class="col-1  my-auto">
-                            <i class="fa-solid fa-pen editar"></i>
+                        <div class="col-1  my-auto">                            
+                            <i class="fa-solid fa-pen editar" routerLink="/editar/educacion"></i>
                             <i class="fa-sharp fa-solid fa-trash editar"></i>
                         </div>
                     </ng-template>
@@ -59,7 +62,7 @@
     <div class="container">
         <div class="row border-bottom">
             <div class="col text-center">
-                <h2>Conocimientos</h2>
+                <h2 data-aos="fade-right" data-aos-duration="1000" data-aos-delay="250">Conocimientos</h2>
             </div>
         </div>
         <div class="row" style="margin-top: 20px" *ngFor="let filas of filasArray;index as i">
