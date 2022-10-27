@@ -18,6 +18,7 @@ import { EditarComponent } from './components/editar/editar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ConocimientoEditComponent } from './components/editar/conocimiento-edit/conocimiento-edit.component';
 import { EducacionEditComponent } from './components/editar/educacion-edit/educacion-edit.component';
+import { EliminarComponent } from './components/eliminar/eliminar.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { EducacionEditComponent } from './components/editar/educacion-edit/educa
     ConocimientoFormComponent,
     EditarComponent,
     ConocimientoEditComponent,
-    EducacionEditComponent    
+    EducacionEditComponent,
+    EliminarComponent    
   ],
   imports: [
     HttpClientModule,
