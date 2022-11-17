@@ -99,7 +99,7 @@
       "logo": "https://www.uncoma.edu.ar/wp-content/uploads/2018/04/LOGOUNC-e1522858761795.png",
       "description": "Actividades propuestas por la universidad como contraprestación a la Beca Manuel Belgrano.",
       "task": ["Mantenimiento de página web http://weed2022.fi.uncoma.edu.ar/. Repositorio:https://github.com/sebaiova/weed"],
-      "repository": ""
+      "repository": "./src/assets/Certificados/Weed.pdf"
     }
   ]
 }
