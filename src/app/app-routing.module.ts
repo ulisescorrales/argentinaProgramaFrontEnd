@@ -10,6 +10,7 @@ import { EducacionEditComponent } from './components/editar/educacion-edit/educa
 import { EducacionComponent } from './components/educacion/educacion.component';
 import { EliminarComponent } from './components/eliminar/eliminar.component';
 import { EncabezadoComponent } from './components/encabezado/encabezado.component';
+import { FormularioComponent } from './components/formulario/formulario.component';
 import { LoginComponent } from './components/login/login.component';
 
 
@@ -17,10 +18,11 @@ const routes: Routes = [
   //{path:'inicio', component: AppComponent},
   { path: 'segunda-pagina', component: AcercaDeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'contacto', component: FormularioComponent },
   {
     path: 'editar', component: EditarComponent, children: [
       { path: 'conocimiento', component: ConocimientoEditComponent },
-      { path: 'educacion', component: EducacionEditComponent },
+      { path: 'educacion/:id', component: EducacionEditComponent },
       { path: 'experiencia', component: LoginComponent },
       { path: 'acerca-de', component: LoginComponent }
     ]

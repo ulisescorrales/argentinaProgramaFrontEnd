@@ -1,6 +1,12 @@
 footer{
     background-color: black;
+    margin-top:25px;
+    border-radius: 10px;
 }
 p{
     color:white;
+    font-size:14px;
+}
+a{
+    font-size:14px;
 }

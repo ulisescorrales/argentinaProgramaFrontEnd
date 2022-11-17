@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
+import { ActivatedRoute, Params} from '@angular/router';
 
 
 
@@ -20,9 +21,11 @@ export class EducacionComponent implements OnInit {
 
   estudiosList:any; //sera el nombre de la etiqueta con la que vas a buscar en el JSON
   knowledgeList:any;
-  constructor(private datosPortfolio: PortfolioService) { }
-
+  constructor(private datosPortfolio: PortfolioService,private rutaActiva:ActivatedRoute) { }  
   ngOnInit(): void {    
+    this.rutaActiva.params.subscribe((params:Params) =>{
+      const id=params['id'].toString();
+    })
     this.datosPortfolio.obtenerDatos().subscribe(data => {      
       this.estudiosList=data.studies;     
       this.knowledgeList=data.knowledge;//
