@@ -1,14 +1,22 @@
 <div class="container">
     <div class="row" id="relativo">
-        <div class="col" style="background-color:black;">
+        <div class="col editarImagen" style="background-color:black;">
             <img src=".\assets\img\banner.jpg" width="100%" alt="banner" />
         </div>
     </div>
     <div class="row">
-        <div class="col-2" id="absoluto">            
-                <img src=".\assets\img\fotoPerfil.jpg" class="rounded-circle rounded mx-auto d-block" alt="banner"
-                id="foto" />                        
-                <h6 class="text-center" id="nombre">{{nombre}}</h6>              
+        <div class="col-2" id="relativo">
+            <img src=".\assets\img\fotoPerfil.jpg" class="rounded-circle rounded mx-auto d-block editarImagen"
+                alt="banner" id="foto" />
+                <!--Ícono de borrar centrado-->
+            <div class="middle">
+                <ng-template [ngIf]="editar==true">
+                    <div class="col-1  my-auto">
+                        <i class="fa-solid fa-pen editar" routerLink="/editar/educacion"></i>
+                    </div>
+                </ng-template>
+            </div>            
+            <h6 class="text-center" id="nombre">{{nombre}}</h6>
         </div>
         <div class="col-9 my-auto">
             <p class="font-weight-normal texto">Desarrollador Web Full Stack Developer Jr. y estudiante de la Lic.

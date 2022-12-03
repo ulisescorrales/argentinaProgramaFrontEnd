@@ -14,9 +14,12 @@
         <div class="col text-left">
             <p>{{experiencia.description}}</p>
             <ul>
-                <li *ngFor="let task of experiencia.task">{{task}}</li>                
-            </ul>
-            <p>{{experiencia.repository}}</p>
+                <li *ngFor="let task of experiencia.task">{{task}}. 
+                    <a [href]=experiencia.repository>Repositorio</a>
+                    <span>. </span>
+                    <a [href]=experiencia.certificate type="application/pdf" rel="alternate" media="print" target="blank">Certificado</a>
+                </li>                
+            </ul>            
         </div>
         <ng-template [ngIf]="editar==true">
             <div class="col-1  my-auto">

@@ -1,29 +1,33 @@
-@media (max-width:770px){
-    :host ::ng-deep .editar{
+@media (max-width:770px) {
+    :host ::ng-deep .editar {
         max-width: 100%;
-        font-size:  15px;        
+        font-size: 15px;
     }
 }
-@media (max-width:350px){
-    :host ::ng-deep .editar{
+
+@media (max-width:350px) {
+    :host ::ng-deep .editar {
         max-width: 100%;
-        font-size:  10px;
-        
+        font-size: 10px;
+
     }
-    
+
 }
 
 @media (max-width:520px) {
     :host ::ng-deep .texto {
-        font-size: 3vw;        
+        font-size: 3vw;
     }
-    :host ::ng-deep .titulo{
+
+    :host ::ng-deep .titulo {
         font-size: 5vw;
     }
-    :host ::ng-deep #nombre{
+
+    :host ::ng-deep #nombre {
         font-size: 3vw;
     }
 }
+
 @media (max-width:780px) {
     :host ::ng-deep .logo {
         max-width: 100%;
@@ -33,12 +37,32 @@
 
 :host ::ng-deep .editar:hover {
     color: #6495ED;
-    
-}
-:host ::ng-deep .borrar:hover {
-    color: #6495ED;    
+
 }
 
-:host ::ng-deep .editar{
+:host ::ng-deep .borrar:hover {
+    color: #6495ED;
+}
+
+:host ::ng-deep .editar {
     margin-left: 10px;
+}
+
+:host ::ng-deep .editarImagen:hover {
+    opacity: 0.3;
+    transition: 0.8s ease;
+}
+
+:host ::ng-deep .middle {
+    position: absolute;
+    transition: 1s ease;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    font-size: 25px;
+    opacity: 0;
+}
+:host ::ng-deep .middle:hover {
+    opacity: 1;
 }

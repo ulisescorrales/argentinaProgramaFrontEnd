@@ -101,8 +101,9 @@
       "institution": "Universidad del Comahue",
       "logo": "https://yt3.ggpht.com/ytc/AMLnZu_ayySVF62ftyejB3H9r0RekJDRLPMWxCjaw1Ts=s900-c-k-c0x00ffffff-no-rj",
       "description": "Actividades propuestas por la universidad como contraprestación a la Beca Manuel Belgrano.",
-      "task": ["Mantenimiento de página web http://weed2022.fi.uncoma.edu.ar/. Repositorio:https://github.com/sebaiova/weed"],
-      "repository": "./src/assets/Certificados/Weed.pdf"
+      "task": ["Mantenimiento de página web http://weed2022.fi.uncoma.edu.ar/"],
+      "repository": "https://github.com/sebaiova/weed",
+      "certificate":"./assets/Certificados/Weed.pdf"
     }
   ]
 }
