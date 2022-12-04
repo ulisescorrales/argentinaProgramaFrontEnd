@@ -34,19 +34,18 @@
         min-width: 40px;
     }
 }
-
-:host ::ng-deep .editar:hover {
-    color: #6495ED;
-
-}
-
-:host ::ng-deep .borrar:hover {
-    color: #6495ED;
-}
+/* editar incluye los íconos lápiz y borrar*/
 
 :host ::ng-deep .editar {
     margin-left: 10px;
 }
+/**/
+
+:host ::ng-deep .remarcar:hover {
+    color: #6495ED;
+}
+
+
 
 :host ::ng-deep .editarImagen:hover {
     opacity: 0.3;

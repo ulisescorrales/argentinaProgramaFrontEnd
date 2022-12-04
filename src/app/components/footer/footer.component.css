@@ -1,6 +1,6 @@
 footer{
     background-color:rgb(177, 199, 218);
-    margin-top:25px;
+    margin-top:60px;
     border-radius: 10px;
 }
 p{
@@ -9,4 +9,7 @@ p{
 }
 a{
     font-size:14px;
+}
+.container{
+    padding: 10px;
 }
