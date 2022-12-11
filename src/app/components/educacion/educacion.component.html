@@ -24,8 +24,8 @@
                     </div>
                     <ng-template [ngIf]="editar==true">
                         <div class="col-1  my-auto">
-                            <i class="fa-solid fa-pen editar remarcar" routerLink="/editar/educacion"></i>
-                            <i class="fa-sharp fa-solid fa-trash editar remarcar" routerLink="/editar/eliminar/educacion"></i>
+                            <i class="fa-solid fa-pen editar remarcar" [routerLink]="['editar','educacion',education.id]"></i>
+                            <i class="fa-sharp fa-solid fa-trash editar remarcar" [routerLink]="['editar','eliminar','educacion',education.id]" routerLinkActive="active"></i>
                         </div>
                     </ng-template>
                 </div>
@@ -59,7 +59,7 @@
     <div class="row" *ngIf="editar">
         <div class="col text-center">
             <h1><i class="fa-solid fa-circle-plus remarcar" data-aos="zoom-in" data-aos-duration="1000"
-                    data-aos-delay="250"></i></h1>
+                    data-aos-delay="250" [routerLink]="['editar','agregar','educacion']"></i></h1>
         </div>
     </div>
 </div>
@@ -82,11 +82,11 @@
                         style="width:45%;height:75%;" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="250">
                     <img class="programa" *ngSwitchCase="2" [src]="knowledgeList[columnas*i+j].image"
                         style="width:45%;height:75%;" data-aos="fade-left" data-aos-duration="1000"
-                        data-aos-delay="250">
+                        data-aos-delay="250" >
                     <div class="middle">
                         <ng-template [ngIf]="editar==true">
                             <i class="fa-sharp fa-solid fa-trash remarcar" data-aos="zoom-in" data-aos-duration="1000"
-                                data-aos-delay="250"></i>
+                                data-aos-delay="250" [routerLink]="['editar','eliminar','conocimiento',knowledgeList[columnas*i+j].id]"></i>
                         </ng-template>
                     </div>
 
@@ -95,11 +95,11 @@
                 <!--Cargar icono de editar, mejorar para cuando esté la grilla lena(se debe agregar una fila mas)-->
                 <ng-template [ngIf]="3*i+(j)==tamanioKnowledge">
                     <h1><i *ngSwitchCase="0" class="fa-solid fa-circle-plus editar remarcar" data-aos="fade-right"
-                            data-aos-duration="1000" data-aos-delay="250"></i></h1>
+                            data-aos-duration="1000" data-aos-delay="250" [routerLink]="['editar','agregar','conocimiento']"></i></h1>
                     <h1><i *ngSwitchCase="1" class="fa-solid fa-circle-plus editar remarcar" data-aos="zoom-in"
-                            data-aos-duration="1000" data-aos-delay="250"></i></h1>
+                            data-aos-duration="1000" data-aos-delay="250" [routerLink]="['editar','agregar','conocimiento']"></i></h1>
                     <h1><i *ngSwitchCase="2" class="fa-solid fa-circle-plus editar remarcar" data-aos="fade-left"
-                            data-aos-duration="1000" data-aos-delay="250"></i></h1>
+                            data-aos-duration="1000" data-aos-delay="250" [routerLink]="['editar','agregar','conocimiento']"></i></h1>
                 </ng-template>
             </div>
         </div>

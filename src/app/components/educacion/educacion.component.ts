@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
-import { ActivatedRoute, Params} from '@angular/router';
 
 
 
@@ -18,14 +17,15 @@ export class EducacionComponent implements OnInit {
   editar: boolean=false;
 
   Math = Math;//Para usar Math.floor() en el HTML
-
+  
   estudiosList:any; //sera el nombre de la etiqueta con la que vas a buscar en el JSON
   knowledgeList:any;
-  constructor(private datosPortfolio: PortfolioService,private rutaActiva:ActivatedRoute) { }  
+  constructor(private datosPortfolio: PortfolioService) { }  
   ngOnInit(): void {    
-    this.rutaActiva.params.subscribe((params:Params) =>{
+    /* this.rutaActiva.params.subscribe((params:Params) =>{
       const id=params['id'].toString();
-    })
+      
+    })   */  
     this.datosPortfolio.obtenerDatos().subscribe(data => {      
       this.estudiosList=data.studies;     
       this.knowledgeList=data.knowledge;//
