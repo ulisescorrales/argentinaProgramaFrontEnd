@@ -7,12 +7,13 @@ import { AcercaDeComponent } from './components/acerca-de/acerca-de.component';
 import { ConocimientoEditComponent } from './components/editar/conocimiento-edit/conocimiento-edit.component';
 import { EditarComponent } from './components/editar/editar.component';
 import { EducacionEditComponent } from './components/editar/educacion-edit/educacion-edit.component';
-import { EducacionComponent } from './components/educacion/educacion.component';
-import { EncabezadoComponent } from './components/encabezado/encabezado.component';
 import { BorrarComponent } from './components/editar/borrar/borrar.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { LoginComponent } from './components/login/login.component';
-import { ActivatedRoute, Params } from '@angular/router';
+import { AgregarEducacionComponent } from './components/editar/agregar/agregar-educacion/agregar-educacion.component';
+import { AgregarConocimientoComponent } from './components/editar/agregar/agregar-conocimiento/agregar-conocimiento.component';
+import { AgregarExperienciaComponent } from './components/editar/agregar/agregar-experiencia/agregar-experiencia.component';
+import { ExperienciaEditComponent } from './components/editar/experiencia-edit/experiencia-edit.component';
 
 const routes: Routes = [
   //{path:'inicio', component: AppComponent},
@@ -23,7 +24,7 @@ const routes: Routes = [
     path: 'editar', component: EditarComponent, children: [
       { path: 'conocimiento/:id', component: ConocimientoEditComponent },
       { path: 'educacion/:id', component: EducacionEditComponent },
-      { path: 'experiencia/:id', component: LoginComponent },
+      { path: 'experiencia/:id', component: ExperienciaEditComponent },
       { path: 'acerca-de', component: LoginComponent },
       {
         path: 'eliminar', component: BorrarComponent, children: [
@@ -34,9 +35,9 @@ const routes: Routes = [
         ]
       }, {
         path: 'agregar', children: [
-          { path: 'educacion', component: EducacionEditComponent },
-          { path: 'conocimiento', component: ConocimientoEditComponent },
-          { path: 'experiencia', component: LoginComponent }
+          { path: 'educacion', component: AgregarEducacionComponent },
+          { path: 'conocimiento', component: AgregarConocimientoComponent },
+          { path: 'experiencia', component: AgregarExperienciaComponent }
         ]
       }
     ]

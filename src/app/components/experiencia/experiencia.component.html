@@ -12,12 +12,12 @@
 
         </div>
         <div class="col text-left">
+            <p>Institución: {{experiencia.institution}}</p>
             <p>{{experiencia.description}}</p>
             <ul>
                 <li *ngFor="let task of experiencia.task">{{task}}. 
                     <a [href]=experiencia.repository>Repositorio</a>
-                    <span>. </span>
-                    <a [href]=experiencia.certificate type="application/pdf" rel="alternate" media="print" target="blank">Certificado</a>
+                    <span>. </span>                    
                 </li>                
             </ul>            
         </div>

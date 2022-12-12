@@ -20,6 +20,9 @@ import { ConocimientoEditComponent } from './components/editar/conocimiento-edit
 import { EducacionEditComponent } from './components/editar/educacion-edit/educacion-edit.component';
 import { BorrarComponent } from './components/editar/borrar/borrar.component';
 import { AgregarEducacionComponent } from './components/editar/agregar/agregar-educacion/agregar-educacion.component';
+import { AgregarConocimientoComponent } from './components/editar/agregar/agregar-conocimiento/agregar-conocimiento.component';
+import { AgregarExperienciaComponent } from './components/editar/agregar/agregar-experiencia/agregar-experiencia.component';
+import { ExperienciaEditComponent } from './components/editar/experiencia-edit/experiencia-edit.component';
 
 
 @NgModule({
@@ -39,7 +42,7 @@ import { AgregarEducacionComponent } from './components/editar/agregar/agregar-e
     EditarComponent,
     ConocimientoEditComponent,
     EducacionEditComponent,    
-    BorrarComponent, AgregarEducacionComponent
+    BorrarComponent, AgregarEducacionComponent, AgregarConocimientoComponent, AgregarExperienciaComponent, ExperienciaEditComponent
   ],
   imports: [
     HttpClientModule,
