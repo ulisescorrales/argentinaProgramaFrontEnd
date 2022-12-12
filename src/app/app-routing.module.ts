@@ -14,12 +14,13 @@ import { AgregarEducacionComponent } from './components/editar/agregar/agregar-e
 import { AgregarConocimientoComponent } from './components/editar/agregar/agregar-conocimiento/agregar-conocimiento.component';
 import { AgregarExperienciaComponent } from './components/editar/agregar/agregar-experiencia/agregar-experiencia.component';
 import { ExperienciaEditComponent } from './components/editar/experiencia-edit/experiencia-edit.component';
+import { ContactoComponent } from './components/contacto/contacto.component';
 
 const routes: Routes = [
   //{path:'inicio', component: AppComponent},
   { path: 'segunda-pagina', component: AcercaDeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'contacto', component: FormularioComponent },
+  { path: 'contacto', component: ContactoComponent },
   {
     path: 'editar', component: EditarComponent, children: [
       { path: 'conocimiento/:id', component: ConocimientoEditComponent },

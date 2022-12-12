@@ -11,5 +11,5 @@ export class AgregarExperienciaComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  agregarTarea(item:MouseEvent):void{}
 }
