@@ -9,9 +9,7 @@ import { AcercaDeComponent } from './components/acerca-de/acerca-de.component';
 import { ExperienciaComponent } from './components/experiencia/experiencia.component';
 import { EducacionComponent } from './components/educacion/educacion.component';
 import { HabilidadesComponent } from './components/habilidades/habilidades.component';
-import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { LoginComponent } from './components/login/login.component';
-import { LoginButtonComponent } from './components/login-button/login-button.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { ConocimientoFormComponent } from './conocimiento-form/conocimiento-form.component';
 import { EditarComponent } from './components/editar/editar.component';
@@ -24,6 +22,8 @@ import { AgregarConocimientoComponent } from './components/editar/agregar/agrega
 import { AgregarExperienciaComponent } from './components/editar/agregar/agregar-experiencia/agregar-experiencia.component';
 import { ExperienciaEditComponent } from './components/editar/experiencia-edit/experiencia-edit.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
+import { EditarAcercaDeComponent } from './components/editar/editar-acerca-de/editar-acerca-de.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -33,22 +33,21 @@ import { ContactoComponent } from './components/contacto/contacto.component';
     AcercaDeComponent,
     ExperienciaComponent,
     EducacionComponent,
-    HabilidadesComponent,
-    ProyectosComponent,
-    LoginComponent,
-    LoginButtonComponent,
+    HabilidadesComponent,    
+    LoginComponent,    
     FormularioComponent,
     FooterComponent,
     ConocimientoFormComponent,
     EditarComponent,
     ConocimientoEditComponent,
     EducacionEditComponent,    
-    BorrarComponent, AgregarEducacionComponent, AgregarConocimientoComponent, AgregarExperienciaComponent, ExperienciaEditComponent, ContactoComponent
+    BorrarComponent, AgregarEducacionComponent, AgregarConocimientoComponent, AgregarExperienciaComponent, ExperienciaEditComponent, ContactoComponent, EditarAcercaDeComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
-    AppRoutingModule,    
+    AppRoutingModule,
+    ReactiveFormsModule,//
   ],
   providers: [],
   bootstrap: [AppComponent]

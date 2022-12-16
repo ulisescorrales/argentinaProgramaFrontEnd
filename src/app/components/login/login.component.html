@@ -2,14 +2,25 @@
     <div class="p-2 align-self-end borrar">
         <i class="fa-regular fa-circle-xmark" routerLink="/"></i>
     </div>
-    <div class="p-2">
-        <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-            aria-describedby="basic-addon1">
-    </div>
-    <div class="p-2">
-        <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
-    </div>
-    <div class="p-2">
-        <button type="submit" class="btn btn-primary mb-3 rounded mx-auto d-block">Acceder</button>
-    </div>
+    <form [formGroup]="form" (ngSubmit)="onEnviar($event)">
+        <div class="p-2">
+            <input type="text" class="form-control" placeholder="email" formControlName="email" aria-label="Username"
+                aria-describedby="basic-addon1" [ngClass]="{'is-invalid':Email?.errors && Email?.touched, 'is-valid':!Email?.errors && Email?.touched}">
+            <div *ngIf="Email?.errors && Email?.touched">
+                <p *ngIf="Email?.hasError('required')" class="text-danger">El email es requerido</p>
+                <p *ngIf="Email?.hasError('email')" class="text-danger">El formato del email debe ser válido</p>
+            </div>
+        </div>
+        <div class="p-2">
+            <input type="password" formControlName="password" class="form-control" id="inputPassword2"
+                placeholder="Password" [ngClass]="{'is-invalid':Password?.errors && Password?.touched, 'is-valid':!Password?.errors && Password?.touched}">
+            <div *ngIf="Password?.errors && Email?.touched">
+                <p *ngIf="Password?.hasError('required')" class="text-danger">La contraseña es requerida</p>
+                <p *ngIf="Password?.hasError('minlength')" class="text-danger">La contraseña debe tener 8 carácteres o más.</p>
+            </div>
+        </div>
+        <div class="p-2">
+            <button type="submit" class="btn btn-primary mb-3 rounded mx-auto d-block">Acceder</button>
+        </div>
+    </form>
 </div>

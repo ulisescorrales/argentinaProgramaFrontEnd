@@ -1,12 +1,16 @@
 <div class="col-4">
+  <form>
     <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Nombre/Organización</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
-        <label for="exampleFormControlInput1" class="form-label">Contacto</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="email/teléfono">
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      <label for="exampleFormControlInput1" class="form-label">Nombre/Organización</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+      <label for="exampleFormControlInput1" class="form-label">Contacto</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="email/teléfono">
     </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>      
+    </div>
+    <div class="p-2">
+      <button type="submit" (click)="enviarMensaje($event)" class="btn btn-primary mb-3 rounded mx-auto d-block">Enviar</button>
+  </div>
+  </form>
 </div>

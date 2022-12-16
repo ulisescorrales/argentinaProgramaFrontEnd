@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row" id="relativo">
-        <div class="col editarImagen" style="background-color:black;">
+        <div class="col" style="background-color:black;">
             <img src=".\assets\img\banner.jpg" width="100%" alt="banner" />
         </div>
     </div>
@@ -19,13 +19,11 @@
             <h6 class="text-center" id="nombre">{{nombre}}</h6>
         </div>
         <div class="col-9 my-auto">
-            <p class="font-weight-normal texto">Desarrollador Web Full Stack Developer Jr. y estudiante de la Lic.
-                en
-                Cs. de la computación en la Univ. del Comahue</p>
+            <p class="font-weight-normal texto">{{descripcion}}</p>
         </div>
         <ng-template [ngIf]="editar==true">
             <div class="col-1  my-auto">
-                <i class="fa-solid fa-pen editar"></i>                
+                <i class="fa-solid fa-pen editar" routerLink="editar/acercaDe"></i>                
             </div>
         </ng-template>
     </div>

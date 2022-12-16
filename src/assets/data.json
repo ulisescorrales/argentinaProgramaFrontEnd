@@ -1,5 +1,6 @@
 {
   "edit": true,
+  "description":"Desarrollador Web Full Stack y estudiante de la Lic. en Cs. de la Computación de la Universidad del Comahue",
   "name": "Corrales Ulises Andres",
   "dateBirth": "1995-01-15T00:00:00.000Z",
   "country": "Argentina",
@@ -9,6 +10,8 @@
   "cellPhone": "2984213115",
   "facebook": "https://www.facebook.com/ulisescorralesallen/",
   "gitHub": "https://github.com/ulisescorrales",
+  "twitter":"https://twitter.com/UlisesCorrale14",
+  "linkedin":"https://www.linkedin.com/in/ulises-corrales-823027158/",
   "studies": [
     {
       "id": 1,
@@ -83,7 +86,7 @@
     },
     {
       "id": 7,
-      "description": "JAVA",
+      "description": "Java",
       "level": "5",
       "image": "https://edujimenezc.github.io/TheHackerSwissKnife/SOURCES/imagenes/java.png"
     },

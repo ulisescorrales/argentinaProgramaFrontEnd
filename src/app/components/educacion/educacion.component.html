@@ -84,16 +84,18 @@
                         style="width:45%;height:75%;" data-aos="fade-left" data-aos-duration="1000"
                         data-aos-delay="250" >
                     <div class="middle">
-                        <ng-template [ngIf]="editar==true">
+                        <ng-template *ngIf="editar==true; else elseBlock">
                             <i class="fa-sharp fa-solid fa-trash remarcar" data-aos="zoom-in" data-aos-duration="1000"
                                 data-aos-delay="250" [routerLink]="['editar','eliminar','conocimiento',knowledgeList[columnas*i+j].id]"></i>
                         </ng-template>
+                        <ng-template #elseBlock>
+                            <p data-aos="zoom-out" data-aos-duration="1000">{{knowledgeList[columnas*i+j].description}}</p>
+                        </ng-template>
                     </div>
 
-                </ng-template>
-                <ng-template #elseBlock></ng-template>
+                </ng-template>                
                 <!--Cargar icono de editar, mejorar para cuando esté la grilla lena(se debe agregar una fila mas)-->
-                <ng-template [ngIf]="3*i+(j)==tamanioKnowledge">
+                <ng-template [ngIf]="3*i+(j)==tamanioKnowledge && editar==true">
                     <h1><i *ngSwitchCase="0" class="fa-solid fa-circle-plus editar remarcar" data-aos="fade-right"
                             data-aos-duration="1000" data-aos-delay="250" [routerLink]="['editar','agregar','conocimiento']"></i></h1>
                     <h1><i *ngSwitchCase="1" class="fa-solid fa-circle-plus editar remarcar" data-aos="zoom-in"

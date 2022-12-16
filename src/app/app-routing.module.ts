@@ -15,6 +15,7 @@ import { AgregarConocimientoComponent } from './components/editar/agregar/agrega
 import { AgregarExperienciaComponent } from './components/editar/agregar/agregar-experiencia/agregar-experiencia.component';
 import { ExperienciaEditComponent } from './components/editar/experiencia-edit/experiencia-edit.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
+import { EditarAcercaDeComponent } from './components/editar/editar-acerca-de/editar-acerca-de.component';
 
 const routes: Routes = [
   //{path:'inicio', component: AppComponent},
@@ -26,7 +27,7 @@ const routes: Routes = [
       { path: 'conocimiento/:id', component: ConocimientoEditComponent },
       { path: 'educacion/:id', component: EducacionEditComponent },
       { path: 'experiencia/:id', component: ExperienciaEditComponent },
-      { path: 'acerca-de', component: LoginComponent },
+      { path: 'acercaDe', component: EditarAcercaDeComponent },
       {
         path: 'eliminar', component: BorrarComponent, children: [
           { path: 'educacion/:id', component: BorrarComponent },

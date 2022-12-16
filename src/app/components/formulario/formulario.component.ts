@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-formulario',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./formulario.component.css']
 })
 export class FormularioComponent implements OnInit {
-
-  constructor() { }
+  private url='http://localhost:3306/'
+  constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
   }
 
+  enviarMensaje(event:Event):void{
+    //this.http.post(`${this.url}`+'mensaje/crear',h);
+  }
 }
