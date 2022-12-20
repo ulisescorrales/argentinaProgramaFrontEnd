@@ -26,7 +26,7 @@ export class EducacionComponent implements OnInit {
       const id=params['id'].toString();
       
     })   */  
-    this.datosPortfolio.obtenerDatos().subscribe(data => {      
+    this.datosPortfolio.obtenerDatos().subscribe(data => {         
       this.estudiosList=data.studies;     
       this.knowledgeList=data.knowledge;//
       this.tamanioKnowledge=this.knowledgeList.length;//Conseguir la longitud de la lista

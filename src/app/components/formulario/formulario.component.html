@@ -1,16 +1,30 @@
-<div class="col-4">
-  <form>
+<div class="col-4" (click)="enviarMensaje()">
+  <form [formGroup]="form" (ngSubmit)="enviarMensaje()">
+    <div class="p-2 align-self-end">
+      <i class="fa-regular fa-circle-xmark borrar" routerLink="/"></i>
+  </div>
     <div class="mb-3">
       <label for="exampleFormControlInput1" class="form-label">Nombre/Organización</label>
-      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+      <input class="form-control" formControlName="organizacion" [ngClass]="{'is-invalid':Organizacion?.errors && Organizacion?.touched, 'is-valid':!Organizacion?.errors && Organizacion?.touched}">
       <label for="exampleFormControlInput1" class="form-label">Contacto</label>
-      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="email/teléfono">
+      <div *ngIf="Organizacion?.errors && Email?.touched">
+        <p *ngIf="Organizacion?.hasError('required')" class="text-danger">Este campo es requerido</p>
+      </div>      
+      <input type="email" formControlName="email" class="form-control" placeholder="Email" [ngClass]="{'is-invalid':Email?.errors && Email?.touched, 'is-valid':!Email?.errors && Email?.touched}">
+      <div *ngIf="Email?.errors && Email?.touched">
+        <p *ngIf="Email?.hasError('required')" class="text-danger">El email es requerido</p>
+        <p *ngIf="Email?.hasError('email')" class="text-danger">El formato del email debe ser válido</p>
+    </div>
     </div>
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>      
+      <input type="text" formControlName="mensaje" class="form-control" placeholder="Mensaje" [ngClass]="{'is-invalid':Mensaje?.errors && Mensaje?.touched, 'is-valid':!Mensaje?.errors && Mensaje?.touched}">
+      <div *ngIf="Mensaje?.errors && Mensaje?.touched">
+        <p *ngIf="Mensaje?.hasError('required')" class="text-danger">Escriba un mensaje</p>
+      </div>
     </div>
     <div class="p-2">
-      <button type="submit" (click)="enviarMensaje($event)" class="btn btn-primary mb-3 rounded mx-auto d-block">Enviar</button>
+      <button type="submit" class="btn btn-primary mb-3 rounded mx-auto d-block" >Enviar</button>
   </div>
   </form>
 </div>
