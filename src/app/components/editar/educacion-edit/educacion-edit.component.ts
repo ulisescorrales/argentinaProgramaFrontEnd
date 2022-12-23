@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { ApiService } from 'src/app/servicios/api.service';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
 
@@ -19,11 +20,14 @@ export class EducacionEditComponent implements OnInit {
   total: any;
   passed: any;
   finish: any;
-  constructor(private datosPortfolio: PortfolioService, private rutaActiva: ActivatedRoute) { }
+  constructor(private datosPortfolio: PortfolioService, private rutaActiva: ActivatedRoute,private api:ApiService) { }
   ngOnInit(): void {    
       this.rutaActiva.params.subscribe((params: Params) => {
         this.id = params['id'];
       });
+      this.api.getEducacion(this.id).subscribe(data=>{
+        console.log(data);
+      })
       this.datosPortfolio.obtenerDatos().subscribe(data => {
         this.studie = data.studies[this.id - 1];
         this.institution = this.studie.institution;
