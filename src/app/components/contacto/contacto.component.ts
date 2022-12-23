@@ -19,11 +19,11 @@ export class ContactoComponent implements OnInit {
       'access-control-allow-origin': '*'
     })
   };
-  enviar = { 'organizacion': 'ad', 'contacto': 'sdfs', 'mensaje': 'sdf' };
+
   form: FormGroup;
   constructor(private formBuilder: FormBuilder, private ruta: Router, private http: HttpClient, private api: ApiService) {
     this.form = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      contacto: ['', [Validators.required, Validators.email]],
       organizacion: ['', [Validators.required]],
       mensaje: ['', [Validators.required]]
     });
@@ -31,8 +31,8 @@ export class ContactoComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  get Email() {
-    return this.form.get('email')
+  get Contacto() {
+    return this.form.get('contacto')
   }
   get Organizacion() {
     return this.form.get('organizacion')
@@ -41,11 +41,28 @@ export class ContactoComponent implements OnInit {
     return this.form.get('mensaje')
   }
 
-  enviarMensaje(event: Event): void {    
-    //this.api.getTodosMensajes().subscribe(data => {
-    //console.log(data);
-    //});
-    const mensaje = new Mensaje(50, "Hola", "Cont", "El mensaje");
-    this.api.saveMensaje(mensaje).subscribe();
+  enviarMensaje(event: Event): void {
+    const x = document.getElementById('estadoMensaje');
+    var status;
+    if (!this.Mensaje?.errors && !this.Organizacion?.errors && !this.Contacto?.errors) {
+      var status;
+      this.api.saveMensaje(this.form.value).subscribe(data => {
+        status = data.status;        
+        if (x != null) {
+          if (status == 200) {
+            x.innerHTML = "Mensaje enviado";
+            x.style.color = "green";
+          }else{
+            x.innerHTML = "Error en petición HTTP";
+            x.style.color = "red";
+          }
+        }
+      });
+    } else {
+      if (x != null) {
+        x.innerHTML = "Error en mensaje";
+        x.style.color = "red";
+      }
+    }
   }
 }

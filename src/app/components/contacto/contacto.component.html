@@ -4,15 +4,15 @@
             <label for="exampleFormControlInput1" class="form-label">Nombre/Organización</label>
             <input class="form-control" formControlName="organizacion"
                 [ngClass]="{'is-invalid':Organizacion?.errors && Organizacion?.touched, 'is-valid':!Organizacion?.errors && Organizacion?.touched}">
-            <div *ngIf="Organizacion?.errors && Email?.touched">
+            <div *ngIf="Organizacion?.errors && Contacto?.touched">
                 <p *ngIf="Organizacion?.hasError('required')" class="text-danger">Este campo es requerido</p>
             </div>
             <label for="exampleFormControlInput1" class="form-label">Contacto</label>
-            <input type="email" formControlName="email" class="form-control" placeholder="Email"
-                [ngClass]="{'is-invalid':Email?.errors && Email?.touched, 'is-valid':!Email?.errors && Email?.touched}">
-            <div *ngIf="Email?.errors && Email?.touched">
-                <p *ngIf="Email?.hasError('required')" class="text-danger">El email es requerido</p>
-                <p *ngIf="Email?.hasError('email')" class="text-danger">El formato del email debe ser válido</p>
+            <input type="email" formControlName="contacto" class="form-control" placeholder="Email"
+                [ngClass]="{'is-invalid':Contacto?.errors && Contacto?.touched, 'is-valid':!Contacto?.errors && Contacto?.touched}">
+            <div *ngIf="Contacto?.errors && Contacto?.touched">
+                <p *ngIf="Contacto?.hasError('required')" class="text-danger">El email es requerido</p>
+                <p *ngIf="Contacto?.hasError('email')" class="text-danger">El formato del email debe ser válido</p>
             </div>
         </div>
         <div class="mb-3">
@@ -25,6 +25,7 @@
         </div>
         <div class="p-2">
             <button type="submit" class="btn btn-primary mb-3 rounded mx-auto d-block">Enviar</button>
-        </div>
+            <p id="estadoMensaje"></p>
+        </div>        
     </form>
 </div>
