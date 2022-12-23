@@ -1,10 +1,13 @@
 export interface IEducacion {
-     titulo:String;
+    id:number;
+     titulo:String;     
      institucion:String;
-     logoInstitucion:String;
+     logo:String;
      estado:String;
-     comienzo:number;
-     finalizacion:number;
+     anioComienzo:number;     
+     totalMaterias:number;
+     materiasAprobadas:number;     
+     anioFinalizacion:number;
 
     /*constructor(titulo:String,institucion:String,estado:String,comienzo:number,finalizacion:number,logo:String){
         this.titulo=titulo;
