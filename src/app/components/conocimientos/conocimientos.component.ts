@@ -19,5 +19,5 @@ export class ConocimientosComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
 }

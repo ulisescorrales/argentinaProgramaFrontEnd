@@ -75,21 +75,21 @@
             <div class="col text-center" *ngFor="let columnas of columnasArray; index as j" [ngSwitch]="j" id="grilla">
                 <!--Cargar logo según su posición en la grilla-->
                 <ng-template [ngIf]="columnas*i+j<tamanioKnowledge">
-                    <img class="programa" *ngSwitchCase="0" [src]="knowledgeList[columnas*i+j].image"
+                    <img class="programa" *ngSwitchCase="0" [src]="listTecnologia[columnas*i+j]?.logo"
                         style="width:45%;height:75%;" data-aos="fade-right" data-aos-duration="1000"
                         data-aos-delay="250">
-                    <img class="programa" *ngSwitchCase="1" [src]="knowledgeList[columnas*i+j].image"
+                    <img class="programa" *ngSwitchCase="1" [src]="listTecnologia[columnas*i+j]?.logo"
                         style="width:45%;height:75%;" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="250">
-                    <img class="programa" *ngSwitchCase="2" [src]="knowledgeList[columnas*i+j].image"
+                    <img class="programa" *ngSwitchCase="2" [src]="listTecnologia[columnas*i+j]?.logo"
                         style="width:45%;height:75%;" data-aos="fade-left" data-aos-duration="1000"
                         data-aos-delay="250" >
                     <div class="middle">
                         <ng-template *ngIf="editar==true; else elseBlock">
                             <i class="fa-sharp fa-solid fa-trash remarcar" data-aos="zoom-in" data-aos-duration="1000"
-                                data-aos-delay="250" [routerLink]="['editar','eliminar','conocimiento',knowledgeList[columnas*i+j].id]"></i>
+                                data-aos-delay="250" [routerLink]="['editar','eliminar','conocimiento',listTecnologia[columnas*i+j].idTecnologia]"></i>
                         </ng-template>
                         <ng-template #elseBlock>
-                            <p data-aos="zoom-out" data-aos-duration="1000">{{knowledgeList[columnas*i+j].description}}</p>
+                            <p data-aos="zoom-out" data-aos-duration="1000">{{listTecnologia[columnas*i+j].descripcion}</p>
                         </ng-template>
                     </div>
 

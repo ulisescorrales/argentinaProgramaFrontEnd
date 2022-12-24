@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IEducacion } from 'src/app/clases/IEducacion';
+import { ITecnologia } from 'src/app/clases/itecnologia';
 import { ApiService } from 'src/app/servicios/api.service';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
@@ -19,35 +20,22 @@ export class EducacionComponent implements OnInit {
   editar: boolean = false;
 
   Math = Math;//Para usar Math.floor() en el HTML
-  
+
   knowledgeList: any;
-  listEducacion: IEducacion[]=new Array<IEducacion>();
+  listEducacion: IEducacion[] = new Array<IEducacion>();
+  listTecnologia:ITecnologia[]=new Array<ITecnologia>();
   constructor(private datosPortfolio: PortfolioService, private api: ApiService) { }
-  ngOnInit(): void {
-    /* this.rutaActiva.params.subscribe((params:Params) =>{
-      const id=params['id'].toString();
-      
-    })   */
-    this.datosPortfolio.obtenerDatos().subscribe(data => {     
-      this.knowledgeList = data.knowledge;//
-      this.tamanioKnowledge = this.knowledgeList.length;//Conseguir la longitud de la lista
-
-      this.filas = Math.ceil(this.tamanioKnowledge / this.columnas);
-
-      this.filasArray = Array(this.filas).fill(this.filas);//Es necesario el fill?
-      this.columnasArray = Array(this.columnas).fill(this.columnas);
-
+  ngOnInit(): void {    
+    this.datosPortfolio.obtenerDatos().subscribe(data => {                    
       this.editar = data.edit;
     });
-    this.api.getAllEducacion().subscribe((data: IEducacion[]) => {      
+    this.api.getAllEducacion().subscribe((data: IEducacion[]) => {
       var ed: IEducacion | undefined;
-      var longitud=data.length;
-      var item:IEducacion|undefined;
-      data.forEach(function(item){
-        
-      })
-      for(var i=0;i<longitud;i++){
-        item=data[i];
+      var longitud = data.length;
+      var item: IEducacion | undefined;      
+
+      for (var i = 0; i < longitud; i++) {
+        item = data[i];
         ed = {
           idEstudio: (item as any).idEstudio,
           titulo: (item as any).titulo,
@@ -60,8 +48,29 @@ export class EducacionComponent implements OnInit {
           anioFinalizacion: (item as any).anioFinalizacion
         }
         this.listEducacion.push(item);
-      }       
-    })    
+      }
+    })
+    this.api.getAllTecnologia().subscribe((data: ITecnologia[]) => {            
+      var longitud = data.length;
+      var tec: ITecnologia;
+      var item: ITecnologia;
+
+      this.tamanioKnowledge=longitud;
+      this.filas = Math.ceil(this.tamanioKnowledge / this.columnas);
+      this.filasArray = Array(this.filas).fill(this.filas);//Es necesario el fill?
+      this.columnasArray = Array(this.columnas).fill(this.columnas);
+
+      for (var i = 0; i < longitud; i++) {
+        item = data[i];
+        tec = {
+          idTecnologia: (data as any).idTecnologia,
+          descripcion: (data as any).descripcion,
+          logo: (data as any).logo
+        }
+        this.listTecnologia.push(item);
+      }
+      console.log(this.listTecnologia)      
+    })
   }
   //Conocimiento
 
