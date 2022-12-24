@@ -5,7 +5,7 @@ import { catchError, retry } from 'rxjs/operators';
 import { Mensaje } from '../clases/mensaje';
 import { Persona } from '../clases/persona';
 import { Contacto } from '../clases/contacto';
-import { IEducacion } from '../clases/iEducacion';
+import { IEducacion } from '../clases/IEducacion';
 
 @Injectable({
   providedIn: 'root'

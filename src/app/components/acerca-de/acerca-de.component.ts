@@ -21,8 +21,7 @@ export class AcercaDeComponent implements OnInit {
     this.datosPortfolio.obtenerDatos().subscribe(data => {            
       this.editar=data.edit;      
     });
-    this.persona.getPersona().subscribe((data:Persona)=>{      
-      console.log(data);
+    this.persona.getPersona().subscribe((data:Persona)=>{            
       this.nombre=data.apellido+" "+data.nombre
       this.descripcion=data.sobreMi;
       this.fotoPerfil=data.fotoPerfil;

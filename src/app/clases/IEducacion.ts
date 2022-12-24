@@ -1,11 +1,11 @@
 export interface IEducacion {
-    id:number;
+     idEstudio:number;
      titulo:String;     
      institucion:String;
      logo:String;
      estado:String;
-     anioComienzo:number;     
-     totalMaterias:number;
+     anioIngreso:number;     
+     materiasTotales:number;
      materiasAprobadas:number;     
      anioFinalizacion:number;
 

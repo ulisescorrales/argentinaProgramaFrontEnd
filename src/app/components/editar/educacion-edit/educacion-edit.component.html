@@ -5,36 +5,36 @@
         </div>
         <div class="p-2">
             <label>Título:</label>
-            <input class="form-control" [value]="" formControlName="titulo">
+            <input class="form-control" [value]="ed?.titulo" formControlName="titulo">
         </div>
         <div class="p-2">
             <label>Institucion:</label>
             <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1"
-                [value]="institution" formControlName="institucion">
+                [value]="ed?.institucion" formControlName="institucion">
         </div>
         <div class="p-2">
             <label>Logo:</label>
-            <input class="form-control" [value]="" formControlName="logo">
+            <input class="form-control" [value]="ed?.logo" formControlName="logo">
         </div>
         <div class="p-2">
             <label>Estado:</label>
-            <input class="form-control" [value]="" formControlName="estado">
+            <input class="form-control" [value]="ed?.estado" formControlName="estado">
         </div>
         <div class="p-2">
             <label>Comienzo:</label>
-            <input class="form-control" [value]="" formControlName="anioIngreso">
+            <input class="form-control" [value]="ed?.anioIngreso" formControlName="anioIngreso">
         </div>
         <div class="p-2">
             <label>Finalización:</label>
-            <input class="form-control" [value]="finish" formControlName="anioFinalizacion">
+            <input class="form-control" [value]="ed?.anioFinalizacion" formControlName="anioFinalizacion">
         </div>
         <div class="p-2">
             <label>Total de Materias:</label>
-            <input class="form-control" [value]="total" formControlName="materiasTotales">
+            <input class="form-control" [value]="ed?.materiasTotales" formControlName="materiasTotales">
         </div>
         <div class="p-2">
             <label>Materias Aprobadas:</label>
-            <input class="form-control" [value]="passed" formControlName="materiasAprobadas">
+            <input class="form-control" [value]="ed?.materiasAprobadas" formControlName="materiasAprobadas">
         </div>
 
         <div class="p-2">
