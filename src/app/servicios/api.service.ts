@@ -6,6 +6,7 @@ import { Mensaje } from '../clases/mensaje';
 import { Persona } from '../clases/persona';
 import { Contacto } from '../clases/contacto';
 import { IEducacion } from '../clases/IEducacion';
+import { ITecnologia } from '../clases/itecnologia';
 
 @Injectable({
   providedIn: 'root'
@@ -27,11 +28,15 @@ export class ApiService {
     return this.http.get<Contacto>(this.url+'/contacto/traer');
   }
 
-  //
+  //Educación
   public getEducacion(id:number){
     return this.http.get<IEducacion>(this.url+'/educacion/'+id);
   }
   public getAllEducacion(){
     return this.http.get<IEducacion[]>(this.url+'/educacion/traer');
+  }
+  //Tecnología
+  public getAllTecnologia(){
+    return this.http.get<ITecnologia[]>(this.url+'/tecnologia/traer');
   }
 }

@@ -19,8 +19,7 @@ export class EducacionComponent implements OnInit {
   editar: boolean = false;
 
   Math = Math;//Para usar Math.floor() en el HTML
-
-  estudiosList: any; //sera el nombre de la etiqueta con la que vas a buscar en el JSON
+  
   knowledgeList: any;
   listEducacion: IEducacion[]=new Array<IEducacion>();
   constructor(private datosPortfolio: PortfolioService, private api: ApiService) { }
@@ -29,8 +28,7 @@ export class EducacionComponent implements OnInit {
       const id=params['id'].toString();
       
     })   */
-    this.datosPortfolio.obtenerDatos().subscribe(data => {
-      this.estudiosList = data.studies;
+    this.datosPortfolio.obtenerDatos().subscribe(data => {     
       this.knowledgeList = data.knowledge;//
       this.tamanioKnowledge = this.knowledgeList.length;//Conseguir la longitud de la lista
 
@@ -45,6 +43,9 @@ export class EducacionComponent implements OnInit {
       var ed: IEducacion | undefined;
       var longitud=data.length;
       var item:IEducacion|undefined;
+      data.forEach(function(item){
+        
+      })
       for(var i=0;i<longitud;i++){
         item=data[i];
         ed = {
@@ -60,8 +61,10 @@ export class EducacionComponent implements OnInit {
         }
         this.listEducacion.push(item);
       }       
-    })
+    })    
   }
+  //Conocimiento
+
   cambiarTamanio(): void {
     if (window.innerWidth < 800) {
       this.columnas = 2;

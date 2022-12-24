@@ -24,6 +24,7 @@ import { ExperienciaEditComponent } from './components/editar/experiencia-edit/e
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { EditarAcercaDeComponent } from './components/editar/editar-acerca-de/editar-acerca-de.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ConocimientosComponent } from './components/conocimientos/conocimientos.component';
 
 
 @NgModule({
@@ -41,7 +42,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     EditarComponent,
     ConocimientoEditComponent,
     EducacionEditComponent,    
-    BorrarComponent, AgregarEducacionComponent, AgregarConocimientoComponent, AgregarExperienciaComponent, ExperienciaEditComponent, ContactoComponent, EditarAcercaDeComponent
+    BorrarComponent, AgregarEducacionComponent, AgregarConocimientoComponent, AgregarExperienciaComponent, ExperienciaEditComponent, ContactoComponent, EditarAcercaDeComponent, ConocimientosComponent
   ],
   imports: [
     HttpClientModule,
