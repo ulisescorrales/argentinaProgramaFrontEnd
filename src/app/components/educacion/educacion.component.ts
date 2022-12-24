@@ -71,33 +71,5 @@ export class EducacionComponent implements OnInit {
       }
       console.log(this.listTecnologia)      
     })
-  }
-  //Conocimiento
-
-  cambiarTamanio(): void {
-    if (window.innerWidth < 800) {
-      this.columnas = 2;
-    } else {
-      this.columnas = 3;
-    }
-  }
-  getListEducacion() {
-    return this.listEducacion;
-  }
-  mostrarEditar(item: MouseEvent): void {
-    const elemento = (item.target as HTMLElement).parentNode;
-    const i = document.createElement("i");
-    i.classList.add("fa-sharp");
-    i.classList.add("fa-solid");
-    i.classList.add("fa-trash");
-    i.setAttribute("id", "botonBorrar");
-
-    elemento?.appendChild(i);
-    console.log("Activado");
-    //<i class="fa-sharp fa-solid fa-trash" id="botonBorrar"></i>
-  }
-  borrarEditar(item: MouseEvent) {
-    document.getElementById("botonBorrar")?.remove();
-
-  }
+  }  
 }
