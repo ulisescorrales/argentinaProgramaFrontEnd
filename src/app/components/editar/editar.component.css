@@ -1,7 +1,11 @@
 #editar {
+    padding:10px;
+    border-style: double;
     position: fixed;    
-    background-color:brown;            
+    background-color:white;            
     max-height: 100%;
     border-radius: 20px;
     overflow-y:scroll;    
+    width:50%;
+    border-color: black;
 }
