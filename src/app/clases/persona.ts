@@ -1,4 +1,4 @@
-export interface Persona {
+export interface IPersona {
     nombre:String;
     apellido:String;
     fechaNac:String;

@@ -43,8 +43,7 @@ export class ConocimientosComponent implements OnInit {
           logo: (data as any).logo
         }
         this.listTecnologia.push(item);
-      }
-      console.log(this.listTecnologia)
+      }      
     })
   }
   //Conocimiento

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
+import { IExperiencia } from 'src/app/clases/iexperiencia';
+import { ApiService } from 'src/app/servicios/api.service';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';//Servicio
 
 @Component({
@@ -8,37 +11,56 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';//Servici
   styleUrls: ['./experiencia-edit.component.css']
 })
 export class ExperienciaEditComponent implements OnInit {
-  id:any;
-  logo:any;
-  institution:any;  
-  task:any;
-  experience:any;
-  description:any;
-  repository:any;
+  id: any;
+  logo: any;
+  institution: any;
+  task: any;
+  experience: any;
+  description: any;
+  repository: any;
   //  
-  constructor(private datosPortfolio: PortfolioService, private rutaActiva: ActivatedRoute) { }
+  formExperiencia: FormGroup;
+  constructor(private formBuilder: FormBuilder, private rutaActiva: ActivatedRoute, private api: ApiService) {
+    this.formExperiencia = this.formBuilder.group({
+      idExperiencia: [],
+      organizacion: [],
+      descripcion: [],
+      logo: [],
+      inicio: [],
+      fin: [],
+      titulo: [],
+    })
+  }
 
   ngOnInit(): void {
     this.rutaActiva.params.subscribe((params: Params) => {
-      this.id=params['id'];
+      this.id = params['id'];
+      this.api.getExperiencia(this.id).subscribe((data: IExperiencia) => {
+        this.formExperiencia.setValue({
+          idExperiencia: data.idExperiencia,
+          organizacion: data.organizacion,
+          descripcion: data.descripcion,
+          logo: data.logo,
+          inicio: data.inicio,
+          fin: data.fin,
+          titulo: data.titulo,
+        })
+      })
     });
-    this.datosPortfolio.obtenerDatos().subscribe(data => {
-      
-      this.experience=data.experience[this.id-1];
-      this.logo=this.experience.logo;
-      this.institution=this.experience.institution;
-      this.repository=this.experience.repository;
-      this.description=this.experience.description;
-      this.task=this.experience.task;      
-    });  
+
   }
-  agregarTarea(item:MouseEvent):void{
-    const elem=document.getElementById("tareas");
-    const agregar=document.createElement;
+  agregarTarea(item: MouseEvent): void {
+    const elem = document.getElementById("tareas");
+    const agregar = document.createElement;
     console.log(elem);
     console.log(item);
   }
-  eliminarTarea(item:MouseEvent):void{
+  eliminarTarea(item: MouseEvent): void {
 
+  }
+  enviarExperiencia(){
+    if(this.formExperiencia.touched){
+      this.api.putExperiencia(this.id,this.formExperiencia.value).subscribe();
+    }
   }
 }

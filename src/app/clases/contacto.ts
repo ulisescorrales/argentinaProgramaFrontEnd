@@ -1,4 +1,4 @@
-export interface Contacto {
+export interface IContacto {
     telefono:String;
     email:String;
     github:String;
