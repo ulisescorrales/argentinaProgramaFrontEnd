@@ -12,13 +12,6 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';//Servici
 })
 export class ExperienciaEditComponent implements OnInit {
   id: any;
-  logo: any;
-  institution: any;
-  task: any;
-  experience: any;
-  description: any;
-  repository: any;
-  //  
   formExperiencia: FormGroup;
   constructor(private formBuilder: FormBuilder, private rutaActiva: ActivatedRoute, private api: ApiService) {
     this.formExperiencia = this.formBuilder.group({

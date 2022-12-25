@@ -1,34 +1,50 @@
 <div class="d-flex flex-column mb-3" id="editarExperiencia">
-    <div class="p-2 align-self-end">
-        <i class="fa-regular fa-circle-xmark borrar" routerLink="/"></i>
-    </div>
-    <div class="p-2">
-        <label>Institucion:</label>
-        <input type="text" class="form-control"  aria-describedby="basic-addon1">
-    </div>
-    <div class="p-2">
-        <label>Logo:</label>
-        <input class="form-control">
-    </div>
-    <div class="p-2">
-        <label>Descripcion:</label>
-        <input class="form-control">
-    </div>
-    <div class="p-2" id="tareas">
-        <label>Tareas:</label>     
-        <div class="row">
-            <div class="col">
-                <input class="form-control task" placeholder="Nueva Tarea">
+    <form (ngSubmit)="agregarExperiencia()">
+        <div class="p-2">
+            <label>Institucion:</label>
+            <input type="text" class="form-control" formControlName="institucion" aria-describedby="basic-addon1">
+        </div>
+        <div class="p-2">
+            <label>Titulo:</label>
+            <input class="form-control" formControlName="titulo">
+        </div>
+        <div class="p-2">
+            <label>Logo:</label>
+            <input class="form-control" formControlName="logo">
+        </div>
+        <div class="p-2">
+            <label>Descripcion:</label>
+            <input class="form-control" formControlName="descripcion">
+        </div>
+        <!--
+            <div class="p-2" id="tareas">
+            <label>Tareas:</label>
+            <div class="row" *ngFor="let t of task">
+                <div class="col">
+                    <input class="form-control task" [value]="t.description">
+                </div>
+                <div class="col-3">
+                    <input class="form-control task" placeholder="Repositorio" [value]="t.repository">
+                </div>
+                <div class="col-1 my-auto">
+                    <i class="fa-sharp fa-solid fa-trash editar remarcar float-end" (click)="eliminarTarea($event)"></i>
+                </div>
             </div>
-            <div class="col-3">
-                <input class="form-control task" placeholder="Repositorio">
-            </div>
-            <div class="col-1 my-auto">
-                <i class="fa-solid fa-circle-plus remarcar float-end" (click)="agregarTarea($event)"></i>
+            <div class="row">
+                <div class="col">
+                    <input class="form-control task" placeholder="Nueva Tarea">
+                </div>
+                <div class="col-3">
+                    <input class="form-control task" placeholder="Repositorio">
+                </div>
+                <div class="col-1 my-auto">
+                    <i class="fa-solid fa-circle-plus remarcar float-end" (click)="agregarTarea($event)"></i>
+                </div>
             </div>
         </div>
-    </div>    
-    <div class="p-2">
-        <button type="submit" class="btn btn-primary mb-3 rounded mx-auto d-block">Agregar</button>
-    </div>
+        -->        
+        <div class="p-2">
+            <button type="submit" class="btn btn-primary mb-3 rounded mx-auto d-block">Agregar Experiencia</button>
+        </div>
+    </form>
 </div>

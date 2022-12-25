@@ -1,10 +1,7 @@
 #editar {
-    position: fixed;
-    
-    background-color:brown;        
-    height: auto;
+    position: fixed;    
+    background-color:brown;            
     max-height: 100%;
     border-radius: 20px;    
-    padding-top:90px;
-    overflow: auto;
+    overflow-y:scroll;    
 }

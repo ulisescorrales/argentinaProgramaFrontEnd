@@ -30,6 +30,6 @@ export class AgregarEducacionComponent implements OnInit {
   ngOnInit(): void {
   }
   agregarEducacion(){
-    this.api.postEducacion(this.formEd.value);
+    this.api.postEducacion(this.formEd.value).subscribe();
   }
 }

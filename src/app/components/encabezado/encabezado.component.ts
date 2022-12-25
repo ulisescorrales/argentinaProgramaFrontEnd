@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PortfolioService } from 'src/app/servicios/portfolio.service';
+import { IContacto } from 'src/app/clases/contacto';
+import { ApiService } from 'src/app/servicios/api.service';
 
 @Component({
   selector: 'app-encabezado',
@@ -8,21 +9,21 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
 })
 export class EncabezadoComponent implements OnInit {
 
-  miPortfolio:any; //sera el nombre de la etiqueta con la que vas a buscar en el JSON
-  fb:any;
-  tw:any;
-  gh:any;
-  lk:any;
-  constructor(private datosPortfolio: PortfolioService) { }
+  contactos: IContacto| undefined ;
+  constructor(private api: ApiService) {   
+    this.api.getContacto().subscribe((data: IContacto) => {
+      this.contactos = {
+        telefono: data.telefono,
+        email:data.email,
+        github: data.github,
+        facebook: data.facebook,
+        linkedin: data.linkedin,
+        twitter: data.twitter
+      }
+    })   
+  }
 
   ngOnInit(): void {    
-    this.datosPortfolio.obtenerDatos().subscribe(data => {      
-      this.miPortfolio=data;
-      this.fb=this.miPortfolio.facebook;
-      this.tw=this.miPortfolio.twitter;
-      this.gh=this.miPortfolio.gitHub;
-      this.lk=this.miPortfolio.linkedin;
-    });
   }
 
 }

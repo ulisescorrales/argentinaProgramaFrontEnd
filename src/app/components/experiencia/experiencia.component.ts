@@ -36,9 +36,7 @@ export class ExperienciaComponent implements OnInit {
           fin:item.fin,          
         }
         this.listExperiencia.push(item);
-      }                        
-      console.log(this.listExperiencia);
+      }      
     })    
   }
-
 }

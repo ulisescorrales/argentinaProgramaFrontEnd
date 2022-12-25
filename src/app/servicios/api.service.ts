@@ -41,7 +41,7 @@ export class ApiService {
   }
   //Domicilio
   public getDomicilio(){
-    return this.http.get<IDomicilio>(this.url+'/domicilio/editar')
+    return this.http.get<IDomicilio>(this.url+'/domicilio/traer')
   }
   public putDomicilio(unDomicilio:IDomicilio){
     return this.http.put(this.url+'/domicilio/editar',unDomicilio);
