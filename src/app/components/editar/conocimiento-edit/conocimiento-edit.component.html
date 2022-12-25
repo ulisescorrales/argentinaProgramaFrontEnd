@@ -1,1 +1,17 @@
-<p>conocimiento-edit works!</p>
+<div class="d-flex flex-column mb-3">
+    <Form [formGroup]="formCon" (submit)="enviarTecnologia()">
+        <div class="p-2">
+            <label>Título:</label>
+            <input class="form-control" formControlName="titulo">
+        </div>
+        <div class="p-2">
+            <label>Logo:</label>
+            <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1"
+                formControlName="institucion">
+        </div>
+        <div class="p-2">
+            <button type="submit" class="btn btn-primary mb-3 rounded mx-auto d-block">Modificar Conocimiento</button>
+            <p id="estadoEnvio"></p>
+        </div>
+    </Form>
+</div>

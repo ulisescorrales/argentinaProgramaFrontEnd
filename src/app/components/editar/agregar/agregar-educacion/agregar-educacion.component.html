@@ -1,38 +1,42 @@
 <div class="d-flex flex-column mb-3">
-    <div class="p-2 align-self-end">
-        <i class="fa-regular fa-circle-xmark borrar" routerLink="/"></i>
-    </div>
-    <div class="p-2">
-        <label>Institucion:</label>
-        <input type="text" class="form-control" aria-label="Username"
-            aria-describedby="basic-addon1">
-    </div>
-    <div class="p-2">
-        <label>Logo:</label>
-        <input class="form-control">
-    </div>
-    <div class="p-2">
-        <label>Estado:</label>
-        <input class="form-control">
-    </div>
-    <div class="p-2">
-        <label>Comienzo:</label>
-        <input class="form-control">
-    </div>
-    <div class="p-2">
-        <label>Total de Materias:</label>
-        <input class="form-control">
-    </div>
-    <div class="p-2">
-        <label>Materias Aprobadas:</label>
-        <input class="form-control">
-    </div>
-    <div class="p-2">
-        <label>Finalización:</label>
-        <input class="form-control">
-    </div>
-    
-    <div class="p-2">        
-        <button type="submit" class="btn btn-primary mb-3 rounded mx-auto d-block">Agregar</button>
-    </div>
+    <Form [formGroup]="formEd" (submit)="agregarEducacion()">        
+        <div class="p-2">
+            <label>Título:</label>
+            <input class="form-control"  formControlName="titulo">
+        </div>
+        <div class="p-2">
+            <label>Institucion:</label>
+            <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1"
+             formControlName="institucion">
+        </div>
+        <div class="p-2">
+            <label>Logo:</label>
+            <input class="form-control"  formControlName="logo">
+        </div>
+        <div class="p-2">
+            <label>Estado:</label>
+            <input class="form-control"  formControlName="estado">
+        </div>
+        <div class="p-2">
+            <label>Comienzo:</label>
+            <input class="form-control"  formControlName="anioIngreso">
+        </div>
+        <div class="p-2">
+            <label>Finalización:</label>
+            <input class="form-control"  formControlName="anioFinalizacion">
+        </div>
+        <div class="p-2">
+            <label>Total de Materias:</label>
+            <input class="form-control" formControlName="materiasTotales">
+        </div>
+        <div class="p-2">
+            <label>Materias Aprobadas:</label>
+            <input class="form-control"  formControlName="materiasAprobadas">
+        </div>
+
+        <div class="p-2">
+            <button type="submit" class="btn btn-primary mb-3 rounded mx-auto d-block">Modificar Educacion</button>
+            <p id="estadoEnvio"></p>
+        </div>
+    </Form>
 </div>

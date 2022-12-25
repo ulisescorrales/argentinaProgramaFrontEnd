@@ -9,6 +9,7 @@ import { IEducacion } from '../clases/IEducacion';
 import { ITecnologia } from '../clases/itecnologia';
 import { IExperiencia } from '../clases/iexperiencia';
 import { ITarea } from '../clases/itarea';
+import { IDomicilio } from '../clases/idomicilio';
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +39,13 @@ export class ApiService {
   public putContacto(unContacto:IContacto){
     return this.http.put(this.url+'/contacto/editar',unContacto);
   }
-
+  //Domicilio
+  public getDomicilio(){
+    return this.http.get<IDomicilio>(this.url+'/domicilio/editar')
+  }
+  public putDomicilio(unDomicilio:IDomicilio){
+    return this.http.put(this.url+'/domicilio/editar',unDomicilio);
+  }
   //Educación
   public getEducacion(id:number){
     return this.http.get<IEducacion>(this.url+'/educacion/'+id);
@@ -49,9 +56,21 @@ export class ApiService {
   public putEducacion(id:number,unaEd:IEducacion){
     return this.http.put(this.url+'/educacion/editar/'+id,unaEd);
   }
-  //Tecnología
+  public postEducacion(unaEd:IEducacion){
+    return this.http.post(this.url+'/educacion/agregar',unaEd);
+  }
+  //Conocimiento
   public getAllTecnologia(){
     return this.http.get<ITecnologia[]>(this.url+'/tecnologia/traer');
+  }
+  public getTecnologia(id:number){
+    return this.http.get<ITecnologia>(this.url+'/tecnologia/traer/'+id);
+  }
+  public putTecnologia(id:number,unaTecnologia:ITecnologia){
+    return this.http.put(this.url+'/tecnologia/editar/'+id,unaTecnologia)
+  }
+  public postTecnologia(unaTecnologia:ITecnologia){
+    return this.http.post(this.url+'/tecnologia/agregar',unaTecnologia);
   }
   //Experiencia
   public getAllExperiencia(){
@@ -62,6 +81,9 @@ export class ApiService {
   }
   public putExperiencia(id:number,unaExp:IExperiencia){
     return this.http.put(this.url+'/experiencia/editar/'+id,unaExp)
+  }
+  public postExperiencia(unaExp:IExperiencia){
+    return this.http.put(this.url+'/experiencia/agregar',unaExp);
   }
   //Tarea
   public getTareas(id:number){
