@@ -7,36 +7,42 @@
             </div>
         </div>
         <div class="row" style="margin-top: 20px" *ngFor="let filas of filasArray;index as i">
-            <div class="col text-center" *ngFor="let columnas of columnasArray; index as j" [ngSwitch]="j" id="grilla">
+            <div class="col text-center programa" *ngFor="let columnas of columnasArray; index as j" [ngSwitch]="j"
+                id="grilla">
                 <!--Cargar logo según su posición en la grilla-->
                 <ng-template [ngIf]="columnas*i+j<tamanioKnowledge">
-                    <img class="programa" *ngSwitchCase="0" [src]="listTecnologia[columnas*i+j]?.logo"
+                    <img class="" *ngSwitchCase="0" [src]="listTecnologia[columnas*i+j]?.logo"
                         style="width:45%;height:75%;" data-aos="fade-right" data-aos-duration="1000"
                         data-aos-delay="250">
-                    <img class="programa" *ngSwitchCase="1" [src]="listTecnologia[columnas*i+j]?.logo"
+                    <img class="" *ngSwitchCase="1" [src]="listTecnologia[columnas*i+j]?.logo"
                         style="width:45%;height:75%;" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="250">
-                    <img class="programa" *ngSwitchCase="2" [src]="listTecnologia[columnas*i+j]?.logo"
+                    <img class="" *ngSwitchCase="2" [src]="listTecnologia[columnas*i+j]?.logo"
                         style="width:45%;height:75%;" data-aos="fade-left" data-aos-duration="1000"
-                        data-aos-delay="250" >
+                        data-aos-delay="250">
                     <div class="middle">
-                        <ng-template *ngIf="editar==true; else elseBlock">
+                        <ng-template *ngIf="editar==true;else elseBlock">
                             <i class="fa-sharp fa-solid fa-trash remarcar" data-aos="zoom-in" data-aos-duration="1000"
-                                data-aos-delay="250" [routerLink]="['editar','eliminar','conocimiento',listTecnologia[columnas*i+j].idTecnologia]"></i>
+                                data-aos-delay="250"
+                                [routerLink]="['editar','eliminar','conocimiento',listTecnologia[columnas*i+j].idTecnologia]"></i>
                         </ng-template>
                         <ng-template #elseBlock>
-                            <p data-aos="zoom-out" data-aos-duration="1000">{{listTecnologia[columnas*i+j].descripcion}</p>
+                            <p data-aos="zoom-out" data-aos-duration="1000">
+                                {{listTecnologia[columnas*i+j].descripcion}}</p>
                         </ng-template>
                     </div>
-
-                </ng-template>                
+                </ng-template>
                 <!--Cargar icono de editar, mejorar para cuando esté la grilla lena(se debe agregar una fila mas)-->
                 <ng-template [ngIf]="3*i+(j)==tamanioKnowledge && editar==true">
-                    <h1><i *ngSwitchCase="0" class="fa-solid fa-circle-plus editar remarcar" data-aos="fade-right"
-                            data-aos-duration="1000" data-aos-delay="250" [routerLink]="['editar','agregar','conocimiento']"></i></h1>
-                    <h1><i *ngSwitchCase="1" class="fa-solid fa-circle-plus editar remarcar" data-aos="zoom-in"
-                            data-aos-duration="1000" data-aos-delay="250" [routerLink]="['editar','agregar','conocimiento']"></i></h1>
-                    <h1><i *ngSwitchCase="2" class="fa-solid fa-circle-plus editar remarcar" data-aos="fade-left"
-                            data-aos-duration="1000" data-aos-delay="250" [routerLink]="['editar','agregar','conocimiento']"></i></h1>
+                    <!--Cambia el data-aos según en que posición de la cuadrícula esté-->
+                    <h2><i *ngSwitchCase="0" class="fa-solid fa-circle-plus remarcar" data-aos="fade-right"
+                            data-aos-duration="1000" data-aos-delay="250"
+                            [routerLink]="['editar','agregar','conocimiento']"></i></h2>
+                    <h2><i *ngSwitchCase="1" class="fa-solid fa-circle-plus  remarcar" data-aos="zoom-in"
+                            data-aos-duration="1000" data-aos-delay="250"
+                            [routerLink]="['editar','agregar','conocimiento']"></i></h2>
+                    <h2><i *ngSwitchCase="2" class="fa-solid fa-circle-plus  remarcar" data-aos="fade-left"
+                            data-aos-duration="1000" data-aos-delay="250"
+                            [routerLink]="['editar','agregar','conocimiento']"></i></h2>
                 </ng-template>
             </div>
         </div>

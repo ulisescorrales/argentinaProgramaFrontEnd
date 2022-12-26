@@ -1,0 +1,21 @@
+.middle {
+    position: absolute;
+    transition: 1s ease;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    font-size: 25px;
+    opacity: 1;
+    background-color: black;
+}
+#grilla {
+    position: relative;
+}
+#grilla:hover {
+    opacity: 0.3;   
+    transition: 0.8s ease; 
+}
+#grilla:hover .middle{
+    opacity:1;
+}

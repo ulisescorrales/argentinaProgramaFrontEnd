@@ -52,16 +52,3 @@
     transition: 0.8s ease;
 }
 
-:host ::ng-deep .middle {
-    position: absolute;
-    transition: 1s ease;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    font-size: 25px;
-    opacity: 0;
-}
-:host ::ng-deep .middle:hover {
-    opacity: 1;
-}

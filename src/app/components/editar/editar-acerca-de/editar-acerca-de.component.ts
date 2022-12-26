@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IContacto } from 'src/app/clases/contacto';
 import { IPersona } from 'src/app/clases/persona';
+import { IDomicilio } from 'src/app/clases/idomicilio';
 import { ApiService } from 'src/app/servicios/api.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class EditarAcercaDeComponent implements OnInit {
   contacto: IContacto | undefined;
   formPersona: FormGroup;
   formContacto: FormGroup;
+  formDomicilio: FormGroup;
   constructor(private formBuilder: FormBuilder, private api: ApiService) {
     this.formPersona = this.formBuilder.group({
       sobreMi: [''],
@@ -24,12 +26,20 @@ export class EditarAcercaDeComponent implements OnInit {
     });
     this.formContacto = this.formBuilder.group({
       email: [''],
-      telefono:[''],
+      telefono: [''],
       linkedin: [''],
       twitter: [''],
       facebook: [''],
-      github: [''],      
+      github: [''],
     });
+    this.formDomicilio = this.formBuilder.group({
+      pais: [],
+      provincia: [],
+      ciudad: [],
+      calle: [],
+      numero: [],
+      codigoPostal: [],
+    })
   }
 
   ngOnInit(): void {
@@ -43,11 +53,21 @@ export class EditarAcercaDeComponent implements OnInit {
     this.api.getContacto().subscribe((data: IContacto) => {
       this.formContacto.setValue({
         email: data.email,
-        telefono:data.telefono,
+        telefono: data.telefono,
         linkedin: data.linkedin,
         twitter: data.twitter,
         facebook: data.facebook,
         github: data.github,
+      })
+    })
+    this.api.getDomicilio().subscribe((data: IDomicilio) => {
+      this.formDomicilio.setValue({
+        pais: data.pais,
+        provincia: data.provincia,
+        ciudad: data.ciudad,
+        calle: data.calle,
+        numero: data.numero,
+        codigoPostal: data.codigoPostal
       })
     })
   }
@@ -56,9 +76,14 @@ export class EditarAcercaDeComponent implements OnInit {
       this.api.putPersona(this.formPersona.value).subscribe();
     }
   }
-  enviarContacto(){
-    if(this.formContacto.touched){
+  enviarContacto() {
+    if (this.formContacto.touched) {
       this.api.putContacto(this.formPersona.value).subscribe();
+    }
+  }
+  enviarDomicilio() {
+    if(this.formDomicilio.touched){
+      this.api.putDomicilio(this.formDomicilio.value).subscribe;
     }
   }
 }

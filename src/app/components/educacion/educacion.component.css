@@ -4,23 +4,6 @@
     font-size: 15px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
-#grilla {
-    position: relative;
-}
-#grilla:hover .programa {
-    opacity: 0.3;    
-}
-#grilla:hover .middle{
-    opacity:1;
-}
-
-.programa {
-    top: 50%;
-    left: 50%;
-    transition: .1s ease;
-}
-
 .primerRenglon {
     margin-top: 10px;
 }

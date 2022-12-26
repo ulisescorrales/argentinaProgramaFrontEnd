@@ -59,6 +59,9 @@ export class ApiService {
   public postEducacion(unaEd:IEducacion){
     return this.http.post(this.url+'/educacion/agregar',unaEd);
   }
+  public deleteEducacion(id:number){
+    return this.http.delete(this.url+'/educacion/eliminar/'+id);
+  }
   //Conocimiento
   public getAllTecnologia(){
     return this.http.get<ITecnologia[]>(this.url+'/tecnologia/traer');
@@ -71,6 +74,9 @@ export class ApiService {
   }
   public postTecnologia(unaTecnologia:ITecnologia){
     return this.http.post(this.url+'/tecnologia/agregar',unaTecnologia);
+  }
+  public deleteTecnologia(id:number){
+    return this.http.delete(this.url+'tecnologia/eliminar/'+id);
   }
   //Experiencia
   public getAllExperiencia(){
@@ -85,8 +91,15 @@ export class ApiService {
   public postExperiencia(unaExp:IExperiencia){
     return this.http.put(this.url+'/experiencia/agregar',unaExp);
   }
+  public deleteExperiencia(id:number){
+    return this.http.delete(this.url+'/experiencia/eliminar/'+id);
+  }
   //Tarea
   public getTareas(id:number){
     return this.http.get<ITarea[]>(this.url+'/experiencia/'+id+'/tarea/traer')
+  }
+  //Método Delete
+  public delete(url:string){
+    return this.http.delete(url);
   }
 }

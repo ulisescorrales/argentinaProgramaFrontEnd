@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ApiService } from 'src/app/servicios/api.service';
 
 @Component({
   selector: 'app-borrar',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BorrarComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private router: Router,private api:ApiService) { }
   ngOnInit(): void {
+    //console.log(this.router.url.split('/'))
+    console.log(this.router.url);
+   }
+  borrarElemento() {
+    this.api.delete(this.router.url);
   }
-
 }

@@ -5,7 +5,7 @@
             <input class="form-control" formControlName="fotoPerfil">
         </div>
         <div class="p-2">
-            <label>Foto de fondo</label>
+            <label>Foto de fondo:</label>
             <input class="form-control" formControlName="fotoFondo">
         </div>
         <div class="p-2">
@@ -34,15 +34,44 @@
             <input class="form-control" formControlName="linkedin">
         </div>
         <div class="p-2">
-            <label>Twitter</label>
+            <label>Twitter:</label>
             <input class="form-control" formControlName="twitter">
         </div>
         <div class="p-2">
-            <label>GitHub</label>
+            <label>GitHub:</label>
             <input class="form-control" formControlName="github">
         </div>
         <div class="p-2">
             <button type="submit" formTar class="btn btn-primary mb-3 rounded mx-auto d-block">Modificar datos de contacto</button>
+        </div>
+    </form>
+    <form [formGroup]="formDomicilio" (ngSubmit)="enviarDomicilio()">
+        <div class="p-2">
+            <label>Pais:</label>
+            <input class="form-control" formControlName="pais">
+        </div>            
+        <div class="p-2">
+            <label>Provincia:</label>
+            <input class="form-control" formControlName="provincia">
+        </div>
+        <div class="p-2">
+            <label>Ciudad:</label>
+            <input class="form-control" formControlName="ciudad">
+        </div>
+        <div class="p-2">
+            <label>Calle:</label>
+            <input class="form-control" formControlName="calle">
+        </div>
+        <div class="p-2">
+            <label>Numero:</label>
+            <input class="form-control" formControlName="numero">
+        </div>
+        <div class="p-2">
+            <label>Codigo Postal:</label>
+            <input class="form-control" formControlName="codigoPostal">
+        </div>
+        <div class="p-2">
+            <button type="submit" formTar class="btn btn-primary mb-3 rounded mx-auto d-block">Modificar domicilio</button>
         </div>
     </form>    
 </div>
