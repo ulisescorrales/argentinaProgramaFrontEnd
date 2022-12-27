@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AutenticacionService {
-  url="";
+  url="http://localhost:8080/";
   currentUserSubject:BehaviorSubject<any>;
 
   constructor(private http:HttpClient) {
@@ -16,9 +16,20 @@ export class AutenticacionService {
    }
    IniciarSesion(credenciales:any):Observable<any>{
     return this.http.post(this.url,credenciales).pipe(map(data=>{
-      sessionStorage.setItem('currentUser',JSON.stringify(data));
-
+      sessionStorage.setItem('currentUser',JSON.stringify(data));  
+      this.currentUserSubject.next(data);
       return data;
     }));
+   }
+
+   get UsuarioAutenticado(){
+    return this.currentUserSubject.value
+   }
+
+   logout(){
+    sessionStorage.removeItem('token');
+   }
+   public get logIn():boolean{
+    return (sessionStorage.getItem('token')!==null);
    }
 }

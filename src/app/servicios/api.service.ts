@@ -15,7 +15,7 @@ import { IDomicilio } from '../clases/idomicilio';
   providedIn: 'root'
 })
 export class ApiService {
-  url="http://localhost:8080"
+  url="http://localhost:8080/auth/login"
   constructor(private http:HttpClient) { }
   
   //Mensaje

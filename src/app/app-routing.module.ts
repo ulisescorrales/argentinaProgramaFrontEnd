@@ -16,6 +16,7 @@ import { AgregarExperienciaComponent } from './components/editar/agregar/agregar
 import { ExperienciaEditComponent } from './components/editar/experiencia-edit/experiencia-edit.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { EditarAcercaDeComponent } from './components/editar/editar-acerca-de/editar-acerca-de.component';
+import { GuardGuard } from './servicios/guard.guard';
 
 const routes: Routes = [
   //{path:'inicio', component: AppComponent},
@@ -42,7 +43,7 @@ const routes: Routes = [
           { path: 'experiencia', component: AgregarExperienciaComponent }
         ]
       }
-    ]
+    ],canActivate:[GuardGuard]
   },
   { path: '', redirectTo: '/', pathMatch: 'full' } //Ruta de inicio
   //{path: '**', component: Pagina404Component}  //Componente Pagina 404
