@@ -43,8 +43,9 @@ import { InterceptorService } from './servicios/interceptor.service';
     ConocimientoFormComponent,
     EditarComponent,
     ConocimientoEditComponent,
+    AgregarEducacionComponent,
     EducacionEditComponent,    
-    BorrarComponent, AgregarEducacionComponent, AgregarConocimientoComponent, AgregarExperienciaComponent, ExperienciaEditComponent, ContactoComponent, EditarAcercaDeComponent, ConocimientosComponent
+    BorrarComponent, AgregarConocimientoComponent, AgregarConocimientoComponent, AgregarExperienciaComponent, ExperienciaEditComponent, ContactoComponent, EditarAcercaDeComponent, ConocimientosComponent
   ],
   imports: [
     HttpClientModule,
