@@ -9,24 +9,12 @@ body {
 #fb{
   margin-left: 50%;
 }
-#login{
-  margin-left: 5%;
+.login{
+  margin:2%;
 }
 #curso{
   padding-top:1%;
 }
-#relativo{
-  position:relative;
-}
-#absoluto{
-  position: absolute;
-  top: 75%;
-  left: 5%;  
-}
-#absoluto2{
-  left:25%;
-}
-
 a{
   padding:1%;
 }

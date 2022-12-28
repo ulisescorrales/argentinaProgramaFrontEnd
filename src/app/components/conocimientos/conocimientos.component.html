@@ -19,10 +19,13 @@
                     <img class="" *ngSwitchCase="2" [src]="listTecnologia[columnas*i+j]?.logo"
                         style="width:45%;height:75%;" data-aos="fade-left" data-aos-duration="1000"
                         data-aos-delay="250">
-                    <div class="middle" *ngIf="editar==true">                        
+                        <!--Botones de edición de tecnologías-->
+                    <div class="middle" *ngIf="editar">                        
                             <i class="fa-sharp fa-solid fa-trash remarcar" data-aos="zoom-in" data-aos-duration="1000"
                                 data-aos-delay="250"
-                                [routerLink]="['editar','eliminar','conocimiento',listTecnologia[columnas*i+j].idTecnologia]"></i>                                                                            
+                                [routerLink]="['editar','eliminar','conocimiento',listTecnologia[columnas*i+j].idTecnologia]"></i>
+                                <i class="fa-solid fa-pen editar remarcar" routerLink="editar/acercaDe"
+                                [routerLink]="['editar','conocimiento',listTecnologia[columnas*i+j].idTecnologia]"></i>
                     </div>
                     <div class="middle" *ngIf="editar==false">
                         <p data-aos="zoom-out" data-aos-duration="1000">
@@ -30,7 +33,7 @@
                     </div>
                 </ng-template>
                 <!--Cargar icono de editar, mejorar para cuando esté la grilla lena(se debe agregar una fila mas)-->
-                <ng-template [ngIf]="3*i+(j)==tamanioKnowledge && editar==true">
+                <ng-template [ngIf]="3*i+(j)==tamanioKnowledge && editar">
                     <!--Cambia el data-aos según en que posición de la cuadrícula esté-->
                     <h2><i *ngSwitchCase="0" class="fa-solid fa-circle-plus remarcar" data-aos="fade-right"
                             data-aos-duration="1000" data-aos-delay="250"

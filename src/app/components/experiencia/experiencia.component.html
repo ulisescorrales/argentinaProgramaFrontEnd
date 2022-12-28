@@ -29,7 +29,7 @@
                 
             </ul>
         </div>
-        <ng-template [ngIf]="editar==true">
+        <ng-template [ngIf]="editar">
             <div class="col-1  my-auto">
                 <i class="fa-solid fa-pen editar remarcar" [routerLink]="['editar','experiencia',experiencia.idExperiencia]"></i>
                 <i class="fa-sharp fa-solid fa-trash editar remarcar"
@@ -39,7 +39,7 @@
     </div>
     <div class="row">
         <div class="col text-center">
-            <h1 *ngIf="editar==true"><i class="fa-solid fa-circle-plus remarcar" data-aos="zoom-in" data-aos-duration="1000"
+            <h1 *ngIf="editar"><i class="fa-solid fa-circle-plus remarcar" data-aos="zoom-in" data-aos-duration="1000"
                     data-aos-delay="250" [routerLink]="['editar','agregar','experiencia']"></i></h1>
         </div>
     </div>

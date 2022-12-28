@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IExperiencia } from 'src/app/clases/iexperiencia';
-import { ITarea } from 'src/app/clases/itarea';
 import { ApiService } from 'src/app/servicios/api.service';
-import { PortfolioService } from 'src/app/servicios/portfolio.service';
+import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 
 @Component({
   selector: 'app-experiencia',
@@ -11,14 +10,12 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
 })
 export class ExperienciaComponent implements OnInit {
 
-  editar:any;
+  editar:boolean=false;
   listExperiencia:IExperiencia[]=new Array<IExperiencia>();  
-  constructor(private datosPortfolio: PortfolioService,private api:ApiService) { }
+  constructor(private api:ApiService,private autenticacion:AutenticacionService) { }
 
-  ngOnInit(): void {    
-    this.datosPortfolio.obtenerDatos().subscribe(data => {            
-      this.editar=data.edit;
-    });
+  ngOnInit(): void { 
+    this.editar=this.autenticacion.logIn;       
     this.api.getAllExperiencia().subscribe((data:IExperiencia[])=>{
       var exp: IExperiencia | undefined;
       var longitud = data.length;

@@ -34,7 +34,7 @@
         min-width: 40px;
     }
 }
-/* editar incluye los íconos lápiz y borrar*/
+
 
 :host ::ng-deep .editar {
     margin-left: 10px;

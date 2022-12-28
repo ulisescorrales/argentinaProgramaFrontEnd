@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IContacto } from 'src/app/clases/contacto';
 import { ApiService } from 'src/app/servicios/api.service';
+import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 
 @Component({
   selector: 'app-encabezado',
@@ -9,8 +10,9 @@ import { ApiService } from 'src/app/servicios/api.service';
 })
 export class EncabezadoComponent implements OnInit {
 
+  editar:boolean=false;
   contactos: IContacto| undefined ;
-  constructor(private api: ApiService) {   
+  constructor(private api: ApiService,private autenticacion:AutenticacionService){       
     this.api.getContacto().subscribe((data: IContacto) => {
       this.contactos = {
         telefono: data.telefono,
@@ -24,6 +26,10 @@ export class EncabezadoComponent implements OnInit {
   }
 
   ngOnInit(): void {    
+    this.editar=this.autenticacion.logIn;    
   }
-
+  logout(){
+    this.autenticacion.logout();
+    window.location.reload();
+  }
 }

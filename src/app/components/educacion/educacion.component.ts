@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IEducacion } from 'src/app/clases/IEducacion';
 import { ITecnologia } from 'src/app/clases/itecnologia';
 import { ApiService } from 'src/app/servicios/api.service';
-import { PortfolioService } from 'src/app/servicios/portfolio.service';
+import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 
 
 
@@ -24,11 +24,9 @@ export class EducacionComponent implements OnInit {
   knowledgeList: any;
   listEducacion: IEducacion[] = new Array<IEducacion>();
   listTecnologia:ITecnologia[]=new Array<ITecnologia>();
-  constructor(private datosPortfolio: PortfolioService, private api: ApiService) { }
-  ngOnInit(): void {    
-    this.datosPortfolio.obtenerDatos().subscribe(data => {                    
-      this.editar = data.edit;
-    });
+  constructor(private api: ApiService,private autenticacion:AutenticacionService) { }
+  ngOnInit(): void {        
+    this.editar=this.autenticacion.logIn;//    
     this.api.getAllEducacion().subscribe((data: IEducacion[]) => {
       var ed: IEducacion | undefined;
       var longitud = data.length;

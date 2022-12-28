@@ -1,4 +1,6 @@
-<div class="d-flex flex-column mb-3 top-50 start-50 translate-middle justify-content-center" id="contacto">
+<div class="d-flex flex-column mb-3 top-50 start-50 translate-middle" id="contacto">
+    <i class="fa-regular fa-circle-xmark borrar remarcar" routerLink="/"></i><!--Botón borrar-->
+    
     <form [formGroup]="form" (ngSubmit)="enviarMensaje($event)">
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Nombre/Organización</label>
@@ -28,4 +30,5 @@
             <p id="estadoMensaje"></p>
         </div>        
     </form>
+        
 </div>

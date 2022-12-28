@@ -10,7 +10,8 @@
     </div>
     <div class="col">
       <!--Login-->
-      <a routerLink="/login" class="btn btn-primary btn-sm rounded float-end" id="login">Login</a>
+      <a routerLink="/login" class="btn btn-primary btn-sm rounded float-end login" *ngIf="!editar">Login</a>
+      <a (click)="logout()" class="btn btn-primary btn-sm rounded float-end login" *ngIf="editar">Cerrar Sesion</a>
       <!--Facebook-->   
       <a [href]="contactos?.facebook" class="rounded float-end" target="_blank">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook"

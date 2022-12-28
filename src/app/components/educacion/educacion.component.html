@@ -22,7 +22,7 @@
                     <div class="col-10 text-left contenido">
                         <h2 class="titulo"> {{education.titulo}}</h2>
                     </div>
-                    <ng-template [ngIf]="editar==true">
+                    <ng-template [ngIf]="editar">
                         <div class="col-1  my-auto">
                             <i class="fa-solid fa-pen editar remarcar" [routerLink]="['editar','educacion',education.idEstudio]"></i>
                             <i class="fa-sharp fa-solid fa-trash editar remarcar" [routerLink]="['editar','eliminar','educacion',education.idEstudio]" ></i>

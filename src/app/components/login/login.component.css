@@ -1,11 +1,9 @@
 #login {
     position: fixed;
     top: 40%;
-    background-color:brown;        
-    height: 40%;
+    background-color:white;        
+    height: auto;
+    border-style: double;
+    border-color: black;
     border-radius: 20px;
 }
-
-/*#primerRenglon{
-    margin-top: 12%;
-}*/

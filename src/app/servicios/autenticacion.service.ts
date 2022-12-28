@@ -7,11 +7,10 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AutenticacionService {
-  url="http://localhost:8080/";
+  url="http://localhost:8080/auth/login";
   currentUserSubject:BehaviorSubject<any>;
 
-  constructor(private http:HttpClient) {
-    console.log("El servicio de autenticación está corriendo");
+  constructor(private http:HttpClient) {    
     this.currentUserSubject=new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser')||'{}'))
    }
    IniciarSesion(credenciales:any):Observable<any>{
@@ -22,14 +21,14 @@ export class AutenticacionService {
     }));
    }
 
-   get UsuarioAutenticado(){
-    return this.currentUserSubject.value
+   get UsuarioAutenticado(){    
+    return this.currentUserSubject.value;
    }
 
-   logout(){
-    sessionStorage.removeItem('token');
+   logout(){        
+    sessionStorage.removeItem('currentUser');
    }
-   public get logIn():boolean{
-    return (sessionStorage.getItem('token')!==null);
+   public get logIn():boolean{    
+    return (sessionStorage.getItem('currentUser')!==null);
    }
 }

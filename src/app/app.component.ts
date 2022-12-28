@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 declare let AOS: any;
-//import { PortfolioService } from 'src/app/servicios/portfolio.service';
-
-var editar:boolean;//modo editar o solo lectura
-var language:String="es";//idioma
 
 @Component({
   selector: 'app-root',
@@ -13,14 +9,13 @@ var language:String="es";//idioma
 export class AppComponent implements OnInit{
   title = 'angProyect';  
   
-  //constructor(private global: PortfolioService) { }
+  constructor(){}
 
   ngOnInit() {
-    AOS.init(); 
+    AOS.init();   
+  }
+
+  refreshEducacion(){
     
-    //this.global.obtenerDatos().subscribe(data => {
-    //  console.log(data);      
-    //  this.editar=data.edi;
-   // });
   }
 }
