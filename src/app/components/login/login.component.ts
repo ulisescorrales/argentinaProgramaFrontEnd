@@ -13,13 +13,8 @@ export class LoginComponent implements OnInit {
   form:FormGroup;
   constructor(private formBuilder:FormBuilder,private autenticationService:AutenticacionService,private ruta:Router) { 
     this.form=this.formBuilder.group({
-      email:['',[Validators.required,Validators.email]],
-      password:['',[Validators.required,Validators.minLength(8)]],
-      deviceInfo:this.formBuilder.group({
-        deviceId:['1234'],
-        deviceType:['DEVICE_TYPE_ANDRIOD'],
-        notificationToken:["5678"]
-      })
+      nombreUsuario:['',[Validators.required]],
+      password:['',[Validators.required]]      
     });
   }
 
@@ -27,7 +22,7 @@ export class LoginComponent implements OnInit {
   }
   
   get Email(){
-    return this.form.get('email')
+    return this.form.get('nombreUsuario');
   }
   get Password(){
     return this.form.get('password')
@@ -37,7 +32,7 @@ export class LoginComponent implements OnInit {
     event.preventDefault;//Prevenir evento del formulario
     this.autenticationService.IniciarSesion(this.form.value).subscribe(data=>{
       console.log('DATA: '+JSON.stringify(data))
-      this.ruta.navigate(['/editar']);
+      this.ruta.navigate(['/']);
     })
-  }
+  }  
 }

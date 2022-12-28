@@ -23,6 +23,7 @@ export class ConocimientoEditComponent implements OnInit {
     this.rutaActiva.params.subscribe((params: Params) => {
       this.id = params['id'];
       this.api.getTecnologia(this.id).subscribe((data: ITecnologia) => {
+        console.log(data);
         this.formCon.setValue({
           descripcion: data.descripcion,
           logo: data.logo

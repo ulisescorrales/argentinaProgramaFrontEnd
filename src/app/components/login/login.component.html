@@ -1,10 +1,10 @@
-<div class="d-flex flex-column mb-3 top-50 start-50 translate-middle justify-content-center" id="login">
-    <div class="p-2 align-self-end borrar">
-        <i class="fa-regular fa-circle-xmark" routerLink="/"></i>
+<div class="d-flex flex-column mb-3 top-50 start-50 translate-middle" id="login">
+    <div class="p-2">
+        <i class="fa-regular fa-circle-xmark remarcar" routerLink="/"></i>
     </div>
     <form [formGroup]="form" (ngSubmit)="onEnviar($event)">
         <div class="p-2">
-            <input type="text" class="form-control" placeholder="email" formControlName="email" aria-label="Username"
+            <input type="text" class="form-control" placeholder="nombreUsuario" formControlName="nombreUsuario" aria-label="Username"
                 aria-describedby="basic-addon1" [ngClass]="{'is-invalid':Email?.errors && Email?.touched, 'is-valid':!Email?.errors && Email?.touched}">
             <div *ngIf="Email?.errors && Email?.touched">
                 <p *ngIf="Email?.hasError('required')" class="text-danger">El email es requerido</p>

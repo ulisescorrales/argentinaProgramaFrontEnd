@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IPersona } from 'src/app/clases/persona';
 import { ApiService } from 'src/app/servicios/api.service';
-import { PortfolioService } from 'src/app/servicios/portfolio.service';
+import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 
 @Component({
   selector: 'app-acerca-de',
@@ -15,12 +15,10 @@ export class AcercaDeComponent implements OnInit {
   descripcion:any;
   fotoPerfil:any;
   fotoFondo:any;
-  constructor(private datosPortfolio: PortfolioService, private persona:ApiService) { }
+  constructor(private persona:ApiService,private autenticacion:AutenticacionService) { }
 
   ngOnInit(): void {    
-    this.datosPortfolio.obtenerDatos().subscribe(data => {            
-      this.editar=data.edit;      
-    });
+    this.editar=this.autenticacion.logIn;    
     this.persona.getPersona().subscribe((data:IPersona)=>{            
       this.nombre=data.apellido+" "+data.nombre
       this.descripcion=data.sobreMi;

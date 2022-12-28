@@ -31,9 +31,8 @@ export class EducacionEditComponent implements OnInit {
   ngOnInit(): void {
     this.rutaActiva.params.subscribe((params: Params) => {
       this.id = params['id'];
-      this.api.getEducacion(this.id).subscribe((data: IEducacion) => {
-        this.formEd.setValue({
-          idEstudio: data.idEstudio,
+      this.api.getEducacion(this.id).subscribe((data: IEducacion) => {        
+        this.formEd.setValue({          
           institucion: data.institucion,
           logo: data.logo,
           estado: data.estado,
