@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/servicios/api.service';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
@@ -13,7 +13,7 @@ export class AgregarEducacionComponent implements OnInit {
   
 
   formEd: FormGroup;
-  constructor(private formBuilder: FormBuilder, private datosPortfolio: PortfolioService, private rutaActiva: ActivatedRoute, private api: ApiService) {
+  constructor(private router:Router,private formBuilder: FormBuilder, private datosPortfolio: PortfolioService, private rutaActiva: ActivatedRoute, private api: ApiService) {
     this.formEd = this.formBuilder.group({
       institucion: ['', [Validators.required]],
       titulo: ['', [Validators.required]],
@@ -30,6 +30,25 @@ export class AgregarEducacionComponent implements OnInit {
   ngOnInit(): void {
   }
   agregarEducacion(){
-    this.api.postEducacion(this.formEd.value).subscribe();
+    const x=document.getElementById('estadoEnvio');
+    this.api.postEducacion(this.formEd.value).subscribe(data=>{
+      if(x!=null){
+        x.style.color="green";
+        x.innerHTML="Solicitud enviada correctamente"
+      }
+    },
+    error=>{
+      if(error.status==401){
+        alert("Error: debe volver a iniciar sesión");
+        this.router.navigate(['/login']).then(value=>{
+          window.location.reload();
+        });        
+      }else{
+        if(x!=null){
+          x.style.color="red";
+          x.innerHTML="Solicitud enviada correctamente"
+        }
+      }      
+    });;
   }
 }

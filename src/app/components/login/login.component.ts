@@ -33,6 +33,13 @@ export class LoginComponent implements OnInit {
     this.autenticationService.IniciarSesion(this.form.value).subscribe(data=>{
       console.log('DATA: '+JSON.stringify(data))
       this.ruta.navigate(['/']).then(value=>{window.location.reload()});
+    },
+    error=>{
+      let x=document.getElementById('estadoLogin');
+      if(x!=null){
+        x.style.color="red";
+        x.innerHTML="Error de autenticación";
+      }
     })
   }  
 }

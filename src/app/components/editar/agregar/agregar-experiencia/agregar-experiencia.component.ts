@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/servicios/api.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { ApiService } from 'src/app/servicios/api.service';
 })
 export class AgregarExperienciaComponent implements OnInit {
   formExperiencia: FormGroup;
-  constructor(private formBuilder: FormBuilder, private rutaActiva: ActivatedRoute, private api: ApiService) {
+  constructor(private router:Router,private formBuilder: FormBuilder, private rutaActiva: ActivatedRoute, private api: ApiService) {
     this.formExperiencia = this.formBuilder.group({
       idExperiencia: [],
       organizacion: [],
@@ -25,6 +25,25 @@ export class AgregarExperienciaComponent implements OnInit {
   ngOnInit(): void {
   }
   agregarExperiencia(){
-    this.api.postExperiencia(this.formExperiencia.value).subscribe();
+    const x=document.getElementById("estadoEnvio");
+    this.api.postExperiencia(this.formExperiencia.value).subscribe(data=>{
+      if(x!=null){
+        x.style.color="green";
+        x.innerHTML="Solicitud enviada correctamente"
+      }
+    },
+    error=>{
+      if(error.status==401){
+        alert("Error: debe volver a iniciar sesión");
+        this.router.navigate(['/login']).then(value=>{
+          window.location.reload();
+        });        
+      }else{
+        if(x!=null){
+          x.style.color="red";
+          x.innerHTML="Solicitud enviada correctamente"
+        }
+      }      
+    });;
   }
 }

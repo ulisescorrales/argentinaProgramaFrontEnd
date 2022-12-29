@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Mensaje } from '../clases/mensaje';
@@ -15,7 +15,7 @@ import { IDomicilio } from '../clases/idomicilio';
   providedIn: 'root'
 })
 export class ApiService {
-  url="http://localhost:8080"
+  url="http://localhost:8080";    
   constructor(private http:HttpClient) { }
   
   //Mensaje
@@ -30,21 +30,21 @@ export class ApiService {
     return this.http.get<IPersona>(this.url+'/persona/traer');
   }
   public putPersona(unaPersona:IPersona){
-    return this.http.put(this.url+'/persona/editar',unaPersona);
+    return this.http.put(this.url+'/persona/editar',unaPersona,{'observe':'response'});
   }
   //Contacto
   public getContacto(){
     return this.http.get<IContacto>(this.url+'/contacto/traer');
   }
   public putContacto(unContacto:IContacto){
-    return this.http.put(this.url+'/contacto/editar',unContacto);
+    return this.http.put(this.url+'/contacto/editar',unContacto,{'observe':'response'});
   }
   //Domicilio
   public getDomicilio(){
     return this.http.get<IDomicilio>(this.url+'/domicilio/traer')
   }
   public putDomicilio(unDomicilio:IDomicilio){
-    return this.http.put(this.url+'/domicilio/editar',unDomicilio);
+    return this.http.put(this.url+'/domicilio/editar',unDomicilio,{'observe':'response'});
   }
   //Educación
   public getEducacion(id:number){
@@ -54,14 +54,12 @@ export class ApiService {
     return this.http.get<IEducacion[]>(this.url+'/educacion/traer');
   }
   public putEducacion(id:number,unaEd:IEducacion){
-    return this.http.put(this.url+'/educacion/editar/'+id,unaEd);
+    return this.http.put(this.url+'/educacion/editar/'+id,unaEd,{'observe':'response'});
   }
   public postEducacion(unaEd:IEducacion){
-    return this.http.post(this.url+'/educacion/agregar',unaEd);
+    return this.http.post(this.url+'/educacion/agregar',unaEd,{'observe':'response'});
   }
-  public deleteEducacion(id:number){
-    return this.http.delete(this.url+'/educacion/eliminar/'+id);
-  }
+
   //Conocimiento (Tecnología
   public getAllTecnologia(){
     return this.http.get<ITecnologia[]>(this.url+'/tecnologia/traer');
@@ -70,14 +68,11 @@ export class ApiService {
     return this.http.get<ITecnologia>(this.url+'/tecnologia/traer/'+id);
   }
   public putTecnologia(id:number,unaTecnologia:ITecnologia){
-    return this.http.put(this.url+'/tecnologia/editar/'+id,unaTecnologia)
+    return this.http.put(this.url+'/tecnologia/editar/'+id,unaTecnologia,{'observe':'response'})
   }
   public postTecnologia(unaTecnologia:ITecnologia){    
-    return this.http.post(this.url+'/tecnologia/agregar',unaTecnologia);
-  }
-  public deleteTecnologia(id:number){
-    return this.http.delete(this.url+'tecnologia/eliminar/'+id);
-  }
+    return this.http.post(this.url+'/tecnologia/agregar',unaTecnologia,{'observe':'response'});
+  }  
   //Experiencia
   public getAllExperiencia(){
     return this.http.get<IExperiencia[]>(this.url+'/experiencia/traer');
@@ -86,21 +81,19 @@ export class ApiService {
     return this.http.get<IExperiencia>(this.url+'/experiencia/traer/'+id);
   }
   public putExperiencia(id:number,unaExp:IExperiencia){
-    return this.http.put(this.url+'/experiencia/editar/'+id,unaExp)
+    return this.http.put(this.url+'/experiencia/editar/'+id,unaExp,{'observe':'response'})
   }
   public postExperiencia(unaExp:IExperiencia){
     console.log(unaExp);
-    return this.http.post(this.url+'/experiencia/agregar',unaExp);
+    return this.http.post(this.url+'/experiencia/agregar',unaExp,{'observe':'response'});
   }
-  public deleteExperiencia(id:number){
-    return this.http.delete(this.url+'/experiencia/eliminar/'+id);
-  }
+
   //Tarea
   public getTareas(id:number){
     return this.http.get<ITarea[]>(this.url+'/experiencia/'+id+'/tarea/traer')
   }
   //Método Delete
   public delete(url:string){
-    return this.http.delete(this.url+url);
+    return this.http.delete(this.url+url,{'observe':'response'});
   }
 }
