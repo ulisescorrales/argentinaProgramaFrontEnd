@@ -43,30 +43,11 @@ export class EducacionComponent implements OnInit {
           anioIngreso: (item as any).anioIngreso,
           materiasTotales: (item as any).materiasTotales,
           materiasAprobadas: (item as any).materiasAprobadas,
-          anioFinalizacion: (item as any).anioFinalizacion
+          anioFinalizacion: (item as any).anioFinalizacion,
+          duracion:(item as any).duracion
         }
         this.listEducacion.push(item);
       }
-    })
-    this.api.getAllTecnologia().subscribe((data: ITecnologia[]) => {            
-      var longitud = data.length;
-      var tec: ITecnologia;
-      var item: ITecnologia;
-
-      this.tamanioKnowledge=longitud;
-      this.filas = Math.ceil(this.tamanioKnowledge / this.columnas);
-      this.filasArray = Array(this.filas).fill(this.filas);//Es necesario el fill?
-      this.columnasArray = Array(this.columnas).fill(this.columnas);
-
-      for (var i = 0; i < longitud; i++) {
-        item = data[i];
-        tec = {
-          idTecnologia: (data as any).idTecnologia,
-          descripcion: (data as any).descripcion,
-          logo: (data as any).logo
-        }
-        this.listTecnologia.push(item);
-      }         
-    })
+    })    
   }  
 }

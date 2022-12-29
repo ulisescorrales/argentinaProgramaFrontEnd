@@ -1,5 +1,5 @@
 export interface ITecnologia {
     idTecnologia: number;
-    descripcion: String,
+    nombre: String,
     logo: String
 }

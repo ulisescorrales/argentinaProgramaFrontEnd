@@ -62,7 +62,7 @@ export class ApiService {
   public deleteEducacion(id:number){
     return this.http.delete(this.url+'/educacion/eliminar/'+id);
   }
-  //Conocimiento
+  //Conocimiento (Tecnología
   public getAllTecnologia(){
     return this.http.get<ITecnologia[]>(this.url+'/tecnologia/traer');
   }
@@ -72,7 +72,7 @@ export class ApiService {
   public putTecnologia(id:number,unaTecnologia:ITecnologia){
     return this.http.put(this.url+'/tecnologia/editar/'+id,unaTecnologia)
   }
-  public postTecnologia(unaTecnologia:ITecnologia){
+  public postTecnologia(unaTecnologia:ITecnologia){    
     return this.http.post(this.url+'/tecnologia/agregar',unaTecnologia);
   }
   public deleteTecnologia(id:number){
@@ -89,7 +89,8 @@ export class ApiService {
     return this.http.put(this.url+'/experiencia/editar/'+id,unaExp)
   }
   public postExperiencia(unaExp:IExperiencia){
-    return this.http.put(this.url+'/experiencia/agregar',unaExp);
+    console.log(unaExp);
+    return this.http.post(this.url+'/experiencia/agregar',unaExp);
   }
   public deleteExperiencia(id:number){
     return this.http.delete(this.url+'/experiencia/eliminar/'+id);

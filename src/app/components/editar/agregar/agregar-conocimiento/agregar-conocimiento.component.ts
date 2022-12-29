@@ -12,14 +12,15 @@ export class AgregarConocimientoComponent implements OnInit {
   formCon: FormGroup;
   constructor(private rutaActiva: ActivatedRoute, private api: ApiService, private formBuilder: FormBuilder) {
     this.formCon = this.formBuilder.group({
-      descripcion: [],
-      logo: []
+      idTecnologia:[''],
+      nombre: [''],
+      logo: ['']
     });
   }
 
   ngOnInit(): void {
   }
   agregarConocimiento(){
-    this.api.postExperiencia(this.formCon.value).subscribe();
+    this.api.postTecnologia(this.formCon.value).subscribe();
   }
 }

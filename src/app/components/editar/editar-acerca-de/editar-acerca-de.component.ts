@@ -78,12 +78,12 @@ export class EditarAcercaDeComponent implements OnInit {
   }
   enviarContacto() {
     if (this.formContacto.touched) {
-      this.api.putContacto(this.formPersona.value).subscribe();
+      this.api.putContacto(this.formContacto.value).subscribe();
     }
   }
   enviarDomicilio() {
     if(this.formDomicilio.touched){
-      this.api.putDomicilio(this.formDomicilio.value).subscribe;
+      this.api.putDomicilio(this.formDomicilio.value).subscribe();
     }
   }
 }

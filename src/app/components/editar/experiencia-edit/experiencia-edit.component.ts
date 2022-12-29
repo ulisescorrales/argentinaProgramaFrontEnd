@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { IExperiencia } from 'src/app/clases/iexperiencia';
 import { ApiService } from 'src/app/servicios/api.service';
-import { PortfolioService } from 'src/app/servicios/portfolio.service';//Servicio
 
 @Component({
   selector: 'app-experiencia-edit',
@@ -53,6 +52,7 @@ export class ExperienciaEditComponent implements OnInit {
   }
   enviarExperiencia(){
     if(this.formExperiencia.touched){
+      console.log(this.formExperiencia.value);
       this.api.putExperiencia(this.id,this.formExperiencia.value).subscribe();
     }
   }

@@ -25,7 +25,8 @@ export class EducacionEditComponent implements OnInit {
       anioIngreso: ['', [Validators.required]],
       anioFinalizacion: ['',],
       materiasTotales: ['', [Validators.required]],
-      materiasAprobadas: ['', [Validators.required]]
+      materiasAprobadas: ['', [Validators.required]],
+      duracion:['']
     });
   }
   ngOnInit(): void {
@@ -41,6 +42,7 @@ export class EducacionEditComponent implements OnInit {
           titulo: data.titulo,
           materiasTotales: data.materiasTotales,
           materiasAprobadas: data.materiasAprobadas,
+          duracion:data.duracion
         })
           ;
       }

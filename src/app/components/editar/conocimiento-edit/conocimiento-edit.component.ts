@@ -15,8 +15,8 @@ export class ConocimientoEditComponent implements OnInit {
   formCon: FormGroup;
   constructor(private rutaActiva: ActivatedRoute, private api: ApiService, private formBuilder: FormBuilder) {
     this.formCon = this.formBuilder.group({
-      descripcion: [],
-      logo: []
+      nombre: [''],
+      logo: ['']
     });
   }
   ngOnInit(): void {
@@ -25,7 +25,7 @@ export class ConocimientoEditComponent implements OnInit {
       this.api.getTecnologia(this.id).subscribe((data: ITecnologia) => {
         console.log(data);
         this.formCon.setValue({
-          descripcion: data.descripcion,
+          nombre: data.nombre,
           logo: data.logo
         })
       });
@@ -35,7 +35,7 @@ export class ConocimientoEditComponent implements OnInit {
 
   enviarTecnologia(){
     if(this.formCon.touched){
-      this.api.putTecnologia(this.id,this.formCon.value);
+      this.api.putTecnologia(this.id,this.formCon.value).subscribe();
     }
   }
 }

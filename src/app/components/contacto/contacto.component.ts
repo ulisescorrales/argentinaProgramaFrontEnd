@@ -1,9 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ConditionalExpr } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Mensaje } from 'src/app/clases/mensaje';
 import { ApiService } from 'src/app/servicios/api.service';
 
 @Component({
@@ -46,18 +44,24 @@ export class ContactoComponent implements OnInit {
     var status;
     if (!this.Mensaje?.errors && !this.Organizacion?.errors && !this.Contacto?.errors) {
       var status;
+      console.log(this.form.value);
       this.api.saveMensaje(this.form.value).subscribe(data => {
-        status = data.status;        
+        status = data.status;
+        console.log(data);
         if (x != null) {
           if (status == 200) {
             x.innerHTML = "Mensaje enviado";
             x.style.color = "green";
-          }else{
-            x.innerHTML = "Error en petición HTTP";
-            x.style.color = "red";
           }
         }
-      });
+      },
+        error => {
+          if (x != null) {
+            x.innerHTML = "Error en petición HTTP";
+            x.style.color = "red";            
+          }
+        }
+      );
     } else {
       if (x != null) {
         x.innerHTML = "Error en mensaje";

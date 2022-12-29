@@ -38,7 +38,7 @@ export class ConocimientosComponent implements OnInit {
         item = data[i];
         tec = {
           idTecnologia: (data as any).idTecnologia,
-          descripcion: (data as any).descripcion,
+          nombre: (data as any).nombre,
           logo: (data as any).logo
         }
         this.listTecnologia.push(item);

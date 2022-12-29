@@ -22,7 +22,8 @@ export class AgregarEducacionComponent implements OnInit {
       anioIngreso: ['', [Validators.required]],
       anioFinalizacion: ['',],
       materiasTotales: ['', [Validators.required]],
-      materiasAprobadas: ['', [Validators.required]]
+      materiasAprobadas: ['', [Validators.required]],
+      duracion: ['', [Validators.required]],
     });
   }
 
