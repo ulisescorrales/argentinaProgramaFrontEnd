@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { IEducacion } from 'src/app/clases/IEducacion';
 import { ApiService } from 'src/app/servicios/api.service';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
@@ -16,7 +16,7 @@ export class EducacionEditComponent implements OnInit {
   ed: IEducacion | undefined;
 
   formEd: FormGroup;
-  constructor(private formBuilder: FormBuilder, private datosPortfolio: PortfolioService, private rutaActiva: ActivatedRoute, private api: ApiService) {
+  constructor(private formBuilder: FormBuilder, private datosPortfolio: PortfolioService, private rutaActiva: ActivatedRoute, private api: ApiService,private router:Router) {
     this.formEd = this.formBuilder.group({
       institucion: ['', [Validators.required]],
       titulo: ['', [Validators.required]],
@@ -57,12 +57,25 @@ export class EducacionEditComponent implements OnInit {
           x.style.color = "green";
           x.innerHTML = "Componente modificado con éxito";
         }
+      },
+      error=>{
+        if(error.status=401){
+          alert("Error: debe volver a iniciar sesión");
+          this.router.navigate(['/login']).then(value=>{
+            window.location.reload();
+          });
+        }else{
+          if (x != null) {
+            x.style.color = "red";
+            x.innerHTML = "Error HTTP";
+          }
+        }        
       })            
-    } else {
+    }else{
       if (x != null) {
         x.style.color = "red";
-        x.innerHTML = "Faltan campos requeridos";
+        x.innerHTML = "Error, revise el formulario";
       }
-    }
+    }      
   }
 }
