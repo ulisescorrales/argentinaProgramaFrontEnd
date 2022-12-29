@@ -15,6 +15,7 @@ export class BorrarComponent implements OnInit {
     console.log(this.router.url);
    }
   borrarElemento() {
-    this.api.delete(this.router.url);
+    this.api.delete(this.router.url).subscribe();
+    this.router.navigate(['/']);
   }
 }

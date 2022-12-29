@@ -101,6 +101,6 @@ export class ApiService {
   }
   //Método Delete
   public delete(url:string){
-    return this.http.delete(url);
+    return this.http.delete(this.url+url);
   }
 }
