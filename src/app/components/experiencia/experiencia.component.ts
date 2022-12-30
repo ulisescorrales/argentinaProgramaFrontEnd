@@ -16,24 +16,8 @@ export class ExperienciaComponent implements OnInit {
 
   ngOnInit(): void { 
     this.editar=this.autenticacion.logIn;       
-    this.api.getAllExperiencia().subscribe((data:IExperiencia[])=>{
-      var exp: IExperiencia | undefined;
-      var longitud = data.length;
-      var item: IExperiencia | undefined;      
-
-      for (var i = 0; i < longitud; i++) {
-        item = data[i];
-        exp = {
-          idExperiencia:item.idExperiencia,
-          titulo:item.titulo,
-          organizacion:item.organizacion,
-          descripcion:item.descripcion,
-          logo:item.logo,
-          inicio: item.inicio,
-          fin:item.fin,          
-        }
-        this.listExperiencia.push(item);
-      }      
+    this.api.getAllExperiencia().subscribe((data:IExperiencia[])=>{         
+      this.listExperiencia=data;     
     })    
   }
 }

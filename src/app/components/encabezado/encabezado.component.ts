@@ -14,14 +14,7 @@ export class EncabezadoComponent implements OnInit {
   contactos: IContacto| undefined ;
   constructor(private api: ApiService,private autenticacion:AutenticacionService){       
     this.api.getContacto().subscribe((data: IContacto) => {
-      this.contactos = {
-        telefono: data.telefono,
-        email:data.email,
-        github: data.github,
-        facebook: data.facebook,
-        linkedin: data.linkedin,
-        twitter: data.twitter
-      }
+      this.contactos = data;
     })   
   }
 

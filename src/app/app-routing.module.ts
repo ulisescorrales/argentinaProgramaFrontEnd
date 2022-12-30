@@ -17,10 +17,11 @@ import { ExperienciaEditComponent } from './components/editar/experiencia-edit/e
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { EditarAcercaDeComponent } from './components/editar/editar-acerca-de/editar-acerca-de.component';
 import { GuardGuard } from './servicios/guard.guard';
+import { ProyectoEditComponent } from './components/editar/proyecto-edit/proyecto-edit.component';
+import { AgregarProyectoComponent } from './components/editar/agregar/agregar-proyecto/agregar-proyecto.component';
 
 const routes: Routes = [
-  //{path:'inicio', component: AppComponent},
-  { path: 'segunda-pagina', component: AcercaDeComponent },
+  //{path:'inicio', component: AppComponent},  
   { path: 'login', component: LoginComponent },
   { path: 'contacto', component: ContactoComponent },
   {
@@ -29,21 +30,25 @@ const routes: Routes = [
       { path: 'educacion/:id', component: EducacionEditComponent },
       { path: 'experiencia/:id', component: ExperienciaEditComponent },
       { path: 'acercaDe', component: EditarAcercaDeComponent },
+      { path: 'proyecto/:id', component: ProyectoEditComponent }
+      ,
       {
         path: 'eliminar', component: BorrarComponent, children: [
           { path: 'educacion/:id', component: BorrarComponent },
-          { path: 'conocimiento/:id', component: ConocimientoEditComponent },//---------------
+          { path: 'conocimiento/:id', component: BorrarComponent },//---------------
           { path: 'experiencia/:id', component: BorrarComponent },
-          { path: 'acerca-de', component: LoginComponent }
+          { path: 'acerca-de', component: LoginComponent },
+          { path: 'proyecto/:id', component: BorrarComponent }
         ]
       }, {
         path: 'agregar', children: [
           { path: 'educacion', component: AgregarEducacionComponent },
           { path: 'conocimiento', component: AgregarConocimientoComponent },
-          { path: 'experiencia', component: AgregarExperienciaComponent }
+          { path: 'experiencia', component: AgregarExperienciaComponent },
+          {path:'proyecto',component:AgregarProyectoComponent}
         ]
       }
-    ],canActivate:[GuardGuard]
+    ], canActivate: [GuardGuard]
   },
   { path: '', redirectTo: '/', pathMatch: 'full' } //Ruta de inicio
   //{path: '**', component: Pagina404Component}  //Componente Pagina 404

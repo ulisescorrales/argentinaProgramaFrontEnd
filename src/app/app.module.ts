@@ -27,6 +27,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ConocimientosComponent } from './components/conocimientos/conocimientos.component';
 import { ApiService } from './servicios/api.service';
 import { InterceptorService } from './servicios/interceptor.service';
+import { ProyectoComponent } from './components/proyecto/proyecto.component';
+import { AgregarProyectoComponent } from './components/editar/agregar/agregar-proyecto/agregar-proyecto.component';
+import { ProyectoEditComponent } from './components/editar/proyecto-edit/proyecto-edit.component';
 
 
 @NgModule({
@@ -45,7 +48,7 @@ import { InterceptorService } from './servicios/interceptor.service';
     ConocimientoEditComponent,
     AgregarEducacionComponent,
     EducacionEditComponent,    
-    BorrarComponent, AgregarConocimientoComponent, AgregarConocimientoComponent, AgregarExperienciaComponent, ExperienciaEditComponent, ContactoComponent, EditarAcercaDeComponent, ConocimientosComponent
+    BorrarComponent, AgregarConocimientoComponent, AgregarConocimientoComponent, AgregarExperienciaComponent, ExperienciaEditComponent, ContactoComponent, EditarAcercaDeComponent, ConocimientosComponent, ProyectoComponent, AgregarProyectoComponent, ProyectoEditComponent
   ],
   imports: [
     HttpClientModule,

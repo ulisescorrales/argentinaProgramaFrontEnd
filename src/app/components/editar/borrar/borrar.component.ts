@@ -14,18 +14,22 @@ export class BorrarComponent implements OnInit {
     //console.log(this.router.url.split('/'))    
   }
   borrarElemento() {
-    this.api.delete(this.router.url).subscribe(data => {      
+    this.api.delete(this.router.url).subscribe(data => {
       const clase = this.router.url.split('/')[3];
       //Actualizar sección para que quite el elemento borrado      
       switch (clase) {
-        case "educacion":          
-          this.api.actualizarListEducacion();          
+        case "educacion":
+          this.api.actualizarListEducacion();
           break;
         case "conocimiento":
           this.api.actualizarListConocimiento();
           break;
         case "experiencia":
           this.api.actualizarListExperiencia();
+          break;
+        case "proyecto":
+          this.api.actualizarListProyecto();
+          break;
       }
       this.router.navigate(['/']);
       alert("Elemento borrado correctamente");

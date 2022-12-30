@@ -14,7 +14,7 @@ export class AgregarEducacionComponent implements OnInit {
   
 
   formEd: FormGroup;
-  constructor(private router:Router,private formBuilder: FormBuilder, private datosPortfolio: PortfolioService, private rutaActiva: ActivatedRoute, private api: ApiService) {
+  constructor(private router:Router,private formBuilder: FormBuilder, private datosPortfolio: PortfolioService, private api: ApiService) {
     this.formEd = this.formBuilder.group({
       institucion: ['', [Validators.required]],
       titulo: ['', [Validators.required]],

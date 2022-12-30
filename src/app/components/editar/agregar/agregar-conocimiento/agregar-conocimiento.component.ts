@@ -11,7 +11,7 @@ import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 })
 export class AgregarConocimientoComponent implements OnInit {
   formCon: FormGroup;
-  constructor(private autenticacion:AutenticacionService,private router:Router,private rutaActiva: ActivatedRoute, private api: ApiService, private formBuilder: FormBuilder) {
+  constructor(private autenticacion:AutenticacionService,private router:Router,private api: ApiService, private formBuilder: FormBuilder) {
     this.formCon = this.formBuilder.group({
       idTecnologia:[''],
       nombre: [''],
@@ -28,6 +28,12 @@ export class AgregarConocimientoComponent implements OnInit {
         x.style.color="green";
         x.innerHTML="Solicitud enviada correctamente";
         this.api.actualizarListConocimiento();
+        //Vaciar casilleros
+        const y=document.getElementsByClassName('form-control');
+        Array.from(y).forEach(elemento=>{
+          elemento.setAttribute('value','');
+        });
+
       }
     },
     error=>{

@@ -14,14 +14,7 @@ export class FooterComponent implements OnInit {
 
   ngOnInit(): void {
     this.api.getDomicilio().subscribe((data: IDomicilio) => {
-      this.dom = {
-        pais: data.pais,
-        provincia: data.provincia,
-        ciudad: data.ciudad,
-        calle: data.calle,
-        numero: data.numero,
-        codigoPostal: data.codigoPostal,
-      }
+      this.dom = data;
     })
   }
 

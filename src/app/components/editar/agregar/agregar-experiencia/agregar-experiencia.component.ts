@@ -10,7 +10,7 @@ import { ApiService } from 'src/app/servicios/api.service';
 })
 export class AgregarExperienciaComponent implements OnInit {
   formExperiencia: FormGroup;
-  constructor(private router:Router,private formBuilder: FormBuilder, private rutaActiva: ActivatedRoute, private api: ApiService) {
+  constructor(private router:Router,private formBuilder: FormBuilder, private api: ApiService) {
     this.formExperiencia = this.formBuilder.group({
       idExperiencia: [],
       organizacion: [],

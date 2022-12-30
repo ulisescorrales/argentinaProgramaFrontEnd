@@ -9,21 +9,14 @@ import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
   styleUrls: ['./acerca-de.component.css']
 })
 export class AcercaDeComponent implements OnInit {
-
-  nombre:any;
-  editar:any;
-  descripcion:any;
-  fotoPerfil:any;
-  fotoFondo:any;
-  constructor(private persona:ApiService,private autenticacion:AutenticacionService) { }
+  editar:boolean=false;  
+  persona:IPersona|undefined;
+  constructor(private api:ApiService,private autenticacion:AutenticacionService) { }
 
   ngOnInit(): void {    
     this.editar=this.autenticacion.logIn;    
-    this.persona.getPersona().subscribe((data:IPersona)=>{            
-      this.nombre=data.apellido+" "+data.nombre
-      this.descripcion=data.sobreMi;
-      this.fotoPerfil=data.fotoPerfil;
-      this.fotoFondo=data.fotoFondo;
+    this.api.getPersona().subscribe((data:IPersona)=>{                  
+      this.persona=data;
     })
   }
 
