@@ -11,13 +11,24 @@ export class BorrarComponent implements OnInit {
 
   constructor(private router: Router, private api: ApiService) { }
   ngOnInit(): void {
-    //console.log(this.router.url.split('/'))
-    console.log(this.router.url);
+    //console.log(this.router.url.split('/'))    
   }
   borrarElemento() {
-    this.api.delete(this.router.url).subscribe(data => {
-      alert("Elemento borrado correctamente")
+    this.api.delete(this.router.url).subscribe(data => {      
+      const clase = this.router.url.split('/')[3];
+      //Actualizar sección para que quite el elemento borrado      
+      switch (clase) {
+        case "educacion":          
+          this.api.actualizarListEducacion();          
+          break;
+        case "conocimiento":
+          this.api.actualizarListConocimiento();
+          break;
+        case "experiencia":
+          this.api.actualizarListExperiencia();
+      }
       this.router.navigate(['/']);
+      alert("Elemento borrado correctamente");
     },
       error => {
         if (error.status == 401) {

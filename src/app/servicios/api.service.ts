@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Mensaje } from '../clases/mensaje';
 import { IPersona } from '../clases/persona';
@@ -16,8 +16,37 @@ import { IDomicilio } from '../clases/idomicilio';
 })
 export class ApiService {
   url="http://localhost:8080";    
-  constructor(private http:HttpClient) { }
-  
+  listEducacion=new Subject<IEducacion[]>();
+  persona=new Subject<IPersona>();
+  listExperiencia=new Subject<IExperiencia[]>();
+  contacto=new Subject<IContacto>();
+  domicilio=new Subject<IDomicilio>();
+  listConocimiento=new Subject<ITecnologia[]>();
+
+  constructor(private http:HttpClient) { }    
+  //Actualizar valores
+  actualizarListEducacion(){ 
+    console.log("Actualizando educacion");
+    this.getAllEducacion().subscribe()
+  }
+  actualizarPersona(){
+    this.getPersona().subscribe();
+  }
+  actualizarDomicilio(){
+    this.getDomicilio().subscribe();
+  }
+  actualizarContacto(){
+    this.getContacto().subscribe()
+  }
+  actualizarListConocimiento(){
+    this.getAllTecnologia().subscribe()
+  }
+  actualizarListExperiencia(){
+    this.getAllExperiencia().subscribe((data:IExperiencia[])=>{
+      this.listExperiencia.next(data);
+    })
+  }
+
   //Mensaje
   public saveMensaje(mensaje:Mensaje){
     return this.http.post(this.url+'/mensaje/crear',mensaje,{'observe':'response'});
@@ -27,21 +56,30 @@ export class ApiService {
   }
   //Persona
   public getPersona(){
-    return this.http.get<IPersona>(this.url+'/persona/traer');
+    this.http.get<IPersona>(this.url+'/persona/traer').subscribe((data:IPersona)=>{
+      this.persona.next(data);
+    })
+    return this.persona;
   }
   public putPersona(unaPersona:IPersona){
     return this.http.put(this.url+'/persona/editar',unaPersona,{'observe':'response'});
   }
   //Contacto
   public getContacto(){
-    return this.http.get<IContacto>(this.url+'/contacto/traer');
+    this.http.get<IContacto>(this.url+'/contacto/traer').subscribe((data:IContacto)=>{
+      this.contacto.next(data);
+    })
+    return this.contacto;
   }
   public putContacto(unContacto:IContacto){
     return this.http.put(this.url+'/contacto/editar',unContacto,{'observe':'response'});
   }
   //Domicilio
   public getDomicilio(){
-    return this.http.get<IDomicilio>(this.url+'/domicilio/traer')
+    this.http.get<IDomicilio>(this.url+'/domicilio/traer').subscribe((data:IDomicilio)=>{
+      this.domicilio.next(data);
+    })
+    return this.domicilio;
   }
   public putDomicilio(unDomicilio:IDomicilio){
     return this.http.put(this.url+'/domicilio/editar',unDomicilio,{'observe':'response'});
@@ -51,7 +89,10 @@ export class ApiService {
     return this.http.get<IEducacion>(this.url+'/educacion/'+id);
   }
   public getAllEducacion(){
-    return this.http.get<IEducacion[]>(this.url+'/educacion/traer');
+    this.http.get<IEducacion[]>(this.url+'/educacion/traer').subscribe((data:IEducacion[])=>{
+      this.listEducacion.next(data);
+    });
+    return this.listEducacion;
   }
   public putEducacion(id:number,unaEd:IEducacion){
     return this.http.put(this.url+'/educacion/editar/'+id,unaEd,{'observe':'response'});
@@ -62,7 +103,10 @@ export class ApiService {
 
   //Conocimiento (Tecnología
   public getAllTecnologia(){
-    return this.http.get<ITecnologia[]>(this.url+'/tecnologia/traer');
+    this.http.get<ITecnologia[]>(this.url+'/tecnologia/traer').subscribe((data:ITecnologia[])=>{
+      this.listConocimiento.next(data);
+    })
+    return this.listConocimiento;
   }
   public getTecnologia(id:number){
     return this.http.get<ITecnologia>(this.url+'/tecnologia/traer/'+id);
@@ -75,7 +119,10 @@ export class ApiService {
   }  
   //Experiencia
   public getAllExperiencia(){
-    return this.http.get<IExperiencia[]>(this.url+'/experiencia/traer');
+    this.http.get<IExperiencia[]>(this.url+'/experiencia/traer').subscribe((data:IExperiencia[])=>{
+      this.listExperiencia.next(data);
+    })
+    return this.listExperiencia;
   }
   public getExperiencia(id:number){
     return this.http.get<IExperiencia>(this.url+'/experiencia/traer/'+id);
@@ -93,7 +140,7 @@ export class ApiService {
     return this.http.get<ITarea[]>(this.url+'/experiencia/'+id+'/tarea/traer')
   }
   //Método Delete
-  public delete(url:string){
+  public delete(url:string){    
     return this.http.delete(this.url+url,{'observe':'response'});
   }
 }

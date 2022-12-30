@@ -31,7 +31,7 @@ export class EducacionComponent implements OnInit {
       var ed: IEducacion | undefined;
       var longitud = data.length;
       var item: IEducacion | undefined;      
-
+      this.listEducacion = new Array<IEducacion>();
       for (var i = 0; i < longitud; i++) {
         item = data[i];
         ed = {
@@ -50,4 +50,7 @@ export class EducacionComponent implements OnInit {
       }
     })    
   }  
+  decirHola(){
+    console.log("hola");
+  }
 }

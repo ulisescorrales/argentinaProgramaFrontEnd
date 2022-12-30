@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 @Component({
   selector: 'app-editar',
@@ -6,5 +6,5 @@ import { ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./editar.component.css']
 })
 export class EditarComponent implements OnInit {
-  ngOnInit(): void{}
+  ngOnInit(): void{}  
 }

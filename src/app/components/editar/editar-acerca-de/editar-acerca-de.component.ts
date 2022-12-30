@@ -79,6 +79,7 @@ export class EditarAcercaDeComponent implements OnInit {
         if (x != null) {
           x.style.color = "green";
           x.innerHTML = "Solicitud enviada correctamente"
+          this.api.actualizarPersona();
         }
       },
         error => {

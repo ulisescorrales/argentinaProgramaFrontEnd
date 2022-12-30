@@ -30,6 +30,7 @@ export class AgregarExperienciaComponent implements OnInit {
       if(x!=null){
         x.style.color="green";
         x.innerHTML="Solicitud enviada correctamente"
+        this.api.actualizarListExperiencia();
       }
     },
     error=>{
@@ -41,7 +42,7 @@ export class AgregarExperienciaComponent implements OnInit {
       }else{
         if(x!=null){
           x.style.color="red";
-          x.innerHTML="Solicitud enviada correctamente"
+          x.innerHTML="Error. Revise el formulario"
         }
       }      
     });;

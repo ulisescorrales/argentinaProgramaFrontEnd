@@ -13,8 +13,7 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
 })
 export class EducacionEditComponent implements OnInit {
   id: number = 0;
-  ed: IEducacion | undefined;
-
+  ed: IEducacion | undefined;  
   formEd: FormGroup;
   constructor(private formBuilder: FormBuilder, private datosPortfolio: PortfolioService, private rutaActiva: ActivatedRoute, private api: ApiService, private router: Router) {
     this.formEd = this.formBuilder.group({
@@ -56,13 +55,15 @@ export class EducacionEditComponent implements OnInit {
         if (x != null) {
           x.style.color = "green";
           x.innerHTML = "Solicitud enviada correctamente"
+          this.api.actualizarListEducacion();      
         }
       },
         error => {
           if (error.status = 401) {
             alert("Error: debe volver a iniciar sesión");
-            this.router.navigate(['/login']);
-            window.location.reload();
+            this.router.navigate(['/login']).then(value=>{
+              window.location.reload();
+            });            
           } else {
             if (x != null) {
               x.style.color = "red";

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 declare let AOS: any;
 
 @Component({
@@ -7,15 +8,10 @@ declare let AOS: any;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'angProyect';  
-  
+  title = 'angProyect';    
   constructor(){}
 
   ngOnInit() {
     AOS.init();   
-  }
-
-  refreshEducacion(){
-    
-  }
+  }   
 }
