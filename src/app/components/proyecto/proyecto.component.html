@@ -7,42 +7,58 @@
         </div>
         <div class="row" style="margin-top: 20px" *ngFor="let filas of filasArray;index as i">
             <div class="col text-center programa" *ngFor="let columnas of columnasArray; index as j" [ngSwitch]="j"
-                id="grilla">
-                <!--Cargar logo según su posición en la grilla-->
+                >
+                <!--Cargar data-aos según su posición en la grilla-->
+                <div class="row" id="grilla">
+                    <div class="col">
+                        <ng-template [ngIf]="columnas*i+j<tamanioKnowledge">
+                            <img class="" *ngSwitchCase="0" [src]="listProyecto[columnas*i+j].logo"
+                                style="width:45%;height:75%;" data-aos="fade-right" data-aos-duration="1000"
+                                data-aos-delay="250">
+                            <img class="" *ngSwitchCase="1" [src]="listProyecto[columnas*i+j].logo"
+                                style="width:45%;height:75%;" data-aos="zoom-in" data-aos-duration="1000"
+                                data-aos-delay="250">
+                            <img class="" *ngSwitchCase="2" [src]="listProyecto[columnas*i+j].logo"
+                                style="width:45%;height:75%;" data-aos="fade-left" data-aos-duration="1000"
+                                data-aos-delay="250">
+                            <!--Botones de edición de tecnologías-->
+                            <div class="middle" *ngIf="editar">
+                                <i class="fa-solid fa-pen  remarcar"
+                                    [routerLink]="['editar','proyecto',listProyecto[columnas*i+j].idProyecto]"></i>
+                                <i class="fa-sharp fa-solid fa-trash editar remarcar" data-aos="zoom-in"
+                                    data-aos-duration="1000" data-aos-delay="250"
+                                    [routerLink]="['editar','eliminar','proyecto',listProyecto[columnas*i+j].idProyecto]"></i>
+                            </div>
+                            <div class="middle" *ngIf="!editar">
+                                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fa-solid fa-circle-info remarcar"></i></a>
+                            </div>                            
+                        </ng-template>
+                        <!--Cargar icono de editar, mejorar para cuando esté la grilla lena(se debe agregar una fila mas)-->
+                        <ng-template [ngIf]="3*i+(j)==tamanioKnowledge && editar">
+                            <!--Cambia el data-aos según en que posición de la cuadrícula esté-->
+                            <h2><i *ngSwitchCase="0" class="fa-solid fa-circle-plus remarcar" data-aos="fade-right"
+                                    data-aos-duration="1000" data-aos-delay="250"
+                                    [routerLink]="['editar','agregar','proyecto']"></i></h2>
+                            <h2><i *ngSwitchCase="1" class="fa-solid fa-circle-plus  remarcar" data-aos="zoom-in"
+                                    data-aos-duration="1000" data-aos-delay="250"
+                                    [routerLink]="['editar','agregar','proyecto']"></i></h2>
+                            <h2><i *ngSwitchCase="2" class="fa-solid fa-circle-plus  remarcar" data-aos="fade-left"
+                                    data-aos-duration="1000" data-aos-delay="250"
+                                    [routerLink]="['editar','agregar','proyecto']"></i></h2>
+                        </ng-template>                        
+                    </div>
+                </div>
                 <ng-template [ngIf]="columnas*i+j<tamanioKnowledge">
-                    <img class="" *ngSwitchCase="0" [src]="listProyecto[columnas*i+j].logo"
-                        style="width:45%;height:75%;" data-aos="fade-right" data-aos-duration="1000"
-                        data-aos-delay="250">
-                    <img class="" *ngSwitchCase="1" [src]="listProyecto[columnas*i+j].logo"
-                        style="width:45%;height:75%;" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="250">
-                    <img class="" *ngSwitchCase="2" [src]="listProyecto[columnas*i+j].logo"
-                        style="width:45%;height:75%;" data-aos="fade-left" data-aos-duration="1000"
-                        data-aos-delay="250">
-                        <!--Botones de edición de tecnologías-->
-                    <div class="middle" *ngIf="editar">                        
-                            <i class="fa-sharp fa-solid fa-trash remarcar" data-aos="zoom-in" data-aos-duration="1000"
-                                data-aos-delay="250"
-                                [routerLink]="['editar','eliminar','proyecto',listProyecto[columnas*i+j].idProyecto]"></i>
-                                <i class="fa-solid fa-pen editar remarcar"
-                                [routerLink]="['editar','proyecto',listProyecto[columnas*i+j].idProyecto]"></i>
+                    <div class="row">
+                        <div class="col">
+                            <p id="nombreProyecto" data-aos="zoom-in">{{listProyecto[columnas*i+j].nombre}}</p>
+                        </div>
                     </div>
-                    <div class="middle" *ngIf="editar==false">
-                        <p data-aos="zoom-out" data-aos-duration="1000">
-                            {{listProyecto[columnas*i+j].nombre}}</p>
+                    <div class="row">
+                        <div class="col">
+
+                        </div>
                     </div>
-                </ng-template>
-                <!--Cargar icono de editar, mejorar para cuando esté la grilla lena(se debe agregar una fila mas)-->
-                <ng-template [ngIf]="3*i+(j)==tamanioKnowledge && editar">
-                    <!--Cambia el data-aos según en que posición de la cuadrícula esté-->
-                    <h2><i *ngSwitchCase="0" class="fa-solid fa-circle-plus remarcar" data-aos="fade-right"
-                            data-aos-duration="1000" data-aos-delay="250"
-                            [routerLink]="['editar','agregar','proyecto']"></i></h2>
-                    <h2><i *ngSwitchCase="1" class="fa-solid fa-circle-plus  remarcar" data-aos="zoom-in"
-                            data-aos-duration="1000" data-aos-delay="250"
-                            [routerLink]="['editar','agregar','proyecto']"></i></h2>
-                    <h2><i *ngSwitchCase="2" class="fa-solid fa-circle-plus  remarcar" data-aos="fade-left"
-                            data-aos-duration="1000" data-aos-delay="250"
-                            [routerLink]="['editar','agregar','proyecto']"></i></h2>
                 </ng-template>
             </div>
         </div>
