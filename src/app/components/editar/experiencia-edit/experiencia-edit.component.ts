@@ -13,6 +13,7 @@ export class ExperienciaEditComponent implements OnInit {
   id: any;
   formExperiencia: FormGroup;
   x = document.getElementById('status');
+  y = document.getElementById('estadoEnvio');      
   constructor(private router: Router, private formBuilder: FormBuilder, private rutaActiva: ActivatedRoute, private api: ApiService) {
     this.formExperiencia = this.formBuilder.group({
       idExperiencia: [],
@@ -56,12 +57,13 @@ export class ExperienciaEditComponent implements OnInit {
   enviarExperiencia() {
     if (this.formExperiencia.touched) {
       this.mostrarSpinner();
-      const x = document.getElementById('estadoEnvio');
-      console.log(this.formExperiencia.value);
+      if(this.y!=null){
+        this.y.innerHTML="";
+      }
       this.api.putExperiencia(this.id, this.formExperiencia.value).subscribe(data => {
-        if (x != null) {
-          x.style.color = "green";
-          x.innerHTML = "Solicitud enviada correctamente"
+        if (this.y != null) {
+          this.y.style.color = "green";
+          this.y.innerHTML = "Solicitud enviada correctamente"
         }
       },
         error => {
@@ -70,12 +72,15 @@ export class ExperienciaEditComponent implements OnInit {
             this.router.navigate(['/login']);
             window.location.reload();
           } else {
-            if (x != null) {
-              x.style.color = "red";
-              x.innerHTML = "Error en solicitud HTTP"
+            if (this.y != null) {
+              this.y.style.color = "red";
+              this.y.innerHTML = "Error en solicitud HTTP"
             }
           }
         },
+        ()=>{
+          this.borrarSpinner();
+        }
       );
     }
   }

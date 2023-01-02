@@ -9,14 +9,14 @@ import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
   styleUrls: ['./acerca-de.component.css']
 })
 export class AcercaDeComponent implements OnInit {
-  editar:boolean=false;  
-  persona:IPersona|undefined;
-  constructor(private api:ApiService,private autenticacion:AutenticacionService) { }
+  editar: boolean = false;
+  persona: IPersona | undefined;
+  constructor(private api: ApiService, private autenticacion: AutenticacionService) { }
 
-  ngOnInit(): void {    
-    this.editar=this.autenticacion.logIn;    
-    this.api.getPersona().subscribe((data:IPersona)=>{                  
-      this.persona=data;
+  ngOnInit(): void {
+    this.editar = this.autenticacion.logIn;
+    this.api.getPersona().subscribe((data: IPersona) => {
+      this.persona = data;
     })
   }
 

@@ -15,6 +15,8 @@ export class EducacionEditComponent implements OnInit {
   id: number = 0;
   ed: IEducacion | undefined;  
   formEd: FormGroup;
+  x=document.getElementById('status');
+  y = document.getElementById('estadoEnvio');  
   constructor(private formBuilder: FormBuilder, private datosPortfolio: PortfolioService, private rutaActiva: ActivatedRoute, private api: ApiService, private router: Router) {
     this.formEd = this.formBuilder.group({
       institucion: ['', [Validators.required]],
@@ -28,17 +30,12 @@ export class EducacionEditComponent implements OnInit {
       duracion: ['']
     });
   }
-  ngOnInit(): void {
-    const x=document.getElementById('status')
-    if(x!=null){
-      x.style.display="block";
-    }     
+  ngOnInit(): void {    
+    this.mostrarSpinner();    
     this.rutaActiva.params.subscribe((params: Params) => {
       this.id = params['id'];
       this.api.getEducacion(this.id).subscribe((data: IEducacion) => {
-        if(x!=null){
-          x.style.display="none";
-        }
+        this.borrarSpinner();
         this.formEd.setValue({
           institucion: data.institucion,
           logo: data.logo,
@@ -55,26 +52,19 @@ export class EducacionEditComponent implements OnInit {
       error=>{
         alert("Error al cargar elemento");
         this.router.navigate(['/']);
-      }
+      }      
       )
     });
   }
-  modificarEducacion() {
-    const x = document.getElementById('estadoEnvio');
-    if (this.formEd.valid) {
-      const y = document.getElementById('status')
-      if (y != null) {
-        y.style.display = "block";
-      }
-      this.api.putEducacion(this.id, this.formEd.value).subscribe(data => {
-        if (y != null) {
-          y.style.display = "none";
+  modificarEducacion() {    
+    if (this.formEd.valid) {      
+      this.mostrarSpinner();
+      this.api.putEducacion(this.id, this.formEd.value).subscribe(data => {        
+        if (this.y != null) {
+          this.y.style.color = "green";
+          this.y.innerHTML = "Solicitud enviada correctamente"               
         }
-        if (x != null) {
-          x.style.color = "green";
-          x.innerHTML = "Solicitud enviada correctamente"
-          this.api.actualizarListEducacion();      
-        }
+        this.api.actualizarListEducacion(); 
       },
         error => {
           if (error.status = 401) {
@@ -83,12 +73,25 @@ export class EducacionEditComponent implements OnInit {
               window.location.reload();
             });            
           } else {
-            if (x != null) {
-              x.style.color = "red";
-              x.innerHTML = "Error en solicitud HTTP"
+            if (this.y != null) {
+              this.y.style.color = "red";
+              this.y.innerHTML = "Error en solicitud HTTP"
             }
           }
+        },
+        ()=>{
+          this.borrarSpinner();
         })
     }
+  }
+  mostrarSpinner(){
+    if(this.x!=null){
+      this.x.style.display="block";
+    } 
+  }
+  borrarSpinner(){
+    if(this.x!=null){
+      this.x.style.display="none";
+    } 
   }
 }

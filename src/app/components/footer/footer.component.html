@@ -7,7 +7,8 @@
                 <p>{{dom?.ciudad}}, {{dom?.provincia}}, {{dom?.pais}}</p>
             </div>
             <div class="col text-center">
-                <button type="button" class="btn btn-light" [routerLink]="['contacto']">Contacto</button>
+                <button *ngIf="!autenticado" type="button" class="btn btn-light" [routerLink]="['contacto']">Contacto</button>
+                <button *ngIf="autenticado" type="button" class="btn btn-light" [routerLink]="['mensajes']">Ver Mensajes</button>
             </div>
             <div class="col">
                 <!--<button type="button" class="btn btn-outline-light float-end">CV</button>-->

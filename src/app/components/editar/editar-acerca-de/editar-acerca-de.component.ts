@@ -19,7 +19,8 @@ export class EditarAcercaDeComponent implements OnInit {
   formPersona: FormGroup;
   formContacto: FormGroup;
   formDomicilio: FormGroup;
-  x = document.getElementById('status')
+  x = document.getElementById('status');
+  i=0;
   constructor(private router: Router, private formBuilder: FormBuilder, private api: ApiService) {
     this.formPersona = this.formBuilder.group({
       sobreMi: [''],
@@ -45,11 +46,10 @@ export class EditarAcercaDeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.mostrarSpinner();
-    var i = 0;
-    this.cargarPersona(i);
-    this.cargarContacto(i);
-    this.cargarDomicilio(i);
+    this.mostrarSpinner();    
+    this.cargarPersona();
+    this.cargarContacto();
+    this.cargarDomicilio();
 
   }
   enviarPersona() {
@@ -115,10 +115,10 @@ export class EditarAcercaDeComponent implements OnInit {
     }
   }
   //-----------------------------------------
-  cargarPersona(i: number) {
+  cargarPersona() {
     this.api.getPersona().subscribe((data: IPersona) => {
-      i++;
-      if (i == 3) {
+      this.i++;
+      if (this.i == 3) {
         this.borrarSpinner();
       }
       this.formPersona.setValue({
@@ -132,10 +132,10 @@ export class EditarAcercaDeComponent implements OnInit {
         this.router.navigate(['/'])
       })
   }
-  cargarContacto(i: number) {
+  cargarContacto() {
     this.api.getContacto().subscribe((data: IContacto) => {
-      i++;
-      if (i == 3) {
+      this.i++;
+      if (this.i == 3) {
         this.borrarSpinner();
       }
       this.formContacto.setValue({
@@ -152,10 +152,10 @@ export class EditarAcercaDeComponent implements OnInit {
         this.router.navigate(['/'])
       })
   }
-  cargarDomicilio(i: number) {
+  cargarDomicilio() {
     this.api.getDomicilio().subscribe((data: IDomicilio) => {
-      i++;
-      if (i == 3) {
+      this.i++;
+      if (this.i == 3) {
         this.borrarSpinner();
       }
       this.formDomicilio.setValue({

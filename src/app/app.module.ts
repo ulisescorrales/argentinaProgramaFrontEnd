@@ -30,6 +30,8 @@ import { InterceptorService } from './servicios/interceptor.service';
 import { ProyectoComponent } from './components/proyecto/proyecto.component';
 import { AgregarProyectoComponent } from './components/editar/agregar/agregar-proyecto/agregar-proyecto.component';
 import { ProyectoEditComponent } from './components/editar/proyecto-edit/proyecto-edit.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { MensajesComponent } from './components/mensajes/mensajes.component';
 
 
 @NgModule({
@@ -48,7 +50,7 @@ import { ProyectoEditComponent } from './components/editar/proyecto-edit/proyect
     ConocimientoEditComponent,
     AgregarEducacionComponent,
     EducacionEditComponent,    
-    BorrarComponent, AgregarConocimientoComponent, AgregarConocimientoComponent, AgregarExperienciaComponent, ExperienciaEditComponent, ContactoComponent, EditarAcercaDeComponent, ConocimientosComponent, ProyectoComponent, AgregarProyectoComponent, ProyectoEditComponent
+    BorrarComponent, AgregarConocimientoComponent, AgregarConocimientoComponent, AgregarExperienciaComponent, ExperienciaEditComponent, ContactoComponent, EditarAcercaDeComponent, ConocimientosComponent, ProyectoComponent, AgregarProyectoComponent, ProyectoEditComponent, SpinnerComponent, MensajesComponent
   ],
   imports: [
     HttpClientModule,

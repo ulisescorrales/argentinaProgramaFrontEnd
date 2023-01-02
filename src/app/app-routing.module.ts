@@ -50,6 +50,9 @@ const routes: Routes = [
       }
     ], canActivate: [GuardGuard]
   },
+  {path:'mensaje',component:EditarAcercaDeComponent,children:[
+    { path: 'ver', component: AgregarEducacionComponent }
+  ]},
   { path: '', redirectTo: '/', pathMatch: 'full' } //Ruta de inicio
   //{path: '**', component: Pagina404Component}  //Componente Pagina 404
 ];

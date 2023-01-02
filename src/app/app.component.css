@@ -52,3 +52,7 @@
     transition: 0.8s ease;
 }
 
+#status{
+    position:fixed;            
+    display:none;
+}
