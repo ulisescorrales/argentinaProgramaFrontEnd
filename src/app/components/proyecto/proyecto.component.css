@@ -11,10 +11,10 @@
     font-size: 18px;
     opacity: 0;
 }
-#grilla:hover .middle{
+.grilla:hover .middle{
     opacity:1;
 }
-#grilla:hover img{
+.grilla:hover img{
     opacity: 0.3;   
     transition: 0.8s ease;     
 }

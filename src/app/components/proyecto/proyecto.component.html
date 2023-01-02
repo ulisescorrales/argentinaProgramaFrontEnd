@@ -9,7 +9,7 @@
             <div class="col text-center programa" *ngFor="let columnas of columnasArray; index as j" [ngSwitch]="j"
                 >
                 <!--Cargar data-aos según su posición en la grilla-->
-                <div class="row" id="grilla">
+                <div class="row grilla" id="grilla">
                     <div class="col">
                         <ng-template [ngIf]="columnas*i+j<tamanioKnowledge">
                             <img class="" *ngSwitchCase="0" [src]="listProyecto[columnas*i+j].logo"
@@ -48,7 +48,8 @@
                         </ng-template>                        
                     </div>
                 </div>
-                <ng-template [ngIf]="columnas*i+j<tamanioKnowledge">
+                <!--
+                    <ng-template [ngIf]="columnas*i+j<tamanioKnowledge">
                     <div class="row">
                         <div class="col">
                             <p id="nombreProyecto" data-aos="zoom-in">{{listProyecto[columnas*i+j].nombre}}</p>
@@ -60,6 +61,7 @@
                         </div>
                     </div>
                 </ng-template>
+                -->                
             </div>
         </div>
     </div>

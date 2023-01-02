@@ -16,7 +16,8 @@ import { IProyecto } from '../clases/iproyecto';
   providedIn: 'root'
 })
 export class ApiService {
-  url = "https://argentinaprogramabackend-69hx.onrender.com/";
+  url = "https://argentinaprogramabackend-n3d0.onrender.com";
+  //url="http://localhost:8080"
   listEducacion = new Subject<IEducacion[]>();
   persona = new Subject<IPersona>();
   listExperiencia = new Subject<IExperiencia[]>();
