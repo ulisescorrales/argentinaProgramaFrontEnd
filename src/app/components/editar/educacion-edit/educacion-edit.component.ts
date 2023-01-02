@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
-import { IEducacion } from 'src/app/clases/IEducacion';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { IEducacion } from 'src/app/interfaces/IEducacion';
 import { ApiService } from 'src/app/servicios/api.service';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
@@ -13,10 +13,11 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
 })
 export class EducacionEditComponent implements OnInit {
   id: number = 0;
-  ed: IEducacion | undefined;
-
+  ed: IEducacion | undefined;  
   formEd: FormGroup;
-  constructor(private formBuilder: FormBuilder, private datosPortfolio: PortfolioService, private rutaActiva: ActivatedRoute, private api: ApiService) {
+  x=document.getElementById('status');
+  y = document.getElementById('estadoEnvio');  
+  constructor(private formBuilder: FormBuilder, private datosPortfolio: PortfolioService, private rutaActiva: ActivatedRoute, private api: ApiService, private router: Router) {
     this.formEd = this.formBuilder.group({
       institucion: ['', [Validators.required]],
       titulo: ['', [Validators.required]],
@@ -25,14 +26,17 @@ export class EducacionEditComponent implements OnInit {
       anioIngreso: ['', [Validators.required]],
       anioFinalizacion: ['',],
       materiasTotales: ['', [Validators.required]],
-      materiasAprobadas: ['', [Validators.required]]
+      materiasAprobadas: ['', [Validators.required]],
+      duracion: ['']
     });
   }
-  ngOnInit(): void {
+  ngOnInit(): void {    
+    this.mostrarSpinner();    
     this.rutaActiva.params.subscribe((params: Params) => {
       this.id = params['id'];
-      this.api.getEducacion(this.id).subscribe((data: IEducacion) => {        
-        this.formEd.setValue({          
+      this.api.getEducacion(this.id).subscribe((data: IEducacion) => {
+        this.borrarSpinner();
+        this.formEd.setValue({
           institucion: data.institucion,
           logo: data.logo,
           estado: data.estado,
@@ -41,26 +45,53 @@ export class EducacionEditComponent implements OnInit {
           titulo: data.titulo,
           materiasTotales: data.materiasTotales,
           materiasAprobadas: data.materiasAprobadas,
+          duracion: data.duracion
         })
           ;
-      }
+      },
+      error=>{
+        alert("Error al cargar elemento");
+        this.router.navigate(['/']);
+      }      
       )
     });
   }
-  modificarEducacion() {
-    const x = document.getElementById('estadoEnvio');    
-    if (this.formEd.valid) {
-      this.api.putEducacion(this.id,this.formEd.value).subscribe(data=>{        
-        if (x != null) {
-          x.style.color = "green";
-          x.innerHTML = "Componente modificado con éxito";
+  modificarEducacion() {    
+    if (this.formEd.valid) {      
+      this.mostrarSpinner();
+      this.api.putEducacion(this.id, this.formEd.value).subscribe(data => {        
+        if (this.y != null) {
+          this.y.style.color = "green";
+          this.y.innerHTML = "Solicitud enviada correctamente"               
         }
-      })            
-    } else {
-      if (x != null) {
-        x.style.color = "red";
-        x.innerHTML = "Faltan campos requeridos";
-      }
+        this.api.actualizarListEducacion(); 
+      },
+        error => {
+          if (error.status = 401) {
+            alert("Error: debe volver a iniciar sesión");
+            this.router.navigate(['/login']).then(value=>{
+              window.location.reload();
+            });            
+          } else {
+            if (this.y != null) {
+              this.y.style.color = "red";
+              this.y.innerHTML = "Error en solicitud HTTP"
+            }
+          }
+        },
+        ()=>{
+          this.borrarSpinner();
+        })
     }
+  }
+  mostrarSpinner(){
+    if(this.x!=null){
+      this.x.style.display="block";
+    } 
+  }
+  borrarSpinner(){
+    if(this.x!=null){
+      this.x.style.display="none";
+    } 
   }
 }

@@ -1,21 +1,17 @@
 <footer>
     <div class="container">
-        <div class="row">
-            <div class="col my-auto">
-                <p>Repositorio: <a href="https://github.com/ulisescorrales/argentinaProgramaProyecto">FrontEnd</a>,
-                    <a href="https://github.com/ulisescorrales/argentinaProgramaProyecto">BackEnd</a>
-                </p>
-            </div>
+        <div class="row">           
         </div>
         <div class="row">
             <div class="col">
                 <p>{{dom?.ciudad}}, {{dom?.provincia}}, {{dom?.pais}}</p>
             </div>
             <div class="col text-center">
-                <button type="button" class="btn btn-light" [routerLink]="['contacto']">Contacto</button>
+                <button *ngIf="!autenticado" type="button" class="btn btn-light" [routerLink]="['contacto']">Contacto</button>
+                <button *ngIf="autenticado" type="button" class="btn btn-light" [routerLink]="['mensaje/ver']">Ver Mensajes</button>
             </div>
             <div class="col">
-                <button type="button" class="btn btn-outline-light float-end">CV</button>
+                <!--<button type="button" class="btn btn-outline-light float-end">CV</button>-->
             </div>
         </div>
     </div>

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { IEducacion } from 'src/app/clases/IEducacion';
-import { ITecnologia } from 'src/app/clases/itecnologia';
+import { IEducacion } from 'src/app/interfaces/IEducacion';
+import { ITecnologia } from 'src/app/interfaces/itecnologia';
 import { ApiService } from 'src/app/servicios/api.service';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
+import { InicioService } from 'src/app/servicios/inicio.service';
 
 
 
@@ -11,12 +12,7 @@ import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
   templateUrl: './educacion.component.html',
   styleUrls: ['./educacion.component.css']
 })
-export class EducacionComponent implements OnInit {
-  tamanioKnowledge: any;
-  filas: any;
-  filasArray: any;
-  columnas = 3;
-  columnasArray: any;
+export class EducacionComponent implements OnInit {  
   editar: boolean = false;
 
   Math = Math;//Para usar Math.floor() en el HTML
@@ -24,49 +20,14 @@ export class EducacionComponent implements OnInit {
   knowledgeList: any;
   listEducacion: IEducacion[] = new Array<IEducacion>();
   listTecnologia:ITecnologia[]=new Array<ITecnologia>();
-  constructor(private api: ApiService,private autenticacion:AutenticacionService) { }
+  constructor(private inicio:InicioService,private api: ApiService,private autenticacion:AutenticacionService) { }
   ngOnInit(): void {        
     this.editar=this.autenticacion.logIn;//    
-    this.api.getAllEducacion().subscribe((data: IEducacion[]) => {
-      var ed: IEducacion | undefined;
-      var longitud = data.length;
-      var item: IEducacion | undefined;      
-
-      for (var i = 0; i < longitud; i++) {
-        item = data[i];
-        ed = {
-          idEstudio: (item as any).idEstudio,
-          titulo: (item as any).titulo,
-          institucion: (item as any).institucion,
-          logo: (item as any).logo,
-          estado: (item as any).estado,
-          anioIngreso: (item as any).anioIngreso,
-          materiasTotales: (item as any).materiasTotales,
-          materiasAprobadas: (item as any).materiasAprobadas,
-          anioFinalizacion: (item as any).anioFinalizacion
-        }
-        this.listEducacion.push(item);
-      }
-    })
-    this.api.getAllTecnologia().subscribe((data: ITecnologia[]) => {            
-      var longitud = data.length;
-      var tec: ITecnologia;
-      var item: ITecnologia;
-
-      this.tamanioKnowledge=longitud;
-      this.filas = Math.ceil(this.tamanioKnowledge / this.columnas);
-      this.filasArray = Array(this.filas).fill(this.filas);//Es necesario el fill?
-      this.columnasArray = Array(this.columnas).fill(this.columnas);
-
-      for (var i = 0; i < longitud; i++) {
-        item = data[i];
-        tec = {
-          idTecnologia: (data as any).idTecnologia,
-          descripcion: (data as any).descripcion,
-          logo: (data as any).logo
-        }
-        this.listTecnologia.push(item);
-      }         
-    })
-  }  
+    this.api.getAllEducacion().subscribe((data: IEducacion[]) => {              
+      this.listEducacion=data;
+      this.inicio.sumarComponenteCargado();
+    }, error => {
+      this.inicio.sumarComponenteCargado();
+    });
+  }    
 }

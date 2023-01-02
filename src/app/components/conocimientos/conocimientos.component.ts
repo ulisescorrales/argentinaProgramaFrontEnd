@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ITecnologia } from 'src/app/clases/itecnologia';
+import { ITecnologia } from 'src/app/interfaces/itecnologia';
 import { ApiService } from 'src/app/servicios/api.service';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
-import { PortfolioService } from 'src/app/servicios/portfolio.service';
+import { InicioService } from 'src/app/servicios/inicio.service';
 
 @Component({
   selector: 'app-conocimientos',
@@ -21,28 +21,22 @@ export class ConocimientosComponent implements OnInit {
 
   knowledgeList: any;
   listTecnologia: ITecnologia[] = new Array<ITecnologia>();
-  constructor(private api: ApiService,private autenticacion:AutenticacionService) { }
+  constructor(private inicio:InicioService,private api: ApiService,private autenticacion:AutenticacionService) { }
   ngOnInit(): void {
     this.editar=this.autenticacion.logIn;
     this.api.getAllTecnologia().subscribe((data: ITecnologia[]) => {
-      var longitud = data.length;
-      var tec: ITecnologia;
-      var item: ITecnologia;
+      var longitud = data.length;      
 
+      //Variables usadas para construir la grilla
       this.tamanioKnowledge = longitud;
       this.filas = Math.ceil(this.tamanioKnowledge / this.columnas);
-      this.filasArray = Array(this.filas).fill(this.filas);//Es necesario el fill?
+      this.filasArray = Array(this.filas).fill(this.filas);
       this.columnasArray = Array(this.columnas).fill(this.columnas);
 
-      for (var i = 0; i < longitud; i++) {
-        item = data[i];
-        tec = {
-          idTecnologia: (data as any).idTecnologia,
-          descripcion: (data as any).descripcion,
-          logo: (data as any).logo
-        }
-        this.listTecnologia.push(item);
-      }      
+      this.listTecnologia=data;    
+      this.inicio.sumarComponenteCargado();
+    }, error => {
+      this.inicio.sumarComponenteCargado();
     })
   }
   //Conocimiento

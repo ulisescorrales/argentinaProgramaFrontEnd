@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ConocimientoFormComponent } from './conocimiento-form.component';
+import { AgregarProyectoComponent } from './agregar-proyecto.component';
 
-describe('ConocimientoFormComponent', () => {
-  let component: ConocimientoFormComponent;
-  let fixture: ComponentFixture<ConocimientoFormComponent>;
+describe('AgregarProyectoComponent', () => {
+  let component: AgregarProyectoComponent;
+  let fixture: ComponentFixture<AgregarProyectoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ConocimientoFormComponent ]
+      declarations: [ AgregarProyectoComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ConocimientoFormComponent);
+    fixture = TestBed.createComponent(AgregarProyectoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

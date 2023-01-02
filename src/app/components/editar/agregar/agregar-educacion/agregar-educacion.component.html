@@ -1,4 +1,4 @@
-<div class="d-flex flex-column mb-3">
+<div class="d-flex flex-column mb-3">    
     <Form [formGroup]="formEd" (submit)="agregarEducacion()">        
         <div class="p-2">
             <label>Título:</label>
@@ -16,6 +16,10 @@
         <div class="p-2">
             <label>Estado:</label>
             <input class="form-control"  formControlName="estado">
+        </div>
+        <div class="p-2">
+            <label>Duración:</label>
+            <input class="form-control"  formControlName="duracion">
         </div>
         <div class="p-2">
             <label>Comienzo:</label>

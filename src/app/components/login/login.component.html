@@ -4,7 +4,7 @@
     </div>
     <form [formGroup]="form" (ngSubmit)="onEnviar($event)">
         <div class="p-2">
-            <input type="text" class="form-control" placeholder="nombreUsuario" formControlName="nombreUsuario" aria-label="Username"
+            <input type="text" class="form-control" placeholder="Nombre de Usuario" formControlName="nombreUsuario" aria-label="Username"
                 aria-describedby="basic-addon1" [ngClass]="{'is-invalid':Email?.errors && Email?.touched, 'is-valid':!Email?.errors && Email?.touched}">
             <div *ngIf="Email?.errors && Email?.touched">
                 <p *ngIf="Email?.hasError('required')" class="text-danger">El email es requerido</p>
@@ -22,5 +22,8 @@
         <div class="p-2">
             <button type="submit" class="btn btn-primary mb-3 rounded mx-auto d-block">Acceder</button>
         </div>
+        <div class="p-2">
+            <p id="estadoLogin"></p>            
+        </div>        
     </form>
 </div>

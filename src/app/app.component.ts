@@ -1,9 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 declare let AOS: any;
-//import { PortfolioService } from 'src/app/servicios/portfolio.service';
-
-var editar:boolean;//modo editar o solo lectura
-var language:String="es";//idioma
 
 @Component({
   selector: 'app-root',
@@ -11,16 +8,14 @@ var language:String="es";//idioma
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'angProyect';  
-  
-  //constructor(private global: PortfolioService) { }
+  title = 'angProyect';    
+  constructor(){}
 
   ngOnInit() {
-    AOS.init(); 
-    
-    //this.global.obtenerDatos().subscribe(data => {
-    //  console.log(data);      
-    //  this.editar=data.edi;
-   // });
-  }
+    const x=document.getElementById('status');
+    if(x!=null){
+      x.style.display="block";
+    }
+    AOS.init();   
+  }   
 }

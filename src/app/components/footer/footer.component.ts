@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IDomicilio } from 'src/app/clases/idomicilio';
+import { IDomicilio } from 'src/app/interfaces/idomicilio';
 import { ApiService } from 'src/app/servicios/api.service';
+import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
+import { InicioService } from 'src/app/servicios/inicio.service';
 
 @Component({
   selector: 'app-footer',
@@ -9,20 +11,20 @@ import { ApiService } from 'src/app/servicios/api.service';
 })
 export class FooterComponent implements OnInit {
   dom: IDomicilio | undefined;
+  autenticado: boolean = false;
+  constructor(private inicio: InicioService, private auth: AutenticacionService, private api: ApiService) { }
 
-  constructor(private api: ApiService) { }
 
   ngOnInit(): void {
     this.api.getDomicilio().subscribe((data: IDomicilio) => {
-      this.dom = {
-        pais: data.pais,
-        provincia: data.provincia,
-        ciudad: data.ciudad,
-        calle: data.calle,
-        numero: data.numero,
-        codigoPostal: data.codigoPostal,
-      }
-    })
+      this.dom = data;
+      this.inicio.sumarComponenteCargado();
+    }, error => {
+      this.inicio.sumarComponenteCargado();
+    }, () => {      
+      
+    });
+    this.autenticado = this.auth.logIn;
   }
 
 }

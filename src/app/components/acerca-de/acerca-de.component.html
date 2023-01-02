@@ -1,18 +1,18 @@
 <div class="container">
     <div class="row" id="relativo">
         <div class="col" style="background-color:black;">
-            <img [src]="fotoFondo" width="100%" alt="banner" />
+            <img [src]="persona?.fotoFondo" width="100%" alt="banner" />
         </div>
     </div>
     <div class="row">
         <div class="col-2" id="relativo">
-            <img [src]="fotoPerfil" class="rounded-circle rounded mx-auto d-block"
+            <img [src]="persona?.fotoPerfil" class="rounded-circle rounded mx-auto d-block"
                 alt="banner" id="foto" />
-                <!--Ícono de borrar centrado-->         
-            <h6 class="text-center" id="nombre">{{nombre}}</h6>
+                        
+            <h6 class="text-center" id="nombre">{{persona?.nombre}}</h6>
         </div>
         <div class="col-9 my-auto">
-            <p class="font-weight-normal texto">{{descripcion}}</p>
+            <p class="font-weight-normal texto">{{persona?.sobreMi}}</p>
         </div>
         <ng-template [ngIf]="editar">
             <div class="col-1  my-auto">

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
-import { IConocimiento } from 'src/app/clases/conocimiento';
-import { ITecnologia } from 'src/app/clases/itecnologia';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ITecnologia } from 'src/app/interfaces/itecnologia';
 import { ApiService } from 'src/app/servicios/api.service';
 
 @Component({
@@ -13,29 +12,65 @@ import { ApiService } from 'src/app/servicios/api.service';
 export class ConocimientoEditComponent implements OnInit {
   id: any;
   formCon: FormGroup;
-  constructor(private rutaActiva: ActivatedRoute, private api: ApiService, private formBuilder: FormBuilder) {
+  x = document.getElementById('status');
+  y = document.getElementById('estadoEnvio');
+  constructor(private router: Router, private rutaActiva: ActivatedRoute, private api: ApiService, private formBuilder: FormBuilder) {
     this.formCon = this.formBuilder.group({
-      descripcion: [],
-      logo: []
+      nombre: [''],
+      logo: ['']
     });
   }
   ngOnInit(): void {
+    this.mostrarSpinner();
     this.rutaActiva.params.subscribe((params: Params) => {
       this.id = params['id'];
       this.api.getTecnologia(this.id).subscribe((data: ITecnologia) => {
         console.log(data);
         this.formCon.setValue({
-          descripcion: data.descripcion,
+          nombre: data.nombre,
           logo: data.logo
         })
-      });
+      },
+        error => {
+          alert("Error al cargar elemento");
+          this.router.navigate(['/']);
+        });
     });
 
   }
 
-  enviarTecnologia(){
-    if(this.formCon.touched){
-      this.api.putTecnologia(this.id,this.formCon.value);
+  enviarTecnologia() {
+    if (this.formCon.touched) {
+      this.mostrarSpinner();
+      this.api.putTecnologia(this.id, this.formCon.value).subscribe(data => {
+        this.borrarSpinner();
+        if (this.y != null) {
+          this.y.style.color = "green";
+          this.y.innerHTML = "Solicitud enviada correctamente"
+        }
+      },
+        error => {
+          if (error.status = 401) {
+            alert("Error: debe volver a iniciar sesión");
+            this.router.navigate(['/login']);
+            window.location.reload();
+          } else {
+            if (this.y != null) {
+              this.y.style.color = "red";
+              this.y.innerHTML = "Error en solicitud HTTP"
+            }
+          }
+        });
+    }
+  }
+  mostrarSpinner() {
+    if (this.x != null) {
+      this.x.style.display = "block";
+    }
+  }
+  borrarSpinner() {
+    if (this.x != null) {
+      this.x.style.display = "none";
     }
   }
 }

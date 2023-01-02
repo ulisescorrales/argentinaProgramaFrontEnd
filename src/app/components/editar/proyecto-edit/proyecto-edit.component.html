@@ -1,0 +1,42 @@
+<div class="d-flex flex-column mb-3">
+    <Form [formGroup]="formProyecto" (submit)="modificarProyecto()">
+        <div class="p-2">
+            <label>Título:</label>
+            <input class="form-control" formControlName="nombre">
+        </div>
+        <div class="p-2">
+            <label>Logo:</label>
+            <input type="text" class="form-control"  aria-describedby="basic-addon1"
+                formControlName="logo">
+        </div>
+        <div class="p-2">
+            <label>Descripcion:</label>
+            <input type="text" class="form-control"  aria-describedby="basic-addon1"
+                formControlName="descripcion">
+        </div>
+        <div class="p-2">
+            <label>Link:</label>
+            <input type="text" class="form-control"  aria-describedby="basic-addon1"
+                formControlName="link">
+        </div>
+        <div class="p-2">
+            <label>GitHub:</label>
+            <input type="text" class="form-control"  aria-describedby="basic-addon1"
+                formControlName="github">
+        </div>
+        <div class="p-2">
+            <label>GitHub FrontEnd:</label>
+            <input type="text" class="form-control"  aria-describedby="basic-addon1"
+                formControlName="githubFrontEnd">
+        </div>
+        <div class="p-2">
+            <label>GitHub BackEnd:</label>
+            <input type="text" class="form-control"  aria-describedby="basic-addon1"
+                formControlName="githubBackEnd">
+        </div>
+        <div class="p-2" >
+            <button type="submit" class="btn btn-primary mb-3 rounded mx-auto d-block">Modificar Proyecto</button>
+            <p id="estadoEnvio"></p>
+        </div>
+    </Form>
+</div>
