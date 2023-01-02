@@ -29,9 +29,16 @@ export class EducacionEditComponent implements OnInit {
     });
   }
   ngOnInit(): void {
+    const x=document.getElementById('status')
+    if(x!=null){
+      x.style.display="block";
+    }     
     this.rutaActiva.params.subscribe((params: Params) => {
       this.id = params['id'];
       this.api.getEducacion(this.id).subscribe((data: IEducacion) => {
+        if(x!=null){
+          x.style.display="none";
+        }
         this.formEd.setValue({
           institucion: data.institucion,
           logo: data.logo,
@@ -44,6 +51,10 @@ export class EducacionEditComponent implements OnInit {
           duracion: data.duracion
         })
           ;
+      },
+      error=>{
+        alert("Error al cargar elemento");
+        this.router.navigate(['/']);
       }
       )
     });
@@ -51,7 +62,14 @@ export class EducacionEditComponent implements OnInit {
   modificarEducacion() {
     const x = document.getElementById('estadoEnvio');
     if (this.formEd.valid) {
+      const y = document.getElementById('status')
+      if (y != null) {
+        y.style.display = "block";
+      }
       this.api.putEducacion(this.id, this.formEd.value).subscribe(data => {
+        if (y != null) {
+          y.style.display = "none";
+        }
         if (x != null) {
           x.style.color = "green";
           x.innerHTML = "Solicitud enviada correctamente"

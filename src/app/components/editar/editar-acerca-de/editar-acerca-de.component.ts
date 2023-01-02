@@ -19,7 +19,8 @@ export class EditarAcercaDeComponent implements OnInit {
   formPersona: FormGroup;
   formContacto: FormGroup;
   formDomicilio: FormGroup;
-  constructor(private router:Router,private formBuilder: FormBuilder, private api: ApiService) {
+  x = document.getElementById('status')
+  constructor(private router: Router, private formBuilder: FormBuilder, private api: ApiService) {
     this.formPersona = this.formBuilder.group({
       sobreMi: [''],
       fotoPerfil: ['', [Validators.required]],
@@ -44,14 +45,99 @@ export class EditarAcercaDeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.mostrarSpinner();
+    var i = 0;
+    this.cargarPersona(i);
+    this.cargarContacto(i);
+    this.cargarDomicilio(i);
+
+  }
+  enviarPersona() {
+    if (this.formPersona.touched) {
+      this.mostrarSpinner();
+      const x = document.getElementById('estadoEnvio');
+      this.api.putPersona(this.formPersona.value).subscribe(data => {
+        this.borrarSpinner();
+        if (x != null) {
+          x.style.color = "green";
+          x.innerHTML = "Solicitud enviada correctamente"
+          this.api.actualizarPersona();
+        }
+      },
+        error => {
+          this.notificarTokenVencido(error, x);
+        });
+
+    }
+  }
+  enviarContacto() {
+    if (this.formContacto.touched) {
+      this.mostrarSpinner();
+      const x = document.getElementById('estadoEnvio');
+      this.api.putContacto(this.formContacto.value).subscribe(data => {
+        this.borrarSpinner();
+        if (x != null) {
+          x.style.color = "green";
+          x.innerHTML = "Solicitud enviada correctamente"
+        }
+      },
+        error => {
+          this.notificarTokenVencido(error, x);
+        });
+    }
+  }
+  enviarDomicilio() {
+    if (this.formDomicilio.touched) {
+      this.mostrarSpinner();
+      const x = document.getElementById('estadoEnvio');
+      this.api.putDomicilio(this.formDomicilio.value).subscribe(data => {
+        this.borrarSpinner();
+        if (x != null) {
+          x.style.color = "green";
+          x.innerHTML = "Solicitud enviada correctamente"
+        }
+      },
+        error => {
+          this.notificarTokenVencido(error, x);
+        });
+    }
+  }
+  notificarTokenVencido(error: any, x: any) {
+    if (error.status = 401) {
+      alert("Error: debe volver a iniciar sesión");
+      this.router.navigate(['/login']);
+      window.location.reload();
+    } else {
+      if (x != null) {
+        x.style.color = "red";
+        x.innerHTML = "Error en solicitud HTTP en datos de domicilio"
+      }
+    }
+  }
+  //-----------------------------------------
+  cargarPersona(i: number) {
     this.api.getPersona().subscribe((data: IPersona) => {
+      i++;
+      if (i == 3) {
+        this.borrarSpinner();
+      }
       this.formPersona.setValue({
         sobreMi: data.sobreMi,
         fotoPerfil: data.fotoPerfil,
         fotoFondo: data.fotoFondo
       })
-    })
+    },
+      error => {
+        alert("Error al cargar el elemento");
+        this.router.navigate(['/'])
+      })
+  }
+  cargarContacto(i: number) {
     this.api.getContacto().subscribe((data: IContacto) => {
+      i++;
+      if (i == 3) {
+        this.borrarSpinner();
+      }
       this.formContacto.setValue({
         email: data.email,
         telefono: data.telefono,
@@ -60,8 +146,18 @@ export class EditarAcercaDeComponent implements OnInit {
         facebook: data.facebook,
         github: data.github,
       })
-    })
+    },
+      error => {
+        alert("Error al cargar el elemento");
+        this.router.navigate(['/'])
+      })
+  }
+  cargarDomicilio(i: number) {
     this.api.getDomicilio().subscribe((data: IDomicilio) => {
+      i++;
+      if (i == 3) {
+        this.borrarSpinner();
+      }
       this.formDomicilio.setValue({
         pais: data.pais,
         provincia: data.provincia,
@@ -70,77 +166,20 @@ export class EditarAcercaDeComponent implements OnInit {
         numero: data.numero,
         codigoPostal: data.codigoPostal
       })
-    })
+    },
+      error => {
+        alert("Error al cargar el elemento");
+        this.router.navigate(['/'])
+      })
   }
-  enviarAcercaDe() {
-    if (this.formPersona.touched) {
-      const x=document.getElementById('estadoEnvio');
-      this.api.putPersona(this.formPersona.value).subscribe(data => {
-        if (x != null) {
-          x.style.color = "green";
-          x.innerHTML = "Solicitud enviada correctamente"
-          this.api.actualizarPersona();
-        }
-      },
-        error => {
-          if (error.status = 401) {
-            alert("Error: debe volver a iniciar sesión");
-            this.router.navigate(['/login']);
-            window.location.reload();
-          } else {
-            if (x != null) {
-              x.style.color = "red";
-              x.innerHTML = "Error en solicitud HTTP en datos personales"
-            }
-          }
-        });
-      
+  borrarSpinner() {
+    if (this.x != null) {
+      this.x.style.display = "none";
     }
   }
-  enviarContacto() {
-    if (this.formContacto.touched) {
-      const x=document.getElementById('estadoEnvio');
-      this.api.putContacto(this.formContacto.value).subscribe(data => {
-        if (x != null) {
-          x.style.color = "green";
-          x.innerHTML = "Solicitud enviada correctamente"
-        }
-      },
-        error => {
-          if (error.status = 401) {
-            alert("Error: debe volver a iniciar sesión");
-            this.router.navigate(['/login']);
-            window.location.reload();
-          } else {
-            if (x != null) {
-              x.style.color = "red";
-              x.innerHTML = "Error en solicitud HTTP en campos de links"
-            }
-          }
-        });
-    }
-  }
-  enviarDomicilio() {
-    if(this.formDomicilio.touched){
-      const x=document.getElementById('estadoEnvio');
-      this.api.putDomicilio(this.formDomicilio.value).subscribe(data => {
-        if (x != null) {
-          x.style.color = "green";
-          x.innerHTML = "Solicitud enviada correctamente"
-        }
-      },
-        error => {
-          if (error.status = 401) {
-            alert("Error: debe volver a iniciar sesión");
-            this.router.navigate(['/login']);
-            window.location.reload();
-          } else {
-            if (x != null) {
-              x.style.color = "red";
-              x.innerHTML = "Error en solicitud HTTP en datos de domicilio"
-            }
-          }
-        });
+  mostrarSpinner() {
+    if (this.x != null) {
+      this.x.style.display = "block";//Mostrar spinner cargando
     }
   }
 }

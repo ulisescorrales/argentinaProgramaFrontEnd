@@ -30,15 +30,9 @@ export class AgregarProyectoComponent implements OnInit {
       const x = document.getElementById('estadoEnvio');
       this.api.postProyecto(this.formProyecto.value).subscribe(data => {
         if (x != null) {
-          x.style.color = "green";
-          x.innerHTML = "Solicitud enviada correctamente";
-          this.api.actualizarListProyecto();
-          //Vaciar casilleros
-          const y = document.getElementsByClassName('form-control');
-          Array.from(y).forEach(elemento => {
-            elemento.setAttribute('value', '');
-          });
-
+          alert("Elemento agregado correctamente")
+          this.api.actualizarListProyecto();                    
+          this.router.navigate(['/']);
         }
       },
         error => {

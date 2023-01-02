@@ -12,7 +12,8 @@ import { ApiService } from 'src/app/servicios/api.service';
 export class ExperienciaEditComponent implements OnInit {
   id: any;
   formExperiencia: FormGroup;
-  constructor(private router:Router,private formBuilder: FormBuilder, private rutaActiva: ActivatedRoute, private api: ApiService) {
+  x = document.getElementById('status');
+  constructor(private router: Router, private formBuilder: FormBuilder, private rutaActiva: ActivatedRoute, private api: ApiService) {
     this.formExperiencia = this.formBuilder.group({
       idExperiencia: [],
       organizacion: [],
@@ -25,9 +26,11 @@ export class ExperienciaEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.mostrarSpinner();
     this.rutaActiva.params.subscribe((params: Params) => {
       this.id = params['id'];
       this.api.getExperiencia(this.id).subscribe((data: IExperiencia) => {
+        this.borrarSpinner();
         this.formExperiencia.setValue({
           idExperiencia: data.idExperiencia,
           organizacion: data.organizacion,
@@ -50,11 +53,12 @@ export class ExperienciaEditComponent implements OnInit {
   eliminarTarea(item: MouseEvent): void {
 
   }
-  enviarExperiencia(){
-    if(this.formExperiencia.touched){
-      const x=document.getElementById('estadoEnvio');
+  enviarExperiencia() {
+    if (this.formExperiencia.touched) {
+      this.mostrarSpinner();
+      const x = document.getElementById('estadoEnvio');
       console.log(this.formExperiencia.value);
-      this.api.putExperiencia(this.id,this.formExperiencia.value).subscribe(data => {
+      this.api.putExperiencia(this.id, this.formExperiencia.value).subscribe(data => {
         if (x != null) {
           x.style.color = "green";
           x.innerHTML = "Solicitud enviada correctamente"
@@ -71,7 +75,18 @@ export class ExperienciaEditComponent implements OnInit {
               x.innerHTML = "Error en solicitud HTTP"
             }
           }
-        });
+        },
+      );
+    }
+  }
+  mostrarSpinner(){
+    if(this.x!=null){
+      this.x.style.display="block";
+    }
+  }
+  borrarSpinner(){
+    if(this.x!=null){
+      this.x.style.display="none";
     }
   }
 }

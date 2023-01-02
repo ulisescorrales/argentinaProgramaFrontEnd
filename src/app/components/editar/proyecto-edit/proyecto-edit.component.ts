@@ -13,6 +13,7 @@ import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 export class ProyectoEditComponent implements OnInit {
   formProyecto: FormGroup;
   id = 0;
+  x=document.getElementById('status');
   constructor(private rutaActiva: ActivatedRoute, private autenticacion: AutenticacionService, private router: Router, private api: ApiService, private formBuilder: FormBuilder) {
     this.formProyecto = this.formBuilder.group({
       nombre: [],
@@ -26,9 +27,11 @@ export class ProyectoEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.mostrarSpinner();
     this.rutaActiva.params.subscribe((params: Params) => {
-      this.id = params['id'];      
+      this.id = params['id'];
       this.api.getProyecto(this.id).subscribe((data: IProyecto) => {
+        this.borrarSpinner();
         this.formProyecto.setValue({
           nombre: data.nombre,
           logo: data.logo,
@@ -38,13 +41,18 @@ export class ProyectoEditComponent implements OnInit {
           githubFrontEnd: data.githubFrontEnd,
           githubBackEnd: data.githubBackEnd
         })
+      },
+      error=>{
+        alert("Error cargando el elemento");
+        this.router.navigate(['/']);
       });
     });
   }
   modificarProyecto() {
     if (this.formProyecto.touched) {
+      this.mostrarSpinner();
       const x = document.getElementById('estadoEnvio');
-      this.api.putProyecto(this.id,this.formProyecto.value).subscribe(data => {
+      this.api.putProyecto(this.id, this.formProyecto.value).subscribe(data => {        
         if (x != null) {
           x.style.color = "green";
           x.innerHTML = "Solicitud enviada correctamente";
@@ -69,7 +77,20 @@ export class ProyectoEditComponent implements OnInit {
               x.innerHTML = "Error. Revise el formulario";
             }
           }
+        },
+        ()=>{
+          this.borrarSpinner();
         });
+    }
+  }
+  borrarSpinner() {
+    if(this.x!=null){
+      this.x.style.display="none";
+    }
+  }
+  mostrarSpinner(){
+    if(this.x!=null){
+      this.x.style.display="block";
     }
   }
 }

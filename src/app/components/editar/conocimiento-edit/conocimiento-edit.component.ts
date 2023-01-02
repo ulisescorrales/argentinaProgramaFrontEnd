@@ -20,22 +20,40 @@ export class ConocimientoEditComponent implements OnInit {
     });
   }
   ngOnInit(): void {
+    const x = document.getElementById('status')
+    if (x != null) {
+      x.style.display = "block";
+    }
     this.rutaActiva.params.subscribe((params: Params) => {
+      if (x != null) {
+        x.style.display = "none";
+      }
       this.id = params['id'];
       this.api.getTecnologia(this.id).subscribe((data: ITecnologia) => {
         this.formCon.setValue({
           nombre: data.nombre,
           logo: data.logo
         })
-      });
+      },
+        error => {
+          alert("Error al cargar elemento");
+          this.router.navigate(['/']);
+        });
     });
 
   }
 
   enviarTecnologia() {
     if (this.formCon.touched) {
+      const y = document.getElementById('status')
+      if (y != null) {
+        y.style.display = "block";
+      }
       const x = document.getElementById('estadoEnvio');
       this.api.putTecnologia(this.id, this.formCon.value).subscribe(data => {
+        if (y != null) {
+          y.style.display = "none";
+        }
         if (x != null) {
           x.style.color = "green";
           x.innerHTML = "Solicitud enviada correctamente"

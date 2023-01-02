@@ -25,15 +25,9 @@ export class AgregarConocimientoComponent implements OnInit {
     const x=document.getElementById('estadoEnvio');
     this.api.postTecnologia(this.formCon.value).subscribe(data=>{
       if(x!=null){
-        x.style.color="green";
-        x.innerHTML="Solicitud enviada correctamente";
+        alert("Elemento agregado correctamente");
         this.api.actualizarListConocimiento();
-        //Vaciar casilleros
-        const y=document.getElementsByClassName('form-control');
-        Array.from(y).forEach(elemento=>{
-          elemento.setAttribute('value','');
-        });
-
+        this.router.navigate(['/']);
       }
     },
     error=>{

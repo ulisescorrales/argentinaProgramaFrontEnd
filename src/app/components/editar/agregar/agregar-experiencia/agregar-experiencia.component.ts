@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/servicios/api.service';
 
@@ -13,12 +13,12 @@ export class AgregarExperienciaComponent implements OnInit {
   constructor(private router:Router,private formBuilder: FormBuilder, private api: ApiService) {
     this.formExperiencia = this.formBuilder.group({
       idExperiencia: [],
-      organizacion: [],
+      organizacion: [,[Validators.required]],
       descripcion: [],
-      logo: [],
-      inicio: [],
+      logo: [,Validators.required],
+      inicio: [,Validators.required],
       fin: [],
-      titulo: [],
+      titulo: [,Validators.required],
     })
   }
 
@@ -28,9 +28,9 @@ export class AgregarExperienciaComponent implements OnInit {
     const x=document.getElementById("estadoEnvio");
     this.api.postExperiencia(this.formExperiencia.value).subscribe(data=>{
       if(x!=null){
-        x.style.color="green";
-        x.innerHTML="Solicitud enviada correctamente"
+        alert("Elemento agregado correctamente")
         this.api.actualizarListExperiencia();
+        this.router.navigate(['/'])
       }
     },
     error=>{

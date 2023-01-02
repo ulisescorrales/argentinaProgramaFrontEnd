@@ -9,3 +9,9 @@
     width:50%;
     border-color: black;
 }
+#status{
+    position:absolute;    
+    background-color:white;            
+    padding:2%;
+    display:none;
+}

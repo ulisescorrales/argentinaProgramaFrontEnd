@@ -34,9 +34,9 @@ export class AgregarEducacionComponent implements OnInit {
     const x=document.getElementById('estadoEnvio');
     this.api.postEducacion(this.formEd.value).subscribe(data=>{
       if(x!=null){
-        x.style.color="green";
-        x.innerHTML="Solicitud enviada correctamente";
+        alert("Elemento agregado correctamente")
         this.api.actualizarListEducacion();
+        this.router.navigate(['/login']);
       }
     },
     error=>{
