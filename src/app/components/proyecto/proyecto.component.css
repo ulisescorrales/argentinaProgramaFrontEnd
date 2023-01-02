@@ -1,4 +1,4 @@
-#grilla {
+.grilla {
     position: relative;
 }
 .middle {
@@ -17,4 +17,7 @@
 .grilla:hover img{
     opacity: 0.3;   
     transition: 0.8s ease;     
+}
+.logo{
+    width:45%;height:75%
 }

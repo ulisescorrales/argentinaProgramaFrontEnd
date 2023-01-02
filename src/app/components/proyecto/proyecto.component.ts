@@ -44,4 +44,6 @@ export class ProyectoComponent implements OnInit {
       this.columnas = 3;
     }
   }
+
+
 }

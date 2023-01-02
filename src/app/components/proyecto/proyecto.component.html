@@ -6,32 +6,43 @@
             </div>
         </div>
         <div class="row" style="margin-top: 20px" *ngFor="let filas of filasArray;index as i">
-            <div class="col text-center programa" *ngFor="let columnas of columnasArray; index as j" [ngSwitch]="j"
-                >
+            <div class="col text-center programa" *ngFor="let columnas of columnasArray; index as j" [ngSwitch]="j">
                 <!--Cargar data-aos según su posición en la grilla-->
-                <div class="row grilla" id="grilla">
+                <div class="row">
                     <div class="col">
                         <ng-template [ngIf]="columnas*i+j<tamanioKnowledge">
-                            <img class="" *ngSwitchCase="0" [src]="listProyecto[columnas*i+j].logo"
-                                style="width:45%;height:75%;" data-aos="fade-right" data-aos-duration="1000"
-                                data-aos-delay="250">
-                            <img class="" *ngSwitchCase="1" [src]="listProyecto[columnas*i+j].logo"
-                                style="width:45%;height:75%;" data-aos="zoom-in" data-aos-duration="1000"
-                                data-aos-delay="250">
-                            <img class="" *ngSwitchCase="2" [src]="listProyecto[columnas*i+j].logo"
-                                style="width:45%;height:75%;" data-aos="fade-left" data-aos-duration="1000"
-                                data-aos-delay="250">
-                            <!--Botones de edición de tecnologías-->
-                            <div class="middle" *ngIf="editar">
-                                <i class="fa-solid fa-pen  remarcar"
-                                    [routerLink]="['editar','proyecto',listProyecto[columnas*i+j].idProyecto]"></i>
-                                <i class="fa-sharp fa-solid fa-trash editar remarcar" data-aos="zoom-in"
-                                    data-aos-duration="1000" data-aos-delay="250"
-                                    [routerLink]="['editar','eliminar','proyecto',listProyecto[columnas*i+j].idProyecto]"></i>
+                            <div class="row grilla">
+                                <div class="col">
+                                    <img class="rounded mx-auto d-block logo" [src]="listProyecto[columnas*i+j].logo"
+                                        data-aos="zoom-out" data-aos-duration="1000" data-aos-delay="250">
+                                    <!--Botones de edición de tecnologías-->
+                                    <div class="middle" *ngIf="editar">
+                                        <i class="fa-solid fa-pen  remarcar"
+                                            [routerLink]="['editar','proyecto',listProyecto[columnas*i+j].idProyecto]"></i>
+                                        <i class="fa-sharp fa-solid fa-trash editar remarcar" data-aos="zoom-in"
+                                            data-aos-duration="1000" data-aos-delay="250"
+                                            [routerLink]="['editar','eliminar','proyecto',listProyecto[columnas*i+j].idProyecto]"></i>
+                                    </div>
+                                    <!--Boton de expandir información-->
+                                    <div class="middle" *ngIf="!editar">
+                                        <a data-bs-toggle="collapse" role="button"
+                                            [href]="'#proyecto'+listProyecto[columnas*i+j].idProyecto"
+                                            aria-expanded="false" aria-controls="collapseExample">
+                                            <h3><i class="fa-solid fa-circle-info remarcar"></i></h3>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="middle" *ngIf="!editar">
-                                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fa-solid fa-circle-info remarcar"></i></a>
-                            </div>                            
+                            <!-- información del proyecto-->
+                            <div class="row">
+                                <div class="col">
+                                    <p style="font-weight:bold">{{listProyecto[columnas*i+j].nombre}}</p>
+                                    <p>{{listProyecto[columnas*i+j].descripcion}}</p>
+                                    <a [href]="listProyecto[columnas*i+j].link">Link FrontEnd</a>
+                                    <a [href]="listProyecto[columnas*i+j].githubFrontEnd">Repositorio FrontEnd</a>
+                                    <a [href]="listProyecto[columnas*i+j].githubBackEnd">Repositorio BackEnd</a>
+                                </div>
+                            </div>
                         </ng-template>
                         <!--Cargar icono de editar, mejorar para cuando esté la grilla lena(se debe agregar una fila mas)-->
                         <ng-template [ngIf]="3*i+(j)==tamanioKnowledge && editar">
@@ -45,7 +56,7 @@
                             <h2><i *ngSwitchCase="2" class="fa-solid fa-circle-plus  remarcar" data-aos="fade-left"
                                     data-aos-duration="1000" data-aos-delay="250"
                                     [routerLink]="['editar','agregar','proyecto']"></i></h2>
-                        </ng-template>                        
+                        </ng-template>
                     </div>
                 </div>
                 <!--
@@ -61,7 +72,7 @@
                         </div>
                     </div>
                 </ng-template>
-                -->                
+                -->
             </div>
         </div>
     </div>
