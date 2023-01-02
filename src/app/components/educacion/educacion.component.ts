@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { IEducacion } from 'src/app/clases/IEducacion';
-import { ITecnologia } from 'src/app/clases/itecnologia';
+import { IEducacion } from 'src/app/interfaces/IEducacion';
+import { ITecnologia } from 'src/app/interfaces/itecnologia';
 import { ApiService } from 'src/app/servicios/api.service';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
+import { InicioService } from 'src/app/servicios/inicio.service';
 
 
 
@@ -19,11 +20,14 @@ export class EducacionComponent implements OnInit {
   knowledgeList: any;
   listEducacion: IEducacion[] = new Array<IEducacion>();
   listTecnologia:ITecnologia[]=new Array<ITecnologia>();
-  constructor(private api: ApiService,private autenticacion:AutenticacionService) { }
+  constructor(private inicio:InicioService,private api: ApiService,private autenticacion:AutenticacionService) { }
   ngOnInit(): void {        
     this.editar=this.autenticacion.logIn;//    
     this.api.getAllEducacion().subscribe((data: IEducacion[]) => {              
       this.listEducacion=data;
-    })    
+      this.inicio.sumarComponenteCargado();
+    }, error => {
+      this.inicio.sumarComponenteCargado();
+    });
   }    
 }

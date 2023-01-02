@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ITecnologia } from 'src/app/clases/itecnologia';
+import { ITecnologia } from 'src/app/interfaces/itecnologia';
 import { ApiService } from 'src/app/servicios/api.service';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
+import { InicioService } from 'src/app/servicios/inicio.service';
 
 @Component({
   selector: 'app-conocimientos',
@@ -20,7 +21,7 @@ export class ConocimientosComponent implements OnInit {
 
   knowledgeList: any;
   listTecnologia: ITecnologia[] = new Array<ITecnologia>();
-  constructor(private api: ApiService,private autenticacion:AutenticacionService) { }
+  constructor(private inicio:InicioService,private api: ApiService,private autenticacion:AutenticacionService) { }
   ngOnInit(): void {
     this.editar=this.autenticacion.logIn;
     this.api.getAllTecnologia().subscribe((data: ITecnologia[]) => {
@@ -33,6 +34,9 @@ export class ConocimientosComponent implements OnInit {
       this.columnasArray = Array(this.columnas).fill(this.columnas);
 
       this.listTecnologia=data;    
+      this.inicio.sumarComponenteCargado();
+    }, error => {
+      this.inicio.sumarComponenteCargado();
     })
   }
   //Conocimiento

@@ -1,9 +1,9 @@
 import { isExpressionFactoryMetadata } from '@angular/compiler/src/render3/r3_factory';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IContacto } from 'src/app/clases/contacto';
-import { IPersona } from 'src/app/clases/persona';
-import { IDomicilio } from 'src/app/clases/idomicilio';
+import { IContacto } from 'src/app/interfaces/contacto';
+import { IPersona } from 'src/app/interfaces/persona';
+import { IDomicilio } from 'src/app/interfaces/idomicilio';
 import { ApiService } from 'src/app/servicios/api.service';
 import { Router } from '@angular/router';
 
@@ -20,7 +20,7 @@ export class EditarAcercaDeComponent implements OnInit {
   formContacto: FormGroup;
   formDomicilio: FormGroup;
   x = document.getElementById('status');
-  i=0;
+  i = 0;
   constructor(private router: Router, private formBuilder: FormBuilder, private api: ApiService) {
     this.formPersona = this.formBuilder.group({
       sobreMi: [''],
@@ -46,7 +46,7 @@ export class EditarAcercaDeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.mostrarSpinner();    
+    this.mostrarSpinner();
     this.cargarPersona();
     this.cargarContacto();
     this.cargarDomicilio();
@@ -66,6 +66,9 @@ export class EditarAcercaDeComponent implements OnInit {
       },
         error => {
           this.notificarTokenVencido(error, x);
+        },
+        () => {
+          this.borrarSpinner();
         });
 
     }
@@ -83,6 +86,8 @@ export class EditarAcercaDeComponent implements OnInit {
       },
         error => {
           this.notificarTokenVencido(error, x);
+        }, () => {
+          this.borrarSpinner();
         });
     }
   }
@@ -99,9 +104,13 @@ export class EditarAcercaDeComponent implements OnInit {
       },
         error => {
           this.notificarTokenVencido(error, x);
+        },
+        () => {
+          this.borrarSpinner();
         });
     }
   }
+  //-----------------------
   notificarTokenVencido(error: any, x: any) {
     if (error.status = 401) {
       alert("Error: debe volver a iniciar sesión");

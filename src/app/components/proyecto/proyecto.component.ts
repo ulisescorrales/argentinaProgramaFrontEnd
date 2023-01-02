@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IProyecto } from 'src/app/clases/iproyecto';
+import { IProyecto } from 'src/app/interfaces/iproyecto';
 import { ApiService } from 'src/app/servicios/api.service';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
+import { InicioService } from 'src/app/servicios/inicio.service';
 
 @Component({
   selector: 'app-proyecto',
@@ -21,19 +22,22 @@ export class ProyectoComponent implements OnInit {
 
   knowledgeList: any;
   listProyecto: IProyecto[] = new Array<IProyecto>();
-  constructor(private api: ApiService, private autenticacion: AutenticacionService) { }
+  constructor(private inicio: InicioService, private api: ApiService, private autenticacion: AutenticacionService) { }
   ngOnInit(): void {
     this.editar = this.autenticacion.logIn;
     this.api.getAllProyecto().subscribe((data: IProyecto[]) => {
-      var longitud = data.length;      
+      var longitud = data.length;
 
       this.tamanioKnowledge = longitud;
       this.filas = Math.ceil(this.tamanioKnowledge / this.columnas);
       this.filasArray = Array(this.filas).fill(this.filas);//Es necesario el fill?
       this.columnasArray = Array(this.columnas).fill(this.columnas);
 
-      this.listProyecto=data;
-    })
+      this.listProyecto = data;
+      this.inicio.sumarComponenteCargado();
+    }, error => {
+      this.inicio.sumarComponenteCargado();
+    });    
   }
   //Conocimiento
 

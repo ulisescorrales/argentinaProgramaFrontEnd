@@ -12,6 +12,10 @@ export class AppComponent implements OnInit{
   constructor(){}
 
   ngOnInit() {
+    const x=document.getElementById('status');
+    if(x!=null){
+      x.style.display="block";
+    }
     AOS.init();   
   }   
 }

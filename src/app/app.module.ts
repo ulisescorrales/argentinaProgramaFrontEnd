@@ -8,10 +8,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AcercaDeComponent } from './components/acerca-de/acerca-de.component';
 import { ExperienciaComponent } from './components/experiencia/experiencia.component';
 import { EducacionComponent } from './components/educacion/educacion.component';
-import { HabilidadesComponent } from './components/habilidades/habilidades.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
-import { ConocimientoFormComponent } from './conocimiento-form/conocimiento-form.component';
 import { EditarComponent } from './components/editar/editar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ConocimientoEditComponent } from './components/editar/conocimiento-edit/conocimiento-edit.component';
@@ -30,8 +28,8 @@ import { InterceptorService } from './servicios/interceptor.service';
 import { ProyectoComponent } from './components/proyecto/proyecto.component';
 import { AgregarProyectoComponent } from './components/editar/agregar/agregar-proyecto/agregar-proyecto.component';
 import { ProyectoEditComponent } from './components/editar/proyecto-edit/proyecto-edit.component';
-import { SpinnerComponent } from './components/spinner/spinner.component';
 import { MensajesComponent } from './components/mensajes/mensajes.component';
+import { InicioService } from './servicios/inicio.service';
 
 
 @NgModule({
@@ -40,17 +38,15 @@ import { MensajesComponent } from './components/mensajes/mensajes.component';
     EncabezadoComponent,
     AcercaDeComponent,
     ExperienciaComponent,
-    EducacionComponent,
-    HabilidadesComponent,    
+    EducacionComponent,      
     LoginComponent,    
     FormularioComponent,
-    FooterComponent,
-    ConocimientoFormComponent,
+    FooterComponent,    
     EditarComponent,
     ConocimientoEditComponent,
     AgregarEducacionComponent,
     EducacionEditComponent,    
-    BorrarComponent, AgregarConocimientoComponent, AgregarConocimientoComponent, AgregarExperienciaComponent, ExperienciaEditComponent, ContactoComponent, EditarAcercaDeComponent, ConocimientosComponent, ProyectoComponent, AgregarProyectoComponent, ProyectoEditComponent, SpinnerComponent, MensajesComponent
+    BorrarComponent, AgregarConocimientoComponent, AgregarConocimientoComponent, AgregarExperienciaComponent, ExperienciaEditComponent, ContactoComponent, EditarAcercaDeComponent, ConocimientosComponent, ProyectoComponent, AgregarProyectoComponent, ProyectoEditComponent, MensajesComponent
   ],
   imports: [
     HttpClientModule,
@@ -59,7 +55,7 @@ import { MensajesComponent } from './components/mensajes/mensajes.component';
     ReactiveFormsModule,//
   ],
   providers: [ApiService,
-  {provide: HTTP_INTERCEPTORS, useClass:InterceptorService,multi:true}],
+  {provide: HTTP_INTERCEPTORS, useClass:InterceptorService,multi:true},InicioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

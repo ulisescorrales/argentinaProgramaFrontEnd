@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { IExperiencia } from 'src/app/clases/iexperiencia';
+import { IExperiencia } from 'src/app/interfaces/iexperiencia';
 import { ApiService } from 'src/app/servicios/api.service';
 
 @Component({

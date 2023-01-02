@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IContacto } from 'src/app/clases/contacto';
+import { IContacto } from 'src/app/interfaces/contacto';
 import { ApiService } from 'src/app/servicios/api.service';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
+import { InicioService } from 'src/app/servicios/inicio.service';
 
 @Component({
   selector: 'app-encabezado',
@@ -11,11 +12,14 @@ import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 export class EncabezadoComponent implements OnInit {
 
   editar:boolean=false;
-  contactos: IContacto| undefined ;
-  constructor(private api: ApiService,private autenticacion:AutenticacionService){       
+  contactos: IContacto| undefined ;  
+  constructor(private inicio:InicioService,private api: ApiService,private autenticacion:AutenticacionService){               
     this.api.getContacto().subscribe((data: IContacto) => {
       this.contactos = data;
-    })   
+      this.inicio.sumarComponenteCargado();
+    }, error => {      
+      this.inicio.sumarComponenteCargado();
+    });
   }
 
   ngOnInit(): void {    

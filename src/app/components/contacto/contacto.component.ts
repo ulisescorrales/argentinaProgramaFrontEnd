@@ -43,8 +43,7 @@ export class ContactoComponent implements OnInit {
     const x = document.getElementById('estadoMensaje');
     var status;
     if (!this.Mensaje?.errors && !this.Organizacion?.errors && !this.Contacto?.errors) {
-      var status;
-      console.log(this.form.value);
+      var status;      
       this.api.saveMensaje(this.form.value).subscribe(data => {
         status = data.status;
         console.log(data);

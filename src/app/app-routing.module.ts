@@ -19,6 +19,7 @@ import { EditarAcercaDeComponent } from './components/editar/editar-acerca-de/ed
 import { GuardGuard } from './servicios/guard.guard';
 import { ProyectoEditComponent } from './components/editar/proyecto-edit/proyecto-edit.component';
 import { AgregarProyectoComponent } from './components/editar/agregar/agregar-proyecto/agregar-proyecto.component';
+import { MensajesComponent } from './components/mensajes/mensajes.component';
 
 const routes: Routes = [
   //{path:'inicio', component: AppComponent},  
@@ -50,8 +51,8 @@ const routes: Routes = [
       }
     ], canActivate: [GuardGuard]
   },
-  {path:'mensaje',component:EditarAcercaDeComponent,children:[
-    { path: 'ver', component: AgregarEducacionComponent }
+  {path:'mensaje',component:EditarComponent,children:[
+    { path: 'ver', component: MensajesComponent }
   ]},
   { path: '', redirectTo: '/', pathMatch: 'full' } //Ruta de inicio
   //{path: '**', component: Pagina404Component}  //Componente Pagina 404

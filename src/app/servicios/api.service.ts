@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { Mensaje } from '../clases/mensaje';
-import { IPersona } from '../clases/persona';
-import { IContacto } from '../clases/contacto';
-import { IEducacion } from '../clases/IEducacion';
-import { ITecnologia } from '../clases/itecnologia';
-import { IExperiencia } from '../clases/iexperiencia';
-import { ITarea } from '../clases/itarea';
-import { IDomicilio } from '../clases/idomicilio';
-import { IProyecto } from '../clases/iproyecto';
+import { IMensaje } from '../interfaces/mensaje';
+import { IPersona } from '../interfaces/persona';
+import { IContacto } from '../interfaces/contacto';
+import { IEducacion } from '../interfaces/IEducacion';
+import { ITecnologia } from '../interfaces/itecnologia';
+import { IExperiencia } from '../interfaces/iexperiencia';
+import { ITarea } from '../interfaces/itarea';
+import { IDomicilio } from '../interfaces/idomicilio';
+import { IProyecto } from '../interfaces/iproyecto';
 
 @Injectable({
   providedIn: 'root'
@@ -51,11 +51,11 @@ export class ApiService {
   }
 
   //Mensaje
-  public saveMensaje(mensaje: Mensaje) {
+  public saveMensaje(mensaje: IMensaje) {
     return this.http.post(this.url + '/mensaje/crear', mensaje, { 'observe': 'response' });
   }
-  public getTodosMensajes(): Observable<Mensaje[]> {
-    return this.http.get<Mensaje[]>(this.url + '/mensaje/traer');
+  public getAllMensajes(): Observable<IMensaje[]> {
+    return this.http.get<IMensaje[]>(this.url + '/mensaje/traer');
   }
   //Persona
   public getPersona() {

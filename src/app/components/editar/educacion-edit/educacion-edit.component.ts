@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { IEducacion } from 'src/app/clases/IEducacion';
+import { IEducacion } from 'src/app/interfaces/IEducacion';
 import { ApiService } from 'src/app/servicios/api.service';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
