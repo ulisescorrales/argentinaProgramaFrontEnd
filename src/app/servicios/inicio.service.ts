@@ -16,8 +16,14 @@ export class InicioService {
     //el spinner desaparece    
     if (this.cant == 7) {
       const x = document.getElementById('status');
+      const y=document.getElementById('mensajeDeInicio');
       if (x != null) {
         x.style.display = "none";
+        x.style.backgroundColor="none";
+        x.style.borderStyle="none";
+      }
+      if(y!=null){
+        y.style.display='none';
       }
     }        
   }

@@ -7,9 +7,9 @@
     position:relative;
     border-color:black;
 }
-#absoluto{
-    
-       
+#absoluto{    
+    position:absolute;
+    top:90%;
 }
 
 p{

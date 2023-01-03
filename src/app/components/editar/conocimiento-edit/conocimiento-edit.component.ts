@@ -24,8 +24,7 @@ export class ConocimientoEditComponent implements OnInit {
     this.mostrarSpinner();
     this.rutaActiva.params.subscribe((params: Params) => {
       this.id = params['id'];
-      this.api.getTecnologia(this.id).subscribe((data: ITecnologia) => {
-        console.log(data);
+      this.api.getTecnologia(this.id).subscribe((data: ITecnologia) => {        
         this.formCon.setValue({
           nombre: data.nombre,
           logo: data.logo
@@ -34,6 +33,9 @@ export class ConocimientoEditComponent implements OnInit {
         error => {
           alert("Error al cargar elemento");
           this.router.navigate(['/']);
+        },
+        ()=>{
+          this.borrarSpinner();
         });
     });
 
@@ -41,6 +43,9 @@ export class ConocimientoEditComponent implements OnInit {
 
   enviarTecnologia() {
     if (this.formCon.touched) {
+      if(this.y!=null){
+        this.y.innerHTML="";
+      }
       this.mostrarSpinner();
       this.api.putTecnologia(this.id, this.formCon.value).subscribe(data => {
         this.borrarSpinner();

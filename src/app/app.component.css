@@ -53,6 +53,10 @@
 }
 
 #status{
+    border-radius: 20px;
+    padding:2%;
     position:fixed;            
     display:none;
+    background-color: white;
+    border-style: double;
 }
