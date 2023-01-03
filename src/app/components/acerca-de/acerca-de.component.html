@@ -1,24 +1,24 @@
 <div section="acercaDe">
     <div class="container" >
         <div class="row" id="relativo">
-            <div class="col">
-                <img [src]="persona?.fotoFondo" width="100%" alt="banner"/>
-                <div class="row" id="absoluto">
-                    <div class="col-2" >
-                        <img [src]="persona?.fotoPerfil" class="rounded-circle rounded mx-auto d-block"
-                            alt="banner" id="foto" />                        
-                        <h6 class="text-center" id="nombre">{{persona?.nombre}}</h6>
+            <div class="col" style="background-color:black" >
+                <img class="img-fluid"  id="imagen" [src]="persona?.fotoFondo" width="100%"  alt="Responsive Image" />
+            </div>
+            <div class="row" id="absoluto">
+                <div class="col-2" >
+                    <img [src]="persona?.fotoPerfil" class="rounded-circle rounded mx-auto d-block" alt="banner"
+                        id="foto" />
+                    <h6 class="text-center" id="nombre">{{persona?.apellido}} {{persona?.nombre}}</h6>
+                </div>
+                <div class="col-9 my-auto">
+                    <p class="font-weight-normal texto">{{persona?.sobreMi}}</p>
+                </div>
+                <ng-template [ngIf]="editar">
+                    <div class="col-1  my-auto">
+                        <i class="fa-solid fa-pen editar" routerLink="editar/acercaDe"></i>
                     </div>
-                    <div class="col-9 my-auto">
-                        <p class="font-weight-normal texto">{{persona?.sobreMi}}</p>
-                    </div>
-                    <ng-template [ngIf]="editar">
-                        <div class="col-1  my-auto">
-                            <i class="fa-solid fa-pen editar" routerLink="editar/acercaDe"></i>
-                        </div>
-                    </ng-template>
-                </div>        
-            </div>            
-        </div>        
+                </ng-template>
+            </div>
+        </div>
     </div>
 </div>

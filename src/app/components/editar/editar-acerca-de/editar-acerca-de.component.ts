@@ -114,8 +114,9 @@ export class EditarAcercaDeComponent implements OnInit {
   notificarTokenVencido(error: any, x: any) {
     if (error.status = 401) {
       alert("Error: debe volver a iniciar sesión");
-      this.router.navigate(['/login']);
-      window.location.reload();
+      this.router.navigate(['/login']).then(value => {
+        window.location.reload();
+      });
     } else {
       if (x != null) {
         x.style.color = "red";

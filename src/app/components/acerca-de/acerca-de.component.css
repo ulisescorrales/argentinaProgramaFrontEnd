@@ -9,9 +9,9 @@
 }
 #absoluto{    
     position:absolute;
-    top:90%;
+    top:93%;
+    left:1.2%;
 }
-
 p{
     margin-top:1%;
     
@@ -23,3 +23,6 @@ p{
     margin-left: 10px;
 }
 
+#imagen{
+    max-height: 300px;
+}
