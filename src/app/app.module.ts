@@ -9,7 +9,6 @@ import { AcercaDeComponent } from './components/acerca-de/acerca-de.component';
 import { ExperienciaComponent } from './components/experiencia/experiencia.component';
 import { EducacionComponent } from './components/educacion/educacion.component';
 import { LoginComponent } from './components/login/login.component';
-import { FormularioComponent } from './components/formulario/formulario.component';
 import { EditarComponent } from './components/editar/editar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ConocimientoEditComponent } from './components/editar/conocimiento-edit/conocimiento-edit.component';
@@ -39,8 +38,7 @@ import { InicioService } from './servicios/inicio.service';
     AcercaDeComponent,
     ExperienciaComponent,
     EducacionComponent,      
-    LoginComponent,    
-    FormularioComponent,
+    LoginComponent,        
     FooterComponent,    
     EditarComponent,
     ConocimientoEditComponent,

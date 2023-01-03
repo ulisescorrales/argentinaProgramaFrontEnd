@@ -21,3 +21,24 @@ a{
 a[routerLink="/login"]{
   margin-top: 1%;
 }
+
+#redesSegundaFila{
+  display:none;
+}
+@media (max-width:480px){
+  #redesPrimeraFila{
+    display:none
+  }
+  #redesSegundaFila{
+    display:block;
+  }  
+}
+
+@media (max-width:310px){
+  #curso{
+    font-size: 6vw;
+  }
+  .login{
+    font-size: 4vw;
+  }
+}

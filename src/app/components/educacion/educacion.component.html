@@ -33,7 +33,7 @@
                 <p class="texto">Estado: {{education.estado}}</p>
                 <p class="texto">Comienzo: {{education.anioIngreso}} </p>
                 <!--Finalización solo se muestra si se aprobaron todas las materias-->
-                <p *ngIf="education.materiasAprobadas==education.materiasTotales">Finalización: {{education.anioFinalizacion}}</p>
+                <p class="texto" *ngIf="education.materiasAprobadas==education.materiasTotales">Finalización: {{education.anioFinalizacion}}</p>
                 <!--Barra de progreso-->
             </div>
         </div>

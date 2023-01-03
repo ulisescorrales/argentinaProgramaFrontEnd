@@ -8,7 +8,6 @@ import { ConocimientoEditComponent } from './components/editar/conocimiento-edit
 import { EditarComponent } from './components/editar/editar.component';
 import { EducacionEditComponent } from './components/editar/educacion-edit/educacion-edit.component';
 import { BorrarComponent } from './components/editar/borrar/borrar.component';
-import { FormularioComponent } from './components/formulario/formulario.component';
 import { LoginComponent } from './components/login/login.component';
 import { AgregarEducacionComponent } from './components/editar/agregar/agregar-educacion/agregar-educacion.component';
 import { AgregarConocimientoComponent } from './components/editar/agregar/agregar-conocimiento/agregar-conocimiento.component';
