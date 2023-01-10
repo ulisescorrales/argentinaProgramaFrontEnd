@@ -15,7 +15,7 @@
       <a (click)="logout()" class="btn btn-primary btn-sm rounded float-end login" *ngIf="editar">Cerrar Sesion</a>
       <div id="redesPrimeraFila">
         <!--Facebook-->
-        <a [href]="contactos?.facebook" class="rounded float-end" target="_blank">
+        <a [href]="contactos?.facebook" class="rounded float-end" target="_blank" *ngIf="contactos?.facebook!=''">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook"
             viewBox="0 0 16 16">
             <path
@@ -23,7 +23,7 @@
           </svg>
         </a>
         <!--Twitter-->
-        <a [href]="contactos?.twitter" class="rounded float-end" target="_blank">
+        <a [href]="contactos?.twitter" class="rounded float-end" target="_blank" *ngIf="contactos?.twitter!=''">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter"
             viewBox="0 0 16 16">
             <path
@@ -31,7 +31,7 @@
           </svg>
         </a>
         <!--Linkedin-->
-        <a [href]="contactos?.linkedin" class="rounded float-end" target="_blank">
+        <a [href]="contactos?.linkedin" class="rounded float-end" target="_blank" *ngIf="contactos?.linkedin!=''">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin"
             viewBox="0 0 16 16">
             <path
@@ -39,7 +39,7 @@
           </svg>
         </a>
         <!--GitHub-->
-        <a [href]="contactos?.github" class="rounded float-end" target="_blank">
+        <a [href]="contactos?.github" class="rounded float-end" target="_blank" *ngIf="contactos?.github!=''">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github"
             viewBox="0 0 16 16">
             <path

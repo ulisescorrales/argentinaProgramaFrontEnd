@@ -10,10 +10,17 @@ import { ApiService } from 'src/app/servicios/api.service';
 export class MensajesComponent implements OnInit {
 
   listMensaje:IMensaje[]|undefined;
+  x=document.getElementById('status');
   constructor(private api:ApiService) { }
 
   ngOnInit(): void {
+    if(this.x!=null){
+      this.x.style.display='none';
+    }
     this.api.getAllMensajes().subscribe((data:IMensaje[])=>{
+      if(this.x!=null){
+        this.x.style.display='block';
+      }
       this.listMensaje=data;
       const x=document.getElementById('editar');
       if(x!=null){
