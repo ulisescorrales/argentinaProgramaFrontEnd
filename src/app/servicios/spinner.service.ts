@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class InicioService {
+export class SpinnerService {
   //Servicio usado para contabilizar los componentes cargados (con o sin errores) durante el inicio de la página
+  //y para la visualización del spinner de carga
   cant:number = 0;  
+  x=document.getElementById('status');
+  
   constructor() {        
   }
 

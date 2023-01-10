@@ -11,9 +11,10 @@ import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 })
 export class AgregarConocimientoComponent implements OnInit {
   formCon: FormGroup;
-  constructor(private autenticacion:AutenticacionService,private router:Router,private api: ApiService, private formBuilder: FormBuilder) {
+  y = document.getElementById('status');
+  constructor(private autenticacion: AutenticacionService, private router: Router, private api: ApiService, private formBuilder: FormBuilder) {
     this.formCon = this.formBuilder.group({
-      idTecnologia:[''],
+      idTecnologia: [''],
       nombre: [''],
       logo: ['']
     });
@@ -21,27 +22,40 @@ export class AgregarConocimientoComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  agregarConocimiento(){
-    const x=document.getElementById('estadoEnvio');
-    this.api.postTecnologia(this.formCon.value).subscribe(data=>{
-      if(x!=null){
+  agregarConocimiento() {
+    this.mostrarSpinner();
+    const x = document.getElementById('estadoEnvio');
+    this.api.postTecnologia(this.formCon.value).subscribe(data => {
+      if (x != null) {
         alert("Elemento agregado correctamente");
         this.api.actualizarListConocimiento();
         this.router.navigate(['/']);
       }
     },
-    error=>{
-      if(error.status==401){
-        alert("Error: debe volver a iniciar sesión");        
-        this.router.navigate(['/login']).then(value=>{
-          window.location.reload();
-        });        
-      }else{
-        if(x!=null){
-          x.style.color="red";
-          x.innerHTML="Error. Revise el formulario";
+      error => {
+        if (error.status == 401) {
+          alert("Error: debe volver a iniciar sesión");
+          this.router.navigate(['/login']).then(value => {
+            window.location.reload();
+          });
+        } else {
+          if (x != null) {
+            x.style.color = "red";
+            x.innerHTML = "Error. Revise el formulario";
+          }
         }
-      }      
-    });
+      }, () => {
+        this.borrarSpinner();
+      });
+  }
+  mostrarSpinner() {
+    if (this.y != null) {
+      this.y.style.display = "block";
+    }
+  }
+  borrarSpinner() {
+    if (this.y != null) {
+      this.y.style.display = "none";
+    }
   }
 }

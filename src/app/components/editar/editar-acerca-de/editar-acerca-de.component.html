@@ -1,6 +1,14 @@
 <div class="d-flex flex-column mb-3">
     <form [formGroup]="formPersona" (ngSubmit)="enviarPersona()">
         <div class="p-2">
+            <label>Nombre:</label>
+            <input class="form-control" formControlName="nombre">
+        </div>
+        <div class="p-2">
+            <label>Apellido:</label>
+            <input class="form-control" formControlName="apellido">
+        </div>
+        <div class="p-2">
             <label>Foto de Perfil:</label>
             <input class="form-control" formControlName="fotoPerfil">
         </div>
@@ -9,8 +17,8 @@
             <input class="form-control" formControlName="fotoFondo">
         </div>
         <div class="p-2">
-            <label>Descripcion:</label>
-            <input class="form-control" formControlName="sobreMi">
+            <label>Sobre mi:</label>
+            <textarea class="form-control" formControlName="sobreMi"  rows="3"></textarea>            
         </div>
         <div class="p-2">
             <button type="submit" formTar class="btn btn-primary mb-3 rounded mx-auto d-block">Modificar Acerca De</button>

@@ -7,3 +7,8 @@
     border-color: black;
     border-radius: 20px;
 }
+@media(max-width:400px){
+    #login{
+        width:80%;
+    }
+}

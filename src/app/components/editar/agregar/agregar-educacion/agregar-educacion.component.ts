@@ -14,6 +14,7 @@ export class AgregarEducacionComponent implements OnInit {
   
 
   formEd: FormGroup;
+  y=document.getElementById('status');
   constructor(private router:Router,private formBuilder: FormBuilder, private datosPortfolio: PortfolioService, private api: ApiService) {
     this.formEd = this.formBuilder.group({
       institucion: ['', [Validators.required]],
@@ -31,6 +32,7 @@ export class AgregarEducacionComponent implements OnInit {
   ngOnInit(): void {
   }
   agregarEducacion(){
+    this.mostrarSpinner();
     const x=document.getElementById('estadoEnvio');
     this.api.postEducacion(this.formEd.value).subscribe(data=>{
       if(x!=null){
@@ -51,6 +53,19 @@ export class AgregarEducacionComponent implements OnInit {
           x.innerHTML="Error. Revise el formulario"
         }
       }      
+    },
+    ()=>{
+      this.borrarSpinner();
     });;
+  }
+  mostrarSpinner() {
+    if (this.y != null) {
+      this.y.style.display = "block";
+    }
+  }
+  borrarSpinner() {
+    if (this.y != null) {
+      this.y.style.display = "none";
+    }
   }
 }

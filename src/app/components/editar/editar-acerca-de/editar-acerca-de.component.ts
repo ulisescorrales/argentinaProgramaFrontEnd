@@ -26,6 +26,8 @@ export class EditarAcercaDeComponent implements OnInit {
       sobreMi: [''],
       fotoPerfil: ['', [Validators.required]],
       fotoFondo: ['', [Validators.required]],
+      nombre: ['', [Validators.required]],
+      apellido: ['', [Validators.required]]
     });
     this.formContacto = this.formBuilder.group({
       email: [''],
@@ -134,7 +136,9 @@ export class EditarAcercaDeComponent implements OnInit {
       this.formPersona.setValue({
         sobreMi: data.sobreMi,
         fotoPerfil: data.fotoPerfil,
-        fotoFondo: data.fotoFondo
+        fotoFondo: data.fotoFondo,
+        nombre:data.nombre,
+        apellido:data.apellido
       })
     },
       error => {

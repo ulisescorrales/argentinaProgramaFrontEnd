@@ -10,6 +10,7 @@ import { ApiService } from 'src/app/servicios/api.service';
 })
 export class AgregarExperienciaComponent implements OnInit {
   formExperiencia: FormGroup;
+  y=document.getElementById('status');
   constructor(private router:Router,private formBuilder: FormBuilder, private api: ApiService) {
     this.formExperiencia = this.formBuilder.group({
       idExperiencia: [],
@@ -25,6 +26,7 @@ export class AgregarExperienciaComponent implements OnInit {
   ngOnInit(): void {
   }
   agregarExperiencia(){
+    this.mostrarSpinner();
     const x=document.getElementById("estadoEnvio");
     this.api.postExperiencia(this.formExperiencia.value).subscribe(data=>{
       if(x!=null){
@@ -45,6 +47,19 @@ export class AgregarExperienciaComponent implements OnInit {
           x.innerHTML="Error. Revise el formulario"
         }
       }      
-    });;
+    },
+    ()=>{
+      this.borrarSpinner;
+    });    
+  }
+  mostrarSpinner() {
+    if (this.y != null) {
+      this.y.style.display = "block";
+    }
+  }
+  borrarSpinner() {
+    if (this.y != null) {
+      this.y.style.display = "none";
+    }
   }
 }

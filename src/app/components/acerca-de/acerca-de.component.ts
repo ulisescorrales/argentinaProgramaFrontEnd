@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IPersona } from 'src/app/interfaces/persona';
 import { ApiService } from 'src/app/servicios/api.service';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
-import { InicioService } from 'src/app/servicios/inicio.service';
+import { SpinnerService } from 'src/app/servicios/spinner.service';
 
 @Component({
   selector: 'app-acerca-de',
@@ -12,7 +12,7 @@ import { InicioService } from 'src/app/servicios/inicio.service';
 export class AcercaDeComponent implements OnInit {
   editar: boolean = false;
   persona: IPersona | undefined;
-  constructor(private inicio: InicioService, private api: ApiService, private autenticacion: AutenticacionService) { }
+  constructor(private inicio: SpinnerService, private api: ApiService, private autenticacion: AutenticacionService) { }
 
   ngOnInit(): void {
     this.editar = this.autenticacion.logIn;

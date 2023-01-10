@@ -19,8 +19,8 @@
         </div>
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
-            <input type="text" formControlName="mensaje" class="form-control" placeholder="Mensaje"
-                [ngClass]="{'is-invalid':Mensaje?.errors && Mensaje?.touched, 'is-valid':!Mensaje?.errors && Mensaje?.touched}">
+            <textarea class="form-control"  rows="3" formControlName="mensaje" placeholder="Mensaje"
+            [ngClass]="{'is-invalid':Mensaje?.errors && Mensaje?.touched, 'is-valid':!Mensaje?.errors && Mensaje?.touched}"></textarea>            
             <div *ngIf="Mensaje?.errors && Mensaje?.touched">
                 <p *ngIf="Mensaje?.hasError('required')" class="text-danger">Escriba un mensaje</p>
             </div>

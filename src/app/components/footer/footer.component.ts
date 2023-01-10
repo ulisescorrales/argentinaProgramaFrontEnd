@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IDomicilio } from 'src/app/interfaces/idomicilio';
 import { ApiService } from 'src/app/servicios/api.service';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
-import { InicioService } from 'src/app/servicios/inicio.service';
+import { SpinnerService } from 'src/app/servicios/spinner.service';
 
 @Component({
   selector: 'app-footer',
@@ -12,7 +12,7 @@ import { InicioService } from 'src/app/servicios/inicio.service';
 export class FooterComponent implements OnInit {
   dom: IDomicilio | undefined;
   autenticado: boolean = false;
-  constructor(private inicio: InicioService, private auth: AutenticacionService, private api: ApiService) { }
+  constructor(private inicio: SpinnerService, private auth: AutenticacionService, private api: ApiService) { }
 
 
   ngOnInit(): void {

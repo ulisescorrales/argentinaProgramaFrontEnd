@@ -11,6 +11,7 @@ import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 })
 export class AgregarProyectoComponent implements OnInit {
   formProyecto: FormGroup;
+  y=document.getElementById('status');
   constructor(private autenticacion: AutenticacionService, private router: Router, private api: ApiService, private formBuilder: FormBuilder) {
     this.formProyecto = this.formBuilder.group({
       nombre: [],
@@ -26,6 +27,7 @@ export class AgregarProyectoComponent implements OnInit {
   ngOnInit(): void {
   }
   agregarProyecto() {
+    this.mostrarSpinner();
     if (this.formProyecto.touched) {
       const x = document.getElementById('estadoEnvio');
       this.api.postProyecto(this.formProyecto.value).subscribe(data => {
@@ -47,7 +49,20 @@ export class AgregarProyectoComponent implements OnInit {
               x.innerHTML = "Error. Revise el formulario";
             }
           }
+        },
+        ()=>{
+          this.borrarSpinner();
         });
+    }
+  }
+  mostrarSpinner() {
+    if (this.y != null) {
+      this.y.style.display = "block";
+    }
+  }
+  borrarSpinner() {
+    if (this.y != null) {
+      this.y.style.display = "none";
     }
   }
 }

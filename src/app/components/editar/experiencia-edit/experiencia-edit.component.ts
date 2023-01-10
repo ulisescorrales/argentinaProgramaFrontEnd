@@ -65,6 +65,7 @@ export class ExperienciaEditComponent implements OnInit {
           this.y.style.color = "green";
           this.y.innerHTML = "Solicitud enviada correctamente"
         }
+        this.api.actualizarListExperiencia();
       },
         error => {
           if (error.status = 401) {

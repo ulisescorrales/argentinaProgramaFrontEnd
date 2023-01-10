@@ -28,7 +28,7 @@ import { ProyectoComponent } from './components/proyecto/proyecto.component';
 import { AgregarProyectoComponent } from './components/editar/agregar/agregar-proyecto/agregar-proyecto.component';
 import { ProyectoEditComponent } from './components/editar/proyecto-edit/proyecto-edit.component';
 import { MensajesComponent } from './components/mensajes/mensajes.component';
-import { InicioService } from './servicios/inicio.service';
+import { SpinnerService } from './servicios/spinner.service';
 
 
 @NgModule({
@@ -53,7 +53,7 @@ import { InicioService } from './servicios/inicio.service';
     ReactiveFormsModule,//
   ],
   providers: [ApiService,
-  {provide: HTTP_INTERCEPTORS, useClass:InterceptorService,multi:true},InicioService],
+  {provide: HTTP_INTERCEPTORS, useClass:InterceptorService,multi:true},SpinnerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

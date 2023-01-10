@@ -9,3 +9,14 @@
     width:50%;
     border-color: black;
 }
+
+@media(max-width:500px){
+    #editar{
+        width:95%;
+    }
+}
+@media(max-width:800px){
+    #editar{
+        width:80%;
+    }
+}

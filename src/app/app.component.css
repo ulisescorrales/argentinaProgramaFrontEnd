@@ -29,7 +29,7 @@
 }
 
 @media (max-width:780px) {
-    :host ::ng-deep .logo {
+     .logo {
         max-width: 100%;
         min-width: 40px;
     }

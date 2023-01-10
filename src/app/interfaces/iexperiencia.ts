@@ -5,7 +5,7 @@ export interface IExperiencia {
     organizacion:String;
     descripcion:String;
     logo:String;
-    inicio:Date;
-    fin:Date;    
+    inicio:String;
+    fin:String;
     titulo:String;
 }

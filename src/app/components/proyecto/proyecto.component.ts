@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProyecto } from 'src/app/interfaces/iproyecto';
 import { ApiService } from 'src/app/servicios/api.service';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
-import { InicioService } from 'src/app/servicios/inicio.service';
+import { SpinnerService } from 'src/app/servicios/spinner.service';
 
 @Component({
   selector: 'app-proyecto',
@@ -22,7 +22,7 @@ export class ProyectoComponent implements OnInit {
 
   knowledgeList: any;
   listProyecto: IProyecto[] = new Array<IProyecto>();
-  constructor(private inicio: InicioService, private api: ApiService, private autenticacion: AutenticacionService) { }
+  constructor(private inicio: SpinnerService, private api: ApiService, private autenticacion: AutenticacionService) { }
   ngOnInit(): void {
     this.editar = this.autenticacion.logIn;
     this.api.getAllProyecto().subscribe((data: IProyecto[]) => {
