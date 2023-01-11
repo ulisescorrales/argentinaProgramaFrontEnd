@@ -22,6 +22,9 @@
     :host ::ng-deep .titulo {
         font-size: 5vw;
     }
+    :host ::ng-deep .tituloItem {
+        font-size: 4vw;
+    }
 
     :host ::ng-deep #nombre {
         font-size: 3vw;

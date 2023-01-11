@@ -10,13 +10,8 @@
 
 #absoluto {
     position: absolute;
-    top: 93%;
-    left: 1.2%;
-}
-
-p {
-    margin-top: 1%;
-
+    top: 80%;
+    
 }
 
 .editar:hover {
@@ -28,22 +23,8 @@ p {
 }
 
 #imagen {
-    max-height: 240px;
+    max-height: 25vw;    
 }
 
-@media (max-width:580px) {
-    #imagen {
-        max-height: 160px;
-    }
-}
 
-@media (max-width:580px) {
-    #imagen {
-        max-height: 120px;
-    }
-}
-@media (max-width:330px) {
-    #imagen {
-        max-height: 80px;
-    }
-}
+

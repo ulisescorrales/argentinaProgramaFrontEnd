@@ -2,7 +2,7 @@
     <div class="container">    
     <div class="row border-bottom">
         <div class="col text-center">
-            <h2 data-aos="fade-right" data-aos-duration="1000" data-aos-delay="250">Experiencia</h2>
+            <h2 class="titulo" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="250">Experiencia</h2>
         </div>
     </div>
     <div class="row  primerRenglon" *ngFor="let experiencia of listExperiencia" data-aos="fade-right"
@@ -12,7 +12,7 @@
             <img [src]="experiencia.logo" class="img-fluid logo" alt="Responsive image" />
         </div>
         <div class="col text-left">
-            <h2>{{experiencia.titulo}}</h2>
+            <h2 class="tituloItem">{{experiencia.titulo}}</h2>
             <p class="texto">Institución: {{experiencia.organizacion}}</p>
             <p class="texto">Inicio: {{experiencia.inicio}}</p>
             <p *ngIf="experiencia.fin!='' " class="texto">Fin: {{experiencia.fin}}</p>
