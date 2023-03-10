@@ -7,8 +7,7 @@ declare let AOS: any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
-  title = 'angProyect';    
+export class AppComponent implements OnInit{  
   constructor(){}
 
   ngOnInit() {

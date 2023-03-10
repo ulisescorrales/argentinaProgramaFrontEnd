@@ -4,7 +4,12 @@ body {
 
 #borde {    
 }
-
+a{
+  padding-right: 1%;
+}
+.login{
+  padding:3%
+}
 
 
 #redesSegundaFila {
