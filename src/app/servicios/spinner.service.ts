@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,15 +9,21 @@ export class SpinnerService {
   //y para la visualización del spinner de carga
   cant:number = 0;  
   x=document.getElementById('status');
-  
+  //cargado=new BehaviorSubject<boolean>(false);   
+  cargado=false;
   constructor() {        
   }
 
-  sumarComponenteCargado() {
+  getCargado(){    
+    return this.cargado
+  }
+  sumarComponenteCargado() {    
     this.cant++;        
     //Cuando terminan de realizarse todas las peticiones HTTP 
     //el spinner desaparece    
     if (this.cant == 7) {
+      //this.cargado.next(true);      
+      this.cargado=true;
       const x = document.getElementById('status');
       const y=document.getElementById('mensajeDeInicio');
       if (x != null) {
