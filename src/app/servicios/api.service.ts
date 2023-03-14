@@ -16,7 +16,7 @@ import { IProyecto } from '../interfaces/iproyecto';
   providedIn: 'root'
 })
 export class ApiService {
-  url = "https://argentinaprogramabackenddeploy.onrender.com";
+  url = "https://ulisescorrales-porfolio.onrender.com";
   //url="http://localhost:8080"
   listEducacion = new Subject<IEducacion[]>();
   persona = new Subject<IPersona>();
@@ -28,7 +28,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
   //Actualizar valores
-  actualizarListEducacion() {    
+  actualizarListEducacion() {
     this.getAllEducacion().subscribe()
   }
   actualizarPersona() {
@@ -153,7 +153,7 @@ export class ApiService {
     });
     return this.listProyecto;
   }
-  public getProyecto(id:number){    
+  public getProyecto(id:number){
     return this.http.get<IProyecto>(this.url+'/proyecto/traer/'+id);
   }
   public putProyecto(id:number,unProyecto:IProyecto){

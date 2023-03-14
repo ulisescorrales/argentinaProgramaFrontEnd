@@ -1,32 +1,16 @@
 body {
-  font-family: sans-serif;
-  font-size: 1.1em;
+  font-family: sans-serif;      
 }
 
-#borde {
-  border: 2px black;
-  border-radius: 5px;
+#borde {    
+}
+a{
+  padding-right: 1%;
+}
+.login{
+  padding:3%
 }
 
-#fb {
-  margin-left: 50%;
-}
-
-.login {
-  margin: 2%;
-}
-
-#curso {
-  padding-top: 1%;
-}
-
-a {
-  padding: 1%;
-}
-
-a[routerLink="/login"] {
-  margin-top: 1%;
-}
 
 #redesSegundaFila {
   display: none;

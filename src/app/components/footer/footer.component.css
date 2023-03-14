@@ -10,8 +10,8 @@ p{
 a{
     font-size:14px;
 }
-.container{
-    padding: 10px;
+#fila{
+    padding: 2%;
 }
 @media(max-width:380px){
     .mensaje{

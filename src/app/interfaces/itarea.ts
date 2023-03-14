@@ -1,6 +1,6 @@
 export interface ITarea {
     idTarea:number;
-    idExperiencia:number;
+    titulo:String;    
     descripcion:String;
-    logo:String;
+    repositorio:String;    
 }

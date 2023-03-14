@@ -2,7 +2,7 @@
     <div class="container" style="overflow-y: auto;">
         <div class="row">
             <div class="col text-center">
-                <h2 data-aos="fade-right" data-aos-duration="1000" data-aos-delay="250">Educación</h2>
+                <h2 class="titulo" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="250">Educación</h2>
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
                 <!--Descripción-->
                 <div class="row">
                     <div class="col-10 text-left contenido">
-                        <h2 class="titulo"> {{education.titulo}}</h2>
+                        <h2 class="tituloItem"> {{education.titulo}}</h2>
                     </div>
                     <ng-template [ngIf]="editar">
                         <div class="col-1  my-auto">
@@ -34,7 +34,7 @@
                 <p class="texto">Comienzo: {{education.anioIngreso}} </p>
                 <!--Finalización solo se muestra si se aprobaron todas las materias-->
                 <p class="texto" *ngIf="education.materiasAprobadas==education.materiasTotales">Finalización: {{education.anioFinalizacion}}</p>
-                <!--Barra de progreso-->
+                <a class="texto" target="_blank" [href]="education.certificado" *ngIf="education.certificado != null">Certificado</a>                
             </div>
         </div>
         <div class="container">
@@ -51,7 +51,7 @@
             </div>
             <!-- redondear el resultado usando Math.floor()-->
             <div class="row text-center" id="porcentaje">
-                <p>{{Math.floor((education.materiasAprobadas/education.materiasTotales)*100)}}%</p>
+                <p class="texto">{{Math.floor((education.materiasAprobadas/education.materiasTotales)*100)}}%</p>
             </div>
         </div>
     </div>
