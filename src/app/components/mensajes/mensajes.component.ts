@@ -15,11 +15,11 @@ export class MensajesComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.x!=null){
-      this.x.style.display='none';
+      this.x.style.display='block';
     }
     this.api.getAllMensajes().subscribe((data:IMensaje[])=>{
       if(this.x!=null){
-        this.x.style.display='block';
+        this.x.style.display='none';
       }
       this.listMensaje=data;
       const x=document.getElementById('editar');

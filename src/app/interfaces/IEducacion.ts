@@ -8,5 +8,6 @@ export interface IEducacion {
      materiasTotales:number;
      materiasAprobadas:number;     
      anioFinalizacion:number;
-     duracion:String;    
+     duracion:String;
+     certificado:String;  
 }

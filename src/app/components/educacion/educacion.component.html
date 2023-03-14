@@ -34,7 +34,7 @@
                 <p class="texto">Comienzo: {{education.anioIngreso}} </p>
                 <!--Finalización solo se muestra si se aprobaron todas las materias-->
                 <p class="texto" *ngIf="education.materiasAprobadas==education.materiasTotales">Finalización: {{education.anioFinalizacion}}</p>
-                <!--Barra de progreso-->
+                <a class="texto" target="_blank" [href]="education.certificado" *ngIf="education.certificado != null">Certificado</a>                
             </div>
         </div>
         <div class="container">

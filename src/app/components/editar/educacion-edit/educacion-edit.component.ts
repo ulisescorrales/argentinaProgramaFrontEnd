@@ -27,7 +27,8 @@ export class EducacionEditComponent implements OnInit {
       anioFinalizacion: ['',],
       materiasTotales: ['', [Validators.required]],
       materiasAprobadas: ['', [Validators.required]],
-      duracion: ['']
+      duracion: [''],
+      certificado:['',[Validators.required]]
     });
   }
   ngOnInit(): void {    
@@ -36,6 +37,7 @@ export class EducacionEditComponent implements OnInit {
       this.id = params['id'];
       this.api.getEducacion(this.id).subscribe((data: IEducacion) => {
         this.borrarSpinner();
+        console.log(data);
         this.formEd.setValue({
           institucion: data.institucion,
           logo: data.logo,
@@ -45,7 +47,8 @@ export class EducacionEditComponent implements OnInit {
           titulo: data.titulo,
           materiasTotales: data.materiasTotales,
           materiasAprobadas: data.materiasAprobadas,
-          duracion: data.duracion
+          duracion: data.duracion,
+          certificado: data.certificado
         })
           ;
       },
