@@ -28,7 +28,7 @@ export class EducacionEditComponent implements OnInit {
       materiasTotales: ['', [Validators.required]],
       materiasAprobadas: ['', [Validators.required]],
       duracion: [''],
-      certificado:['',[Validators.required]]
+      certificado:['',]
     });
   }
   ngOnInit(): void {    

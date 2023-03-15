@@ -70,8 +70,9 @@ export class ExperienciaEditComponent implements OnInit {
         error => {
           if (error.status = 401) {
             alert("Error: debe volver a iniciar sesión");
-            this.router.navigate(['/login']);
-            window.location.reload();
+            this.router.navigate(['/login']).then(()=>{
+              window.location.reload();
+            });            
           } else {
             if (this.y != null) {
               this.y.style.color = "red";

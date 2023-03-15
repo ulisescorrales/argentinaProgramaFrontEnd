@@ -1,3 +1,4 @@
+import { ITarea } from "./itarea";
 
 
 export interface IExperiencia {
@@ -8,4 +9,5 @@ export interface IExperiencia {
     inicio:String;
     fin:String;
     titulo:String;
+    tareas:ITarea[];
 }

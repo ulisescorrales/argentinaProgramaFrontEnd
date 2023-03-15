@@ -17,6 +17,12 @@
             <p class="texto">Inicio: {{experiencia.inicio}}</p>
             <p *ngIf="experiencia.fin!='' " class="texto">Fin: {{experiencia.fin}}</p>
             <p class="texto">{{experiencia.descripcion}}</p>
+            <ul *ngFor="let tarea of experiencia.tareas">
+                <li>{{tarea.descripcion}}</li>
+                <ul *ngIf="tarea.repositorio!=null">
+                    <li><a [href]="tarea.repositorio">Repositorio</a></li>
+                </ul>
+            </ul>            
             <ul>
                 <!--
                     <li *ngFor="let task of experiencia.task">{{task.description}}.
