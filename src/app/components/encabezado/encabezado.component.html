@@ -46,7 +46,7 @@
     <div class="col-1 my-auto">
       <!--Login-->
       <a routerLink="/login" class="btn btn-primary btn-sm rounded float-end login" *ngIf="!editar">Login</a>
-      <a (click)="logout()" class="btn btn-primary btn-sm rounded float-end login" *ngIf="editar">Cerrar Sesion</a>      
+      <a (click)="logout()" class="btn btn-danger btn-sm rounded float-end login" *ngIf="editar">Cerrar Sesion</a>      
     </div>
   </div>
   <div class="row" id="redesSegundaFila">

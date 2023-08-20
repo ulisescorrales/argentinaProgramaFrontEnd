@@ -39,10 +39,14 @@ export class LoginComponent implements OnInit {
     this.autenticationService.IniciarSesion(this.form.value).subscribe(data => {      
       this.ruta.navigate(['/']).then(value => { window.location.reload() });
     },
-      error => {
-        if (x != null) {
-          x.style.color = "red";
-          x.innerHTML = "Error de autenticación";
+      error => {        
+        if (x != null) {          
+          x.style.color = "red";          
+          if(error.status==401){            
+            x.innerHTML = "Usuario o contraseña incorrectos";
+          }else{
+            x.innerHTML = "Error de autenticación";
+          }          
         }
       })
   }
