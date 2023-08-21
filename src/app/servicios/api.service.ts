@@ -11,7 +11,7 @@ import { IExperiencia } from '../interfaces/iexperiencia';
 import { ITarea } from '../interfaces/itarea';
 import { IDomicilio } from '../interfaces/idomicilio';
 import { IProyecto } from '../interfaces/iproyecto';
-import { Url } from './URL';
+import { Url } from './url';
 
 @Injectable({
   providedIn: 'root'
