@@ -17,8 +17,8 @@ import { IProyecto } from '../interfaces/iproyecto';
 })
 export class ApiService {
   //Setear modo de prueba - en producción
-  //url = "https://ulisescorrales-porfolio.onrender.com";
-  url="http://localhost:8080"
+  // static url = "https://ulisescorrales-porfolio.onrender.com";
+  static url="http://localhost:8080"
   //-------
   listEducacion = new Subject<IEducacion[]>();
   persona = new Subject<IPersona>();
@@ -54,114 +54,114 @@ export class ApiService {
 
   //Mensaje
   public saveMensaje(mensaje: IMensaje) {
-    return this.http.post(this.url + '/mensaje/crear', mensaje, { 'observe': 'response' });
+    return this.http.post(ApiService.url + '/mensaje/crear', mensaje, { 'observe': 'response' });
   }
   public getAllMensajes(): Observable<IMensaje[]> {
-    return this.http.get<IMensaje[]>(this.url + '/mensaje/traer');
+    return this.http.get<IMensaje[]>(ApiService.url + '/mensaje/traer');
   }
   //Persona
   public getPersona() {
-    this.http.get<IPersona>(this.url + '/persona/traer').subscribe((data: IPersona) => {
+    this.http.get<IPersona>(ApiService.url + '/persona/traer').subscribe((data: IPersona) => {
       this.persona.next(data);
     })
     return this.persona;
   }
   public putPersona(unaPersona: IPersona) {
-    return this.http.put(this.url + '/persona/editar', unaPersona, { 'observe': 'response' });
+    return this.http.put(ApiService.url + '/persona/editar', unaPersona, { 'observe': 'response' });
   }
   //Contacto
   public getContacto() {
-    this.http.get<IContacto>(this.url + '/contacto/traer').subscribe((data: IContacto) => {
+    this.http.get<IContacto>(ApiService.url + '/contacto/traer').subscribe((data: IContacto) => {
       this.contacto.next(data);
     })
     return this.contacto;
   }
   public putContacto(unContacto: IContacto) {
-    return this.http.put(this.url + '/contacto/editar', unContacto, { 'observe': 'response' });
+    return this.http.put(ApiService.url + '/contacto/editar', unContacto, { 'observe': 'response' });
   }
   //Domicilio
   public getDomicilio() {
-    this.http.get<IDomicilio>(this.url + '/domicilio/traer').subscribe((data: IDomicilio) => {
+    this.http.get<IDomicilio>(ApiService.url + '/domicilio/traer').subscribe((data: IDomicilio) => {
       this.domicilio.next(data);
     })
     return this.domicilio;
   }
   public putDomicilio(unDomicilio: IDomicilio) {
-    return this.http.put(this.url + '/domicilio/editar', unDomicilio, { 'observe': 'response' });
+    return this.http.put(ApiService.url + '/domicilio/editar', unDomicilio, { 'observe': 'response' });
   }
   //Educación
   public getEducacion(id: number) {
-    return this.http.get<IEducacion>(this.url + '/educacion/' + id);
+    return this.http.get<IEducacion>(ApiService.url + '/educacion/' + id);
   }
   public getAllEducacion() {
-    this.http.get<IEducacion[]>(this.url + '/educacion/traer').subscribe((data: IEducacion[]) => {
+    this.http.get<IEducacion[]>(ApiService.url + '/educacion/traer').subscribe((data: IEducacion[]) => {
       this.listEducacion.next(data);
     });
     return this.listEducacion;
   }
   public putEducacion(id: number, unaEd: IEducacion) {
-    return this.http.put(this.url + '/educacion/editar/' + id, unaEd, { 'observe': 'response' });
+    return this.http.put(ApiService.url + '/educacion/editar/' + id, unaEd, { 'observe': 'response' });
   }
   public postEducacion(unaEd: IEducacion) {
-    return this.http.post(this.url + '/educacion/agregar', unaEd, { 'observe': 'response' });
+    return this.http.post(ApiService.url + '/educacion/agregar', unaEd, { 'observe': 'response' });
   }
 
   //Conocimiento (Tecnología
   public getAllTecnologia() {
-    this.http.get<ITecnologia[]>(this.url + '/tecnologia/traer').subscribe((data: ITecnologia[]) => {
+    this.http.get<ITecnologia[]>(ApiService.url + '/tecnologia/traer').subscribe((data: ITecnologia[]) => {
       this.listConocimiento.next(data);
     })
     return this.listConocimiento;
   }
   public getTecnologia(id: number) {
-    return this.http.get<ITecnologia>(this.url + '/tecnologia/traer/' + id);
+    return this.http.get<ITecnologia>(ApiService.url + '/tecnologia/traer/' + id);
   }
   public putTecnologia(id: number, unaTecnologia: ITecnologia) {
-    return this.http.put(this.url + '/tecnologia/editar/' + id, unaTecnologia, { 'observe': 'response' })
+    return this.http.put(ApiService.url + '/tecnologia/editar/' + id, unaTecnologia, { 'observe': 'response' })
   }
   public postTecnologia(unaTecnologia: ITecnologia) {
-    return this.http.post(this.url + '/tecnologia/agregar', unaTecnologia, { 'observe': 'response' });
+    return this.http.post(ApiService.url + '/tecnologia/agregar', unaTecnologia, { 'observe': 'response' });
   }
   //Experiencia
   public getAllExperiencia() {
-    this.http.get<IExperiencia[]>(this.url + '/experiencia/traer').subscribe((data: IExperiencia[]) => {
+    this.http.get<IExperiencia[]>(ApiService.url + '/experiencia/traer').subscribe((data: IExperiencia[]) => {
       this.listExperiencia.next(data);
     })
     return this.listExperiencia;
   }
   public getExperiencia(id: number) {
-    return this.http.get<IExperiencia>(this.url + '/experiencia/traer/' + id);
+    return this.http.get<IExperiencia>(ApiService.url + '/experiencia/traer/' + id);
   }
   public putExperiencia(id: number, unaExp: IExperiencia) {
-    return this.http.put(this.url + '/experiencia/editar/' + id, unaExp, { 'observe': 'response' })
+    return this.http.put(ApiService.url + '/experiencia/editar/' + id, unaExp, { 'observe': 'response' })
   }
   public postExperiencia(unaExp: IExperiencia) {
     console.log(unaExp);
-    return this.http.post(this.url + '/experiencia/agregar', unaExp, { 'observe': 'response' });
+    return this.http.post(ApiService.url + '/experiencia/agregar', unaExp, { 'observe': 'response' });
   }
 
   //Tarea
   public getTareas(id: number) {
-    return this.http.get<ITarea[]>(this.url + '/experiencia/' + id + '/tarea/traer')
+    return this.http.get<ITarea[]>(ApiService.url + '/experiencia/' + id + '/tarea/traer')
   }
   //Método Delete (genérico)
   public delete(url: string) {
-    return this.http.delete(this.url + url, { 'observe': 'response' });
+    return this.http.delete(ApiService.url + url, { 'observe': 'response' });
   }
   //Proyecto
   public getAllProyecto() {
-    this.http.get<IProyecto[]>(this.url + '/proyecto/traer').subscribe((data: IProyecto[]) => {
+    this.http.get<IProyecto[]>(ApiService.url + '/proyecto/traer').subscribe((data: IProyecto[]) => {
       this.listProyecto.next(data);
     });
     return this.listProyecto;
   }
   public getProyecto(id:number){
-    return this.http.get<IProyecto>(this.url+'/proyecto/traer/'+id);
+    return this.http.get<IProyecto>(ApiService.url+'/proyecto/traer/'+id);
   }
   public putProyecto(id:number,unProyecto:IProyecto){
-    return this.http.put(this.url+'/proyecto/editar/'+id,unProyecto,{ 'observe': 'response' });
+    return this.http.put(ApiService.url+'/proyecto/editar/'+id,unProyecto,{ 'observe': 'response' });
   }
   public postProyecto(unProyecto:IProyecto){
-    return this.http.post(this.url+'/proyecto/agregar',unProyecto,{ 'observe': 'response' });
+    return this.http.post(ApiService.url+'/proyecto/agregar',unProyecto,{ 'observe': 'response' });
   }
 }
