@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Url } from './URL';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AutenticacionService {
-  //url = "https://ulisescorrales-porfolio.onrender.com/auth/login";
-  url="http://localhost:8080/auth/login";
+export class AutenticacionService {  
+  url=Url.getUrl()+"/auth/login";
   currentUserSubject: BehaviorSubject<any>;
 
   constructor(private http: HttpClient) {

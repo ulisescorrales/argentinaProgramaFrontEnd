@@ -11,15 +11,15 @@ import { IExperiencia } from '../interfaces/iexperiencia';
 import { ITarea } from '../interfaces/itarea';
 import { IDomicilio } from '../interfaces/idomicilio';
 import { IProyecto } from '../interfaces/iproyecto';
+import { Url } from './URL';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
-  //Setear modo de prueba - en producción
-  //url = "https://ulisescorrales-porfolio.onrender.com";
-  url="http://localhost:8080"
+export class ApiService {  
   //-------
+  url=Url.getUrl();
+
   listEducacion = new Subject<IEducacion[]>();
   persona = new Subject<IPersona>();
   listExperiencia = new Subject<IExperiencia[]>();
