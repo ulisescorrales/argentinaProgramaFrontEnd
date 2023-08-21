@@ -17,8 +17,8 @@ import { IProyecto } from '../interfaces/iproyecto';
 })
 export class ApiService {
   //Setear modo de prueba - en producción
-  url = "https://ulisescorrales-porfolio.onrender.com";
-  //url="http://localhost:8080"
+  //url = "https://ulisescorrales-porfolio.onrender.com";
+  url="http://localhost:8080"
   //-------
   listEducacion = new Subject<IEducacion[]>();
   persona = new Subject<IPersona>();
