@@ -36,8 +36,7 @@ export class EducacionEditComponent implements OnInit {
     this.rutaActiva.params.subscribe((params: Params) => {
       this.id = params['id'];
       this.api.getEducacion(this.id).subscribe((data: IEducacion) => {
-        this.borrarSpinner();
-        console.log(data);
+        this.borrarSpinner();        
         this.formEd.setValue({
           institucion: data.institucion,
           logo: data.logo,

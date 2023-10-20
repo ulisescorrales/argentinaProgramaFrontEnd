@@ -52,11 +52,9 @@ export class AgregarEducacionComponent implements OnInit {
           x.style.color="red";
           x.innerHTML="Error. Revise el formulario"
         }
-      }      
-    },
-    ()=>{
-      this.borrarSpinner();
-    });;
+      }  
+      this.borrarSpinner();    
+    });
   }
   mostrarSpinner() {
     if (this.y != null) {
