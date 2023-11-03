@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
     if (x != null) {
       x.style.display = "block";
     }
-    AOS.init();
+    AOS.init();        
   }
   async moverPuntosSuspensivos() {
     var cont = 0;

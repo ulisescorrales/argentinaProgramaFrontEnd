@@ -11,34 +11,44 @@ import { SpinnerService } from 'src/app/servicios/spinner.service';
 })
 export class EncabezadoComponent implements OnInit {
 
-  editar:boolean=false;
-  contactos: IContacto| undefined ;  
-  darkTheme:boolean=false;
-  constructor(private inicio:SpinnerService,private api: ApiService,private autenticacion:AutenticacionService){               
+  editar: boolean = false;
+  contactos: IContacto | undefined;
+  darkTheme: boolean = false;
+  constructor(private inicio: SpinnerService, private api: ApiService, private autenticacion: AutenticacionService) {
     this.api.getContacto().subscribe((data: IContacto) => {
       this.contactos = data;
       this.inicio.sumarComponenteCargado();
-    }, error => {      
+    }, error => {
       this.inicio.sumarComponenteCargado();
     });
   }
 
-  public ngOnInit(): void {    
-    this.editar=this.autenticacion.logIn;    
+  public ngOnInit(): void {
+    this.editar = this.autenticacion.logIn;
+    //Detectar tema predeterminado del navegador
+    window.matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', ({ matches }) => {
+        if (matches) {
+          console.log("change to dark mode!")
+          this.darkTheme = true;
+          document.getElementsByTagName("body")[0].classList.add("dark");
+          (document.getElementById("switchDarkMode") as HTMLInputElement).checked=true;
+        }
+      })
   }
-  public logout(){
+  public logout() {
     this.autenticacion.logout();
     window.location.reload();
   }
-  public cambiarTemaOscuroClaro(){
-    const x=document.getElementById("prueba");
-    if(this.darkTheme==false){
-      this.darkTheme=true;      
-      x?.classList.add("dark");
-    }else{
-      this.darkTheme=false;
-      x?.classList.remove("dark");
+  public cambiarTemaOscuroClaro() {
+    const x = document.getElementsByTagName("p");
+    const len = x.length;
+    if (this.darkTheme == false) {
+      this.darkTheme = true;
+      document.getElementsByTagName("body")[0].classList.add("dark");
+    } else {
+      this.darkTheme = false;
+      document.getElementsByTagName("body")[0].classList.remove("dark");
     }
-
   }
 }
