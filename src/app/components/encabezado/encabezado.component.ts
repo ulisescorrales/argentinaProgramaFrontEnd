@@ -13,6 +13,7 @@ export class EncabezadoComponent implements OnInit {
 
   editar:boolean=false;
   contactos: IContacto| undefined ;  
+  darkTheme:boolean=false;
   constructor(private inicio:SpinnerService,private api: ApiService,private autenticacion:AutenticacionService){               
     this.api.getContacto().subscribe((data: IContacto) => {
       this.contactos = data;
@@ -22,11 +23,19 @@ export class EncabezadoComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {    
+  public ngOnInit(): void {    
     this.editar=this.autenticacion.logIn;    
   }
-  logout(){
+  public logout(){
     this.autenticacion.logout();
     window.location.reload();
+  }
+  public cambiarTemaOscuroClaro(){
+    if(this.darkTheme==false){
+      this.darkTheme=true;
+    }else{
+      this.darkTheme=false;
+    }
+        
   }
 }
