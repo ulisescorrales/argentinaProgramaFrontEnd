@@ -31,11 +31,14 @@ export class EncabezadoComponent implements OnInit {
     window.location.reload();
   }
   public cambiarTemaOscuroClaro(){
+    const x=document.getElementById("prueba");
     if(this.darkTheme==false){
-      this.darkTheme=true;
+      this.darkTheme=true;      
+      x?.classList.add("dark");
     }else{
       this.darkTheme=false;
+      x?.classList.remove("dark");
     }
-        
+
   }
 }

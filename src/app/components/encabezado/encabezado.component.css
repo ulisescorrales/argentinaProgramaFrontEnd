@@ -2,7 +2,9 @@ body {
   font-family: sans-serif;      
 }
 
-#borde {    
+.dark{
+  background-color: black;
+  color:white;
 }
 a{
   padding-right: 1%;
