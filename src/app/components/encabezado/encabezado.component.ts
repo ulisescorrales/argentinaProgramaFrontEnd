@@ -25,7 +25,12 @@ export class EncabezadoComponent implements OnInit {
 
   public ngOnInit(): void {
     this.editar = this.autenticacion.logIn;
-    //Detectar tema predeterminado del navegador
+    //Detectar tema predeterminado del navegador    
+    if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+      this.oscurecer();
+      (document.getElementById("switchDarkMode") as HTMLInputElement).checked=true;
+    }
+    //Reaccionar ante el cambio de tema preferido del navegador
     window.matchMedia('(prefers-color-scheme: dark)')
       .addEventListener('change', ({ matches }) => {
         if (matches) {
@@ -44,11 +49,17 @@ export class EncabezadoComponent implements OnInit {
     const x = document.getElementsByTagName("p");
     const len = x.length;
     if (this.darkTheme == false) {
-      this.darkTheme = true;
-      document.getElementsByTagName("body")[0].classList.add("dark");
+      this.oscurecer();
     } else {
-      this.darkTheme = false;
-      document.getElementsByTagName("body")[0].classList.remove("dark");
+      this.aclarar();
     }
+  }
+  private oscurecer(){
+    this.darkTheme = true;
+      document.getElementsByTagName("body")[0].classList.add("dark");
+  }
+  private aclarar(){
+    this.darkTheme = false;
+    document.getElementsByTagName("body")[0].classList.remove("dark");
   }
 }
