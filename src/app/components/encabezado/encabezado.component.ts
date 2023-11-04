@@ -57,6 +57,11 @@ export class EncabezadoComponent implements OnInit {
   private oscurecer(){
     this.darkTheme = true;
       document.getElementsByTagName("body")[0].classList.add("dark");
+      const x=document.getElementsByClassName("proyecto");
+      const l=x.length;
+      for (var i=0;i<l;i++) {      
+          x[i].classList.add("darkProyecto");
+        }      
   }
   private aclarar(){
     this.darkTheme = false;

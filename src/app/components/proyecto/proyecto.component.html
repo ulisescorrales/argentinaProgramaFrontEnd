@@ -10,7 +10,7 @@
                 <!--Cargar data-aos según su posición en la grilla-->
 
                 <ng-template [ngIf]="columnas*i+j<tamanioKnowledge">
-                    <div class="card" style="padding:1%">
+                    <div class="card proyecto" style="padding:1%">
                         <div class="row grilla">
                             <div class="col">
                                 <img class="rounded mx-auto d-block logo" [src]="listProyecto[columnas*i+j].logo"
@@ -33,26 +33,26 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- información del proyecto-->                                                    
-                                <div class="card-body">
-                                    <p class="texto" style="font-weight:bold">{{listProyecto[columnas*i+j].nombre}}</p>
-                                    <p class="texto">{{listProyecto[columnas*i+j].descripcion}}</p>
-                                </div>
-                            
-                            <ul class="list-group list-group-flush">
-                                <li  class="list-group-item texto" *ngIf="listProyecto[columnas*i+j].link!=null"><a
-                                        [href]="listProyecto[columnas*i+j].link">FrontEnd</a></li>
-                                <li class="list-group-item texto" *ngIf="listProyecto[columnas*i+j].github!=null"><a
-                                        [href]="listProyecto[columnas*i+j].github"></a></li>
-                                <li class="list-group-item texto" *ngIf="listProyecto[columnas*i+j].githubFrontEnd!=null">
-                                    <a [href]="listProyecto[columnas*i+j].githubFrontEnd">Repositorio
-                                        FrontEnd</a>
-                                </li>
-                                <li class="list-group-item texto" *ngIf="listProyecto[columnas*i+j].githubBackEnd!=null">
-                                    <a [href]="listProyecto[columnas*i+j].githubBackEnd">Repositorio
-                                        BackEnd</a>
-                                </li>
-                            </ul>                        
+                        <!-- información del proyecto-->
+                        <div class="card-body">
+                            <p class="texto" style="font-weight:bold">{{listProyecto[columnas*i+j].nombre}}</p>
+                            <p class="texto">{{listProyecto[columnas*i+j].descripcion}}</p>
+                        </div>
+
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item texto proyecto" *ngIf="listProyecto[columnas*i+j].link!=null"><a
+                                    [href]="listProyecto[columnas*i+j].link">FrontEnd</a></li>
+                            <li class="list-group-item texto proyecto" *ngIf="listProyecto[columnas*i+j].github!=null"><a
+                                    [href]="listProyecto[columnas*i+j].github"></a></li>
+                            <li class="list-group-item texto proyecto" *ngIf="listProyecto[columnas*i+j].githubFrontEnd!=null">
+                                <a [href]="listProyecto[columnas*i+j].githubFrontEnd">Repositorio
+                                    FrontEnd</a>
+                            </li>
+                            <li class="list-group-item texto proyecto" *ngIf="listProyecto[columnas*i+j].githubBackEnd!=null">
+                                <a [href]="listProyecto[columnas*i+j].githubBackEnd">Repositorio
+                                    BackEnd</a>
+                            </li>
+                        </ul>
                     </div>
                 </ng-template>
                 <!--Cargar icono de editar, mejorar para cuando esté la grilla lena(se debe agregar una fila mas)-->

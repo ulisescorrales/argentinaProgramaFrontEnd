@@ -1,6 +1,6 @@
 #foto {
     min-width: 40px;
-    max-width: 100%;
+    max-width: 100%;    
 }
 
 #relativo {
@@ -23,7 +23,8 @@
 }
 
 #imagen {
-    max-height: 25vw;    
+    max-height: 25vw;
+    border-radius: 0%;   
 }
 
 
