@@ -24,47 +24,12 @@ export class EncabezadoComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.editar = this.autenticacion.logIn;
-    //Detectar tema predeterminado del navegador    
-    if(window.matchMedia('(prefers-color-scheme: dark)').matches){
-      this.oscurecer();
-      (document.getElementById("switchDarkMode") as HTMLInputElement).checked=true;
-    }
-    //Reaccionar ante el cambio de tema preferido del navegador
-    window.matchMedia('(prefers-color-scheme: dark)')
-      .addEventListener('change', ({ matches }) => {
-        if (matches) {
-          console.log("change to dark mode!")
-          this.darkTheme = true;
-          document.getElementsByTagName("body")[0].classList.add("dark");
-          (document.getElementById("switchDarkMode") as HTMLInputElement).checked=true;
-        }
-      })
+    this.editar = this.autenticacion.logIn;    
   }
   public logout() {
     this.autenticacion.logout();
     window.location.reload();
   }
-  public cambiarTemaOscuroClaro() {
-    const x = document.getElementsByTagName("p");
-    const len = x.length;
-    if (this.darkTheme == false) {
-      this.oscurecer();
-    } else {
-      this.aclarar();
-    }
-  }
-  private oscurecer(){
-    this.darkTheme = true;
-      document.getElementsByTagName("body")[0].classList.add("dark");
-      const x=document.getElementsByClassName("proyecto");
-      const l=x.length;
-      for (var i=0;i<l;i++) {      
-          x[i].classList.add("darkProyecto");
-        }      
-  }
-  private aclarar(){
-    this.darkTheme = false;
-    document.getElementsByTagName("body")[0].classList.remove("dark");
-  }
+  
+  
 }

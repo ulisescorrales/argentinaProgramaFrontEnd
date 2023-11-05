@@ -1,10 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-
 .dark{
-    background-color: black;
-    color:white;
-  }
-  img{
+  background-color: black;
+  color:white;
+}
+
+img{
     background-color: white;
     border-radius: 45%;
   }
+  

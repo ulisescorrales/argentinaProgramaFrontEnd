@@ -39,6 +39,10 @@
 }
 
 
+:host ::ng-deep .darkLink{
+    color:cyan;
+  }
+
 :host ::ng-deep .editar {
     margin-left: 10px;
 }

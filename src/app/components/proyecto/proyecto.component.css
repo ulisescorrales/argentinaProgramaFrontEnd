@@ -26,9 +26,21 @@
     fill:white
 }
 .proyecto{        
-    border-radius: 1%;
-    border-color: white;
+    border:1px solid black;
+    border-radius: 1%;      
 }
 .darkProyecto{
+    border:1px solid white;
     background-color: black;
+    a{
+        color:deepskyblue;
+    }
+}
+.list-group-item{
+    border-top:1px solid black;    
+}
+.darkCard{
+    border-top:1px solid white;    
+    background-color: black;
+    color:'white';
 }
