@@ -13,12 +13,12 @@ Se incluyen tanto las tecnologías como otras habilidades que puedan incluirse
                 id="grilla">
                 <!--Cargar logo según su posición en la grilla-->
                 <ng-template [ngIf]="columnas*i+j<tamanioKnowledge">
-                    <img class="" *ngSwitchCase="0" [src]="listTecnologia[columnas*i+j]?.logo"
+                    <img class="logo" *ngSwitchCase="0" [src]="listTecnologia[columnas*i+j].logo"
                         style="width:45%;height:75%;" data-aos="fade-right" data-aos-duration="1000"
                         data-aos-delay="250">
-                    <img class="" *ngSwitchCase="1" [src]="listTecnologia[columnas*i+j]?.logo"
+                    <img class="logo" *ngSwitchCase="1" [src]="listTecnologia[columnas*i+j].logo"
                         style="width:45%;height:75%;" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="250">
-                    <img class="" *ngSwitchCase="2" [src]="listTecnologia[columnas*i+j]?.logo"
+                    <img class="logo" *ngSwitchCase="2" [src]="listTecnologia[columnas*i+j].logo"
                         style="width:45%;height:75%;" data-aos="fade-left" data-aos-duration="1000"
                         data-aos-delay="250">
                     <!--Botones de edición de conocimiento-->
