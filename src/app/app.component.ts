@@ -1,7 +1,6 @@
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { Subject } from 'rxjs';
+import {Component, OnInit } from '@angular/core';
 import { SpinnerService } from './servicios/spinner.service';
+import { TemaOscuroService } from './servicios/tema-oscuro.service';
 declare let AOS: any;
 
 @Component({
@@ -9,22 +8,9 @@ declare let AOS: any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
   darkTheme: boolean = false;
-  constructor(private spinner: SpinnerService) { }
-  ngAfterViewChecked(): void {
-
-  }
-  ngAfterViewInit(): void {
-    if (this.darkTheme) {
-      const x = document.getElementsByTagName("a");
-      for (var i = 0; i < x.length; i++) {
-        x[i].classList.add("darkLink");
-        (document.getElementById("switchDarkMode") as HTMLInputElement).checked = true;
-      }
-    }
-  }
-
+  constructor(private spinner: SpinnerService,private tema:TemaOscuroService) { }
   ngOnInit() {
     this.moverPuntosSuspensivos();
     const x = document.getElementById('status');
@@ -32,39 +18,13 @@ export class AppComponent implements OnInit, AfterViewInit {
       x.style.display = "block";
     }
     AOS.init();
-    //Detectar tema predeterminado del navegador    
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      this.oscurecer();
-    }
-    //Reaccionar ante el cambio de tema preferido del navegador
-    window.matchMedia('(prefers-color-scheme: dark)')
-      .addEventListener('change', ({ matches }) => {
-        if (matches) {
-          this.oscurecer();
-        } else {
-          this.aclarar();
-        }
-      })
-  }
-  private oscurecer() {
-    console.log("change to dark mode!")
-    this.darkTheme = true;
-    document.getElementsByTagName("body")[0].classList.add("dark");
-  }
-  private aclarar() {
-    this.darkTheme = false;
-    document.getElementsByTagName("body")[0].classList.remove("dark");
-  }
-  public cambiarTemaOscuroClaro() {
-    const x = document.getElementsByTagName("p");
-    const len = x.length;
-    if (this.darkTheme == false) {
-      this.oscurecer();
-    } else {
-      this.aclarar();
-    }
-  }
-
+    
+    this.tema.getDarkBoolean().subscribe({
+      next:(data)=>{
+        this.darkTheme=data;
+      }
+    });
+  }    
 
   async moverPuntosSuspensivos() {
     var cont = 0;

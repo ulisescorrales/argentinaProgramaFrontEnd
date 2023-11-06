@@ -1,10 +1,10 @@
-
+<div [ngClass]="{'dark':this.darkTheme}">
     <app-encabezado></app-encabezado>
     <app-acerca-de></app-acerca-de>
     <app-educacion></app-educacion>   
     <app-conocimientos></app-conocimientos>         
     <app-experiencia></app-experiencia>  
-    <app-proyecto [darkTheme]="darkTheme"></app-proyecto>     
+    <app-proyecto></app-proyecto>     
     <app-footer></app-footer>
     <router-outlet ></router-outlet>       
     <!--Spinner indicador del estado de carga, se coloca aquí para que aparezca en el medio de la pantalla-->
@@ -18,3 +18,4 @@
             <p id="mensajeDeInicio">Cargando</p>
         </div>          
     </div>  
+</div>
