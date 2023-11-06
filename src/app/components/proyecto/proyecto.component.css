@@ -19,5 +19,25 @@
     transition: 0.8s ease;     
 }
 .logo{
-    width:45%;height:75%
+    width:45%;height:75%;
+    padding:5%;
+    margin-top:5%;
+    background-color: white;    
+    fill:white
+}
+.proyecto{        
+    border:1px solid black;
+    border-radius: 1%;      
+}
+.darkProyecto{
+    border:1px solid white;
+    background-color: black;      
+}
+.list-group-item{
+    border-top:1px solid black;    
+}
+.darkCard{
+    border-top:1px solid white;    
+    background-color: black;
+    color:'white';
 }

@@ -30,7 +30,7 @@
                     </ng-template>
                 </div>
                 <p class="texto">Institución: {{education.institucion}}</p>
-                <a class="texto" target="_blank" [href]="education.certificado" *ngIf="education.certificado != null" style="text-decoration: none">
+                <a [ngClass]="{'darkLink':this.darkTheme}" class="texto" target="_blank" [href]="education.certificado" *ngIf="education.certificado != null" style="text-decoration: none">
                     <p class="texto">Estado: {{education.estado}}</p>
                 </a>         
                 <p class="texto">Comienzo: {{education.anioIngreso}} </p>
@@ -43,9 +43,11 @@
                 <div class="col text-center"></div>
                 <div class="col justify-content-center">
                     <div class="progress" style="width:100%">
-                        <div class="progress-bar progress-bar-striped" role="progressbar"
+                        <!--Barra de progreso-->
+                        <div class="progress-bar progress-bar-striped" role="progressbar"                    
                             [style.width.%]="(education.materiasAprobadas/education.materiasTotales)*100" aria-valuenow="10"
-                            aria-valuemin="0" aria-valuemax="100"></div>
+                            aria-valuemin="0" aria-valuemax="100">                        
+                        </div>
                     </div>
                 </div>
                 <div class="col text-center"></div>

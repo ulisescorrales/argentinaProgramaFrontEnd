@@ -1,8 +1,8 @@
 body {
   font-family: sans-serif;      
 }
-
-#borde {    
+.darkSVG{  
+  fill:white
 }
 a{
   padding-right: 1%;

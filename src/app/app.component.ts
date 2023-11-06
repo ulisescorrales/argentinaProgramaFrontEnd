@@ -1,7 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { Subject } from 'rxjs';
+import {Component, OnInit } from '@angular/core';
 import { SpinnerService } from './servicios/spinner.service';
+import { TemaOscuroService } from './servicios/tema-oscuro.service';
 declare let AOS: any;
 
 @Component({
@@ -10,8 +9,8 @@ declare let AOS: any;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(private spinner: SpinnerService) { }
-
+  darkTheme: boolean = false;
+  constructor(private spinner: SpinnerService,private tema:TemaOscuroService) { }
   ngOnInit() {
     this.moverPuntosSuspensivos();
     const x = document.getElementById('status');
@@ -19,7 +18,14 @@ export class AppComponent implements OnInit {
       x.style.display = "block";
     }
     AOS.init();
-  }
+    
+    this.tema.getDarkBoolean().subscribe({
+      next:(data)=>{
+        this.darkTheme=data;
+      }
+    });
+  }    
+
   async moverPuntosSuspensivos() {
     var cont = 0;
     var text: string = "Cargando";

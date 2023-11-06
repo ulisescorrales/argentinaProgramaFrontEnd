@@ -4,6 +4,7 @@ import { ITecnologia } from 'src/app/interfaces/itecnologia';
 import { ApiService } from 'src/app/servicios/api.service';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 import { SpinnerService } from 'src/app/servicios/spinner.service';
+import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
 
 
 
@@ -16,11 +17,11 @@ export class EducacionComponent implements OnInit {
   editar: boolean = false;
 
   Math = Math;//Para usar Math.floor() en el HTML
-
+  darkTheme=false;
   knowledgeList: any;
   listEducacion: IEducacion[] = new Array<IEducacion>();
   listTecnologia:ITecnologia[]=new Array<ITecnologia>();
-  constructor(private inicio:SpinnerService,private api: ApiService,private autenticacion:AutenticacionService) { }
+  constructor(private tema:TemaOscuroService,private inicio:SpinnerService,private api: ApiService,private autenticacion:AutenticacionService) { }
   ngOnInit(): void {        
     this.editar=this.autenticacion.logIn;//    
     this.api.getAllEducacion().subscribe((data: IEducacion[]) => {              
@@ -28,6 +29,11 @@ export class EducacionComponent implements OnInit {
       this.inicio.sumarComponenteCargado();
     }, error => {
       this.inicio.sumarComponenteCargado();
+    });
+    this.tema.getDarkBoolean().subscribe({
+      next: (data)=>{
+        this.darkTheme=data;
+      }
     });
   }    
 }
