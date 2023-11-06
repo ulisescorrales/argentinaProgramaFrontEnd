@@ -6,7 +6,7 @@
 
 img{
     background-color: white;
-    border-radius: 45%;
+    border-radius: 25%;
   }
   .darkLink{
     color:deepskyblue;
@@ -18,7 +18,10 @@ img{
 /**/
 
 .remarcar:hover {
-    color: #6495ED;
+  color: #6495ED;    
+}
+.remarcar{
+  color:black;
 }
 
 

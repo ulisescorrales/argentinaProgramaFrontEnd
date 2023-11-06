@@ -1,7 +1,10 @@
 footer{
-    background-color:rgb(177, 199, 218);
+    background-color:rgb(177, 199, 218);;
     margin-top:60px;
     border-radius: 10px;
+}
+.darkFooter{    
+    background-color:rgb(23, 65, 102);
 }
 p{
     color:white;
