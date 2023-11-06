@@ -30,7 +30,7 @@
                     </ng-template>
                 </div>
                 <p class="texto">Institución: {{education.institucion}}</p>
-                <a class="texto" target="_blank" [href]="education.certificado" *ngIf="education.certificado != null" style="text-decoration: none">
+                <a [ngClass]="{'darkLink':this.darkTheme}" class="texto" target="_blank" [href]="education.certificado" *ngIf="education.certificado != null" style="text-decoration: none">
                     <p class="texto">Estado: {{education.estado}}</p>
                 </a>         
                 <p class="texto">Comienzo: {{education.anioIngreso}} </p>

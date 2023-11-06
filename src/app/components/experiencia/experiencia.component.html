@@ -20,7 +20,7 @@
             <ul *ngFor="let tarea of experiencia.tareas">
                 <li>{{tarea.descripcion}}</li>
                 <ul *ngIf="tarea.repositorio!=null">
-                    <li><a [href]="tarea.repositorio">Repositorio</a></li>
+                    <li><a [ngClass]="{'darkLink':this.darkTheme}" [href]="tarea.repositorio">Repositorio</a></li>
                 </ul>
             </ul>            
             <ul>
