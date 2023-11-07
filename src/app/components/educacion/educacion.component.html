@@ -1,68 +1,78 @@
-<div section="educacion" id="educacion" >
+<div section="educacion" id="educacion">
     <div class="container" style="overflow-y: auto;">
         <div class="row">
             <div class="col text-center">
                 <h2 class="titulo" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="250">Educación</h2>
             </div>
         </div>
-    </div>
-    <div class="container" *ngFor="let education of listEducacion" data-aos="fade-right" data-aos-duration="1000"
-        data-aos-delay="250">
-
-        <!--Logo de la institución-->
-        <div class="row">
-            <span class="border-top"></span>
-            <div class="col-2 primerRenglon">
-
-                <img [src]="education.logo" class="img-fluid logo" alt="Responsiveimage" />
-            </div>
-            <div class="col text-left primerRenglon">
-                <!--Descripción-->
+        <div class="row" *ngFor="let education of listEducacion" data-aos="fade-right" data-aos-duration="1000"
+            data-aos-delay="250">
+            <div class="col">
+                <!--Logo de la institución-->
                 <div class="row">
-                    <div class="col-10 text-left contenido">
-                        <h2 class="tituloItem"> {{education.titulo}}</h2>
+                    <span class="border-top"></span>
+                    <div class="col-2 primerRenglon">
+
+                        
                     </div>
-                    <ng-template [ngIf]="editar">
-                        <div class="col-1  my-auto">
-                            <i class="fa-solid fa-pen editar remarcar" [routerLink]="['editar','educacion',education.idEstudio]"></i>
-                            <i class="fa-sharp fa-solid fa-trash editar remarcar" [routerLink]="['editar','eliminar','educacion',education.idEstudio]" ></i>
+                    <div class="col text-left primerRenglon">
+                        <!--Descripción-->
+                        <div class="row">
+                            <div class="col-10 text-left contenido">
+                                <h2 class="tituloItem"> {{education.titulo}}</h2>
+                            </div>
+                            <div class="col-1  my-auto" *ngIf="editar">
+                                <i class="fa-solid fa-pen editar remarcar"
+                                    [routerLink]="['editar','educacion',education.idEstudio]"></i>
+                                <i class="fa-sharp fa-solid fa-trash editar remarcar"
+                                    [routerLink]="['editar','eliminar','educacion',education.idEstudio]"></i>
+                            </div>
                         </div>
-                    </ng-template>
+                        <div class="row">
+                            <div class="col">
+                                <p class="texto">Institución: {{education.institucion}}</p>
+                                <a [ngClass]="{'darkLink':this.darkTheme}" class="texto" target="_blank"
+                                    [href]="education.certificado" *ngIf="education.certificado != null"
+                                    style="text-decoration: none">
+                                    <p class="texto">Estado: {{education.estado}}</p>
+                                </a>
+                                <p class="texto">Comienzo: {{education.anioIngreso}} </p>
+                                <!--Finalización solo se muestra si se aprobaron todas las materias-->
+                                <p class="texto" *ngIf="education.materiasAprobadas==education.materiasTotales">
+                                    Finalización:
+                                    {{education.anioFinalizacion}}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <p class="texto">Institución: {{education.institucion}}</p>
-                <a [ngClass]="{'darkLink':this.darkTheme}" class="texto" target="_blank" [href]="education.certificado" *ngIf="education.certificado != null" style="text-decoration: none">
-                    <p class="texto">Estado: {{education.estado}}</p>
-                </a>         
-                <p class="texto">Comienzo: {{education.anioIngreso}} </p>
-                <!--Finalización solo se muestra si se aprobaron todas las materias-->
-                <p class="texto" *ngIf="education.materiasAprobadas==education.materiasTotales">Finalización: {{education.anioFinalizacion}}</p>                                
+                <div class="container">
+                    <div class="row" id="progressBar">
+                        <div class="col text-center"></div>
+                        <div class="col justify-content-center">
+                            <div class="progress" style="width:100%">
+                                <!--Barra de progreso-->
+                                <div class="progress-bar progress-bar-striped" role="progressbar"
+                                    [style.width.%]="(education.materiasAprobadas/education.materiasTotales)*100"
+                                    aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col text-center"></div>
+                    </div>
+                    <!-- redondear el resultado usando Math.floor()-->
+                    <div class="row text-center" id="porcentaje">
+                        <p class="texto">{{Math.floor((education.materiasAprobadas/education.materiasTotales)*100)}}%
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="container">
-            <div class="row" id="progressBar">
-                <div class="col text-center"></div>
-                <div class="col justify-content-center">
-                    <div class="progress" style="width:100%">
-                        <!--Barra de progreso-->
-                        <div class="progress-bar progress-bar-striped" role="progressbar"                    
-                            [style.width.%]="(education.materiasAprobadas/education.materiasTotales)*100" aria-valuenow="10"
-                            aria-valuemin="0" aria-valuemax="100">                        
-                        </div>
-                    </div>
-                </div>
-                <div class="col text-center"></div>
+        <!--Ícono + (agregar)-->
+        <div class="row" *ngIf="editar">
+            <div class="col text-center">
+                <h2><i class="fa-solid fa-circle-plus remarcar" data-aos="zoom-in" data-aos-duration="1000"
+                        data-aos-delay="250" [routerLink]="['editar','agregar','educacion']"></i></h2>
             </div>
-            <!-- redondear el resultado usando Math.floor()-->
-            <div class="row text-center" id="porcentaje">
-                <p class="texto">{{Math.floor((education.materiasAprobadas/education.materiasTotales)*100)}}%</p>
-            </div>
-        </div>
-    </div>
-    <!--Ícono + (agregar)-->
-    <div class="row" *ngIf="editar">
-        <div class="col text-center">
-            <h2><i class="fa-solid fa-circle-plus remarcar" data-aos="zoom-in" data-aos-duration="1000"
-                    data-aos-delay="250" [routerLink]="['editar','agregar','educacion']"></i></h2>
         </div>
     </div>
 </div>
