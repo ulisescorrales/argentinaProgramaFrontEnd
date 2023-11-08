@@ -1,0 +1,14 @@
+#status{
+    border-radius: 20px;
+    border-color: black;
+    padding:2%;
+    position:fixed;            
+    display:none;
+    background-color: white;
+    border-style: double;
+    color:black;
+}
+
+#mensajeDeInicio{
+    padding-top:20px;
+}
