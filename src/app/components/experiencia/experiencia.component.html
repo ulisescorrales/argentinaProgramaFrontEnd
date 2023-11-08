@@ -1,30 +1,30 @@
 <div section="experiencia">
-    <div class="container">    
-    <div class="row border-bottom">
-        <div class="col text-center">
-            <h2 class="titulo" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="250">Experiencia</h2>
+    <div class="container">
+        <div class="row border-bottom">
+            <div class="col text-center">
+                <h2 class="titulo" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="250">Experiencia</h2>
+            </div>
         </div>
-    </div>
-    <div class="row  primerRenglon" *ngFor="let experiencia of listExperiencia" data-aos="fade-right"
-        data-aos-duration="1000" data-aos-delay="250">
-        <!--Logo de la institución-->
-        <div class="col-2">
-            <img [src]="experiencia.logo" class="img-fluid logo" alt="Responsive image" />
-        </div>
-        <div class="col text-left">
-            <h2 class="tituloItem">{{experiencia.titulo}}</h2>
-            <p class="texto">Institución: {{experiencia.organizacion}}</p>
-            <p class="texto">Inicio: {{experiencia.inicio}}</p>
-            <p *ngIf="experiencia.fin!='' " class="texto">Fin: {{experiencia.fin}}</p>
-            <p class="texto">{{experiencia.descripcion}}</p>
-            <ul *ngFor="let tarea of experiencia.tareas">
-                <li>{{tarea.descripcion}}</li>
-                <ul *ngIf="tarea.repositorio!=null">
-                    <li><a [ngClass]="{'darkLink':this.darkTheme}" [href]="tarea.repositorio">Repositorio</a></li>
+        <div class="row  primerRenglon" *ngFor="let experiencia of listExperiencia" data-aos="fade-right"
+            data-aos-duration="1000" data-aos-delay="250">
+            <!--Logo de la institución-->
+            <div class="col-2">
+                <img [src]="experiencia.logo" class="img-fluid logo" alt="Responsive image" />
+            </div>
+            <div class="col text-left">
+                <h2 class="tituloItem">{{experiencia.titulo}}</h2>
+                <p class="texto">Institución: {{experiencia.organizacion}}</p>
+                <p class="texto">Inicio: {{experiencia.inicio}}</p>
+                <p *ngIf="experiencia.fin!='' " class="texto">Fin: {{experiencia.fin}}</p>
+                <p class="texto">{{experiencia.descripcion}}</p>
+                <ul *ngFor="let tarea of experiencia.tareas">
+                    <li>{{tarea.descripcion}}</li>
+                    <ul *ngIf="tarea.repositorio!=null">
+                        <li><a [ngClass]="{'darkLink':this.darkTheme}" [href]="tarea.repositorio">Repositorio</a></li>
+                    </ul>
                 </ul>
-            </ul>            
-            <ul>
-                <!--
+                <ul>
+                    <!--
                     <li *ngFor="let task of experiencia.task">{{task.description}}.
                     <ng-template *ngIf="task.repository!=''">
                         <a [href]=task.repository>Repositorio</a>
@@ -32,22 +32,22 @@
                     </ng-template>
                 </li>
                 -->
-                
-            </ul>
-        </div>
-        <ng-template [ngIf]="editar">
-            <div class="col-1  my-auto">
-                <i class="fa-solid fa-pen editar remarcar" [routerLink]="['editar','experiencia',experiencia.idExperiencia]"></i>
+
+                </ul>
+            </div>
+            <div class="col-1  my-auto" *ngIf="editar">
+                <i class="fa-solid fa-pen editar remarcar"
+                    [routerLink]="['editar','experiencia',experiencia.idExperiencia]"></i>
                 <i class="fa-sharp fa-solid fa-trash editar remarcar"
                     [routerLink]="['editar','eliminar','experiencia',experiencia.idExperiencia]"></i>
             </div>
-        </ng-template>
-    </div>
-    <div class="row">
-        <div class="col text-center">
-            <h1 *ngIf="editar"><i class="fa-solid fa-circle-plus remarcar" data-aos="zoom-in" data-aos-duration="1000"
-                    data-aos-delay="250" [routerLink]="['editar','agregar','experiencia']"></i></h1>
         </div>
-    </div>
+        <div class="row">
+            <div class="col text-center">
+                <h1 *ngIf="editar"><i class="fa-solid fa-circle-plus remarcar" data-aos="zoom-in"
+                        data-aos-duration="1000" data-aos-delay="250"
+                        [routerLink]="['editar','agregar','experiencia']"></i></h1>
+            </div>
+        </div>
     </div>
 </div>
