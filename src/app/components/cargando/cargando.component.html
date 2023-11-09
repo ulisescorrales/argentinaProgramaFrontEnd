@@ -1,11 +1,13 @@
 <!--Spinner indicador del estado de carga, se coloca aquí para que aparezca en el medio de la pantalla-->
 <div class="mb-3 top-50 start-50 translate-middle" id="status">
-    <div class="row justify-content-center">
-    <div class="spinner-border text-primary" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>    
+    <div class="row justify-content-center">    
+        <div class="col-md text-center">
+            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>      
+        </div>            
     </div>
-    <div class="row">
-        <p id="mensajeDeInicio">Cargando</p>
-    </div>          
+    <div class="row justify-content-center mx-0">
+        <div class="col-md-6">
+            <p class="texto" id="mensajeDeInicio">Espere hasta 5 minutos que inicialize el backend</p>         
+        </div>            
+    </div>
 </div>
