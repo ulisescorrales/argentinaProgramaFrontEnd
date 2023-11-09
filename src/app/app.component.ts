@@ -11,8 +11,7 @@ declare let AOS: any;
 export class AppComponent implements OnInit {
   darkTheme: boolean = false;
   constructor(private spinner: SpinnerService,private tema:TemaOscuroService) { }
-  ngOnInit() {
-    this.moverPuntosSuspensivos();
+  ngOnInit() {    
     const x = document.getElementById('status');
     if (x != null) {
       x.style.display = "block";
@@ -26,26 +25,6 @@ export class AppComponent implements OnInit {
     });
   }    
 
-  async moverPuntosSuspensivos() {
-    var cont = 0;
-    var text: string = "Cargando";
-    const x = document.getElementById('mensajeDeInicio');
-
-    while (!this.spinner.getCargado()) {
-      if (x != null) {
-        x.innerHTML = text;
-        //Esperar un segundo        
-        await this.delay(1000);
-        cont++;
-        if (cont < 4) {
-          text = text + ".";
-        } else {
-          cont = 0;
-          text = "Cargando"
-        }
-      }
-    }
-  }
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
