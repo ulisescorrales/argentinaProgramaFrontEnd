@@ -21,7 +21,7 @@ export class SpinnerService {
     this.cant++;        
     //Cuando terminan de realizarse todas las peticiones HTTP 
     //el spinner desaparece    
-    if (this.cant == 7) {
+    if (this.cant == 8) {
       //this.cargado.next(true);      
       this.cargado=true;
       const x = document.getElementById('status');
