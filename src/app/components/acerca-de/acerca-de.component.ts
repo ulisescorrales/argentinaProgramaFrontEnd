@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { IPersona } from 'src/app/interfaces/persona';
 import { ApiService } from 'src/app/servicios/api.service';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
@@ -12,6 +12,7 @@ import { SpinnerService } from 'src/app/servicios/spinner.service';
 export class AcercaDeComponent implements OnInit {
   editar: boolean = false;
   persona: IPersona | undefined;
+  windowWitdth=window.innerWidth;
   constructor(private inicio: SpinnerService, private api: ApiService, private autenticacion: AutenticacionService) { }
 
   ngOnInit(): void {
@@ -25,5 +26,9 @@ export class AcercaDeComponent implements OnInit {
 
     })
   }
-
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event): void {
+    this.windowWitdth=window.innerWidth;
+    console.log(this.windowWitdth);
+  }
 }
