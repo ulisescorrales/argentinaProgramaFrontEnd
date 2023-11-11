@@ -1,11 +1,25 @@
 #foto {
-    min-width: 40px;
-    max-width: 100%;    
+    min-width: 40px;    
+}
+.col-md-2{
+    #foto{
+        max-width: 100%;    
+    }
+    padding: 0 !important;    
+    @media(max-width: 767px){
+        #foto{
+            max-width: 20%;
+        }        
+    }
 }
 
 #relativo {
     position: relative;
     border-color: black;
+    margin-bottom: 20%;
+    @media(max-width: 767px){
+        margin-bottom: 40%;
+    }
 }
 
 #absoluto {
