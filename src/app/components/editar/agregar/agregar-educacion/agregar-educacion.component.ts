@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/servicios/api.service';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
@@ -13,9 +13,9 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
 export class AgregarEducacionComponent implements OnInit {
   
 
-  formEd: FormGroup;
+  formEd: UntypedFormGroup;
   y=document.getElementById('status');
-  constructor(private router:Router,private formBuilder: FormBuilder, private datosPortfolio: PortfolioService, private api: ApiService) {
+  constructor(private router:Router,private formBuilder: UntypedFormBuilder, private datosPortfolio: PortfolioService, private api: ApiService) {
     this.formEd = this.formBuilder.group({
       institucion: ['', [Validators.required]],
       titulo: ['', [Validators.required]],

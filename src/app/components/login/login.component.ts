@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
@@ -11,8 +11,8 @@ import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
 })
 export class LoginComponent implements OnInit {
   darkTheme=false;
-  form: FormGroup;
-  constructor(private tema:TemaOscuroService,private formBuilder: FormBuilder, private autenticationService: AutenticacionService, private ruta: Router) {
+  form: UntypedFormGroup;
+  constructor(private tema:TemaOscuroService,private formBuilder: UntypedFormBuilder, private autenticationService: AutenticacionService, private ruta: Router) {
     this.form = this.formBuilder.group({
       nombreUsuario: ['', [Validators.required]],
       password: ['', [Validators.required]]

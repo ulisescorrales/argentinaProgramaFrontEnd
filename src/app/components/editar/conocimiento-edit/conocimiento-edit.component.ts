@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ITecnologia } from 'src/app/interfaces/itecnologia';
 import { ApiService } from 'src/app/servicios/api.service';
@@ -11,10 +11,10 @@ import { ApiService } from 'src/app/servicios/api.service';
 })
 export class ConocimientoEditComponent implements OnInit {
   id: any;
-  formCon: FormGroup;
+  formCon: UntypedFormGroup;
   x = document.getElementById('status');
   y = document.getElementById('estadoEnvio');
-  constructor(private router: Router, private rutaActiva: ActivatedRoute, private api: ApiService, private formBuilder: FormBuilder) {
+  constructor(private router: Router, private rutaActiva: ActivatedRoute, private api: ApiService, private formBuilder: UntypedFormBuilder) {
     this.formCon = this.formBuilder.group({
       nombre: [''],
       logo: ['']

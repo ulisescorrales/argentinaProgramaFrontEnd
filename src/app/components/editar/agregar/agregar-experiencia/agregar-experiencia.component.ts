@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/servicios/api.service';
 
@@ -9,9 +9,9 @@ import { ApiService } from 'src/app/servicios/api.service';
   styleUrls: ['./agregar-experiencia.component.css']
 })
 export class AgregarExperienciaComponent implements OnInit {
-  formExperiencia: FormGroup;
+  formExperiencia: UntypedFormGroup;
   y=document.getElementById('status');
-  constructor(private router:Router,private formBuilder: FormBuilder, private api: ApiService) {
+  constructor(private router:Router,private formBuilder: UntypedFormBuilder, private api: ApiService) {
     this.formExperiencia = this.formBuilder.group({
       idExperiencia: [],
       organizacion: [,[Validators.required]],

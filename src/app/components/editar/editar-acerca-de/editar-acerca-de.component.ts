@@ -1,6 +1,6 @@
-import { isExpressionFactoryMetadata } from '@angular/compiler/src/render3/r3_factory';
+
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { IContacto } from 'src/app/interfaces/contacto';
 import { IPersona } from 'src/app/interfaces/persona';
 import { IDomicilio } from 'src/app/interfaces/idomicilio';
@@ -16,12 +16,12 @@ export class EditarAcercaDeComponent implements OnInit {
 
   persona: IPersona | undefined;
   contacto: IContacto | undefined;
-  formPersona: FormGroup;
-  formContacto: FormGroup;
-  formDomicilio: FormGroup;
+  formPersona: UntypedFormGroup;
+  formContacto: UntypedFormGroup;
+  formDomicilio: UntypedFormGroup;
   x = document.getElementById('status');
   i = 0;
-  constructor(private router: Router, private formBuilder: FormBuilder, private api: ApiService) {
+  constructor(private router: Router, private formBuilder: UntypedFormBuilder, private api: ApiService) {
     this.formPersona = this.formBuilder.group({
       sobreMi: [''],
       fotoPerfil: ['', [Validators.required]],

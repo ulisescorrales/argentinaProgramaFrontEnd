@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { IExperiencia } from 'src/app/interfaces/iexperiencia';
 import { ApiService } from 'src/app/servicios/api.service';
@@ -11,10 +11,10 @@ import { ApiService } from 'src/app/servicios/api.service';
 })
 export class ExperienciaEditComponent implements OnInit {
   id: any;
-  formExperiencia: FormGroup;
+  formExperiencia: UntypedFormGroup;
   x = document.getElementById('status');
   y = document.getElementById('estadoEnvio');      
-  constructor(private router: Router, private formBuilder: FormBuilder, private rutaActiva: ActivatedRoute, private api: ApiService) {
+  constructor(private router: Router, private formBuilder: UntypedFormBuilder, private rutaActiva: ActivatedRoute, private api: ApiService) {
     this.formExperiencia = this.formBuilder.group({
       idExperiencia: [],
       organizacion: [],

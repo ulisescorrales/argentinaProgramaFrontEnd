@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/servicios/api.service';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
@@ -10,9 +10,9 @@ import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
   styleUrls: ['./agregar-proyecto.component.css']
 })
 export class AgregarProyectoComponent implements OnInit {
-  formProyecto: FormGroup;
+  formProyecto: UntypedFormGroup;
   y=document.getElementById('status');
-  constructor(private autenticacion: AutenticacionService, private router: Router, private api: ApiService, private formBuilder: FormBuilder) {
+  constructor(private autenticacion: AutenticacionService, private router: Router, private api: ApiService, private formBuilder: UntypedFormBuilder) {
     this.formProyecto = this.formBuilder.group({
       nombre: [],
       logo: [],

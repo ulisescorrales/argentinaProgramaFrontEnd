@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/servicios/api.service';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
@@ -10,9 +10,9 @@ import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
   styleUrls: ['./agregar-conocimiento.component.css']
 })
 export class AgregarConocimientoComponent implements OnInit {
-  formCon: FormGroup;
+  formCon: UntypedFormGroup;
   y = document.getElementById('status');
-  constructor(private autenticacion: AutenticacionService, private router: Router, private api: ApiService, private formBuilder: FormBuilder) {
+  constructor(private autenticacion: AutenticacionService, private router: Router, private api: ApiService, private formBuilder: UntypedFormBuilder) {
     this.formCon = this.formBuilder.group({
       idTecnologia: [''],
       nombre: [''],

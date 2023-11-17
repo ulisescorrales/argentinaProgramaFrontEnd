@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { IProyecto } from 'src/app/interfaces/iproyecto';
 import { ApiService } from 'src/app/servicios/api.service';
@@ -11,10 +11,10 @@ import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
   styleUrls: ['./proyecto-edit.component.css']
 })
 export class ProyectoEditComponent implements OnInit {
-  formProyecto: FormGroup;
+  formProyecto: UntypedFormGroup;
   id = 0;
   x=document.getElementById('status');
-  constructor(private rutaActiva: ActivatedRoute, private autenticacion: AutenticacionService, private router: Router, private api: ApiService, private formBuilder: FormBuilder) {
+  constructor(private rutaActiva: ActivatedRoute, private autenticacion: AutenticacionService, private router: Router, private api: ApiService, private formBuilder: UntypedFormBuilder) {
     this.formProyecto = this.formBuilder.group({
       nombre: [],
       logo: [],
