@@ -30,6 +30,7 @@ import { ProyectoEditComponent } from './components/editar/proyecto-edit/proyect
 import { MensajesComponent } from './components/mensajes/mensajes.component';
 import { SpinnerService } from './servicios/spinner.service';
 import { CargandoComponent } from './components/cargando/cargando.component';
+import { InformacionComponent } from './components/informacion/informacion.component';
 
 
 @NgModule({
@@ -45,7 +46,7 @@ import { CargandoComponent } from './components/cargando/cargando.component';
     ConocimientoEditComponent,
     AgregarEducacionComponent,
     EducacionEditComponent,    
-    BorrarComponent, AgregarConocimientoComponent, AgregarConocimientoComponent, AgregarExperienciaComponent, ExperienciaEditComponent, ContactoComponent, EditarAcercaDeComponent, ConocimientosComponent, ProyectoComponent, AgregarProyectoComponent, ProyectoEditComponent, MensajesComponent, CargandoComponent
+    BorrarComponent, AgregarConocimientoComponent, AgregarConocimientoComponent, AgregarExperienciaComponent, ExperienciaEditComponent, ContactoComponent, EditarAcercaDeComponent, ConocimientosComponent, ProyectoComponent, AgregarProyectoComponent, ProyectoEditComponent, MensajesComponent, CargandoComponent, InformacionComponent
   ],
   imports: [
     HttpClientModule,
