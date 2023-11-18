@@ -1,5 +1,4 @@
-import { AfterContentInit, AfterViewChecked, AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, QueryList, SimpleChanges, ViewChild, ViewChildren } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, ElementRef, OnInit} from '@angular/core';
 import { IProyecto } from 'src/app/interfaces/iproyecto';
 import { ApiService } from 'src/app/servicios/api.service';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
@@ -11,8 +10,7 @@ import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
   templateUrl: './proyecto.component.html',
   styleUrls: ['./proyecto.component.css']
 })
-export class ProyectoComponent implements OnInit {
-  @ViewChild('proyecto') proyectoContainer: ElementRef | undefined;
+export class ProyectoComponent implements OnInit {  
   darkTheme = false;
   tamanioProyectos: any;
   filas: any;

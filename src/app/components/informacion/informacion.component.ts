@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
 
 @Component({
@@ -9,7 +9,14 @@ import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
 export class InformacionComponent implements OnInit {
   slide: number = 0;
   darkTheme = false;
-  constructor(private temaOscuro: TemaOscuroService) { }
+  width:number;
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event): void {
+    this.width=window.innerWidth;
+  }
+  constructor(private temaOscuro: TemaOscuroService) {
+    this.width=window.innerWidth;
+   }
 
   ngOnInit(): void {
     this.temaOscuro.getDarkBoolean().subscribe({

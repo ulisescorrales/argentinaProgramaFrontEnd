@@ -3,6 +3,10 @@
 .dark{
   background-color: black;
   color:white;
+  transition: background-color 0.5s ease;
+}
+.light{
+  transition: background-color 0.5s ease;
 }
 
 img{
@@ -60,6 +64,6 @@ img{
   }
 
   #nombre {
-      font-size: 3vw;
+      font-size: 4.3vw;
   }
 }

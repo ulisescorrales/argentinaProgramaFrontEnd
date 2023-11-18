@@ -16,11 +16,11 @@ a{
 #fila{
     padding: 2%;
 }
-@media(max-width:380px){
+@media(max-width:470px){
     .mensaje{
-        font-size:5vw;
+        font-size:4vw;
     }
     p{
-        font-size:4vw;
+        font-size:3vw;
     }
 }

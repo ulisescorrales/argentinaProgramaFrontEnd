@@ -8,8 +8,8 @@
         <div class="row  primerRenglon" *ngFor="let experiencia of listExperiencia" data-aos="fade-right"
             data-aos-duration="1000" data-aos-delay="250">
             <!--Logo de la institución-->
-            <div class="col-2">
-                <img [src]="experiencia.logo" class="img-fluid logo" alt="Responsive image" />
+            <div class="col-sm-2">
+                <img [src]="experiencia.logo" class="rounded mx-auto d-block img-fluid logo " alt="Responsive image" />
             </div>
             <div class="col text-left">
                 <h2 class="tituloItem">{{experiencia.titulo}}</h2>
@@ -18,9 +18,9 @@
                 <p *ngIf="experiencia.fin!='' " class="texto">Fin: {{experiencia.fin}}</p>
                 <p class="texto">{{experiencia.descripcion}}</p>
                 <ul *ngFor="let tarea of experiencia.tareas">
-                    <li>{{tarea.descripcion}}</li>
+                    <li class="texto">{{tarea.descripcion}}</li>
                     <ul *ngIf="tarea.repositorio!=null">
-                        <li><a [ngClass]="{'darkLink':this.darkTheme}" [href]="tarea.repositorio">Repositorio</a></li>
+                        <li><a [ngClass]="{'darkLink':this.darkTheme}" class="texto" [href]="tarea.repositorio">Repositorio</a></li>
                     </ul>
                 </ul>
                 <ul>
@@ -35,6 +35,7 @@
 
                 </ul>
             </div>
+            <!--Botones de edición-->
             <div class="col-1  my-auto" *ngIf="editar">
                 <i class="fa-solid fa-pen editar remarcar"
                     [routerLink]="['editar','experiencia',experiencia.idExperiencia]"></i>

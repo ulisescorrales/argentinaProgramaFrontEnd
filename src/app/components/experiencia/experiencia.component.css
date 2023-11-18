@@ -4,3 +4,9 @@
 .editar{
     margin-left:10px;
 }
+@media(max-width:576px){
+    img{
+        width:20%;
+        height: 100%;
+    }
+}

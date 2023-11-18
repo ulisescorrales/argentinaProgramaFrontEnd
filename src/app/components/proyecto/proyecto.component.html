@@ -12,6 +12,7 @@
                 <div *ngIf="columnas*i+j<tamanioProyectos;else agregar" [ngClass]="{'darkProyecto':this.darkTheme}"  class="card proyecto" style="padding:1%">
                     <div class="row grilla">
                         <div class="col">
+                            <!-- Logo de la institución-->
                             <img class="rounded mx-auto d-block logo" [src]="listProyecto[columnas*i+j].logo"
                                 data-aos="zoom-out" data-aos-duration="1000" data-aos-delay="250">
                             <!--Botones de edición y borrado de proyecto-->

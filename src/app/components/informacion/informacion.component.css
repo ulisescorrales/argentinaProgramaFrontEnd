@@ -10,3 +10,8 @@ i.fa-solid.fa-circle:hover{
 i.fa-regular.fa-circle:hover{
     display:none;
 }*/
+@media(max-width:440px){
+    .fa-circle{
+        font-size: 4vw;
+    }
+}
