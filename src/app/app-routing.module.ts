@@ -48,12 +48,12 @@ const routes: Routes = [
           {path:'proyecto',component:AgregarProyectoComponent}
         ]
       }
-    ], canActivate: [GuardGuard]
+    ], canActivate: [GuardGuard] //Dada una condición, hay redireccionamiento a partir de 'editar'
   },
   {path:'mensaje',component:EditarComponent,children:[
     { path: 'ver', component: MensajesComponent }
   ]},
-  { path: '', redirectTo: '/', pathMatch: 'full' } //Ruta de inicio
+ { path: '**', redirectTo: '' } //Redireccionar cualquier ruta inválida hacia la página de inicio
   //{path: '**', component: Pagina404Component}  //Componente Pagina 404
 ];
 
