@@ -36,22 +36,22 @@
                     </div>
                     <!-- información del proyecto-->
                     <div class="card-body">
-                        <p class="texto" style="font-weight:bold">{{listProyecto[columnas*i+j].nombre}}</p>
-                        <p class="texto">{{listProyecto[columnas*i+j].descripcion}}</p>
+                        <p class="texto" [ngClass]="{'dark':this.darkTheme}" style="font-weight:bold">{{listProyecto[columnas*i+j].nombre}}</p>
+                        <p class="texto" [ngClass]="{'dark':this.darkTheme}">{{listProyecto[columnas*i+j].descripcion}}</p>
                         <ul class="list-group list-group-flush" >
-                            <li class="list-group-item " *ngIf="listProyecto[columnas*i+j].link!=null"><a
-                                    [href]="listProyecto[columnas*i+j].link">FrontEnd</a></li>
+                            <li class="list-group-item " *ngIf="listProyecto[columnas*i+j].link!=null">
+                                <a class="texto" [href]="listProyecto[columnas*i+j].link">FrontEnd</a></li>
                             <li class="list-group-item" *ngIf="listProyecto[columnas*i+j].github!=null" [ngStyle]="this.darkTheme? {'background-color': 'black', 'color': 'white'} : null">
-                                <a [ngClass]="{'darkLink':this.darkTheme}" [href]="listProyecto[columnas*i+j].github"></a>
+                                <a class="texto" [ngClass]="{'darkLink':this.darkTheme}" [href]="listProyecto[columnas*i+j].github"></a>
                             </li>
                             <li class="list-group-item" [ngClass]="{'darkCard':this.darkTheme}"
                                 *ngIf="listProyecto[columnas*i+j].githubFrontEnd!=null">
-                                <a [ngClass]="{'darkLink':this.darkTheme}" [href]="listProyecto[columnas*i+j].githubFrontEnd">Repositorio
+                                <a class="texto" [ngClass]="{'darkLink':this.darkTheme}" [href]="listProyecto[columnas*i+j].githubFrontEnd">Repositorio
                                     FrontEnd</a>
                             </li>
                             <li class="list-group-item" [ngClass]="{'darkCard':this.darkTheme}"
                                 *ngIf="listProyecto[columnas*i+j].githubBackEnd!=null">
-                                <a [ngClass]="{'darkLink':this.darkTheme}"[href]="listProyecto[columnas*i+j].githubBackEnd">Repositorio
+                                <a class="texto" [ngClass]="{'darkLink':this.darkTheme}"[href]="listProyecto[columnas*i+j].githubBackEnd">Repositorio
                                     BackEnd</a>
                             </li>
                         </ul>
