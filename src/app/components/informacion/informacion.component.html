@@ -1,14 +1,24 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <button class="btn btn-primary">I</button>
+            <button (click)="this.leftSlide()" class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i></button>
+        </div>
+        <div class="col text-center">
+            <i class="fa-solid fa-circle" *ngIf="this.slide==0; else o1"></i>
+            <ng-template #o1><i class="fa-regular fa-circle"></i></ng-template>
+            <i class="fa-solid fa-circle " *ngIf="this.slide==1; else o2"></i>
+            <ng-template #o2><i class="fa-regular fa-circle"></i></ng-template>
+            <i class="fa-solid fa-circle" *ngIf="this.slide==2; else o3"></i>
+            <ng-template #o3><i class="fa-regular fa-circle"></i></ng-template>
+            <i class="fa-solid fa-circle" *ngIf="this.slide==3; else o4"></i>
+            <ng-template #o4><i class="fa-regular fa-circle"></i></ng-template>
         </div>
         <div class="col">
-            <button class="btn btn-primary float-end">Dnpm install</button>
+            <button class="btn btn-primary float-end" (click)="this.rightSlide()"><i class="fa-solid fa-arrow-right"></i></button>
         </div>
     </div>
 </div>
-<app-educacion></app-educacion>
-<app-conocimientos></app-conocimientos>
-<app-experiencia></app-experiencia>
-<app-proyecto></app-proyecto>
+<app-educacion [style]="{'display':this.slide==0? 'block':'none'}"></app-educacion>
+<app-conocimientos [style]="{'display':this.slide==1? 'block':'none'}"></app-conocimientos>
+<app-experiencia [style]="{'display':this.slide==2? 'block':'none'}"></app-experiencia>
+<app-proyecto [style]="{'display':this.slide==3? 'block':'none'}"></app-proyecto>
