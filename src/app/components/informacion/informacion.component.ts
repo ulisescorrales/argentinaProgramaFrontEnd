@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
 
 @Component({
   selector: 'app-informacion',
@@ -6,18 +7,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./informacion.component.css']
 })
 export class InformacionComponent implements OnInit {
-  slide:number=0;
-  constructor() { }
+  slide: number = 0;
+  darkTheme = false;
+  constructor(private temaOscuro: TemaOscuroService) { }
 
   ngOnInit(): void {
+    this.temaOscuro.getDarkBoolean().subscribe({
+      next: (data)=>{
+        this.darkTheme = data;
+      }
+    })
   }
-  rightSlide(){
-    this.slide=(this.slide+1)%4;
+  rightSlide() {
+    this.slide = (this.slide + 1) % 4;
   }
-  leftSlide(){
+  leftSlide() {
     this.slide--;
-    if(this.slide==-1){
-      this.slide=3;
+    if (this.slide == -1) {
+      this.slide = 3;
     }
   }
 }

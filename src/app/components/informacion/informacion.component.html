@@ -1,8 +1,25 @@
 <div class="container">
     <div class="row">
-        <div class="col">
-            <button (click)="this.leftSlide()" class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i></button>
-        </div>
+        <div class="col">            
+            <button (click)="this.leftSlide()" class="btn" [ngClass]="{'btn-outline-info':this.darkTheme,' btn-primary':!this.darkTheme}"><i class="fa-solid fa-arrow-left"></i></button>
+        </div>        
+            <!--
+            <div class="punto">
+                <i class="fa-solid fa-circle"></i>
+                <i class="fa-regular fa-circle"></i>
+            </div>            
+            <div class="punto">
+                <i class="fa-solid fa-circle"></i>
+                <i class="fa-regular fa-circle"></i>
+            </div>            
+            <div class="punto">                
+                <i class="fa-solid fa-circle"></i>
+                <i class="fa-regular fa-circle"></i>
+            </div>            
+            <div class="punto">
+                <i class="fa-solid fa-circle"></i>
+                <i class="fa-regular fa-circle"></i>
+            </div>                        -->        
         <div class="col text-center">
             <i class="fa-solid fa-circle" *ngIf="this.slide==0; else o1"></i>
             <ng-template #o1 ><i class="fa-regular fa-circle" (click)="this.slide=0"></i></ng-template>
@@ -14,7 +31,7 @@
             <ng-template #o4><i class="fa-regular fa-circle" (click)="this.slide=3"></i></ng-template>
         </div>
         <div class="col">
-            <button class="btn btn-primary float-end" (click)="this.rightSlide()"><i class="fa-solid fa-arrow-right"></i></button>
+            <button (click)="this.rightSlide()" class="btn float-end" [ngClass]="{'btn-outline-info':this.darkTheme,' btn-primary':!this.darkTheme}"><i class="fa-solid fa-arrow-right"></i></button>
         </div>
     </div>
 </div>
