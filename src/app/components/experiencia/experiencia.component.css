@@ -5,8 +5,15 @@
     margin-left:10px;
 }
 @media(max-width:576px){
-    img{
+    /*img{
         width:20%;
         height: 100%;
-    }
+    }*/
+}
+.info{
+    padding-top: 2%;
+    padding-left: 3%;
+}
+#titulo{
+    padding-left: 3%;
 }

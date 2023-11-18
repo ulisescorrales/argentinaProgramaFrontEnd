@@ -1,34 +1,44 @@
-<div class="d-flex flex-column mb-3 top-50 start-50 translate-middle" id="contacto">
-    <i class="fa-regular fa-circle-xmark borrar remarcar" routerLink="/"></i><!--Botón borrar-->
-    
-    <form [formGroup]="form" (ngSubmit)="enviarMensaje($event)">
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Nombre/Organización</label>
-            <input class="form-control" formControlName="organizacion"
-                [ngClass]="{'is-invalid':Organizacion?.errors && Organizacion?.touched, 'is-valid':!Organizacion?.errors && Organizacion?.touched}">
-            <div *ngIf="Organizacion?.errors && Contacto?.touched">
-                <p *ngIf="Organizacion?.hasError('required')" class="text-danger">Este campo es requerido</p>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Enviar Mensaje</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" routerLink="/"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form [formGroup]="form" (ngSubmit)="enviarMensaje($event)">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Nombre/Organización</label>
+                                    <input class="form-control" formControlName="organizacion"
+                                        [ngClass]="{'is-invalid':Organizacion?.errors && Organizacion?.touched, 'is-valid':!Organizacion?.errors && Organizacion?.touched}">
+                                    <div *ngIf="Organizacion?.errors && Contacto?.touched">
+                                        <p *ngIf="Organizacion?.hasError('required')" class="text-danger">Este campo es requerido</p>
+                                    </div>
+                                    <label for="exampleFormControlInput1" class="form-label">Contacto</label>
+                                    <input type="email" formControlName="contacto" class="form-control" placeholder="Email"
+                                        [ngClass]="{'is-invalid':Contacto?.errors && Contacto?.touched, 'is-valid':!Contacto?.errors && Contacto?.touched}">
+                                    <div *ngIf="Contacto?.errors && Contacto?.touched">
+                                        <p *ngIf="Contacto?.hasError('required')" class="text-danger">El email es requerido</p>
+                                        <p *ngIf="Contacto?.hasError('email')" class="text-danger">El formato del email debe ser válido</p>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
+                                    <textarea class="form-control"  rows="3" formControlName="mensaje" placeholder="Mensaje"
+                                    [ngClass]="{'is-invalid':Mensaje?.errors && Mensaje?.touched, 'is-valid':!Mensaje?.errors && Mensaje?.touched}"></textarea>            
+                                    <div *ngIf="Mensaje?.errors && Mensaje?.touched">
+                                        <p *ngIf="Mensaje?.hasError('required')" class="text-danger">Escriba un mensaje</p>
+                                    </div>
+                                </div>
+                                <div class="p-2">
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary mb-3 rounded mx-auto d-block">Enviar</button>
+                                        <p id="estadoMensaje"></p>
+                                    </div>                                    
+                                </div>        
+                            </form>
+                        </div>                        
+                    </div>
+                </div>
             </div>
-            <label for="exampleFormControlInput1" class="form-label">Contacto</label>
-            <input type="email" formControlName="contacto" class="form-control" placeholder="Email"
-                [ngClass]="{'is-invalid':Contacto?.errors && Contacto?.touched, 'is-valid':!Contacto?.errors && Contacto?.touched}">
-            <div *ngIf="Contacto?.errors && Contacto?.touched">
-                <p *ngIf="Contacto?.hasError('required')" class="text-danger">El email es requerido</p>
-                <p *ngIf="Contacto?.hasError('email')" class="text-danger">El formato del email debe ser válido</p>
-            </div>
-        </div>
-        <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
-            <textarea class="form-control"  rows="3" formControlName="mensaje" placeholder="Mensaje"
-            [ngClass]="{'is-invalid':Mensaje?.errors && Mensaje?.touched, 'is-valid':!Mensaje?.errors && Mensaje?.touched}"></textarea>            
-            <div *ngIf="Mensaje?.errors && Mensaje?.touched">
-                <p *ngIf="Mensaje?.hasError('required')" class="text-danger">Escriba un mensaje</p>
-            </div>
-        </div>
-        <div class="p-2">
-            <button type="submit" class="btn btn-primary mb-3 rounded mx-auto d-block">Enviar</button>
-            <p id="estadoMensaje"></p>
-        </div>        
-    </form>
-        
-</div>
