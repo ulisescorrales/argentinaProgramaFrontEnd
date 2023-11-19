@@ -1,13 +1,11 @@
 #contacto {
     padding:10px;
-    border-style: double;
-    position: fixed;    
-    background-color:white;            
+    border-style: solid;
+    position: fixed;        
     max-height: 100%;
     border-radius: 20px;
     overflow-y:auto;    
-    width:50%;
-    border-color: black;
+    width:50%;    
 }
 @media(max-width:500px){
     #contacto{
@@ -18,4 +16,16 @@
     #contacto{
         width:80%;
     }
+}
+.light{
+    background-color: white;
+}
+.darkInput{
+    color:black
+}
+.darkCerrar{
+    color:white
+}
+.darkCerrar:hover{
+    color:skyblue;
 }

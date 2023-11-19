@@ -1,18 +1,16 @@
 <footer [ngClass]="{'darkFooter':this.darkTheme}">
-    <div class="container">
+    <div class="container">        
         <div class="row align-items-center" id="fila">
             <div class="col">
                 <p>{{dom?.ciudad}}, {{dom?.provincia}}, {{dom?.pais}}</p>
             </div>
             <div class="col text-center">
-                <button *ngIf="!autenticado" type="button" class="btn btn-light mensaje"
-                    [routerLink]="['contacto']" data-bs-toggle="modal" data-bs-target="#exampleModal">Contacto</button>
-                <button *ngIf="autenticado" type="button" class="btn btn-light mensaje"
-                    [routerLink]="['mensaje/ver']">Ver Mensajes</button>
+                <button *ngIf="!autenticado" type="button" class="btn btn-light mensaje" [routerLink]="['contacto']">Contacto</button>
+                <button *ngIf="autenticado" type="button" class="btn btn-light mensaje" [routerLink]="['mensaje/ver']">Ver Mensajes</button>
             </div>
             <div class="col">
                 <!--<button type="button" class="btn btn-outline-light float-end">CV</button>-->
-            </div>                        
+            </div>
         </div>
     </div>
 </footer>

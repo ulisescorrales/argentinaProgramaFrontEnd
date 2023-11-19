@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/servicios/api.service';
+import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
 
 @Component({
   selector: 'app-contacto',
@@ -17,13 +18,18 @@ export class ContactoComponent implements OnInit {
       'access-control-allow-origin': '*'
     })
   };
-
+  darkTheme=false;
   form: UntypedFormGroup;
-  constructor(private formBuilder: UntypedFormBuilder, private ruta: Router, private http: HttpClient, private api: ApiService) {
+  constructor(private tema:TemaOscuroService,private formBuilder: UntypedFormBuilder, private ruta: Router, private http: HttpClient, private api: ApiService) {
     this.form = this.formBuilder.group({
       contacto: ['', [Validators.required, Validators.email]],
       organizacion: ['', [Validators.required]],
       mensaje: ['', [Validators.required]]
+    });
+    this.tema.getDarkBoolean().subscribe({
+      next:(data)=>{
+        this.darkTheme=data;
+      }
     });
   }
 
