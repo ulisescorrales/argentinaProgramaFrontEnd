@@ -12,6 +12,14 @@
         }        
     }
 }
+.nombre{
+    font-size: 115%;
+}
+@media(max-width:990px){
+    .nombre{
+        font-size: 100%;
+    }
+}
 
 #relativo {
     position: relative;
@@ -40,9 +48,11 @@
     max-height: 25vw;
     border-radius: 0%;   
 }
-#nombre{
-    
-}
+@media (max-width:520px) {     
+    .nombre {
+        font-size: 4.3vw;
+    }
+  }
 
 
 
