@@ -71,7 +71,8 @@
               [style]="this.darkTheme?{'background-color':'black','border':'1px solid white'}:null">
               <div class="row">
                 <div class="col text-center">
-                  <div class="d-inline-flex p-2 rounded">
+
+                  <div class="d-inline-flex p-2 rounded" id="linksMenu">
                     <!--Facebook-->
                     <a [href]="contactos?.facebook" class="rounded" target="_blank"
                       *ngIf="contactos?.facebook!=''">

@@ -1,16 +1,17 @@
 #status{
-    border-radius: 20px;
-    border-color: black;    
+    border-radius: 20px;    
     position:fixed;            
-    display:none;
-    background-color: white;
-    border-style: double;
-    color:black;
-    height: 40%;      
+    display:none;    
+    border-style: double;    
+    
 }
-#mensajeDeInicio{
-    padding-top:1%;    
+#mensajeDeInicio{        
+  font-size: 150%;
+}
+@media(max-width:500px){
+  #mensajeDeInicio{
     font-size: 60%;
+  }
 }
 .lds-ellipsis {
     display: inline-block;

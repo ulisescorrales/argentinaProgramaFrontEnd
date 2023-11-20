@@ -17,15 +17,3 @@
         width:80%;
     }
 }
-.light{
-    background-color: white;
-}
-.darkInput{
-    color:black
-}
-.darkCerrar{
-    color:white
-}
-.darkCerrar:hover{
-    color:skyblue;
-}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
 
 @Component({
   selector: 'app-cargando',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cargando.component.css']
 })
 export class CargandoComponent implements OnInit {
+  darkTheme = false;
+  constructor(private tema: TemaOscuroService) {
 
-  constructor() { }
+  }
 
   ngOnInit(): void {
+    this.tema.getDarkBoolean().subscribe({
+      next: (data) => {
+        this.darkTheme=data;
+      }
+    });
   }
 
 }
