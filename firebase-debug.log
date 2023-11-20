@@ -1,0 +1,42 @@
+[debug] [2023-11-20T02:30:44.669Z] ----------------------------------------------------------------------
+[debug] [2023-11-20T02:30:44.674Z] Command:       /usr/local/bin/firebase /root/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase deploy
+[debug] [2023-11-20T02:30:44.675Z] CLI Version:   11.24.1
+[debug] [2023-11-20T02:30:44.675Z] Platform:      linux
+[debug] [2023-11-20T02:30:44.675Z] Node Version:  v16.16.0
+[debug] [2023-11-20T02:30:44.689Z] Time:          Sun Nov 19 2023 23:30:44 GMT-0300 (GMT-03:00)
+[debug] [2023-11-20T02:30:44.690Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-11-20T02:30:44.699Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-11-20T02:30:44.838Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-11-20T02:30:44.839Z] > authorizing via signed-in user (ulisescorralesallen@gmail.com)
+[debug] [2023-11-20T02:30:44.839Z] [iam] checking project ulises-corrales-ap for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-11-20T02:30:44.841Z] > refreshing access token with scopes: []
+[debug] [2023-11-20T02:30:44.842Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-11-20T02:30:44.842Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-11-20T02:30:45.192Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-11-20T02:30:45.193Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-11-20T02:30:45.211Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/ulises-corrales-ap:testIamPermissions [none]
+[debug] [2023-11-20T02:30:45.212Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/ulises-corrales-ap:testIamPermissions x-goog-quota-user=projects/ulises-corrales-ap
+[debug] [2023-11-20T02:30:45.212Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/ulises-corrales-ap:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-11-20T02:30:45.379Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-11-20T02:30:45.388Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2023-11-20T02:30:46.236Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/ulises-corrales-ap:testIamPermissions 200
+[debug] [2023-11-20T02:30:46.238Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/ulises-corrales-ap:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-11-20T02:30:46.240Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/ulises-corrales-ap [none]
+[debug] [2023-11-20T02:30:46.697Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/ulises-corrales-ap 200
+[debug] [2023-11-20T02:30:46.707Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/ulises-corrales-ap {"projectId":"ulises-corrales-ap","projectNumber":"9733099316","displayName":"Ulises Corrales AP","name":"projects/ulises-corrales-ap","resources":{"hostingSite":"ulises-corrales-ap","realtimeDatabaseInstance":"ulises-corrales-ap-default-rtdb"},"state":"ACTIVE","etag":"1_bded716e-16eb-4a7c-9fc8-92bee02578c3"}
+[info] 
+[info] === Deploying to 'ulises-corrales-ap'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2023-11-20T02:30:46.733Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/ulises-corrales-ap/versions [none]
+[debug] [2023-11-20T02:30:46.733Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/ulises-corrales-ap/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2023-11-20T02:30:48.279Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/ulises-corrales-ap/versions 200
+[debug] [2023-11-20T02:30:48.280Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/ulises-corrales-ap/versions {"name":"projects/9733099316/sites/ulises-corrales-ap/versions/0ac5e304eb660aa4","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[ulises-corrales-ap]: beginning deploy... 
+[info] i  hosting[ulises-corrales-ap]: found 20 files in dist/ang-proyect 
+[debug] [2023-11-20T02:30:48.319Z] [hosting] uploading with 200 concurrency
+[debug] [2023-11-20T02:30:48.334Z] [hosting] hash cache [ZGlzdC9hbmctcHJveWVjdA] stored for 20 files
+[debug] [2023-11-20T02:30:48.334Z] [hosting][hash queue][FINAL] {"max":3,"min":1,"avg":1,"active":0,"complete":20,"success":20,"errored":0,"retried":0,"total":20,"elapsed":7}
+[debug] [2023-11-20T02:30:48.335Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/9733099316/sites/ulises-corrales-ap/versions/0ac5e304eb660aa4:populateFiles [none]
+[debug] [2023-11-20T02:30:48.335Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/9733099316/sites/ulises-corrales-ap/versions/0ac5e304eb660aa4:populateFiles {"files":{"/3rdpartylicenses.txt":"abd6f1cee6dc9310cacbaf3aa2486698327e711c40f6a345f59105faf1130220","/favicon.ico":"5ba04cf43d3c8c026bd5edd43046db96acb28b5686d99ea7d7e148feabfffc8f","/index.html":"52769c20138a001bb6b59a33a45dc337c887565eb5a738b033d459f07ad6bcee","/main.e3c3b22a658b6438.js":"01f91d269cc256f8f091c8190b10a8e45948211c97ca158406fea626075caefd","/polyfills.f696b4d355f06028.js":"ef8be3f798194ad13e0e576e94833b18cf5ff95f309b86ab2770508fb9edd874","/runtime.0f2c6bca5f75f646.js":"37fcbf67073bc2a2ba84f987743534d119f08096cd8f9b9e54cd7369cc85036d","/scripts.6b7e34cdd3b3db48.js":"2cf80cf540f97993072c0a0369662019624cf150ce3dbcda8ba22cd73645983b","/styles.a5535b110712057a.css":"a6424f3064edf73448e6c9d59585b9839fd10b4ed00583fd2a2482b821453790","/assets/data.json":"e63b021c362371f53834eeeb53dbad5cf221978b916471020b53bdffead20a49","/assets/certificados/Certificado AL LCC.pdf":"657faf846b0552986eb86ace921dffd93a02a68887b1e3940a089a7753e4bbc8","/assets/certificados/Certificado Belgrano.pdf":"98df420ee05d4243730a167caf85f233bed3001fa27206a655afe15bc29a7d66","/assets/certificados/Certificado Inglés BMB.pdf":"60562b53d7cbd289d92872d6ac0e64040d336d3aeb8108268a625bbd57364a92","/assets/certificados/Certificado WEED.pdf":"cea46152fc034db53dc6fe3941ad9146653286149e165616818c7d1a15bdce00","/assets/certificados/Certificado de Inglés AP.pdf":"6510b6204180dcffdb7dfe743b233ea8bcbe80b5347240fae247d80af4429c83","/assets/certificados/Certificado_YoProgramo.pdf":"4f4a588e602d1d0751e7acbcc92f7e9177b2e30ea1ef53a99edcd8b99c58ce8e","/assets/certificados/alkemy.pdf":"35fb651aafbc8d83f8946cab642deb186728ba4a42f443350cb3bc620dcb599d","/assets/img/fotoPerfil.jpg":"e8b7aebb4f69224a466bb2aeefd53738ce55533337d6135b5f268180fc00e4a5","/assets/img/logoAP.png":"150e81d9994db933a19222a751fefbb559421b7225510c14e2301be3a43fdfe8","/assets/img/logoFB.jpg":"f2845e605517d27cf51328a73ce069801826a2c6791772b71d81ad74f38ede2c","/assets/img/logoTW.png":"073ffc11891661c695421459574277aaa0734a205e602451940fb0236e1008c9"}}

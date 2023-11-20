@@ -7,7 +7,7 @@
     <form [formGroup]="form" (ngSubmit)="enviarMensaje($event)">
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Nombre/Organización</label>
-            <input class="form-control" [ngClass]="{'darkInput':this.darkTheme}" formControlName="organizacion"
+            <input class="form-control" [ngClass]="{'darkInput':this.darkTheme}" placeholder="Remitente" formControlName="organizacion"
                 [ngClass]="{'is-invalid':Organizacion?.errors && Organizacion?.touched, 'is-valid':!Organizacion?.errors && Organizacion?.touched}">
             <div *ngIf="Organizacion?.errors && Contacto?.touched">
                 <p *ngIf="Organizacion?.hasError('required')" class="text-danger">Este campo es requerido</p>
@@ -22,7 +22,7 @@
         </div>
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
-            <textarea class="form-control"  rows="3" formControlName="mensaje" placeholder="Mensaje"
+            <textarea class="form-control"  rows="3" formControlName="mensaje" placeholder="Escriba su mensaje..."
             [ngClass]="{'is-invalid':Mensaje?.errors && Mensaje?.touched, 'is-valid':!Mensaje?.errors && Mensaje?.touched}"></textarea>            
             <div *ngIf="Mensaje?.errors && Mensaje?.touched">
                 <p *ngIf="Mensaje?.hasError('required')" class="text-danger">Escriba un mensaje</p>

@@ -63,7 +63,19 @@ img{
       font-size: 4vw;
   }
 
-  #nombre {
+  .nombre {
       font-size: 4.3vw;
   }
+}
+.light{
+  background-color: white;
+}
+.darkInput{
+  color:black
+}
+.darkCerrar{
+  color:white
+}
+.darkCerrar:hover{
+  color:skyblue;
 }

@@ -1,6 +1,9 @@
 body {
   font-family: sans-serif;      
 }
+#menu{
+  display:none;
+}
 .darkSVG{  
   fill:white
 }
@@ -18,7 +21,6 @@ a{
 }
 
 .logo{    
-  background-color: white;
   padding: 0;  
   img{
     border-radius: 0;
@@ -28,37 +30,23 @@ a{
   }
 }
 
-#redesSegundaFila {
-  display: none;
-  svg{
-    fill:white;
-  }  
-}
 
 @media (max-width:480px) {
   #redesPrimeraFila {
-    display: none
+    display: none;    
   }
-
-  #redesSegundaFila {
-    display: block;
+  #menu{
+    display:block;
   }
-}
-#logoAP2{
-  display:none
+  .notMenu{
+    display:none;
+  }  
 }
 @media(max-width:575px){
   .yoProgramo{
     text-align: center;
-  }
-  #logoAP{
-    display:none;
-  }
-  #logoAP2{
-    display:block;
-    width: 10%;
-    height:10%;
-  }
+  }  
+  
 }
 @media (max-width:310px) {
   #curso {
@@ -67,5 +55,9 @@ a{
 
   .login {
     font-size: 4vw;
-  }
+  }  
+}
+#linksMenu a{
+    padding-left: 10%;
+    padding-right: 10%;
 }
