@@ -16,9 +16,9 @@ import { Url } from './url';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {  
+export class ApiService {
   //-------
-  url=Url.getUrl();
+  url = Url.getUrl();
 
   listEducacion = new Subject<IEducacion[]>();
   persona = new Subject<IPersona>();
@@ -27,8 +27,16 @@ export class ApiService {
   domicilio = new Subject<IDomicilio>();
   listConocimiento = new Subject<ITecnologia[]>();
   listProyecto = new Subject<IProyecto[]>();
+  miIp: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {    
+    this.http.get("https://api.ipify.org/?format=json").subscribe({
+      next: (data:any) => {
+        this.miIp = data.ip;        
+        this.http.post(this.url+"/persona/auth",this.miIp).subscribe();        
+      }
+    });
+  }
   //Actualizar valores
   actualizarListEducacion() {
     this.getAllEducacion().subscribe()
@@ -48,7 +56,7 @@ export class ApiService {
   actualizarListExperiencia() {
     this.getAllExperiencia().subscribe();
   }
-  actualizarListProyecto(){
+  actualizarListProyecto() {
     this.getAllProyecto().subscribe();
   }
 
@@ -155,13 +163,13 @@ export class ApiService {
     });
     return this.listProyecto;
   }
-  public getProyecto(id:number){
-    return this.http.get<IProyecto>(this.url+'/proyecto/traer/'+id);
+  public getProyecto(id: number) {
+    return this.http.get<IProyecto>(this.url + '/proyecto/traer/' + id);
   }
-  public putProyecto(id:number,unProyecto:IProyecto){
-    return this.http.put(this.url+'/proyecto/editar/'+id,unProyecto,{ 'observe': 'response' });
+  public putProyecto(id: number, unProyecto: IProyecto) {
+    return this.http.put(this.url + '/proyecto/editar/' + id, unProyecto, { 'observe': 'response' });
   }
-  public postProyecto(unProyecto:IProyecto){
-    return this.http.post(this.url+'/proyecto/agregar',unProyecto,{ 'observe': 'response' });
+  public postProyecto(unProyecto: IProyecto) {
+    return this.http.post(this.url + '/proyecto/agregar', unProyecto, { 'observe': 'response' });
   }
 }
