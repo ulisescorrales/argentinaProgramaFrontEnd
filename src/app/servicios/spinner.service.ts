@@ -11,11 +11,14 @@ export class SpinnerService {
   x=document.getElementById('status');
   //cargado=new BehaviorSubject<boolean>(false);   
   cargado=false;
+  cargando=new BehaviorSubject<boolean>(true);
   constructor() {        
   }
-
+  getTerminoCargar(){
+    return this.cargando;
+  }
   getCargado(){    
-    return this.cargado
+    return this.cargado;
   }
   sumarComponenteCargado() {    
     this.cant++;        
@@ -24,6 +27,7 @@ export class SpinnerService {
     if (this.cant == 7) {
       //this.cargado.next(true);      
       this.cargado=true;
+      this.cargando.next(false);
       const x = document.getElementById('status');
       const y=document.getElementById('mensajeDeInicio');
       if (x != null) {

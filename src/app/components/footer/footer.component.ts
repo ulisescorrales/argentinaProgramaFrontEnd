@@ -13,23 +13,24 @@ import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
 export class FooterComponent implements OnInit {
   dom: IDomicilio | undefined;
   autenticado: boolean = false;
-  darkTheme=false;
-  constructor(private tema:TemaOscuroService,private inicio: SpinnerService, private auth: AutenticacionService, private api: ApiService) { }
+  darkTheme = false;
+  constructor(private tema: TemaOscuroService, private inicio: SpinnerService, private auth: AutenticacionService, private api: ApiService) { }
 
 
   ngOnInit(): void {
-    this.api.getDomicilio().subscribe((data: IDomicilio) => {
-      this.dom = data;
-      this.inicio.sumarComponenteCargado();
-    }, error => {
-      this.inicio.sumarComponenteCargado();
-    }, () => {      
-      
-    });
+    this.api.getDomicilio().subscribe({
+      next: (data: IDomicilio) => {
+        this.dom = data;
+        this.inicio.sumarComponenteCargado();
+      }, error: () => {
+        this.inicio.sumarComponenteCargado();
+      }
+    }
+    );
     this.autenticado = this.auth.logIn;
     this.tema.getDarkBoolean().subscribe({
-      next:(data)=>{
-        this.darkTheme=data;
+      next: (data) => {
+        this.darkTheme = data;
       }
     });
   }

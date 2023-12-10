@@ -3,13 +3,13 @@
         <div class="row" id="relativo">
             <!--<div class="row" id="relativo">-->
             <div class="col" style="background-color:black">
-                <img class="img-fluid" id="imagen" [src]="persona?.fotoFondo" width="100%" alt="Responsive Image" />
+                <img class="img-fluid" id="imagen" [src]="persona?.fotoFondo" width="100%" />
             </div>
             <div class="d-flex" id="absoluto">
                 <div class="row">
                     <div class="col-md-2">
                         <img [src]="persona?.fotoPerfil" class="rounded-circle rounded mx-auto d-block img-fluid"
-                            alt="banner" id="foto" />
+                             id="foto" />
                         <h6 class="text-center nombre" >{{persona?.apellido}} {{persona?.nombre}}</h6>
                     </div>
                     <div class="col-md-9 my-auto">

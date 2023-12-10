@@ -2,7 +2,8 @@
     border-radius: 20px;    
     position:fixed;            
     display:none;    
-    border-style: double;    
+    border-style: solid;    
+    z-index: 2;
     
 }
 #mensajeDeInicio{        

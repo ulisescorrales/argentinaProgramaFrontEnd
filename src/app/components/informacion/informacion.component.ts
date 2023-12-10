@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
-
+declare let AOS: any;
 @Component({
   selector: 'app-informacion',
   templateUrl: './informacion.component.html',
@@ -9,24 +9,33 @@ import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
 export class InformacionComponent implements OnInit {
   slide: number = 0;
   darkTheme = false;
-  width:number;
+
+  sm = false;
   @HostListener('window:resize', ['$event'])
   onResize(event: Event): void {
-    this.width=window.innerWidth;
+    if (window.innerWidth < 450) {
+      this.sm = true;
+    } else {
+      this.sm = false;
+    }
   }
   constructor(private temaOscuro: TemaOscuroService) {
-    this.width=window.innerWidth;
-   }
+  }
 
   ngOnInit(): void {
     this.temaOscuro.getDarkBoolean().subscribe({
-      next: (data)=>{
+      next: (data) => {
         this.darkTheme = data;
       }
     })
   }
   rightSlide() {
     this.slide = (this.slide + 1) % 4;
+    AOS.init({
+      initClassName: "aos-init",
+      startEvent: "DOMContentLoaded",
+    });
+
   }
   leftSlide() {
     this.slide--;
