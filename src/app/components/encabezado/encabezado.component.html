@@ -1,4 +1,4 @@
-<div id="borde" [ngStyle]="this.darkTheme?{'background-color':'black'}:{'background-color':'white'}">
+<div id="borde" #borde2 [ngStyle]="this.darkTheme?{'background-color':'black'}:{'background-color':'white'}">
   <div class="container-fluid">
     <div class="row align-items-center">
       <div class="col-1 logo" id="logoAP">
@@ -142,3 +142,4 @@
     </div>
   </div>
 </div>
+<div [ngStyle]="{'height':borde2.style.height,'background-color':'yellow'}" clas="container-fluid">HOLAAAAAA</div>

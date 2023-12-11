@@ -1,7 +1,7 @@
 <div [ngClass]="{'dark':this.darkTheme,'light':!this.darkTheme}" id="contenedor">
     <app-encabezado></app-encabezado>
     <app-acerca-de></app-acerca-de>
-    <app-informacion></app-informacion>    
+    <app-informacion #info></app-informacion>    
     <app-footer></app-footer>
     <router-outlet ></router-outlet>       
     <app-cargando></app-cargando>  

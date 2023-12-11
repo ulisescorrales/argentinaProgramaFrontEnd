@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
 declare let AOS: any;
 @Component({
@@ -9,7 +9,7 @@ declare let AOS: any;
 export class InformacionComponent implements OnInit {
   slide: number = 0;
   darkTheme = false;
-
+  @ViewChild('info',{static:false}) info:ElementRef|undefined;
   sm = false;
   @HostListener('window:resize', ['$event'])
   onResize(event: Event): void {
@@ -19,6 +19,9 @@ export class InformacionComponent implements OnInit {
       this.sm = false;
     }
   }
+  /*@HostListener('window:scroll', ['$event'])
+  onScroll(event: Event): void {            
+  }*/
   constructor(private temaOscuro: TemaOscuroService) {
   }
 
