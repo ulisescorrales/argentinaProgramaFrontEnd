@@ -48,11 +48,14 @@
     max-height: 25vw;
     border-radius: 0%;   
 }
-@media (max-width:520px) {     
+.texto{
+    font-size:20px;
+}
+@media (max-width:520px) {
     .nombre {
         font-size: 4.3vw;
     }
-  }
-
-
-
+    .texto{
+        font-size: 3.5vw;
+    }
+}
