@@ -1,15 +1,30 @@
+import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
-declare let AOS: any;
 @Component({
   selector: 'app-informacion',
   templateUrl: './informacion.component.html',
-  styleUrls: ['./informacion.component.css']
+  styleUrls: ['./informacion.component.css'],
+  animations: [trigger('info', [
+    state('false', style({ opacity: 0, display: 'none' })),
+    state('true', style({ opacity: 1, display: 'block ' })),
+    transition('true => false', animate('500ms',
+      keyframes([
+        style({ display: 'block', opacity: 1, offset: 0 }),
+        style({ display: 'block', opacity: 0, offset: 1 })
+      ]),
+    )),
+    transition('false => true', animate('1s 500ms', keyframes([
+      style({ display: 'block', opacity: 0, offset: 0 }),
+      style({ display: 'block', opacity: 1, offset: 1 })
+    ]))),
+  ]),
+  ]
 })
 export class InformacionComponent implements OnInit {
   slide: number = 0;
   darkTheme = false;
-  @ViewChild('info',{static:false}) info:ElementRef|undefined;
+  @ViewChild('info', { static: false }) info: ElementRef | undefined;
   sm = false;
   @HostListener('window:resize', ['$event'])
   onResize(event: Event): void {
@@ -34,16 +49,11 @@ export class InformacionComponent implements OnInit {
   }
   rightSlide() {
     this.slide = (this.slide + 1) % 4;
-    AOS.init({
-      initClassName: "aos-init",
-      startEvent: "DOMContentLoaded",
-    });
-
   }
   leftSlide() {
     this.slide--;
     if (this.slide == -1) {
       this.slide = 3;
     }
-  }
+  }  
 }

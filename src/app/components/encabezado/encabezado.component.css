@@ -1,9 +1,10 @@
-#borde{
+#borde {
   width: 100%;
-  position:fixed;
-  z-index: 1;  
-  border:2px solid black;
+  position: fixed;
+  z-index: 1;
+  border: 2px solid black;
 }
+
 body {
   font-family: sans-serif;
 }
@@ -19,63 +20,68 @@ body {
 a {
   padding-right: 1%;
 }
+
 /*Sun and moon icons*/
-.fa-solid.fa-moon{
+.fa-solid.fa-moon {
   font-size: 20px;
 }
-.fa-regular.fa-sun{
+
+.fa-regular.fa-sun {
   font-size: 20px;
 }
-@media(max-width:320px){
-  .fa-solid.fa-moon{
+
+@media(max-width:320px) {
+  .fa-solid.fa-moon {
     font-size: 6vw;
   }
-  .fa-regular.fa-sun{
+
+  .fa-regular.fa-sun {
     font-size: 6vw;
   }
-  #logoAP{
-    display:none;
+
+  #logoAP {
+    display: none;
   }
-  #botonMenu{
+
+  #botonMenu {
     font-size: 5vw;
   }
 }
 
-.login {  
+.login {
   font-size: 16px;
 }
 
+#redesPrimeraFila svg {
 
-#redesPrimeraFila {     
-  
-  svg{
-    height:22px;
-    width: 22px;    
-  }  
-  .rs{
-    padding-right: 5%;
-  }
+  height: 22px;
+  width: 22px;
+
+}
+
+#redesPrimeraFila .rs {
+  padding-right: 5%;
+
 }
 
 .logo {
-  padding: 0;
-
-  img {
-    border-radius: 0;
-    background-color: black;
-    width: 100%;
-    height: 100%;
-  }
+  padding: 0;  
+}
+.logo img {
+  border-radius: 0;
+  background-color: black;
+  width: 100%;
+  height: 100%;
 }
 
 
 @media (max-width:480px) {
-  #linksMenu svg{
+  #linksMenu svg {
     width: 100%;
     height: 100%;
   }
 
-  #linksMenu a{
+  #linksMenu a {
     padding-left: 0%;
     padding-right: 0%;
   }
@@ -116,6 +122,6 @@ a {
 }
 
 svg {
-  width: 150%;
-  height: 150%;
+  /*width: 100%;
+  height: 100%;*/
 }

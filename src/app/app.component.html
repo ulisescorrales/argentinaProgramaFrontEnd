@@ -1,9 +1,12 @@
-<div [ngClass]="{'dark':this.darkTheme,'light':!this.darkTheme}" id="contenedor">
+<div [ngClass]="{'dark':this.darkTheme,'light':!this.darkTheme}" id="contenedor" >
     <app-encabezado></app-encabezado>
     <app-acerca-de></app-acerca-de>
-    <app-informacion #info></app-informacion>    
+    <app-informacion #info></app-informacion>
     <app-footer></app-footer>
-    <router-outlet ></router-outlet>       
-    <app-cargando></app-cargando>  
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+    <app-cargando></app-cargando>
     <div @cargando *ngIf="this.cargando" id="cargando"></div>
+    <div @notificacion (@notificacion.done)="this.mensaje=false"  *ngIf="this.mensaje" class="alert alert-success" role="alert" id="notificacion">{{this.mensajeString}}</div>    
 </div>

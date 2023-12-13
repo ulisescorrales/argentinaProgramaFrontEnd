@@ -17,10 +17,8 @@
                     <div class="col text-left primerRenglon">
                         <!--Descripción-->
                         <div class="row">
-                            <div class="col-10 text-left contenido">
-                                <h2 class="tituloItem"> {{education.titulo}}</h2>
-                            </div>
-                            <div class="col-1  my-auto" *ngIf="editar">
+                            
+                            <div class="col-1  my-auto" *ngIf="this.editar">
                                 <i class="fa-solid fa-pen editar remarcar"
                                     [routerLink]="['editar','educacion',education.idEstudio]"></i>
                                 <i class="fa-sharp fa-solid fa-trash editar remarcar"

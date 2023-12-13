@@ -32,6 +32,7 @@ import { SpinnerService } from './servicios/spinner.service';
 import { CargandoComponent } from './components/cargando/cargando.component';
 import { InformacionComponent } from './components/informacion/informacion.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -52,8 +53,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,     
-    BrowserAnimationsModule 
+    ReactiveFormsModule,//Formularios reactivos
+    BrowserAnimationsModule,//Activación de animaciones
+    RouterModule
   ],
   providers: [ApiService,
   {provide: HTTP_INTERCEPTORS, useClass:InterceptorService,multi:true},SpinnerService],
