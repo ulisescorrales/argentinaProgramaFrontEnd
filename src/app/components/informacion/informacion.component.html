@@ -1,4 +1,4 @@
-<div class="container" #info>
+<!--<div class="container" #info>
     <div class="row">
         <div class="col">            
             <button (click)="this.leftSlide()" class="btn" [ngClass]="{'btn-info darkButton':this.darkTheme,' btn-primary':!this.darkTheme,'btn-sm':this.sm}"><i class="fa-solid fa-arrow-left"></i></button>
@@ -18,8 +18,14 @@
         </div>
     </div>
 </div>
+-->
+<app-educacion></app-educacion>
+<app-conocimientos ></app-conocimientos>
+<app-proyecto></app-proyecto>
+<app-experiencia></app-experiencia>
 
-<app-educacion [@info]="this.slide==0" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="250"></app-educacion>
+<!--<app-educacion [@info]="this.slide==0" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="250"></app-educacion>
 <app-conocimientos [@info]="this.slide==1" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="250"></app-conocimientos>
 <app-experiencia [@info]="this.slide==2" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="250"></app-experiencia>
 <app-proyecto [@info]="this.slide==3" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="250"></app-proyecto>
+-->

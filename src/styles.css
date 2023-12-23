@@ -7,6 +7,8 @@
 }
 
 .light {
+  background-color: white;
+  color:black;
   transition: background-color 0.5s ease;
 }
 
@@ -25,14 +27,18 @@ img {
 
 /**/
 
-.remarcar:hover {
-  color: #6495ED;
-}
-
 .remarcar {
   color: black;
 }
-
+.remarcarDark{
+  color:white;
+}
+.remarcar:hover {
+  color: #6495ED;
+}
+.remarcarDark:hover {
+  color: #6495ED;
+}
 
 
 .editarImagen:hover {
@@ -91,4 +97,7 @@ img {
 }
 .texto{
   font-family:sans-serif;
+}
+.informacion{
+  margin-top: 5%;
 }

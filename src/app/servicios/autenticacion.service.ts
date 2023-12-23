@@ -34,4 +34,5 @@ export class AutenticacionService {
     return sessionStorage.getItem('currentUser') != null;
   }
 
+  
 }

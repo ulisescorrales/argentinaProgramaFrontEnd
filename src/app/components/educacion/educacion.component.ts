@@ -23,7 +23,7 @@ export class EducacionComponent implements OnInit {
   listTecnologia:ITecnologia[]=new Array<ITecnologia>();
   constructor(private tema:TemaOscuroService,private inicio:SpinnerService,private api: ApiService,private autenticacion:AutenticacionService) { }
   ngOnInit(): void {        
-    this.editar=this.autenticacion.logIn;//    
+    this.editar=this.autenticacion.logIn;//        
     this.api.getAllEducacion().subscribe((data: IEducacion[]) => {              
       this.listEducacion=data;
       this.inicio.sumarComponenteCargado();

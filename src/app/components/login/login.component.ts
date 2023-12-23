@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
 
   onEnviar(event: Event) {
     event.preventDefault;//Prevenir evento del formulario
-    const x = document.getElementById('estadoLogin');
+    const x = document.getElementById('estadoLogin'); 
     if (x != null) {
       x.style.color = "green";
       x.innerHTML = "Autenticando...";

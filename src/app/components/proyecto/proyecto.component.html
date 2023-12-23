@@ -1,4 +1,4 @@
-<div section="proyectos">
+<div section="proyectos" class="informacion">
     <div class="container">
         <div class="row border-bottom">
             <div class="col text-center">
@@ -6,10 +6,10 @@
             </div>
         </div>
         <div class="row" style="margin-top: 20px" *ngFor="let filas of filasArray;index as i" #proyecto>
-            <div class="col text-center programa" *ngFor="let columnas of columnasArray; index as j" ngSwitch="j">
+            <div class="col text-center programa" *ngFor="let columnas of columnasArray; index as j" [ngSwitch]="j">
                 <!--Cargar data-aos según su posición en la grilla-->
 
-                <div *ngIf="columnas*i+j<tamanioProyectos;else agregar" [ngClass]="{'darkProyecto':this.darkTheme}"  class="card proyecto" style="padding:1%">
+                <div *ngIf="columnas*i+j<tamanioProyectos" [ngClass]="{'darkProyecto':this.darkTheme}"  class="card proyecto" style="padding:1%;height: 100%;">
                     <div class="row grilla">
                         <div class="col">
                             <!-- Logo de la institución-->
@@ -17,9 +17,9 @@
                                 data-aos="zoom-out" data-aos-duration="1000" data-aos-delay="250">
                             <!--Botones de edición y borrado de proyecto-->
                             <div class="middle" *ngIf="editar; else info">
-                                <i class="fa-solid fa-pen  remarcar"
+                                <i class="fa-solid fa-pen " [ngClass]="this.darkTheme? 'remarcarDark':'remarcar'"
                                     [routerLink]="['editar','proyecto',listProyecto[columnas*i+j].idProyecto]"></i>
-                                <i class="fa-sharp fa-solid fa-trash editar remarcar" data-aos="zoom-in"
+                                <i class="fa-sharp fa-solid fa-trash editar remarcar" data-aos="zoom-in" [ngClass]="this.darkTheme? 'remarcarDark':'remarcar'"
                                     data-aos-duration="1000" data-aos-delay="250"
                                     [routerLink]="['editar','eliminar','proyecto',listProyecto[columnas*i+j].idProyecto]"></i>
                             </div>
@@ -60,15 +60,15 @@
                 </div>
 
                 <!--Cargar icono de editar, mejorar para cuando esté la grilla lena(se debe agregar una fila mas)-->
-                <ng-template ngIf*="editar && columnas*i+j==tamanioKnowledge" #agregar>
-                    <!--Cambia el data-aos según en que posición de la cuadrícula esté-->
-                    <h2><i *ngSwitchCase="0" class="fa-solid fa-circle-plus remarcar"  data-aos="fade-right"
+                <ng-template [ngIf]="editar &&  this.tamanioProyectos==columnas*i+j">                    
+                    <!--Cambia el data-aos según en que posición de la cuadrícula esté-->                    
+                    <h2><i *ngSwitchCase="0" class="fa-solid fa-circle-plus" [ngClass]="{'remarcarDark':this.darkTheme,'remarcar':!this.darkTheme}"   data-aos="fade-right"
                             data-aos-duration="1000" data-aos-delay="250"
                             [routerLink]="['editar','agregar','proyecto']"></i></h2>
-                    <h2><i *ngSwitchCase="1" class="fa-solid fa-circle-plus  remarcar" data-aos="zoom-in"
+                    <h2><i *ngSwitchCase="1" class="fa-solid fa-circle-plus" [ngClass]="{'remarcarDark':this.darkTheme,'remarcar':!this.darkTheme}" data-aos="zoom-in"
                             data-aos-duration="1000" data-aos-delay="250"
                             [routerLink]="['editar','agregar','proyecto']"></i></h2>
-                    <h2><i *ngSwitchCase="2" class="fa-solid fa-circle-plus  remarcar" data-aos="fade-left"
+                    <h2><i *ngSwitchCase="2" class="fa-solid fa-circle-plus" [ngClass]="{'remarcarDark':this.darkTheme,'remarcar':!this.darkTheme}" data-aos="fade-left"
                             data-aos-duration="1000" data-aos-delay="250"
                             [routerLink]="['editar','agregar','proyecto']"></i></h2>
                 </ng-template>

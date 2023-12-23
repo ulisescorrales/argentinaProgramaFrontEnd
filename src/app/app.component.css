@@ -7,9 +7,9 @@
     }
 }
 #contenedor{
-    /*position:relative;
-    background-image: url("../assets/img/darkBackground.jpg");    
-    background-size:contain;    */
+    position:relative;
+    /*background-image: url("../assets/img/darkBackground.jpg");    
+    background-size:contain; */
 }
 #cargando{    
     height: 100%;

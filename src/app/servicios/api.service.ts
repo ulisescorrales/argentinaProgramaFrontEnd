@@ -26,16 +26,9 @@ export class ApiService {
   contacto = new Subject<IContacto>();
   domicilio = new Subject<IDomicilio>();
   listConocimiento = new Subject<ITecnologia[]>();
-  listProyecto = new Subject<IProyecto[]>();
-  miIp: any;
+  listProyecto = new Subject<IProyecto[]>();  
 
   constructor(private http: HttpClient) {    
-    this.http.get("https://api.ipify.org/?format=json").subscribe({
-      next: (data:any) => {
-        this.miIp = data.ip;        
-        this.http.post(this.url+"/persona/auth",this.miIp).subscribe();        
-      }
-    });
   }
   //Actualizar valores
   actualizarListEducacion() {

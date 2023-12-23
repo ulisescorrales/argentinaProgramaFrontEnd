@@ -3,6 +3,7 @@ import { ITecnologia } from 'src/app/interfaces/itecnologia';
 import { ApiService } from 'src/app/servicios/api.service';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 import { SpinnerService } from 'src/app/servicios/spinner.service';
+import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
 
 @Component({
   selector: 'app-conocimientos',
@@ -21,11 +22,12 @@ export class ConocimientosComponent implements OnInit {
   listTecnologia: ITecnologia[] = new Array<ITecnologia>();  
   longitud=0;
   longArray:any;
+  darkTheme:boolean=false;
   @HostListener('window:resize', ['$event'])
   onResize(event: Event): void {
     this.definirCantCols();
   }
-  constructor(private inicio: SpinnerService, private api: ApiService, private autenticacion: AutenticacionService) { 
+  constructor(private dark:TemaOscuroService,private inicio: SpinnerService, private api: ApiService, private autenticacion: AutenticacionService) { 
     this.definirCantCols();
   }
   ngOnInit(): void {
@@ -44,6 +46,11 @@ export class ConocimientosComponent implements OnInit {
         this.inicio.sumarComponenteCargado();
       }, error: () => {
         this.inicio.sumarComponenteCargado();
+      }
+    });
+    this.dark.getDarkBoolean().subscribe({
+      next: (data)=>{
+        this.darkTheme=data;
       }
     })
   }
