@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/servicios/api.service';
-import { MensajeService } from 'src/app/servicios/mensajeService';
+import { AlertaService } from 'src/app/servicios/mensajeService';
 import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
 
 
@@ -22,7 +22,7 @@ export class ContactoComponent implements OnInit {
   };
   darkTheme=false;
   form: UntypedFormGroup;
-  constructor(private tema:TemaOscuroService,private formBuilder: UntypedFormBuilder, private ruta: Router, private http: HttpClient, private api: ApiService,private success:MensajeService) {
+  constructor(private tema:TemaOscuroService,private formBuilder: UntypedFormBuilder, private ruta: Router, private http: HttpClient, private api: ApiService,private alerta:AlertaService) {
     this.form = this.formBuilder.group({
       contacto: ['', [Validators.required, Validators.email]],
       organizacion: ['', [Validators.required]],
@@ -54,7 +54,7 @@ export class ContactoComponent implements OnInit {
       var status;      
       this.api.saveMensaje(this.form.value).subscribe(data => {
         status = data.status;         
-        this.success.comunicateMensaje("Mensaje enviado correctamente");
+        this.alerta.comunicarMensaje("Mensaje enviado correctamente","alert-success");
         this.ruta.navigate(["/"]);        
       },
         error => {

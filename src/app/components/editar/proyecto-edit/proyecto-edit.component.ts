@@ -139,15 +139,11 @@ export class ProyectoEditComponent implements OnInit {
   }
   agregarTareaProyecto(){
     console.log(this.formTarea.value);
-    this.api.postTareaProyecto(this.formTarea.value).subscribe({
+    this.api.postTareaProyecto(this.formTarea.value,this.id).subscribe({
       next: (data:TareaProyecto[])=>{
         if(this.proyecto!=undefined){          
-          this.proyecto.tareas=data;
-          console.log(data);
+          this.proyecto.tareas=data;          
         }            
-      },
-      error: ()=>{
-        
       }
     })
   }

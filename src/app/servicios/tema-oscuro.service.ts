@@ -12,14 +12,17 @@ export class TemaOscuroService {
     //Detectar tema predeterminado del navegador    
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       this.darkTheme.next(true);
+      document.body.style.backgroundColor="black";
     }
     //Reaccionar ante el cambio de tema preferido del navegador
     window.matchMedia('(prefers-color-scheme: dark)')
       .addEventListener('change', ({ matches }) => {
         if (matches) {
           this.darkTheme.next(true);
+          document.body.style.backgroundColor="black";
         } else {
           this.darkTheme.next(false);
+          document.body.style.backgroundColor="white";
         }
       })   
   }
@@ -27,11 +30,13 @@ export class TemaOscuroService {
   public switDarkTheme(){
     if(this.darkTheme.value==false){
       this.darkTheme.next(true);
+      document.body.style.backgroundColor="black";
     }else{
       this.darkTheme.next(false);
+      document.body.style.backgroundColor="white";
     }
   }
   public getDarkBoolean(){
-    return this.darkTheme.asObservable();
+    return this.darkTheme;
   }
 }

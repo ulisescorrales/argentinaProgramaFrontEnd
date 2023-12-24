@@ -11,13 +11,15 @@ export class GuardGuard {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    let currentUser = this.autenticacionServicio.UsuarioAutenticado;
-    if (currentUser != null && currentUser.token != null) {
-      return true;
+    let currentUser = this.autenticacionServicio.logIn;    
+    var retornar:boolean;
+    if (currentUser) {
+      retornar=true;
     } else {
       this.rutas.navigate(['/login']);
-      return false;
+      retornar=false;
     }
+    return retornar
   }
 
 }

@@ -3,6 +3,7 @@ import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/servicios/api.service';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
+import { AlertaService } from 'src/app/servicios/mensajeService';
 
 @Component({
   selector: 'app-agregar-proyecto',
@@ -11,8 +12,8 @@ import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 })
 export class AgregarProyectoComponent implements OnInit {
   formProyecto: UntypedFormGroup;
-  y=document.getElementById('status');
-  constructor(private autenticacion: AutenticacionService, private router: Router, private api: ApiService, private formBuilder: UntypedFormBuilder) {
+  y = document.getElementById('status');
+  constructor(private alerta: AlertaService, private autenticacion: AutenticacionService, private router: Router, private api: ApiService, private formBuilder: UntypedFormBuilder) {
     this.formProyecto = this.formBuilder.group({
       nombre: [],
       logo: [],
@@ -26,33 +27,21 @@ export class AgregarProyectoComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  agregarProyecto() {
-    this.mostrarSpinner();
+  agregarProyecto() {    
     if (this.formProyecto.touched) {
-      const x = document.getElementById('estadoEnvio');
-      this.api.postProyecto(this.formProyecto.value).subscribe(data => {
-        if (x != null) {
-          alert("Elemento agregado correctamente")
-          this.api.actualizarListProyecto();                    
-          this.router.navigate(['/']);
-        }
-      },
-        error => {
-          if (error.status == 401) {
-            alert("Error: debe volver a iniciar sesión");
-            this.router.navigate(['/login']).then(value => {
-              window.location.reload();
-            });
-          } else {
-            if (x != null) {
-              x.style.color = "red";
-              x.innerHTML = "Error. Revise el formulario";
-            }
-          }
-        },
-        ()=>{
+      this.mostrarSpinner();
+      this.api.postProyecto(this.formProyecto.value).subscribe({
+        next: data => {
           this.borrarSpinner();
-        });
+          this.alerta.comunicarMensaje("Elemento agregado correctamente","alert-success")
+          this.api.actualizarListProyecto();
+          this.router.navigate(['/']);
+        },
+        error:()=>{          
+        this.borrarSpinner();
+          this.alerta.comunicarMensaje("Error, revise el formulario","alert-danger")
+        }
+      })
     }
   }
   mostrarSpinner() {

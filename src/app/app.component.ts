@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SpinnerService } from './servicios/spinner.service';
 import { TemaOscuroService } from './servicios/tema-oscuro.service';
 import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
-import { MensajeService } from './servicios/mensajeService';
+import { AlertaService } from './servicios/mensajeService';
 declare let AOS: any;
 
 @Component({
@@ -16,7 +16,7 @@ declare let AOS: any;
       ])
     ])
     ,
-    trigger('router', [
+    trigger('router', [      
       transition(':enter', [
         animate('600ms', keyframes([
           style({ opacity: 0, diplay: 'block', offset: 0 }),
@@ -24,17 +24,16 @@ declare let AOS: any;
         ]))
       ])
     ]),
-    trigger('notificacion', [
-      //state('false',style({opacity:0})),
+    trigger('notificacion', [            
       transition(':enter', [
-        animate('1s', keyframes([
-          //style({ opacity: 0 }),
+        animate('1s', keyframes([          
           style({ top:'85%' })
         ])),
         animate('1s 2s',
           style({ top:'100%' }),
         )
       ]),
+      state('void',style({top:'100%'})),
     ])
   ]
 })
@@ -43,6 +42,7 @@ export class AppComponent implements OnInit {
   cargando = true;
   mensaje = false;
   mensajeString:String='';
+  tipoAlerta:String='alert-success';
   /*@HostListener('window:scroll', ['$event'])
   onScroll(event: Event): void {
     // Aquí puedes acceder a la posición vertical de la página
@@ -51,12 +51,8 @@ export class AppComponent implements OnInit {
     // Ahora puedes hacer lo que necesites con la posición vertical
     console.log('Vertical Scroll Position:', verticalScrollPosition);    
   }*/
-  constructor(private spinner: SpinnerService, private tema: TemaOscuroService,private success:MensajeService) { }
-  ngOnInit() {
-    const x = document.getElementById('status');
-    if (x != null) {
-      x.style.display = "block";
-    }
+  constructor(private spinner: SpinnerService, private tema: TemaOscuroService,private alerta:AlertaService) { }
+  ngOnInit() {    
     AOS.init();
 
     this.tema.getDarkBoolean().subscribe({
@@ -64,27 +60,19 @@ export class AppComponent implements OnInit {
         this.darkTheme = data;
       }
     });
-    this.spinner.getTerminoCargar().subscribe({
-      next: (data: boolean) => {
-        this.cargando = data;        
-      }, error: () => {
+    this.spinner.getCargando().subscribe({
+      next:(data)=>{        
+        this.cargando=data;
       }
-    })
-    this.success.getSucces().subscribe((data=>{
-      console.log("success: "+data);
-    }));
-    ;
-    this.success.getSucces().subscribe(data=>{
-      this.mensajeString=data;
-      this.mensaje=true;
-    })
-  }
-
-  delay(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-  successEvent(info:Event){
-    console.log("evento success");
-    this.mensaje=true;
-  }
+    });
+    this.alerta.getMensaje().subscribe(data=>{
+      //Si se estaba ejecutando otra transición, reiniciar      
+      this.mensaje=false;
+      setTimeout(()=>{
+        this.mensajeString=data.mensaje;
+        this.tipoAlerta=data.tipoAlerta;
+        this.mensaje=true;
+      })      
+    });    
+  }    
 }

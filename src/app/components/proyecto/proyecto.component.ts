@@ -29,14 +29,13 @@ export class ProyectoComponent implements OnInit {
   constructor(private tema: TemaOscuroService, private inicio: SpinnerService, private api: ApiService, private autenticacion: AutenticacionService, private elem: ElementRef) { }
   ngOnInit(): void {
     this.autenticacion.getUsuarioAutenticado().subscribe({
-      next:(data)=>{
+      next:(data)=>{        
         this.editar=data;
       }
     })
     this.api.getAllProyecto().subscribe({
       next: (data: IProyecto[]) => {
-        var longitud = data.length;
-        console.log(data);
+        var longitud = data.length;        
         this.tamanioProyectos = longitud;
         this.filas = Math.ceil(this.tamanioProyectos / this.columnas);
         this.filasArray = Array(this.filas).fill(this.filas);//

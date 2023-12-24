@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Alerta } from '../interfaces/alerta';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MensajeService {
+export class AlertaService {
 //Servicio que notifica desde los router-outlet si una operación fue exitosa para que aparezca 
 //un mensaje de confirmación desde la página principal
 
-  success=new Subject<String>();
+  mensaje=new Subject<Alerta>();
   constructor() {}
 
-  getSucces(){    
-    return this.success;
+  getMensaje():Subject<Alerta>{
+    return this.mensaje;
   }
 
-  comunicateMensaje(mensaje:String){
-    this.success.next(mensaje);
+  comunicarMensaje(mensaje1:String,tipoAlerta1:String){
+    this.mensaje.next({
+      mensaje:mensaje1,
+      tipoAlerta:tipoAlerta1
+    });
   }
 }

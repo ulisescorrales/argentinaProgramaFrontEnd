@@ -1,9 +1,9 @@
-#status{
+#status1{
     border-radius: 20px;    
-    position:fixed;            
-    display:none;    
+    position:fixed;       
+    top:50%;    
     border-style: solid;    
-    z-index: 2;
+    z-index: 3;
     
 }
 #mensajeDeInicio{        

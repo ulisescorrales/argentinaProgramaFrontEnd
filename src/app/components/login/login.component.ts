@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
-import { MensajeService } from 'src/app/servicios/mensajeService';
+import { AlertaService } from 'src/app/servicios/mensajeService';
 import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
 export class LoginComponent implements OnInit {
   darkTheme=false;
   form: UntypedFormGroup;
-  constructor(private mensaje:MensajeService,private tema:TemaOscuroService,private formBuilder: UntypedFormBuilder, private autenticationService: AutenticacionService, private ruta: Router) {
+  constructor(private alerta:AlertaService,private tema:TemaOscuroService,private formBuilder: UntypedFormBuilder, private autenticationService: AutenticacionService, private ruta: Router) {
     this.form = this.formBuilder.group({
       nombreUsuario: ['', [Validators.required]],
       password: ['', [Validators.required]]
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     this.autenticationService.IniciarSesion(this.form.value).subscribe(data => {      
       this.ruta.navigate(['/']);
       this.autenticationService.login();
-      this.mensaje.comunicateMensaje("Login correcto");
+      this.alerta.comunicarMensaje("Login correcto","alert-succcess");
     },
       error => {        
         if (x != null) {          

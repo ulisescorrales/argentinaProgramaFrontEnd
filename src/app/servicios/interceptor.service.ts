@@ -3,14 +3,14 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/c
 import { Observable, tap } from 'rxjs';
 import { AutenticacionService } from './autenticacion.service';
 import { Router } from '@angular/router';
-import { MensajeService } from './mensajeService';
+import {AlertaService } from './mensajeService';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InterceptorService implements HttpInterceptor {
 
-  constructor(private autenticacionService: AutenticacionService,private router:Router,private suc:MensajeService) { }
+  constructor(private autenticacionService: AutenticacionService,private router:Router,private alerta:AlertaService) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     var currentUser = this.autenticacionService.UsuarioAutenticado;
     if (currentUser && currentUser.token) {
@@ -27,7 +27,7 @@ export class InterceptorService implements HttpInterceptor {
         if(err.status==401){
           this.autenticacionService.logout();
           this.router.navigate(['login']);
-          this.suc.comunicateMensaje("Token expirado, vuelva a autenticarse");
+          this.alerta.comunicarMensaje("Token expirado, vuelva a autenticarse","alert-danger");
         }
       }),    
       );

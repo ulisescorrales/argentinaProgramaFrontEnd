@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="row" style="margin-top: 20px" *ngFor="let filas of filasArray;index as i" #proyecto>
-            <div class="col text-center programa" *ngFor="let columnas of columnasArray; index as j" [ngSwitch]="j">
+            <div class="col text-center programa my-auto" *ngFor="let columnas of columnasArray; index as j" [ngSwitch]="j">
                 <!--Cargar data-aos según su posición en la grilla-->
 
                 <div *ngIf="columnas*i+j<tamanioProyectos" [ngClass]="{'darkProyecto':this.darkTheme}"  class="card proyecto" style="padding:1%;height: 100%;">

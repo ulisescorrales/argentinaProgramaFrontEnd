@@ -36,7 +36,7 @@ export class EncabezadoComponent implements OnInit {
     }
     );
     this.autenticacion.getUsuarioAutenticado().subscribe({
-      next:(data:any)=>{
+      next:(data:any)=>{        
         this.editar=data;
       }
     })

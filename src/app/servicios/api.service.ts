@@ -146,8 +146,8 @@ export class ApiService {
   public getTareas(id: number) {
     return this.http.get<ITarea[]>(this.url + '/experiencia/' + id + '/tarea/traer')
   }
-  public postTareaProyecto(tarea:TareaProyecto){
-    return this.http.post<TareaProyecto[]>(this.url+"/tareaProyecto/agregar",tarea);
+  public postTareaProyecto(tarea:TareaProyecto,idProyecto:number){
+    return this.http.post<TareaProyecto[]>(this.url+"/tareaProyecto/agregar/"+idProyecto,tarea);
   }
   //Método Delete (genérico)
   public delete(url: string) {

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Url } from './url';
-import { MensajeService } from './mensajeService';
+import { AlertaService } from './mensajeService';
 
 
 @Injectable({
@@ -12,9 +12,13 @@ import { MensajeService } from './mensajeService';
 export class AutenticacionService {  
   url=Url.getUrl()+"/auth/login";
   currentUserSubject: BehaviorSubject<any>;
+  autenticado:BehaviorSubject<boolean>=new BehaviorSubject(false);
 
-  constructor(private mensaje:MensajeService,private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser') || '{}'))
+  constructor(private alerta:AlertaService,private http: HttpClient) {
+    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser') || '{}'));
+    if(this.currentUserSubject.value.token!=null){
+      this.autenticado.next(true);      
+    }
   }
   IniciarSesion(credenciales: any): Observable<any> {
     return this.http.post(this.url, credenciales).pipe(map(data => {
@@ -28,16 +32,16 @@ export class AutenticacionService {
     return this.currentUserSubject.value;
   }
   getUsuarioAutenticado(){
-    return this.currentUserSubject;
+    return this.autenticado;
   }
 
   logout() {
     sessionStorage.removeItem('currentUser');
-    this.currentUserSubject.next(false);
-    this.mensaje.comunicateMensaje("Ha cerrado sesión correctamente");
+    this.autenticado.next(false);
+    this.alerta.comunicarMensaje("Ha cerrado sesión correctamente","alert-success");
   }
   login(){
-    this.currentUserSubject.next(true);
+    this.autenticado.next(true);
   }
   public get logIn(): boolean {
     return sessionStorage.getItem('currentUser') != null;
