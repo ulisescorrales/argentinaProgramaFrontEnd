@@ -16,7 +16,12 @@ export class AcercaDeComponent implements OnInit {
   constructor(private inicio: SpinnerService, private api: ApiService, private autenticacion: AutenticacionService) { }
 
   ngOnInit(): void {
-    this.editar = this.autenticacion.logIn;
+    this.autenticacion.getUsuarioAutenticado().subscribe({
+      next:(data)=>{
+        this.editar=data;
+      }
+    })
+
     this.api.getPersona().subscribe({
       next: (data: IPersona) => {
         this.persona = data;

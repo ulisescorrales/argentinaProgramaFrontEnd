@@ -28,11 +28,15 @@ export class ProyectoComponent implements OnInit {
   listProyecto: IProyecto[] = new Array<IProyecto>();
   constructor(private tema: TemaOscuroService, private inicio: SpinnerService, private api: ApiService, private autenticacion: AutenticacionService, private elem: ElementRef) { }
   ngOnInit(): void {
-    this.editar = this.autenticacion.logIn;
+    this.autenticacion.getUsuarioAutenticado().subscribe({
+      next:(data)=>{
+        this.editar=data;
+      }
+    })
     this.api.getAllProyecto().subscribe({
       next: (data: IProyecto[]) => {
         var longitud = data.length;
-
+        console.log(data);
         this.tamanioProyectos = longitud;
         this.filas = Math.ceil(this.tamanioProyectos / this.columnas);
         this.filasArray = Array(this.filas).fill(this.filas);//
@@ -56,7 +60,6 @@ export class ProyectoComponent implements OnInit {
     } else {
       this.columnas = 3;
     }
-  }
-
+  }  
 
 }

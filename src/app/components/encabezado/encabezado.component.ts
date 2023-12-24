@@ -35,6 +35,11 @@ export class EncabezadoComponent implements OnInit {
       }
     }
     );
+    this.autenticacion.getUsuarioAutenticado().subscribe({
+      next:(data:any)=>{
+        this.editar=data;
+      }
+    })
   }
   public switchTheme(){
     this.tema.switDarkTheme();
@@ -43,8 +48,7 @@ export class EncabezadoComponent implements OnInit {
     this.editar = this.autenticacion.logIn;
   }
   public logout() {
-    this.autenticacion.logout();
-    window.location.reload();
+    this.autenticacion.logout();    
   }
 
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SpinnerService } from './servicios/spinner.service';
 import { TemaOscuroService } from './servicios/tema-oscuro.service';
 import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
-import { SuccessService } from './servicios/success.service';
+import { MensajeService } from './servicios/mensajeService';
 declare let AOS: any;
 
 @Component({
@@ -51,7 +51,7 @@ export class AppComponent implements OnInit {
     // Ahora puedes hacer lo que necesites con la posición vertical
     console.log('Vertical Scroll Position:', verticalScrollPosition);    
   }*/
-  constructor(private spinner: SpinnerService, private tema: TemaOscuroService,private success:SuccessService) { }
+  constructor(private spinner: SpinnerService, private tema: TemaOscuroService,private success:MensajeService) { }
   ngOnInit() {
     const x = document.getElementById('status');
     if (x != null) {

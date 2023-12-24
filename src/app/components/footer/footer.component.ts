@@ -14,10 +14,16 @@ export class FooterComponent implements OnInit {
   dom: IDomicilio | undefined;
   autenticado: boolean = false;
   darkTheme = false;
-  constructor(private tema: TemaOscuroService, private inicio: SpinnerService, private auth: AutenticacionService, private api: ApiService) { }
+  constructor(private autenticacion:AutenticacionService,
+    private tema: TemaOscuroService, private inicio: SpinnerService, private auth: AutenticacionService, private api: ApiService) { }
 
 
   ngOnInit(): void {
+    this.autenticacion.getUsuarioAutenticado().subscribe({
+      next:(data)=>{
+        this.autenticado=data;
+      }
+    })
     this.api.getDomicilio().subscribe({
       next: (data: IDomicilio) => {
         this.dom = data;
@@ -26,8 +32,7 @@ export class FooterComponent implements OnInit {
         this.inicio.sumarComponenteCargado();
       }
     }
-    );
-    this.autenticado = this.auth.logIn;
+    );    
     this.tema.getDarkBoolean().subscribe({
       next: (data) => {
         this.darkTheme = data;

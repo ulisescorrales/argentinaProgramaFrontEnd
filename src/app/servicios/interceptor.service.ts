@@ -1,24 +1,35 @@
 import { Injectable } from '@angular/core';
-import { HttpEvent,HttpHandler,HttpInterceptor,HttpRequest } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Observable, tap } from 'rxjs';
 import { AutenticacionService } from './autenticacion.service';
+import { Router } from '@angular/router';
+import { MensajeService } from './mensajeService';
 
 @Injectable({
   providedIn: 'root'
 })
-export class InterceptorService implements HttpInterceptor{
+export class InterceptorService implements HttpInterceptor {
 
-  constructor(private autenticacionService:AutenticacionService) { }
+  constructor(private autenticacionService: AutenticacionService,private router:Router,private suc:MensajeService) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    var currentUser=this.autenticacionService.UsuarioAutenticado;
-    if(currentUser && currentUser.token){
-      var token=currentUser.token;      
-      req=req.clone({
-        setHeaders:{          
-          Authorization: 'Bearer '+token
+    var currentUser = this.autenticacionService.UsuarioAutenticado;
+    if (currentUser && currentUser.token) {
+      var token = currentUser.token;
+      req = req.clone({
+        setHeaders: {
+          Authorization: 'Bearer ' + token
         }
-      })      
-    }    
-    return next.handle(req);
+      })
+    }
+    return next.handle(req).pipe(
+      tap(event => {},
+      (err:any)=>{
+        if(err.status==401){
+          this.autenticacionService.logout();
+          this.router.navigate(['login']);
+          this.suc.comunicateMensaje("Token expirado, vuelva a autenticarse");
+        }
+      }),    
+      );
   }
 }

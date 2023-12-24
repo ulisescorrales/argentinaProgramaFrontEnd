@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class SuccessService {
+export class MensajeService {
 //Servicio que notifica desde los router-outlet si una operación fue exitosa para que aparezca 
 //un mensaje de confirmación desde la página principal
 
@@ -15,7 +15,7 @@ export class SuccessService {
     return this.success;
   }
 
-  comunicateSuccess(mensaje:String){
+  comunicateMensaje(mensaje:String){
     this.success.next(mensaje);
   }
 }

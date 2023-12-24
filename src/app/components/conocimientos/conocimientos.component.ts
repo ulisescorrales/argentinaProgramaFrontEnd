@@ -31,7 +31,11 @@ export class ConocimientosComponent implements OnInit {
     this.definirCantCols();
   }
   ngOnInit(): void {
-    this.editar = this.autenticacion.logIn;
+    this.autenticacion.getUsuarioAutenticado().subscribe({
+      next:(data)=>{
+        this.editar=data;
+      }
+    })
     this.api.getAllTecnologia().subscribe({
       next: (data: ITecnologia[]) => {
         this.longitud = data.length;

@@ -1,3 +1,5 @@
+import { TareaProyecto } from "./tarea-proyecto";
+
 export interface IProyecto {
     idProyecto:number,
     nombre:String,
@@ -6,5 +8,6 @@ export interface IProyecto {
     link:String,
     github:String,
     githubFrontEnd:String,
-    githubBackEnd:String
+    githubBackEnd:String,
+    tareas:TareaProyecto[]
 }

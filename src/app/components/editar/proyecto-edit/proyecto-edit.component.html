@@ -13,6 +13,26 @@
             <label>Descripcion:</label>            
                 <textarea class="form-control" formControlName="descripcion"  rows="3"></textarea>
         </div>
+        <!--Lista de tareas-->
+        <div class="p-2" [formGroup]="formTarea">
+            <label>Tareas:</label>            
+            <div *ngFor="let tarea of this.proyecto?.tareas">
+                <i #[tarea.idTarea] class="fa-sharp fa-solid fa-trash editar" [ngClass]="this.darkTheme? 'remarcarDark':'remarcar'"
+                        (click)="this.eliminarTareaProyecto(tarea.idTarea)"></i>
+                <input #[tarea.idTarea] class="form-control tarea" aria-describedby="basic-addon1" type="text" [value]="tarea.descripcion" placeholder="Descripción">
+                <input #[tarea.idTarea] class="form-control tarea" aria-describedby="basic-addon1" type="text" [value]="tarea.repositorio" placeholder="Repositorio">
+                <input #[tarea.idTarea] class="form-control tarea" aria-describedby="basic-addon1" type="text" [value]="tarea.certificado" placeholder="Certificado">
+                <span sytle="border: 3px solid"></span>
+            </div>                        
+            <input  class="form-control tarea" #a aria-describedby="basic-addon1" formControlName="descripcion" type="text" placeholder="Descripcion">
+            <input  class="form-control tarea" #b aria-describedby="basic-addon1" formControlName="repositorio" type="text" placeholder="Repositorio">
+            <input  class="form-control tarea" #c aria-describedby="basic-addon1" formControlName="certificado" type="text" placeholder="Certificado">
+            <div class="p-1 text-center">
+                <h1><i class="fa-solid fa-circle-plus" [ngClass]="this.darkTheme? 'remarcarDark':'remarcar'" data-aos="zoom-in"
+                    data-aos-duration="1000" data-aos-delay="250"
+                    (click)="agregarTareaProyecto(); a.value='';b.value='';c.value=''"></i></h1>
+            </div>            
+        </div>
         <div class="p-2">
             <label>Link:</label>
             <input type="text" class="form-control"  aria-describedby="basic-addon1"
