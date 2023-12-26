@@ -1,19 +1,23 @@
-<div class="d-flex flex-column mb-3 top-50 start-50 translate-middle" [ngClass]="{'dark':this.darkTheme,'light':!this.darkTheme}" id="contacto">
+<div class="d-flex flex-column mb-3 top-50 start-50 translate-middle"
+    [ngClass]="{'dark':this.darkTheme,'light':!this.darkTheme}" id="contacto">
     <div class="row">
         <div class="col">
-            <i class="fa-solid fa-xmark borrar remarcar float-end" [ngClass]="{'darkCerrar':this.darkTheme}" routerLink="/" ></i><!--Botón borrar-->
+            <i class="fa-solid fa-xmark borrar remarcar float-end" [ngClass]="{'darkCerrar':this.darkTheme}"
+                routerLink="/"></i><!--Botón borrar-->
         </div>
-    </div>        
+    </div>
     <form [formGroup]="form" (ngSubmit)="enviarMensaje($event)">
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Nombre/Organización</label>
-            <input class="form-control" [ngClass]="{'darkInput':this.darkTheme}" placeholder="Remitente" formControlName="organizacion"
+            <input class="form-control" [ngClass]="{'darkInput':this.darkTheme}" placeholder="Remitente"
+                formControlName="organizacion"
                 [ngClass]="{'is-invalid':Organizacion?.errors && Organizacion?.touched, 'is-valid':!Organizacion?.errors && Organizacion?.touched}">
             <div *ngIf="Organizacion?.errors && Contacto?.touched">
                 <p *ngIf="Organizacion?.hasError('required')" class="text-danger">Este campo es requerido</p>
             </div>
             <label for="exampleFormControlInput1" class="form-label">Contacto</label>
-            <input type="email" [ngClass]="{'darkInput':this.darkTheme}" formControlName="contacto" class="form-control" placeholder="Email/Tél"
+            <input type="email" [ngClass]="{'darkInput':this.darkTheme}" formControlName="contacto" class="form-control"
+                placeholder="Email/Tél"
                 [ngClass]="{'is-invalid':Contacto?.errors && Contacto?.touched, 'is-valid':!Contacto?.errors && Contacto?.touched}">
             <div *ngIf="Contacto?.errors && Contacto?.touched">
                 <p *ngIf="Contacto?.hasError('required')" class="text-danger">El email es requerido</p>
@@ -22,16 +26,15 @@
         </div>
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
-            <textarea class="form-control"  rows="3" formControlName="mensaje" placeholder="Escriba su mensaje..."
-            [ngClass]="{'is-invalid':Mensaje?.errors && Mensaje?.touched, 'is-valid':!Mensaje?.errors && Mensaje?.touched}"></textarea>            
+            <textarea class="form-control" rows="3" formControlName="mensaje" placeholder="Escriba su mensaje..."
+                [ngClass]="{'is-invalid':Mensaje?.errors && Mensaje?.touched, 'is-valid':!Mensaje?.errors && Mensaje?.touched}"></textarea>
             <div *ngIf="Mensaje?.errors && Mensaje?.touched">
                 <p *ngIf="Mensaje?.hasError('required')" class="text-danger">Escriba un mensaje</p>
             </div>
         </div>
         <div class="p-2">
             <button type="submit" class="btn btn-primary mb-3 float-end">Enviar</button>
-            <p id="estadoMensaje"></p>
-        </div>        
-    </form>
-        
+            <p id="estadoMensaje"></p>            
+        </div>
+    </form>    
 </div>

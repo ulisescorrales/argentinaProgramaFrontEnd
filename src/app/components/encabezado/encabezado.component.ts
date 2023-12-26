@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IContacto } from 'src/app/interfaces/contacto';
 import { ApiService } from 'src/app/servicios/api.service';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
@@ -14,6 +14,12 @@ export class EncabezadoComponent implements OnInit {
   editar: boolean = false;
   contactos: IContacto | undefined;
   darkTheme: boolean = false;
+  //@ViewChild('borde2',{static:false}) encabezado?:ElementRef;
+
+  /*ngAfterViewInit(): void {
+    console.log((this.encabezado?.nativeElement as HTMLDivElement).style.height);
+  }*/
+
   constructor(private tema: TemaOscuroService, private inicio: SpinnerService, private api: ApiService, private autenticacion: AutenticacionService) {
     this.api.getContacto().subscribe({
       next: (data: IContacto) => {
@@ -29,6 +35,11 @@ export class EncabezadoComponent implements OnInit {
       }
     }
     );
+    this.autenticacion.getUsuarioAutenticado().subscribe({
+      next:(data:any)=>{        
+        this.editar=data;
+      }
+    })
   }
   public switchTheme(){
     this.tema.switDarkTheme();
@@ -37,8 +48,7 @@ export class EncabezadoComponent implements OnInit {
     this.editar = this.autenticacion.logIn;
   }
   public logout() {
-    this.autenticacion.logout();
-    window.location.reload();
+    this.autenticacion.logout();    
   }
 
 

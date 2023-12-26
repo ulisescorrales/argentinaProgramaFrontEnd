@@ -12,6 +12,7 @@ import { ITarea } from '../interfaces/itarea';
 import { IDomicilio } from '../interfaces/idomicilio';
 import { IProyecto } from '../interfaces/iproyecto';
 import { Url } from './url';
+import { TareaProyecto } from '../interfaces/tarea-proyecto';
 
 @Injectable({
   providedIn: 'root'
@@ -26,16 +27,9 @@ export class ApiService {
   contacto = new Subject<IContacto>();
   domicilio = new Subject<IDomicilio>();
   listConocimiento = new Subject<ITecnologia[]>();
-  listProyecto = new Subject<IProyecto[]>();
-  miIp: any;
+  listProyecto = new Subject<IProyecto[]>();  
 
   constructor(private http: HttpClient) {    
-    this.http.get("https://api.ipify.org/?format=json").subscribe({
-      next: (data:any) => {
-        this.miIp = data.ip;        
-        this.http.post(this.url+"/persona/auth",this.miIp).subscribe();        
-      }
-    });
   }
   //Actualizar valores
   actualizarListEducacion() {
@@ -152,9 +146,15 @@ export class ApiService {
   public getTareas(id: number) {
     return this.http.get<ITarea[]>(this.url + '/experiencia/' + id + '/tarea/traer')
   }
+  public postTareaProyecto(tarea:TareaProyecto,idProyecto:number){
+    return this.http.post<TareaProyecto[]>(this.url+"/tareaProyecto/agregar/"+idProyecto,tarea);
+  }
   //Método Delete (genérico)
   public delete(url: string) {
     return this.http.delete(this.url + url, { 'observe': 'response' });
+  }
+  public deleteTareaProyecto(id:Number){
+    return this.http.delete(this.url + '/editar/eliminar/tareaProyecto/'+id, { 'observe': 'response' });
   }
   //Proyecto
   public getAllProyecto() {

@@ -19,7 +19,11 @@ export class ExperienciaComponent implements OnInit {
   constructor(private tema: TemaOscuroService, private inicio: SpinnerService, private api: ApiService, private autenticacion: AutenticacionService) { }
 
   ngOnInit(): void {
-    this.editar = this.autenticacion.logIn;
+    this.autenticacion.getUsuarioAutenticado().subscribe({
+      next:(data)=>{
+        this.editar=data;
+      }
+    })
     this.api.getAllExperiencia().subscribe({
       next: (data: IExperiencia[]) => {
         this.listExperiencia = data;

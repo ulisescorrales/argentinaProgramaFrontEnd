@@ -1,8 +1,9 @@
-#status{
+#status1{
     border-radius: 20px;    
-    position:fixed;            
-    display:none;    
-    border-style: double;    
+    position:fixed;       
+    top:50%;    
+    border-style: solid;    
+    z-index: 3;
     
 }
 #mensajeDeInicio{        
@@ -10,7 +11,7 @@
 }
 @media(max-width:500px){
   #mensajeDeInicio{
-    font-size: 60%;
+    font-size: 90%;
   }
 }
 .lds-ellipsis {

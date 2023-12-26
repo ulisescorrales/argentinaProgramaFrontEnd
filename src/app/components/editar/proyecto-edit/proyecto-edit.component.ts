@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { FormGroup, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { IProyecto } from 'src/app/interfaces/iproyecto';
+import { ITarea } from 'src/app/interfaces/itarea';
+import { TareaProyecto } from 'src/app/interfaces/tarea-proyecto';
 import { ApiService } from 'src/app/servicios/api.service';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
+import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
 
 @Component({
   selector: 'app-proyecto-edit',
@@ -13,8 +16,11 @@ import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 export class ProyectoEditComponent implements OnInit {
   formProyecto: UntypedFormGroup;
   id = 0;
-  x=document.getElementById('status');
-  constructor(private rutaActiva: ActivatedRoute, private autenticacion: AutenticacionService, private router: Router, private api: ApiService, private formBuilder: UntypedFormBuilder) {
+  x = document.getElementById('status');
+  proyecto: IProyecto|undefined;
+  darkTheme = false;
+  formTarea:FormGroup;
+  constructor(private tema: TemaOscuroService, private rutaActiva: ActivatedRoute, private autenticacion: AutenticacionService, private router: Router, private api: ApiService, private formBuilder: UntypedFormBuilder) {
     this.formProyecto = this.formBuilder.group({
       nombre: [],
       logo: [],
@@ -24,14 +30,25 @@ export class ProyectoEditComponent implements OnInit {
       githubFrontEnd: [],
       githubBackEnd: []
     });
+    this.formTarea=this.formBuilder.group({
+      descripcion:[],
+      repositorio:[],
+      certificado:[],
+      idProyecto:[]
+    })
   }
 
   ngOnInit(): void {
     this.mostrarSpinner();
     this.rutaActiva.params.subscribe((params: Params) => {
       this.id = params['id'];
+      this.formTarea.patchValue({
+        idProyecto:this.id
+      })
+      
       this.api.getProyecto(this.id).subscribe((data: IProyecto) => {
         this.borrarSpinner();
+        this.proyecto = data;
         this.formProyecto.setValue({
           nombre: data.nombre,
           logo: data.logo,
@@ -40,19 +57,24 @@ export class ProyectoEditComponent implements OnInit {
           github: data.github,
           githubFrontEnd: data.githubFrontEnd,
           githubBackEnd: data.githubBackEnd
-        })
+        });
       },
-      error=>{
-        alert("Error cargando el elemento");
-        this.router.navigate(['/']);
-      });
+        error => {
+          alert("Error cargando el elemento");
+          this.router.navigate(['/']);
+        });
     });
+    this.tema.getDarkBoolean().subscribe({
+      next: data => {
+        this.darkTheme = data;
+      }
+    })
   }
   modificarProyecto() {
     if (this.formProyecto.touched) {
       this.mostrarSpinner();
       const x = document.getElementById('estadoEnvio');
-      this.api.putProyecto(this.id, this.formProyecto.value).subscribe(data => {        
+      this.api.putProyecto(this.id, this.formProyecto.value).subscribe(data => {
         if (x != null) {
           x.style.color = "green";
           x.innerHTML = "Solicitud enviada correctamente";
@@ -78,19 +100,50 @@ export class ProyectoEditComponent implements OnInit {
             }
           }
         },
-        ()=>{
+        () => {
           this.borrarSpinner();
         });
     }
   }
   borrarSpinner() {
-    if(this.x!=null){
-      this.x.style.display="none";
+    if (this.x != null) {
+      this.x.style.display = "none";
     }
   }
-  mostrarSpinner(){
-    if(this.x!=null){
-      this.x.style.display="block";
+  mostrarSpinner() {
+    if (this.x != null) {
+      this.x.style.display = "block";
     }
+  }
+  eliminarTareaProyecto(idTarea: Number) {
+    this.api.deleteTareaProyecto(idTarea).subscribe({
+      next: data => {
+        if (data.status == 200) {                  
+          if(this.proyecto!=undefined){
+            const longitud = this.proyecto?.tareas.length;
+            var encontrado=false;
+            var i=0;
+            var j=-1;
+            while(!encontrado && i<longitud ){
+              if(this.proyecto.tareas[i].idTarea==idTarea){
+                encontrado=true;
+                j=i;
+              }
+              i++;
+            }            
+            this.proyecto.tareas.splice(j,1);            
+          }          
+        }
+      }
+    });
+  }
+  agregarTareaProyecto(){    
+    this.api.postTareaProyecto(this.formTarea.value,this.id).subscribe({
+      next: (data:TareaProyecto[])=>{
+        if(this.proyecto!=undefined){          
+          this.proyecto.tareas=data;          
+        }            
+      }
+    })
   }
 }

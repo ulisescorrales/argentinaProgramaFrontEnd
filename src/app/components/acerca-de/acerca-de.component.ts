@@ -12,11 +12,16 @@ import { SpinnerService } from 'src/app/servicios/spinner.service';
 export class AcercaDeComponent implements OnInit {
   editar: boolean = false;
   persona: IPersona | undefined;
-  windowWitdth = window.innerWidth;
+  
   constructor(private inicio: SpinnerService, private api: ApiService, private autenticacion: AutenticacionService) { }
 
   ngOnInit(): void {
-    this.editar = this.autenticacion.logIn;
+    this.autenticacion.getUsuarioAutenticado().subscribe({
+      next:(data)=>{
+        this.editar=data;
+      }
+    })
+
     this.api.getPersona().subscribe({
       next: (data: IPersona) => {
         this.persona = data;
@@ -27,9 +32,5 @@ export class AcercaDeComponent implements OnInit {
 
       }
     })
-  }
-  @HostListener('window:resize', ['$event'])
-  onResize(event: Event): void {
-    this.windowWitdth = window.innerWidth;
-  }
+  }  
 }

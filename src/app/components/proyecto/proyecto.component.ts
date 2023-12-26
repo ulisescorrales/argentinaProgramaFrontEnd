@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit} from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit} from '@angular/core';
 import { IProyecto } from 'src/app/interfaces/iproyecto';
 import { ApiService } from 'src/app/servicios/api.service';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
@@ -16,23 +16,25 @@ export class ProyectoComponent implements OnInit {
   filas: any;
   //Usado para iterar con ngFor*
   filasArray: any;
-  columnas = 3;
+  columnas = 2;
   //Usado para iterar con ngFor*
   columnasArray: any;
   editar: boolean = false;
   Math = Math;//Para usar Math.floor() en el HTML
   //
   cont = 0;
-
   knowledgeList: any;
-  listProyecto: IProyecto[] = new Array<IProyecto>();
+  listProyecto: IProyecto[] = new Array<IProyecto>();  
   constructor(private tema: TemaOscuroService, private inicio: SpinnerService, private api: ApiService, private autenticacion: AutenticacionService, private elem: ElementRef) { }
   ngOnInit(): void {
-    this.editar = this.autenticacion.logIn;
+    this.autenticacion.getUsuarioAutenticado().subscribe({
+      next:(data)=>{        
+        this.editar=data;
+      }
+    })
     this.api.getAllProyecto().subscribe({
-      next: (data: IProyecto[]) => {
-        var longitud = data.length;
-
+      next: (data: IProyecto[]) => {        
+        var longitud = data.length;        
         this.tamanioProyectos = longitud;
         this.filas = Math.ceil(this.tamanioProyectos / this.columnas);
         this.filasArray = Array(this.filas).fill(this.filas);//
@@ -47,16 +49,6 @@ export class ProyectoComponent implements OnInit {
       this.darkTheme = data;
     });
 
-  }
-
-
-  cambiarTamanioColumnas(): void {
-    if (window.innerWidth < 800) {
-      this.columnas = 2;
-    } else {
-      this.columnas = 3;
-    }
-  }
-
+  }  
 
 }

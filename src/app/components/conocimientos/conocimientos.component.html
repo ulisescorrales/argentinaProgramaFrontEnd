@@ -1,7 +1,7 @@
 <!--CONOCIMIENTOS
 Se incluyen tanto las tecnologías como otras habilidades que puedan incluirse
 -->
-<div section="conocimientos">
+<div section="conocimientos" class="informacion">
     <div class="container">
         <div class="row border-bottom">
             <div class="col text-center">
@@ -9,44 +9,50 @@ Se incluyen tanto las tecnologías como otras habilidades que puedan incluirse
             </div>
         </div>
         <div class="row" style="margin-top: 20px" *ngFor="let filas of filasArray;index as i">
-            <div class="col text-center programa" *ngFor="let columnas of columnasArray; index as j" [ngSwitch]="j"
+            <div class="col text-center programa my-auto" *ngFor="let columnas of columnasArray; index as j" [ngSwitch]="j"
                 id="grilla">
                 <!--Cargar logo según su posición en la grilla-->
+                
                 <ng-template [ngIf]="columnas*i+j<tamanioKnowledge">
-                    <img class="logo" *ngSwitchCase="0" [src]="listTecnologia[columnas*i+j].logo"
-                        style="width:45%;height:75%;" data-aos="fade-right" data-aos-duration="1000"
+                    <article>
+                    <figure>
+                    <img class="logo" [src]="listTecnologia[columnas*i+j].logo"
+                        style="width:45%;height:75%;" data-aos="flip-up" data-aos-duration="1000"
                         data-aos-delay="250">
-                    <img class="logo" *ngSwitchCase="1" [src]="listTecnologia[columnas*i+j].logo"
+                    <!--<img class="logo" *ngSwitchCase="1" [src]="listTecnologia[columnas*i+j].logo"
                         style="width:45%;height:75%;" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="250">
                     <img class="logo" *ngSwitchCase="2" [src]="listTecnologia[columnas*i+j].logo"
                         style="width:45%;height:75%;" data-aos="fade-left" data-aos-duration="1000"
-                        data-aos-delay="250">
+                        data-aos-delay="250">-->
                     <!--Botones de edición de conocimiento-->
                     <div class="middle" *ngIf="editar">
-                        <i class="fa-solid fa-pen remarcar"
+                        <i class="fa-solid fa-pen" [ngClass]="this.darkTheme? 'remarcarDark':'remarcar'"
                             [routerLink]="['editar','conocimiento',listTecnologia[columnas*i+j].idTecnologia]"></i>
-                        <i class="fa-sharp fa-solid fa-trash editar remarcar" data-aos="zoom-in" data-aos-duration="1000"
-                            data-aos-delay="250"
+                        <i class="fa-sharp fa-solid fa-trash editar" data-aos="zoom-in" data-aos-duration="1000"
+                            data-aos-delay="250" [ngClass]="this.darkTheme? 'remarcarDark':'remarcar'"
                             [routerLink]="['editar','eliminar','conocimiento',listTecnologia[columnas*i+j].idTecnologia]"></i>
                     </div>
                     <div class="middle" *ngIf="editar==false">
+                        <figcaption>
                         <p data-aos="zoom-out" data-aos-duration="1000">
-                            {{listTecnologia[columnas*i+j].nombre}}</p>
+                            {{listTecnologia[columnas*i+j].nombre}}</p></figcaption>
                     </div>
+                    </figure>
+                    </article>
                 </ng-template>
                 <!--Cargar icono de editar, mejorar para cuando esté la grilla lena(se debe agregar una fila mas)-->
                 <ng-template [ngIf]="3*i+(j)==tamanioKnowledge && editar">
                     <!--Cambia el data-aos según en que posición de la cuadrícula esté-->
-                    <h2><i *ngSwitchCase="0" class="fa-solid fa-circle-plus remarcar" data-aos="fade-right"
+                    <h2><i class="fa-solid fa-circle-plus" [ngClass]="this.darkTheme? 'remarcarDark':'remarcar'" data-aos="fade-out"
                             data-aos-duration="1000" data-aos-delay="250"
                             [routerLink]="['editar','agregar','conocimiento']"></i></h2>
-                    <h2><i *ngSwitchCase="1" class="fa-solid fa-circle-plus  remarcar" data-aos="zoom-in"
+                    <!--<h2><i *ngSwitchCase="1" class="fa-solid fa-circle-plus" [ngClass]="this.darkTheme? 'remarcarDark':'remarcar'" data-aos="zoom-in"
                             data-aos-duration="1000" data-aos-delay="250"
                             [routerLink]="['editar','agregar','conocimiento']"></i></h2>
-                    <h2><i *ngSwitchCase="2" class="fa-solid fa-circle-plus  remarcar" data-aos="fade-left"
+                    <h2><i *ngSwitchCase="2" class="fa-solid fa-circle-plus" [ngClass]="this.darkTheme? 'remarcarDark':'remarcar'" data-aos="fade-left"
                             data-aos-duration="1000" data-aos-delay="250"
-                            [routerLink]="['editar','agregar','conocimiento']"></i></h2>
-                </ng-template>
+                            [routerLink]="['editar','agregar','conocimiento']"></i></h2>-->
+                </ng-template>                
             </div>
         </div>
     </div>

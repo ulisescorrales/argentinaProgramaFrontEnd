@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SpinnerService } from 'src/app/servicios/spinner.service';
 import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
 
 @Component({
@@ -7,17 +8,15 @@ import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
   styleUrls: ['./cargando.component.css']
 })
 export class CargandoComponent implements OnInit {
-  darkTheme = false;
-  constructor(private tema: TemaOscuroService) {
+  darkTheme = false;  
+  constructor(private spinner:SpinnerService,private tema: TemaOscuroService) {}
 
-  }
-
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.tema.getDarkBoolean().subscribe({
       next: (data) => {
         this.darkTheme=data;
       }
-    });
+    });    
   }
 
 }
