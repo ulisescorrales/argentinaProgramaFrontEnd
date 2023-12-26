@@ -16,24 +16,24 @@ declare let AOS: any;
       ])
     ])
     ,
-    trigger('router', [      
+    trigger('router', [
       transition(':enter', [
         animate('600ms', keyframes([
-          style({ opacity: 0, diplay: 'block', offset: 0 }),
+          style({ opacity: 0, display: 'block', offset: 0 }),
           style({ opacity: 1, offset: 1 }),
         ]))
       ])
     ]),
-    trigger('notificacion', [            
+    trigger('notificacion', [
       transition(':enter', [
-        animate('1s', keyframes([          
-          style({ top:'85%' })
+        animate('1s', keyframes([
+          style({ top: '85%' })
         ])),
         animate('1s 2s',
-          style({ top:'100%' }),
+          style({ top: '100%' }),
         )
       ]),
-      state('void',style({top:'100%'})),
+      state('void', style({ top: '100%' })),
     ])
   ]
 })
@@ -41,8 +41,9 @@ export class AppComponent implements OnInit {
   darkTheme: boolean = false;
   cargando = true;
   mensaje = false;
-  mensajeString:String='';
-  tipoAlerta:String='alert-success';
+  mensajeString: String = '';
+  tipoAlerta: String = 'alert-success';
+  blanco = true;
   /*@HostListener('window:scroll', ['$event'])
   onScroll(event: Event): void {
     // Aquí puedes acceder a la posición vertical de la página
@@ -51,9 +52,15 @@ export class AppComponent implements OnInit {
     // Ahora puedes hacer lo que necesites con la posición vertical
     console.log('Vertical Scroll Position:', verticalScrollPosition);    
   }*/
-  constructor(private spinner: SpinnerService, private tema: TemaOscuroService,private alerta:AlertaService) { }
-  ngOnInit() {    
-    AOS.init();
+  constructor(private spinner: SpinnerService, private tema: TemaOscuroService, private alerta: AlertaService) { }
+  ngOnInit() {
+    if (window.innerWidth < 768) {
+      AOS.init({
+        once: true
+      });
+    }else{
+      AOS.init();
+    }
 
     this.tema.getDarkBoolean().subscribe({
       next: (data) => {
@@ -61,18 +68,18 @@ export class AppComponent implements OnInit {
       }
     });
     this.spinner.getCargando().subscribe({
-      next:(data)=>{        
-        this.cargando=data;
+      next: (data) => {
+        this.cargando = data;
       }
     });
-    this.alerta.getMensaje().subscribe(data=>{
+    this.alerta.getMensaje().subscribe(data => {
       //Si se estaba ejecutando otra transición, reiniciar      
-      this.mensaje=false;
-      setTimeout(()=>{
-        this.mensajeString=data.mensaje;
-        this.tipoAlerta=data.tipoAlerta;
-        this.mensaje=true;
-      })      
-    });    
-  }    
+      this.mensaje = false;
+      setTimeout(() => {
+        this.mensajeString = data.mensaje;
+        this.tipoAlerta = data.tipoAlerta;
+        this.mensaje = true;
+      })
+    });
+  }
 }

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/servicios/api.service';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 import { AlertaService } from 'src/app/servicios/mensajeService';
+import { SpinnerService } from 'src/app/servicios/spinner.service';
 
 @Component({
   selector: 'app-agregar-proyecto',
@@ -13,7 +14,7 @@ import { AlertaService } from 'src/app/servicios/mensajeService';
 export class AgregarProyectoComponent implements OnInit {
   formProyecto: UntypedFormGroup;
   y = document.getElementById('status');
-  constructor(private alerta: AlertaService, private autenticacion: AutenticacionService, private router: Router, private api: ApiService, private formBuilder: UntypedFormBuilder) {
+  constructor(private spinner:SpinnerService,private alerta: AlertaService, private autenticacion: AutenticacionService, private router: Router, private api: ApiService, private formBuilder: UntypedFormBuilder) {
     this.formProyecto = this.formBuilder.group({
       nombre: [],
       logo: [],
@@ -29,29 +30,21 @@ export class AgregarProyectoComponent implements OnInit {
   }
   agregarProyecto() {    
     if (this.formProyecto.touched) {
-      this.mostrarSpinner();
+      this.spinner.mostrarSpinner();
       this.api.postProyecto(this.formProyecto.value).subscribe({
         next: data => {
-          this.borrarSpinner();
+          
           this.alerta.comunicarMensaje("Elemento agregado correctamente","alert-success")
           this.api.actualizarListProyecto();
           this.router.navigate(['/']);
         },
-        error:()=>{          
-        this.borrarSpinner();
+        error:()=>{                  
           this.alerta.comunicarMensaje("Error, revise el formulario","alert-danger")
+        },
+        complete:()=>{
+          this.spinner.borrarSpinner();
         }
       })
     }
-  }
-  mostrarSpinner() {
-    if (this.y != null) {
-      this.y.style.display = "block";
-    }
-  }
-  borrarSpinner() {
-    if (this.y != null) {
-      this.y.style.display = "none";
-    }
-  }
+  }  
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/servicios/api.service';
+import { AlertaService } from 'src/app/servicios/mensajeService';
 
 @Component({
   selector: 'app-borrar',
@@ -9,7 +10,7 @@ import { ApiService } from 'src/app/servicios/api.service';
 })
 export class BorrarComponent implements OnInit {
 
-  constructor(private router: Router, private api: ApiService) { }
+  constructor(private alerta:AlertaService,private router: Router, private api: ApiService) { }
   ngOnInit(): void {
     //console.log(this.router.url.split('/'))    
   }
@@ -32,15 +33,15 @@ export class BorrarComponent implements OnInit {
           break;
       }
       this.router.navigate(['/']);
-      alert("Elemento borrado correctamente");
+      this.alerta.comunicarMensaje("Elemento borrado correctamente","alert-success");
     },
       error => {
         if (error.status == 401) {
-          alert("Error: debe volver a iniciar sesión");
+          this.alerta.comunicarMensaje("Error: debe volver a iniciar sesión","alert-danger");
           this.router.navigate(['/login']);
           window.location.reload();
         } else {
-          alert("Problema en solicitud HTTP");
+          this.alerta.comunicarMensaje("Problema en solicitud HTTP","alert-danger");
           this.router.navigate(['/']);
         }
       });

@@ -137,8 +137,7 @@ export class ProyectoEditComponent implements OnInit {
       }
     });
   }
-  agregarTareaProyecto(){
-    console.log(this.formTarea.value);
+  agregarTareaProyecto(){    
     this.api.postTareaProyecto(this.formTarea.value,this.id).subscribe({
       next: (data:TareaProyecto[])=>{
         if(this.proyecto!=undefined){          

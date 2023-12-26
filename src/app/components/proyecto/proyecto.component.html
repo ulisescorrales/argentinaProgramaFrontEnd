@@ -1,4 +1,4 @@
-<div section="proyectos" class="informacion">
+<div section="proyectos" class="informacion" >
     <div class="container">
         <div class="row border-bottom">
             <div class="col text-center">
@@ -6,11 +6,11 @@
             </div>
         </div>
         <div class="row" style="margin-top: 20px" *ngFor="let filas of filasArray;index as i" #proyecto>
-            <div class="col text-center programa my-auto" *ngFor="let columnas of columnasArray; index as j" [ngSwitch]="j">
+            <div class="col text-center programa" *ngFor="let columnas of columnasArray; index as j" [ngSwitch]="j">
                 <!--Cargar data-aos según su posición en la grilla-->
 
                 <div *ngIf="columnas*i+j<tamanioProyectos" [ngClass]="{'darkProyecto':this.darkTheme}"  class="card proyecto" style="padding:1%;height: 100%;">
-                    <div class="row grilla">
+                    <div class="row grilla">                        
                         <div class="col">
                             <!-- Logo de la institución-->
                             <img class="rounded mx-auto d-block logo" [src]="listProyecto[columnas*i+j].logo"
@@ -33,12 +33,18 @@
                                     </a>
                                 </div>
                             </ng-template>
-                        </div>
+                        </div>                        
                     </div>
                     <!-- información del proyecto-->
+                    <article>
                     <div class="card-body">
                         <p class="texto" [ngClass]="{'dark':this.darkTheme}" style="font-weight:bold">{{listProyecto[columnas*i+j].nombre}}</p>
                         <p class="texto" [ngClass]="{'dark':this.darkTheme}">{{listProyecto[columnas*i+j].descripcion}}</p>
+                        <ul>
+                            <li [ngClass]="{'dark':this.darkTheme}" class="texto" *ngFor="let tarea of listProyecto[columnas*i+j].tareas">{{tarea.descripcion}}
+                                <a [href]="tarea.certificado" target="_blank"><i class="fa-solid fa-link"></i></a>
+                            </li>
+                        </ul>
                         <ul class="list-group list-group-flush" >
                             <li class="list-group-item " *ngIf="listProyecto[columnas*i+j].link!=null">
                                 <a class="texto" [href]="listProyecto[columnas*i+j].link">FrontEnd</a></li>
@@ -56,7 +62,8 @@
                                     BackEnd</a>
                             </li>
                         </ul>
-                    </div>                    
+                    </div>    
+                    </article>                
                 </div>
 
                 <!--Cargar icono de editar, mejorar para cuando esté la grilla lena(se debe agregar una fila mas)-->
