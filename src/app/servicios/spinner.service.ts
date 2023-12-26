@@ -23,5 +23,10 @@ export class SpinnerService {
       this.cargando.next(false);      
     }        
   }
-
+  mostrarSpinner(){
+    this.cargando.next(true);
+  }
+  borrarSpinner(){
+    this.cargando.next(false);
+  }
 }

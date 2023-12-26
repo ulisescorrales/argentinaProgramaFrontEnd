@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     this.autenticationService.IniciarSesion(this.form.value).subscribe(data => {      
       this.ruta.navigate(['/']);
       this.autenticationService.login();
-      this.alerta.comunicarMensaje("Login correcto","alert-succcess");
+      this.alerta.comunicarMensaje("Login correcto","alert-success");
     },
       error => {        
         if (x != null) {          
