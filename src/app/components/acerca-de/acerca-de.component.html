@@ -1,18 +1,16 @@
 <div section="acercaDe" id="acercaDe">
-    <header>
     <div class="container">
         <div class="row" id="relativo">
             <!--<div class="row" id="relativo">-->
-            <figure>
             <div class="col" style="background-color:black">
-                <img class="img-fluid" id="imagen" [src]="persona?.fotoFondo" width="100%" />
+                <img class="img-fluid" id="imagen" [src]="persona?.fotoFondo" width="100%" alt="Banner"/>
             </div>
             <div class="d-flex" id="absoluto" #abs>
                 <div class="row">
                     <div class="col-md-2">
                         <img [src]="persona?.fotoPerfil" class="rounded-circle rounded mx-auto d-block img-fluid"
-                             id="foto" />
-                        <figcaption><h2 class="text-center nombre" >{{persona?.apellido}} {{persona?.nombre}}</h2></figcaption>
+                             id="foto" alt="Foto de perfil"/>
+                        <h2 class="text-center nombre" >{{persona?.apellido}} {{persona?.nombre}}</h2>
                     </div>
                     <div class="col-md-9 my-auto">
                         <p class="font-weight-normal texto">{{persona?.sobreMi}}</p>
@@ -22,9 +20,8 @@
                     </div>
                 </div>
             </div>
-            </figure>
+            
         </div>        
         <div class="row"></div>
     </div>    
-    </header>
 </div>

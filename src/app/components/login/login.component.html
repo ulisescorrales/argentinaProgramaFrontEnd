@@ -4,6 +4,7 @@
     </div>
     <form [formGroup]="form" (ngSubmit)="onEnviar($event)">
         <div class="p-2">
+            <label>Login reservado para el administrador</label>
             <input type="text" class="form-control" placeholder="Nombre de Usuario" formControlName="nombreUsuario" aria-label="Username"
                 aria-describedby="basic-addon1" [ngClass]="{'is-invalid':Email?.errors && Email?.touched, 'is-valid':!Email?.errors && Email?.touched}">
             <div *ngIf="Email?.errors && Email?.touched">
