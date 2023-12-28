@@ -5,9 +5,9 @@
             <div class="col" style="background-color:black">
                 <img class="img-fluid" id="imagen" [src]="persona?.fotoFondo" width="100%" alt="Banner"/>
             </div>
-            <div class="d-flex" id="absoluto" #abs>
+            <div class="d-flex" id="absoluto" >
                 <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-md-2" #abs>
                         <img [src]="persona?.fotoPerfil" class="rounded-circle rounded mx-auto d-block img-fluid"
                              id="foto" alt="Foto de perfil"/>
                         <h2 class="text-center nombre" >{{persona?.apellido}} {{persona?.nombre}}</h2>
@@ -21,7 +21,6 @@
                 </div>
             </div>
             
-        </div>        
-        <div class="row"></div>
-    </div>    
+        </div>                
+    </div>            
 </div>

@@ -2,6 +2,30 @@
     padding-right: 4%;
     padding-left: 4%;
 }
+#separador{
+    height: 35px;
+}
+
+@media(max-width:950px){
+    #separador{
+        height: 50px;
+    }
+}
+@media(max-width:770px){
+    #separador{
+        height: 100px;
+    }
+}
+@media(max-width:500px){
+    #separador{
+        height: 80px;
+    }
+}
+@media(max-width:320px){
+    #separador{
+        height: 50px;
+    }
+}
 @media(max-width:440px){
     .fa-circle{
         font-size: 4vw;
