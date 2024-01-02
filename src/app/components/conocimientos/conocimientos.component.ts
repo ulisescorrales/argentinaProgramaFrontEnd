@@ -38,11 +38,11 @@ export class ConocimientosComponent implements OnInit {
     })
     this.api.getAllTecnologia().subscribe({
       next: (data: ITecnologia[]) => {
-        this.longitud = data.length;
+        this.longitud = data.length+1;
         this.longArray=Array(this.longitud).fill(this.longitud);
         //Variables usadas para construir la grilla
         this.tamanioKnowledge = this.longitud;
-        this.filas = Math.ceil(this.tamanioKnowledge / this.columnas);
+        this.filas = Math.ceil((this.tamanioKnowledge+1) / this.columnas);
         this.filasArray = Array(this.filas).fill(this.filas);
         this.columnasArray = Array(this.columnas).fill(this.columnas);
 

@@ -13,7 +13,7 @@ export class AcercaDeComponent implements OnInit {
   editar: boolean = false;
   persona: IPersona | undefined;
   
-  constructor(private inicio: SpinnerService, private api: ApiService, private autenticacion: AutenticacionService) { }
+  constructor(private spinner: SpinnerService, private api: ApiService, private autenticacion: AutenticacionService) { }
 
   ngOnInit(): void {
     this.autenticacion.getUsuarioAutenticado().subscribe({
@@ -25,12 +25,15 @@ export class AcercaDeComponent implements OnInit {
     this.api.getPersona().subscribe({
       next: (data: IPersona) => {
         this.persona = data;
-        this.inicio.sumarComponenteCargado();
+        this.spinner.sumarComponenteCargado();
       }, error: () => {
-        this.inicio.sumarComponenteCargado();
+        this.spinner.sumarComponenteCargado();
       }, complete: () => {
 
       }
     })
   }  
+  terminaCargarImagen(){
+    this.spinner.sumarComponenteCargado();
+  }
 }

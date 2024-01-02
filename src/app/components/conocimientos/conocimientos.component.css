@@ -23,3 +23,14 @@
     height: 100%;
     width: 100%;
 }
+.center {        
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;        
+    border-radius: 20px;
+    justify-content: center;
+  }
+.background{
+    margin: 0px 1% 0px 1%;
+    background-color: white;
+}

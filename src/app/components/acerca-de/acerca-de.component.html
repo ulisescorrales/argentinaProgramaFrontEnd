@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-md-2" #abs>
                         <img [src]="persona?.fotoPerfil" class="rounded-circle rounded mx-auto d-block img-fluid"
-                             id="foto" alt="Foto de perfil"/>
+                             id="foto" (load)="terminaCargarImagen()" alt="Foto de perfil"/>
                         <h2 class="text-center nombre" >{{persona?.apellido}} {{persona?.nombre}}</h2>
                     </div>
                     <div class="col-md-9 my-auto">
