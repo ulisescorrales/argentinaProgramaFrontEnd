@@ -30,13 +30,13 @@ Se incluyen tanto las tecnologías como otras habilidades que puedan incluirse
                             data-aos-delay="250" [ngClass]="this.darkTheme? 'remarcarDark':'remarcar'"
                             [routerLink]="['editar','eliminar','conocimiento',listTecnologia[columnas*i+j].idTecnologia]"></i>
                     </div>
-                    <div class="middle" *ngIf="editar==false">
+                    <div class="middle" style="color:black" *ngIf="editar==false">
                         <p data-aos="zoom-out" data-aos-duration="1000">
                             {{listTecnologia[columnas*i+j].nombre}}</p>
                     </div>
                 </ng-template>
                 <!--Cargar icono de editar, mejorar para cuando esté la grilla lena(se debe agregar una fila mas)-->
-                <ng-template [ngIf]="3*i+(j)==tamanioKnowledge && editar">
+                <ng-template [ngIf]="this.columnas*i+(j)==tamanioKnowledge && editar">
                     <!--Cambia el data-aos según en que posición de la cuadrícula esté-->
                     <h2><i class="fa-solid fa-circle-plus" [ngClass]="this.darkTheme? 'remarcarDark':'remarcar'" data-aos="fade-out"
                             data-aos-duration="1000" data-aos-delay="250"

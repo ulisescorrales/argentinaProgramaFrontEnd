@@ -38,17 +38,18 @@ export class ConocimientosComponent implements OnInit {
     })
     this.api.getAllTecnologia().subscribe({
       next: (data: ITecnologia[]) => {
-        this.longitud = data.length+1;
+        this.longitud = data.length+1;//Suma el plus
         this.longArray=Array(this.longitud).fill(this.longitud);
         //Variables usadas para construir la grilla
-        this.tamanioKnowledge = this.longitud;
-        this.filas = Math.ceil((this.tamanioKnowledge+1) / this.columnas);
+        this.tamanioKnowledge = data.length;
+        this.filas = Math.ceil((this.longitud) / this.columnas);
+
         this.filasArray = Array(this.filas).fill(this.filas);
         this.columnasArray = Array(this.columnas).fill(this.columnas);
 
-        this.listTecnologia = data;
+        this.listTecnologia = data;                 
         this.inicio.sumarComponenteCargado();
-      }, error: () => {
+      },error:()=>{
         this.inicio.sumarComponenteCargado();
       }
     });
@@ -62,9 +63,13 @@ export class ConocimientosComponent implements OnInit {
     if (window.innerWidth < 630) {
       this.columnas = 2;
       this.columnasArray = Array(this.columnas).fill(this.columnas);
+      this.filas = Math.ceil((this.longitud) / this.columnas);
+      this.filasArray = Array(this.filas).fill(this.filas);  
     } else {
       this.columnas = 3;
       this.columnasArray = Array(this.columnas).fill(this.columnas);
+      this.filas = Math.ceil((this.longitud) / this.columnas);
+      this.filasArray = Array(this.filas).fill(this.filas);      
     }
   }//dsf
 }
