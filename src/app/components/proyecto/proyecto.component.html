@@ -10,13 +10,13 @@
                 <!--Cargar data-aos según su posición en la grilla-->
 
                 <div *ngIf="columnas*i+j<tamanioProyectos" [ngClass]="{'darkProyecto':this.darkTheme}"  class="card proyecto" style="padding:1%;height: 100%;">
-                    <div class="row grilla">                        
+                    <div class="row" [ngClass]="{'grilla':editar}">                        
                         <div class="col">
                             <!-- Logo de la institución-->
                             <img class="rounded mx-auto d-block logo" [src]="listProyecto[columnas*i+j].logo"
                                 data-aos="zoom-out" data-aos-duration="1000" data-aos-delay="250">
                             <!--Botones de edición y borrado de proyecto-->
-                            <div class="middle" *ngIf="editar; else info">
+                            <div class="middle" *ngIf="editar">
                                 <i class="fa-solid fa-pen " [ngClass]="this.darkTheme? 'remarcarDark':'remarcar'"
                                     [routerLink]="['editar','proyecto',listProyecto[columnas*i+j].idProyecto]"></i>
                                 <i class="fa-sharp fa-solid fa-trash editar remarcar" data-aos="zoom-in" [ngClass]="this.darkTheme? 'remarcarDark':'remarcar'"
@@ -24,6 +24,7 @@
                                     [routerLink]="['editar','eliminar','proyecto',listProyecto[columnas*i+j].idProyecto]"></i>
                             </div>
                             <!--Botón de expandir información-->
+                            <!--
                             <ng-template #info>
                                 <div class="middle">
                                     <a data-bs-toggle="collapse" role="button"
@@ -33,6 +34,7 @@
                                     </a>
                                 </div>
                             </ng-template>
+                            -->
                         </div>                        
                     </div>
                     <!-- información del proyecto-->
@@ -72,12 +74,9 @@
                     <h2><i *ngSwitchCase="0" class="fa-solid fa-circle-plus" [ngClass]="{'remarcarDark':this.darkTheme,'remarcar':!this.darkTheme}"   data-aos="fade-right"
                             data-aos-duration="1000" data-aos-delay="250"
                             [routerLink]="['editar','agregar','proyecto']"></i></h2>
-                    <h2><i *ngSwitchCase="1" class="fa-solid fa-circle-plus" [ngClass]="{'remarcarDark':this.darkTheme,'remarcar':!this.darkTheme}" data-aos="zoom-in"
+                    <h2><i *ngSwitchCase="1" class="fa-solid fa-circle-plus" [ngClass]="{'remarcarDark':this.darkTheme,'remarcar':!this.darkTheme}" data-aos="zoom-left"
                             data-aos-duration="1000" data-aos-delay="250"
-                            [routerLink]="['editar','agregar','proyecto']"></i></h2>
-                    <h2><i *ngSwitchCase="2" class="fa-solid fa-circle-plus" [ngClass]="{'remarcarDark':this.darkTheme,'remarcar':!this.darkTheme}" data-aos="fade-left"
-                            data-aos-duration="1000" data-aos-delay="250"
-                            [routerLink]="['editar','agregar','proyecto']"></i></h2>
+                            [routerLink]="['editar','agregar','proyecto']"></i></h2>                    
                 </ng-template>
                 <!--Si corresponde una posición en blanco, no mostrar nada-->
             </div>

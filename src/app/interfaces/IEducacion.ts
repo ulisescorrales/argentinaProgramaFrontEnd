@@ -4,10 +4,10 @@ export interface IEducacion {
      institucion:String;
      logo:String;
      estado:String;
-     anioIngreso:number;     
+     anioIngreso:String;     
      materiasTotales:number;
      materiasAprobadas:number;     
-     anioFinalizacion:number;
+     anioFinalizacion:String;
      duracion:String;
      certificado:String;  
 }

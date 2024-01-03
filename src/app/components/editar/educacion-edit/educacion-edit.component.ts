@@ -3,7 +3,9 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { IEducacion } from 'src/app/interfaces/IEducacion';
 import { ApiService } from 'src/app/servicios/api.service';
+import { AlertaService } from 'src/app/servicios/mensajeService';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
+import { SpinnerService } from 'src/app/servicios/spinner.service';
 
 
 @Component({
@@ -17,26 +19,26 @@ export class EducacionEditComponent implements OnInit {
   formEd: UntypedFormGroup;
   x=document.getElementById('status');
   y = document.getElementById('estadoEnvio');  
-  constructor(private formBuilder: UntypedFormBuilder, private datosPortfolio: PortfolioService, private rutaActiva: ActivatedRoute, private api: ApiService, private router: Router) {
+  constructor(private message:AlertaService,private spinner:SpinnerService,private formBuilder: UntypedFormBuilder, private datosPortfolio: PortfolioService, private rutaActiva: ActivatedRoute, private api: ApiService, private router: Router) {
     this.formEd = this.formBuilder.group({
       institucion: ['', [Validators.required]],
       titulo: ['', [Validators.required]],
       logo: ['', [Validators.required]],
       estado: ['', [Validators.required]],
-      anioIngreso: ['', [Validators.required]],
-      anioFinalizacion: ['',],
-      materiasTotales: ['', [Validators.required]],
-      materiasAprobadas: ['', [Validators.required]],
+      anioIngreso: [''],
+      anioFinalizacion: [''],
+      materiasTotales: [''],
+      materiasAprobadas: [''],
       duracion: [''],
       certificado:['',]
     });
   }
   ngOnInit(): void {    
-    this.mostrarSpinner();    
+    this.spinner.mostrarSpinner()
     this.rutaActiva.params.subscribe((params: Params) => {
       this.id = params['id'];
       this.api.getEducacion(this.id).subscribe((data: IEducacion) => {
-        this.borrarSpinner();        
+        this.spinner.borrarSpinner();
         this.formEd.setValue({
           institucion: data.institucion,
           logo: data.logo,
@@ -52,7 +54,7 @@ export class EducacionEditComponent implements OnInit {
           ;
       },
       error=>{
-        alert("Error al cargar elemento");
+        this.spinner.borrarSpinner();        
         this.router.navigate(['/']);
       }      
       )
@@ -60,40 +62,28 @@ export class EducacionEditComponent implements OnInit {
   }
   modificarEducacion() {    
     if (this.formEd.valid) {      
-      this.mostrarSpinner();
+      this.spinner.mostrarSpinner();
       this.api.putEducacion(this.id, this.formEd.value).subscribe(data => {        
-        if (this.y != null) {
-          this.y.style.color = "green";
-          this.y.innerHTML = "Solicitud enviada correctamente"               
+        this.spinner.borrarSpinner();
+        if (this.y != null) {          
+          this.message.comunicarMensaje("Elemento modificado correctamente","alert-success")           
         }
         this.api.actualizarListEducacion(); 
       },
         error => {
-          if (error.status = 401) {
-            alert("Error: debe volver a iniciar sesión");
-            this.router.navigate(['/login']).then(value=>{
-              window.location.reload();
-            });            
+          this.spinner.borrarSpinner();
+          if (error.status == 401) {
+            this.message.comunicarMensaje("Debe volver a iniciar sesión","alert-danger")
+            this.router.navigate(['/login']);
           } else {
             if (this.y != null) {
-              this.y.style.color = "red";
-              this.y.innerHTML = "Error en solicitud HTTP"
+              this.message.comunicarMensaje("Error en la solicitud HTTP","alert-danger")
             }
           }
         },
         ()=>{
-          this.borrarSpinner();
+          this.spinner.borrarSpinner();
         })
     }
-  }
-  mostrarSpinner(){
-    if(this.x!=null){
-      this.x.style.display="block";
-    } 
-  }
-  borrarSpinner(){
-    if(this.x!=null){
-      this.x.style.display="none";
-    } 
-  }
+  }  
 }
