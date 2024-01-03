@@ -4,7 +4,7 @@
     <app-informacion #info ></app-informacion>
     <app-footer></app-footer>
     <div>
-        <router-outlet></router-outlet>
+        <router-outlet #outlet="outlet"></router-outlet>
     </div>
     <app-cargando @cargando *ngIf="this.cargando"></app-cargando>
     <div @notificacion (@notificacion.done)="this.mensaje=false" *ngIf="this.mensaje" class="alert" [ngClass]="this.tipoAlerta"

@@ -3,6 +3,7 @@ import { SpinnerService } from './servicios/spinner.service';
 import { TemaOscuroService } from './servicios/tema-oscuro.service';
 import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
 import { AlertaService } from './servicios/mensajeService';
+import { RouterOutlet } from '@angular/router';
 declare let AOS: any;
 
 @Component({
@@ -12,7 +13,7 @@ declare let AOS: any;
   animations: [
     trigger('cargando', [
       transition(':leave', [
-        animate('200ms', style({opacity:0}))
+        animate('500ms', style({opacity:0}))
       ])
     ]),
     ,
@@ -34,9 +35,17 @@ declare let AOS: any;
         )
       ]),
       state('void', style({ top: '100%' })),
-    ])
-  ]
-})
+    ]),
+    trigger('fadeInOut', [
+      transition(':enter',
+      animate('10s',style({opacity:1}))),
+      transition('*=>*', animate('10s',
+      keyframes([
+        style({opacity:0,offset:0}),
+        style({opacity:1,offset:1}),
+      ]))
+    )]
+)]})
 export class AppComponent implements OnInit {
   darkTheme: boolean = false;
   cargando = true;
@@ -51,6 +60,10 @@ export class AppComponent implements OnInit {
 
     // Ahora puedes hacer lo que necesites con la posición vertical
     console.log('Vertical Scroll Position:', verticalScrollPosition);    
+  }*/
+  /*prepareRoute(outlet: RouterOutlet) {
+    console.log(outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation']);
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }*/
   constructor(private spinner: SpinnerService, private tema: TemaOscuroService, private alerta: AlertaService) { }
   ngOnInit() {

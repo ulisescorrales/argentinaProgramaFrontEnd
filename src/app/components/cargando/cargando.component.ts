@@ -1,5 +1,5 @@
 import { trigger, transition, animate, style, keyframes } from '@angular/animations';
-import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
 import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
 
 @Component({
@@ -17,11 +17,11 @@ import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
     ])
   ]
 })
-export class CargandoComponent implements OnInit, AfterContentInit {
+export class CargandoComponent implements OnInit, AfterViewInit {
   darkTheme = true;
   loaded=false;
   constructor(private tema: TemaOscuroService) { }  
-  ngAfterContentInit(): void {
+  ngAfterViewInit(): void {
         this.loaded=true;
   }
 
