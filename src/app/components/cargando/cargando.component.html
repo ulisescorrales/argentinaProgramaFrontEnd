@@ -1,5 +1,5 @@
 <!--Spinner indicador del estado de carga, se coloca aquí para que aparezca en el medio de la pantalla-->
-<div class="mb-3 top-50 start-50 translate-middle" [ngClass]="{'dark':this.darkTheme,'light':!this.darkTheme}" id="status1">
+<div class="mb-3 top-50 start-50 translate-middle" [ngClass]="{'dark':this.darkTheme,'light':!this.darkTheme}" id="status1" [ngStyle]="this.cargado?{'display':'block'}:null">
     <div class="row justify-content-center">
         <div class="col-md text-center">
             <div class="lds-ellipsis" ><div [style]="this.darkTheme?{'background-color':'white'}:null"></div><div [style]="this.darkTheme?{'background-color':'white'}:null"></div><div [style]="this.darkTheme?{'background-color':'white'}:null"></div><div></div></div>

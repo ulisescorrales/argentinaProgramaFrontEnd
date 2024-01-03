@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component, OnInit } from '@angular/core';
 import { SpinnerService } from 'src/app/servicios/spinner.service';
 import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
 
@@ -7,9 +7,13 @@ import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
   templateUrl: './cargando.component.html',
   styleUrls: ['./cargando.component.css']
 })
-export class CargandoComponent implements OnInit {
+export class CargandoComponent implements OnInit,AfterContentInit {
   darkTheme = false;  
   constructor(private spinner:SpinnerService,private tema: TemaOscuroService) {}
+  cargado=false;
+  ngAfterContentInit(): void {
+    this.cargado=true;
+  }
 
   ngOnInit(): void {    
     this.tema.getDarkBoolean().subscribe({
