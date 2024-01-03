@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject} from 'rxjs';
 
 @Injectable({
@@ -11,7 +12,7 @@ export class SpinnerService {
   max:number=8
   //cargado=new BehaviorSubject<boolean>(false);     
   cargando=new BehaviorSubject<boolean>(true);
-  constructor() {        
+  constructor(@Inject(DOCUMENT) private document: Document) {        
   }  
   getCargando(){        
     return this.cargando;
@@ -21,7 +22,11 @@ export class SpinnerService {
     //Cuando terminan de realizarse todas las peticiones HTTP 
     //el spinner desaparece    
     if (this.cant == this.max) {
-      this.cargando.next(false);      
+      this.cargando.next(false);  
+      const x=this.document.getElementById("loader");
+      if(x!=undefined){
+        x.style.opacity="0";
+      }
     }        
   }
   getCantidadCargada(){
