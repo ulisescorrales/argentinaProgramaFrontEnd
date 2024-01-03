@@ -6,8 +6,7 @@
     <div>
         <router-outlet></router-outlet>
     </div>
-    <app-cargando *ngIf="this.cargando"></app-cargando>
-    <div @cargando *ngIf="this.cargando && this.blanco" id="cargando"></div>
-    <div @notificacion (@notificacion.done)="this.mensaje=false;this.blanco=false" *ngIf="this.mensaje" class="alert" [ngClass]="this.tipoAlerta"
+    <app-cargando @cargando *ngIf="this.cargando"></app-cargando>
+    <div @notificacion (@notificacion.done)="this.mensaje=false" *ngIf="this.mensaje" class="alert" [ngClass]="this.tipoAlerta"
         role="alert" id="notificacion">{{this.mensajeString}}</div>
 </div>

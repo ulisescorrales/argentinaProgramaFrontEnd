@@ -12,9 +12,9 @@ declare let AOS: any;
   animations: [
     trigger('cargando', [
       transition(':leave', [
-        animate('600ms', style({ opacity: 0 }))
+        animate('200ms', style({opacity:0}))
       ])
-    ])
+    ]),
     ,
     trigger('router', [
       transition(':enter', [
@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
   mensaje = false;
   mensajeString: String = '';
   tipoAlerta: String = 'alert-success';
-  blanco = true;
+  apareceCargando = false;
   /*@HostListener('window:scroll', ['$event'])
   onScroll(event: Event): void {
     // Aquí puedes acceder a la posición vertical de la página
@@ -58,7 +58,7 @@ export class AppComponent implements OnInit {
       AOS.init({
         once: true
       });
-    }else{
+    } else {
       AOS.init();
     }
 

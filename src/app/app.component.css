@@ -11,14 +11,6 @@
     /*background-image: url("../assets/img/darkBackground.jpg");    
     background-size:contain; */
 }
-#cargando{    
-    height: 100%;
-    width: 100%;
-    background-color: white;
-    position:absolute;    
-    top: 0px;    
-    z-index: 1;
-}
 #notificacion{    
     top:100%;
     left:50%;
