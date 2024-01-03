@@ -26,6 +26,7 @@ export class SpinnerService {
       const x=this.document.getElementById("loader");
       if(x!=undefined){
         x.style.opacity="0";
+        x.style.display="none"
       }
     }        
   }
