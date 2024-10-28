@@ -14,7 +14,7 @@ import { TemaOscuroService } from 'src/app/servicios/tema-oscuro.service';
           style({opacity:1,offset:1})
         ]))
       ])
-    ])
+    ]),
   ]
 })
 export class CargandoComponent implements OnInit, AfterViewInit {
