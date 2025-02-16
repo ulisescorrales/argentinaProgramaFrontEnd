@@ -27,7 +27,7 @@ export class InterceptorService implements HttpInterceptor {
         if(err.status==401){
           this.autenticacionService.logout();
           this.router.navigate(['login']);
-          this.alerta.comunicarMensaje("Token expirado, vuelva a autenticarse","alert-danger");
+          this.alerta.comunicarMensaje("Vuelva a autenticarse","alert-danger");
         }
       }),    
       );

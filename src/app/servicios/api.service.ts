@@ -108,7 +108,7 @@ export class ApiService {
     return this.http.post(this.url + '/educacion/agregar', unaEd, { 'observe': 'response' });
   }
 
-  //Conocimiento (Tecnología
+  //Conocimiento (Tecnología)
   public getAllTecnologia() {
     this.http.get<ITecnologia[]>(this.url + '/tecnologia/traer').subscribe((data: ITecnologia[]) => {
       this.listConocimiento.next(data);
