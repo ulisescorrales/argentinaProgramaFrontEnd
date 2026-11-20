@@ -13,7 +13,7 @@
     }
     #relativo{
         margin-bottom: 40%;
-    }    
+    }
 }
 
 
@@ -37,13 +37,13 @@
 @media(max-width:580px){
     #acercaDe{
         margin-bottom: 25%;
-    }    
+    }
 }
 
 #relativo {
     position: relative;
     border-color: black;
-    margin-bottom: 20%;    
+    margin-bottom: 20%;
 }
 
 #absoluto {

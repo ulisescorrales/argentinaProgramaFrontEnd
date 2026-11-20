@@ -1,0 +1,170 @@
+{
+  "persona": {
+    "nombre": "Ulises",
+    "apellido": "Corrales",
+    "sobreMi": "Analista programador universitario y estudiante de la Lic. en Cs. de la Computación de la Unco, buscando adquirir nuevas experiencias.",
+    "fotoPerfil": "/assets/img/fotoPerfil.webp",
+    "fotoFondo": "https://conceptodefinicion.de/wp-content/uploads/2014/11/binary.jpeg"
+  },
+  "contacto": {
+    "email": "ulisescorralesallen@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/ulises-corrales-a880a5297/",
+    "github": "https://github.com/ulisescorrales",
+    "facebook": "",
+    "twitter": ""
+  },
+  "domicilio": {
+    "ciudad": "Allen",
+    "provincia": "Río Negro",
+    "pais": "Argentina"
+  },
+  "educacion": [
+    {
+      "idEstudio": 1,
+      "titulo": "Lic. en Ciencias de la Computación/Analista Programador Univesitario",
+      "logo": "https://yt3.ggpht.com/ytc/AMLnZu_ayySVF62ftyejB3H9r0RekJDRLPMWxCjaw1Ts=s900-c-k-c0x00ffffff-no-rj",
+      "institucion": "Universidad del Comahue",
+      "anioIngreso": "2021",
+      "anioFinalizacion": null,
+      "duracion": "5 años",
+      "materiasAprobadas": 14,
+      "materiasTotales": 49,
+      "estado": "Título intermedio obtenido, cursando cuarto año",
+      "certificado": "/assets/certificados/certificadoLCC.pdf"
+    },
+    {
+      "idEstudio": 3,
+      "titulo": "Desarrollador Web Full Stack",
+      "logo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Mindesarrolloprodarg.png/500px-Mindesarrolloprodarg.png?utm_source=es.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
+      "institucion": "Ministerio de Desarrollo Productivo",
+      "anioIngreso": "",
+      "anioFinalizacion": "Enero/2023",
+      "duracion": "0",
+      "materiasAprobadas": 1,
+      "materiasTotales": 1,
+      "estado": "Finalizado",
+      "certificado": "/assets/certificados/Certificado_YoProgramo.pdf"
+    },
+    {
+      "idEstudio": 255,
+      "titulo": "Inglés Nivel 7",
+      "logo": "https://yt3.googleusercontent.com/ytc/AL5GRJWcjK-TUG7xTKMtbtf72dFLRGwiW7gm_LnvTS93Iw=s900-c-k-c0x00ffffff-no-rj",
+      "institucion": "Centro Universitario de Idiomas - UBA",
+      "anioIngreso": "",
+      "anioFinalizacion": "Septiembre/2023",
+      "duracion": "",
+      "materiasAprobadas": 1,
+      "materiasTotales": 1,
+      "estado": "Finalizado",
+      "certificado": "/assets/certificados/Certificado Inglés BMB.pdf"
+    }
+  ],
+  "tecnologia": [
+    {
+      "idTecnologia": 1,
+      "nombre": "Java",
+      "logo": "https://i.blogs.es/e7b69c/java_logo/1366_2000.webp"
+    },
+    {
+      "idTecnologia": 3,
+      "nombre": "Angular",
+      "logo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Angularjsoldicon.png/1280px-Angularjsoldicon.png?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
+    },
+    {
+      "idTecnologia": 6,
+      "nombre": "JavaScript/TypeScript",
+      "logo": "https://cdn.prod.website-files.com/5be365b4ae1f663f89c67b33/6283f13d4742a293da729ee6_typescript-javascript-blog-header.webp"
+    },
+    {
+      "idTecnologia": 7,
+      "nombre": "BootStrap",
+      "logo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/1280px-Bootstrap_logo.svg.png?utm_source=es.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "idTecnologia": 8,
+      "nombre": "MySQL",
+      "logo": "https://d1.awsstatic.com/asset-repository/products/amazon-rds/1024px-MySQL.ff87215b43fd7292af172e2a5d9b844217262571.png"
+    },
+    {
+      "idTecnologia": 9,
+      "nombre": "SpringBoot",
+      "logo": "https://trellat.es/wp-content/webp-express/webp-images/uploads/spring-boot-logo.png.webp"
+    },
+    {
+      "idTecnologia": 10,
+      "nombre": "Git/GitHUB",
+      "logo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/GitHub_Invertocat_Logo.svg/330px-GitHub_Invertocat_Logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+    },
+    {
+      "idTecnologia": 302,
+      "nombre": "Postgresql",
+      "logo": "https://www.altnix.com/_next/static/media/postgreSQL.14glf7vztbx6h.png"
+    },
+    {
+      "idTecnologia": 303,
+      "nombre": "Node",
+      "logo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/500px-Node.js_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+    },
+    {
+      "idTecnologia": 304,
+      "nombre": "PHP",
+      "logo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/500px-PHP-logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+    },
+    {
+      "idTecnologia": 305,
+      "nombre": "Pentaho",
+      "logo": "https://images.seeklogo.com/logo-png/30/1/pentaho-logo-png_seeklogo-300213.png"
+    }
+  ],
+  "experiencia": [
+    {
+      "idExperiencia": 1,
+      "titulo": "Becario",
+      "organizacion": "Universidad del Comahue",
+      "descripcion": "Pruebas de migración desde SIU GUARANÍ 2 a SIU GUARANÍ 3",
+      "logo": "https://yt3.ggpht.com/ytc/AMLnZu_ayySVF62ftyejB3H9r0RekJDRLPMWxCjaw1Ts=s900-c-k-c0x00ffffff-no-rj",
+      "inicio": "2026-06-01",
+      "fin": "",
+      "tareas": []
+    }
+  ],
+  "proyecto": [
+    {
+      "idProyecto": 1,
+      "idPersona": 3,
+      "nombre": "Porfolio Personal",
+      "descripcion": "Desarrollo del Porfolio personal que aplica las tecnologías aprendidas en el curso #YoProgramo bajo una arquitectura de tres capas distribuida.",
+      "logo": "https://cdn-icons-png.flaticon.com/512/37/37386.png",
+      "link": null,
+      "github": null,
+      "githubFrontEnd": "https://github.com/ulisescorrales/argentinaProgramaFrontEnd",
+      "githubBackEnd": "https://github.com/ulisescorrales/argentinaProgramaBackend",
+      "tareas": []
+    },
+    {
+      "idProyecto": 252,
+      "idPersona": 3,
+      "nombre": "Proyectos de extensión - UNCO",
+      "descripcion": "Participación en los siguientes proyectos de extensión",
+      "logo": "https://yt3.ggpht.com/ytc/AMLnZu_ayySVF62ftyejB3H9r0RekJDRLPMWxCjaw1Ts=s900-c-k-c0x00ffffff-no-rj",
+      "link": null,
+      "github": null,
+      "githubFrontEnd": null,
+      "githubBackEnd": null,
+      "tareas": [
+        {
+          "idTarea": 1,
+          "descripcion": "Desarrollo de página WEED2022",
+          "repositorio": "",
+          "certificado": "http://weed2022.fi.uncoma.edu.ar/"
+        },
+        {
+          "idTarea": 2,
+          "descripcion": "Tallerista en Prolog for Kids 2023, 2024",
+          "repositorio": "",
+          "certificado": "https://wene.fi.uncoma.edu.ar/certificado/view?hash=5a10b3"
+        }
+      ]
+    }
+  ]
+}

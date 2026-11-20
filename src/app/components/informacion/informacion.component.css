@@ -1,3 +1,8 @@
+app-experiencia + app-educacion {
+    display: block;
+    margin-top: 60px;
+}
+
 .fa-circle{
     padding-right: 4%;
     padding-left: 4%;

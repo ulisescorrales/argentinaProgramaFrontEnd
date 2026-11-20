@@ -1,0 +1,12 @@
+node_modules
+.angular
+.firebase
+.vscode
+.directory
+dist
+.git
+.gitignore
+Dockerfile
+docker-compose.yml
+README.md
+.env
